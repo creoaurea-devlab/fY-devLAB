@@ -1,0 +1,17 @@
+{
+  "source": "vendor/previous-ui/devlab-project-local-0.1.0.tgz",
+  "sourceSha256": "79cf8eee22236be60d738c45ef672302b839acca6cbe96fe0dc2705403fd1664",
+  "originalSources": {
+    "generator": "devlab-reusable-bundles/v1",
+    "source": "plugins/project-local",
+    "files": {
+      "plugins/project-local/package.json": "52f1d97095b5b76babea99e1ef13a00380cdf86afe8515bd8577bc1f6e45e9e5",
+      "plugins/project-local/src/index.ts": "656935e858aa289ae591c71ebdf5b0008507079007586f03c1aa2139fc5facf1",
+      "plugins/project-local/src/template.ts": "a91db909616bdca0526cf4cfc3f52ed4103d7854f13f300ba2e4b1c87c74fd99"
+    },
+    "adaptations": "Compiled ESM and declarations; exact dependency metadata and explicit existing view/style entry points. Original implementation copied unchanged."
+  },
+  "adaptations": [
+    "Local source dependency; isolated plugin development forks; _BACKUP exclusion at file and project-root boundaries."
+  ]
+}

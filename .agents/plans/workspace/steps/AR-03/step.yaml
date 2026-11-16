@@ -1,0 +1,39 @@
+schema_version: 1
+id: AR-03
+title: Add disposable startup and relocation regression fixtures
+outcome: Add disposable startup and relocation regression fixtures
+kind: bugfix
+effect: change_source
+owner: verification
+slice: ARSC-M1-S2
+mode: worker
+read:
+- plugins/terminal-pty/src/persistence.ts
+- plugins/rules-local/src/snapshot.ts
+- src/server.ts
+write:
+- scripts/terminal-relocation.test.ts
+- scripts/runtime-startup.test.ts
+- scripts/rules.test.ts
+- scripts/client-lifecycle.test.ts
+- scripts/runtime-lifecycle.test.ts
+- scripts/wisdohm27-integration.test.py
+needs:
+- AR-02
+acceptance:
+- 'AC-05: Fixtures reproduce terminal path/socket mismatch without opening or killing
+  live terminals.'
+- 'AC-04: Fixture exercises isolated Python reader dependency failure and useful error
+  propagation.'
+- 'AC-05: Corrupt, foreign, active and valid records are distinguished.'
+- 'AC-05: Create runnable client/runtime lifecycle and 2.7 integration probes before
+  source tickets reference them; explicit baseline assertions pass with nonzero tests
+  while repaired-expectation mode continues to expose missing behavior.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - DEVLAB_AUDIT_EXPECTATION=baseline node --test scripts/terminal-relocation.test.ts
+    scripts/runtime-startup.test.ts scripts/client-lifecycle.test.ts scripts/runtime-lifecycle.test.ts
+  - python3 -B scripts/wisdohm27-integration.test.py --expect-baseline
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-03.md

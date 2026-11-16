@@ -1,0 +1,34 @@
+schema_version: 1
+id: TH-32
+title: Publish source-backed architecture and combined acceptance evidence
+outcome: Publish source-backed architecture and combined acceptance evidence
+kind: feature
+effect: change_source
+owner: source-maps
+slice: TH-S08
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write:
+- scripts/architecture.ts
+needs:
+- TH-30
+- TH-31
+acceptance:
+- Generate architecture/Hood wiring from actual registered packages/public seams and
+  include the independent harness, execution and UI owners; no fabricated implemented
+  components.
+- Run combined relevant types, architecture, protocol, persistence and real interaction
+  checks; record failures/untested account features and reconcile planning reports
+  separately from WISDOHM evidence.
+- Deployment verification applies only after an explicitly authorized promotion; otherwise
+  report it unrun and retain the built artifact. No implicit Git, deployment or active-service
+  restart.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check

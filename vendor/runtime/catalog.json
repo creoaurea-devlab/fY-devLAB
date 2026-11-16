@@ -1,0 +1,14 @@
+{
+  "tmux": {
+    "version": "3.4-1ubuntu0.2",
+    "archive": "tmux_3.4-1ubuntu0.2_amd64.deb",
+    "sha256": "fd14ca543ca0c00c7314c7bb524be40f3d058d9e587a5f47d9b35e851d9bd67d",
+    "source": "http://archive.ubuntu.com/ubuntu/pool/main/t/tmux/tmux_3.4-1ubuntu0.2_amd64.deb"
+  },
+  "libevent-core": {
+    "version": "2.1.12-stable-9ubuntu2.2",
+    "archive": "libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb",
+    "sha256": "2a5264b572f5fe50fc9d63e115d308c79b9fb746d13cc55b5ea1f0f01a78daa7",
+    "source": "http://archive.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-core-2.1-7t64_2.1.12-stable-9ubuntu2.2_amd64.deb"
+  }
+}

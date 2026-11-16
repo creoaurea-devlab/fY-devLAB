@@ -1,0 +1,26 @@
+schema_version: 1
+id: TRAFFIC-HTTP
+title: Expose read-only TRAFFIC route
+outcome: Expose read-only TRAFFIC route
+kind: feature
+effect: change_source
+owner: http-transport
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+- packages/contracts/src/rules.ts
+write:
+- plugins/transport-http/src/rules.ts
+needs:
+- TRAFFIC-READ
+acceptance:
+- GET-only project-scoped activity route validates one projectId and preserves existing
+  Origin guards.
+verification:
+  level: targeted
+  reason: Check the changed seam and affected behavior with disposable fixtures.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/rules.test.ts
+spec: .agents/plans/workspace/agent-activity/SPEC.md

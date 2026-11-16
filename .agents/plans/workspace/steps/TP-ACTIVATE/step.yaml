@@ -1,0 +1,33 @@
+schema_version: 1
+id: TP-ACTIVATE
+title: Activate the verified repair without replacing live terminal or frontend owners
+outcome: Activate the verified repair without replacing live terminal or frontend
+  owners
+kind: audit
+effect: plan
+owner: delivery-config
+slice: TP-S1
+mode: worker
+read:
+- src/profile.ts
+- src/server.ts
+- plugins/terminal-pty/src/index.ts
+- plugins/wisdom-tool/src/index.ts
+write: []
+needs:
+- TP-VERIFY
+acceptance:
+- Activate only the current checkout and verified artifact, with recoverable original
+  host units.
+- The frontend process remains running during backend activation; the existing terminal
+  retains its PID and process start identity.
+- Restore the saved Creative Agent Studio preview and verify the selected AYE repair
+  through the actual host.
+- User confirmed the active preview was saved or closed; no editor reload or unrelated
+  process/window closure.
+verification:
+  level: integration
+  reason: Actual service/API/process observations are required for this local host
+    activation.
+  checks:
+  - /usr/bin/python3 /tmp/devlab-terminal-preview-repair/live-verify.py

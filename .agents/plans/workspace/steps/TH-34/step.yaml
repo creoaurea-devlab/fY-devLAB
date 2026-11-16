@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-34
+title: Stage the task-execution package boundary
+outcome: Stage the task-execution package boundary
+kind: feature
+effect: plan
+owner: planning-protocol
+slice: TH-S01
+mode: worker
+read:
+- .context/modules/registry.yaml
+- packages/contracts/src/index.ts
+- packages/ui-contracts/src/index.ts
+write: []
+needs:
+- TH-03
+acceptance:
+- 'DEFERRED: proposed task-execution owner is outside MVP; register and reconcile
+  scope before implementing.'
+- 'PLANNED PATHS — TH-01 must reconcile exact ownership and this task write scope
+  before execution: plugins/task-execution/package.json, plugins/task-execution/src/index.ts.
+  No implementation permission is inferred from an empty scope.'
+- Create the minimal package manifest and public export boundary needed for local
+  dependency installation; package runtime implementations remain explicitly unavailable
+  until their later tasks pass.
+- Coordinate exact path registration/materialization with TH-01; keep neutral browser/server
+  dependency direction and no application composition changes.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

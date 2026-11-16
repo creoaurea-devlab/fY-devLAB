@@ -1,0 +1,27 @@
+schema_version: 1
+id: AT-54c140ee-6270-47f7-8efc-ff728afd472b
+title: 'DevLab self-test: continue a feature from Kanban'
+outcome: 'DevLab self-test: continue a feature from Kanban'
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: S-313ca2b8-6267-4fb2-b25c-8a33da25f34d
+mode: worker
+read:
+- .context/BOOT.md
+- .context/protocols/plan.md
+- plugins/ui-kanban/src/model.ts
+write:
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/model.ts
+needs: []
+acceptance:
+- Open this task in DevLab Planning and copy its agent brief.
+- Confirm the brief carries this task ID, ownership, scope, checks and context rules.
+- Continue through any agent using a fresh JSON snapshot and report actual progress;
+  do not fabricate completion.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/planning.test.ts

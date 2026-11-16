@@ -1,0 +1,25 @@
+schema_version: 1
+id: TERM-CONTRACT
+title: Terminal CONTRACT
+outcome: Terminal CONTRACT
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- packages/contracts/src/terminal.ts
+needs: []
+acceptance:
+- A01
+- A07
+- A08
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

@@ -1,0 +1,28 @@
+schema_version: 1
+id: AR-08
+title: Verify combined startup recovery baseline
+outcome: Verify combined startup recovery baseline
+kind: bugfix
+effect: change_source
+owner: verification
+slice: ARSC-M1-S2
+mode: worker
+read:
+- scripts/terminal-relocation.test.ts
+- scripts/runtime-startup.test.ts
+- src/server.ts
+write:
+- scripts/runtime-startup.test.ts
+needs:
+- AR-07
+acceptance:
+- 'AC-04: Combined disposable startup tests pass with installed dependencies.'
+- 'AC-05: Restored or quarantined records retain original recovery data and unrelated
+  live resources are untouched.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal-relocation.test.ts scripts/runtime-startup.test.ts
+    scripts/terminal-lease.test.ts scripts/rules.test.ts scripts/wisdom.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-08.md

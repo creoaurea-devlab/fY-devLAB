@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-16T03:10:47.666645+00:00",
+  "edition": "_devLAB-refactored",
+  "scope": "U2 fullscreen pending recovery, retained bottom dock and compact group controls",
+  "backup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/fullscreen-dock-20261116-045102",
+  "before": [
+    "Unresolved request plus second click reproduced A fullscreen request is still pending.",
+    "Held animation frame reproduced delayed drawer close stealing preview input focus."
+  ],
+  "checks": {
+    "npm run ownership:sync": "passed",
+    "npm run check": {
+      "typeCheck": "passed",
+      "sourceRuntimeChecks": 12
+    },
+    "npm run build": "passed",
+    "node --test scripts/preview-fullscreen.test.ts": {
+      "passed": 9
+    },
+    "node scripts/preview-compact-browser.mjs": {
+      "measurements": [
+        {
+          "width": 1440,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        },
+        {
+          "width": 820,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        },
+        {
+          "width": 390,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        }
+      ],
+      "directStartStop": true,
+      "frameAndDraftRetained": true,
+      "escapeAndFocus": true,
+      "terminalPidRetained": true,
+      "stoppedInspectClose": true,
+      "lateStartResponseFenced": true,
+      "fullscreenDock": true,
+      "fullscreenIframeRetained": true,
+      "drawerFocusIntentRetained": true,
+      "fullscreenTerminalAndServers": true,
+      "fullscreenTerminalInput": true,
+      "pendingRequestRecovered": true,
+      "unconfiguredAndNoUIRefused": true,
+      "toolbarActionsFit": true,
+      "jsErrors": []
+    }
+  },
+  "productionLineDelta": 39,
+  "productionFilesAdded": 0,
+  "dependenciesAdded": 0,
+  "liveBackendRestarted": false,
+  "liveWindowsControlled": false,
+  "nativeFullscreenTarget": "existing shell root, including original footer and dock",
+  "limits": [
+    "Real native fullscreen tested in disposable headless Chromium, not the user desktop window.",
+    "HMR ownership changes and foreign application windows are not a full browser/platform certification.",
+    "Other planned surface-stability and compact catalogue work remains open."
+  ],
+  "sourceSha256": {
+    "packages/ui-contracts/src/index.ts": "b92d9fee19dd043f618433b0a002e11d5936aa79f87960e9c08f23cecc7b5703",
+    "plugins/ui-shell/src/workspace-focus.ts": "2f03782b198f97776371040906a1518bc34d54e286993bf0afe1ad2bec12c0fb",
+    "plugins/ui-shell/src/view.tsx": "0bbf1869bbf539aa5a4c1a72f22caee0eff96f0f17d31083d4f6aa65e43f60ae",
+    "plugins/ui-shell/src/devlab.css": "bc22583ae360f9fd875d249b94a23da088082bb93ead0a6f7b3222be207a77a1",
+    "plugins/ui-preview/src/fullscreen.ts": "8a958263efbfcb010500a4c34fdfbf34ac9ce11f775a70ce3abfc60aeb04f795",
+    "plugins/ui-preview/src/layout.tsx": "e7fcb14fb2e4563216f893e13dbc62997cba0c3c359e58613923815312aab498",
+    "plugins/ui-preview/src/view.tsx": "3a6d456306fdcd68b610e2ee07414f7883ed416dff6419b39d377ec1773da39d",
+    "plugins/ui-preview/src/preview.css": "3f04c365c6a88bd1be4aed1bc6a8e6b811cd66e89368f9522e4a4e984d9c8583",
+    "plugins/ui-preview/src/pane.tsx": "7b901a8bb65e1f0e1d3d55ac724faf003564f0676bce9bc7c3c46fd608328a2f",
+    "scripts/preview-fullscreen.test.ts": "6974274783f0ea1388065652bc0e028a99e1f6b447f70a79ef1363053b6ad5ab",
+    "scripts/preview-compact-browser.mjs": "0bbe66c0cc034fe2027b02a6c7a0a4d1eeb303205ce685d6a89993cc2afdfbdf",
+    ".agents/ownership/verification/verification.yaml": "e769d5b89c90bf5a35353eec1962ad418155d688a3f3bbe88e462a7e76a46c3d",
+    ".context/modules/registry.yaml": "c4de42d3db7a8357844074c506f2abff5bc7ded2f0dc09265c70f1fd0642e85a"
+  }
+}

@@ -1,0 +1,21 @@
+schema_version: 1
+id: AT-2464d861-046e-41cf-a9ae-68ef8f6f892f
+title: Show Plugins cores and dependencies
+outcome: Show Plugins cores and dependencies
+kind: feature
+effect: change_source
+owner: hood-view
+slice: S-e78af2e8-ff7d-4470-b7cf-68cf1f4e08be
+mode: worker
+read: []
+write:
+- plugins/ui-hood/src/view.tsx
+- plugins/ui-hood/src/hood.css
+needs: []
+acceptance:
+- Show actual services and UI metadata with visible focus and errors.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit

@@ -1,0 +1,22 @@
+schema_version: 1
+id: AT-234a93e3-64e5-46fb-b5e0-41c7c783aee5
+title: Protect backups and fork source
+outcome: Protect backups and fork source
+kind: feature
+effect: change_source
+owner: project-service
+slice: S-e78af2e8-ff7d-4470-b7cf-68cf1f4e08be
+mode: worker
+read: []
+write:
+- plugins/project-local/src/index.ts
+- plugins/project-local/src/fork.ts
+needs: []
+acceptance:
+- Deny nested explicit and aliased _BACKUP paths; independent source and confined
+  dependencies.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/project-development.test.ts

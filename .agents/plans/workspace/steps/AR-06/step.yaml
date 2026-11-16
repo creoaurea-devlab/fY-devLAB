@@ -1,0 +1,25 @@
+schema_version: 1
+id: AR-06
+title: Remove unused population YAML dependency safely
+outcome: Remove unused population YAML dependency safely
+kind: bugfix
+effect: change_source
+owner: wisdom-service
+slice: ARSC-M1-S2
+mode: worker
+read:
+- plugins/wisdom-tool/src/population.ts
+- scripts/wisdom.test.ts
+write:
+- plugins/wisdom-tool/src/population.ts
+needs:
+- AR-03
+acceptance:
+- 'AC-04: Population with facts does not import unused PyYAML.'
+- 'AC-03: Setup validation, rollback and target-gate safeguards remain intact.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/wisdom.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-06.md

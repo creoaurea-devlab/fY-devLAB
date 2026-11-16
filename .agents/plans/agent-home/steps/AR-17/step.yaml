@@ -1,0 +1,42 @@
+schema_version: 1
+id: AR-17
+title: Observe agent-home definitions and operational evidence without executing project
+  code
+outcome: Observe agent-home definitions and operational evidence without executing
+  project code
+kind: feature
+effect: change_source
+owner: rules-service
+slice: AGH-S3
+mode: worker
+read:
+- plugins/rules-local/src/read-memory.py
+- plugins/rules-local/src/snapshot.ts
+- packages/contracts/src/rules.ts
+- .agents/plans/authority.yaml
+write:
+- plugins/rules-local/src/read-memory.py
+needs:
+- AR-09
+- AR-10
+- AGH-02
+acceptance:
+- 'AH-12: Installed trusted reader inspects versioned agent-home files and operational
+  SQLite read-only; it never imports or launches selected-project runtime code.'
+- 'AH-03: Review-assessed, reported, historical, stale, verified and integrated results
+  remain visibly distinct.'
+- 'AH-12: Limits/truncation, unknown source versions and external workspaces remain
+  disclosed rather than promoted to current evidence.'
+- 'AH-12: Stage dual-source/dual-control-path observation before activation; old authority
+  remains correctly observed until selection changes, then the same trusted reader
+  observes .agents without executable imports.'
+- 'AH-12: Limit this change to the trusted reader; AR-05 retains snapshot interpreter
+  and README ownership, avoiding an unrelated startup-chain dependency or concurrent
+  source edits.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/rules.test.ts
+  - python3 -B scripts/rules27.test.py
+spec: .agents/plans/agent-home/steps/AR-17/SPEC.md

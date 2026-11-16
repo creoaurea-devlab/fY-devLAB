@@ -1,0 +1,37 @@
+schema_version: 1
+id: TH-05
+title: Own the Codex app-server process and JSON-RPC lifecycle
+outcome: Own the Codex app-server process and JSON-RPC lifecycle
+kind: feature
+effect: plan
+owner: codex-harness
+slice: TH-S02
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+- src/profile.ts
+write: []
+needs:
+- TH-02
+- TH-04
+acceptance:
+- 'PLANNED PATHS — before execution, TH-01 must reconcile exact ownership and this
+  task write scope through the shared planner: plugins/codex-harness/package.json,
+  plugins/codex-harness/src/index.ts, plugins/codex-harness/src/connection.ts, plugins/codex-harness/src/connection.test.ts.
+  Empty/partial write scope is not permission to start.'
+- Launch configured Codex binary as a backend-owned stdio child, initialize/initialized
+  once, correlate requests and server requests, bound buffers/timeouts and normalize
+  protocol errors.
+- Generate/validate protocol types from the selected installed version inside the
+  adapter only. Verify binary absence, version mismatch, malformed line, child exit
+  and cancellation with a fake process.
+- dispose rejects pending requests, detaches listeners and terminates only owned processes;
+  no terminal-pane reuse, public unauthenticated socket, or process-global shutdown.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/connection.test.ts

@@ -1,0 +1,40 @@
+node_modules/
+dist/
+.data/
+.recovery/
+_BACKUP/
+.agents/state/
+.agents/.venv/
+.agents/runtime/__pycache__/
+.agents/archive/**/*.sqlite*
+
+# Local research/component sources; never application input.
+_LAB/
+
+# Workstation state and unpublished work
+.cache/
+.tools/
+.gstack/
+.lavish/
+_projects/
+_preimp/*
+!_preimp/README.md
+.context/state/
+.context/sessions/
+**/__pycache__/
+*.pyc
+*.log
+*.sqlite*
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Historical workstation captures and raw evidence exports
+docs/evidence/
+docs/share/
+docs/**/*.png
+docs/**/*.jpg
+docs/**/*.webp
+docs/**/*.har

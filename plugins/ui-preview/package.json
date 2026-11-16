@@ -1,0 +1,20 @@
+{
+  "name": "@devlab/ui-preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./view": "./src/view.tsx",
+    "./inspector": "./src/inspector.tsx",
+    "./devtools": "./src/devtools.tsx",
+    "./style.css": "./src/preview.css"
+  },
+  "dependencies": {
+    "@devlab/contracts": "0.1.0",
+    "@devlab/ui-contracts": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "18.3.1"
+  }
+}

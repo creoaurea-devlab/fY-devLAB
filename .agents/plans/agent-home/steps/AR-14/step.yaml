@@ -1,0 +1,30 @@
+schema_version: 1
+id: AR-14
+title: Resolve terminal ownership from the selected grouped definition snapshot
+outcome: Resolve terminal ownership from the selected grouped definition snapshot
+kind: feature
+effect: change_source
+owner: terminal-service
+slice: AGH-S2
+mode: worker
+read:
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/confinement.ts
+- packages/contracts/src/ownership.ts
+write:
+- plugins/terminal-pty/src/index.ts
+needs:
+- AR-10
+acceptance:
+- 'AH-06: Effective terminal policy resolves the exact capability paths from one validated
+  selected snapshot; grouping never broadens a terminal grant.'
+- 'AH-06: Existing session policy/identity remains immutable across authority refresh
+  and backend restart.'
+- 'AH-01: Catalogue reads are bounded/asynchronous and invalidated by source generation
+  rather than repeated YAML subprocesses.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal-confinement.test.ts scripts/terminal-lease.test.ts
+spec: .agents/plans/agent-home/steps/AR-14/SPEC.md

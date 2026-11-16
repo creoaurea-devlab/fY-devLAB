@@ -1,0 +1,20 @@
+schema_version: 1
+id: AT-86b3a6ad-d0b4-46d5-9a5e-f5b70b3ab72b
+title: Open fork source and matching preview
+outcome: Open fork source and matching preview
+kind: feature
+effect: change_source
+owner: workspace-ui
+slice: S-e78af2e8-ff7d-4470-b7cf-68cf1f4e08be
+mode: worker
+read: []
+write:
+- src/shell.tsx
+needs: []
+acceptance:
+- Retain original resources and select matching element in same fork preview.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit

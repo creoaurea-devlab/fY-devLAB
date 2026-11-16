@@ -1,0 +1,28 @@
+schema_version: 1
+id: WB-OWNERS
+title: Declare Whiteboard consumer dependencies before implementation
+outcome: Declare Whiteboard consumer dependencies before implementation
+kind: maintenance
+effect: change_source
+owner: governance-runtime
+slice: WB-S1
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- .agents/ownership/browser/whiteboard-ui.yaml
+write:
+- .agents/ownership/browser/browser-bootstrap.yaml
+- .agents/ownership/browser/workspace-ui.yaml
+needs: []
+acceptance:
+- Declare whiteboard-ui dependency for runtime/bootstrap and root composition consumers;
+  preserve all existing exact owners and acyclic public seams.
+- Keep current Running/Review handoffs and claims; do not change source definitions
+  outside these exact dependency manifests.
+verification:
+  level: targeted
+  reason: Validate selected ownership dependencies and preserved task definitions.
+  checks:
+  - node --test scripts/agent-definitions.test.ts
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

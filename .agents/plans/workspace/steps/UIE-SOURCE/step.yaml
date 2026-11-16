@@ -1,0 +1,45 @@
+schema_version: 1
+id: UIE-SOURCE
+title: UIE-SOURCE
+outcome: UIE-SOURCE
+kind: feature
+effect: change_source
+owner: preview-view
+slice: UIE-S1
+mode: worker
+read:
+- docs/plans/ui-elements/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-preview/package.json
+- plugins/ui-preview/PROVENANCE.json
+- plugins/ui-preview/src/devtools.tsx
+- plugins/ui-preview/src/fullscreen.ts
+- plugins/ui-preview/src/index.ts
+- plugins/ui-preview/src/inspector.tsx
+- plugins/ui-preview/src/layout.tsx
+- plugins/ui-preview/src/pane.tsx
+- plugins/ui-preview/src/preferences.ts
+- plugins/ui-preview/src/preview.css
+- plugins/ui-preview/src/server-state.ts
+- plugins/ui-preview/src/view.tsx
+- plugins/ui-preview/src/workspace.ts
+- plugins/ui-preview/src/elements.tsx
+- plugins/ui-preview/src/element-brief.ts
+needs:
+- UIE-UI-CONTRACT
+acceptance:
+- A1
+- A2
+- A3
+- A4
+- A5
+- A6
+- A7
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/ui-element-brief.test.ts
+  - python3 scripts/ui-elements-browser.py
+spec: docs/plans/ui-elements/SPEC.md

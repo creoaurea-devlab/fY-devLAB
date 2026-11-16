@@ -1,0 +1,24 @@
+schema_version: 1
+id: FACTORY-RULES
+title: Show automatic phases and avoid repeated ownership inspection
+outcome: Show automatic phases and avoid repeated ownership inspection
+kind: maintenance
+effect: change_source
+owner: rules-service
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- plugins/rules-local/src/read-memory.py
+needs: []
+acceptance:
+- Rules authority is ready with PLAN/BUILD/CHECK/REPAIR/DONE; history stays historical.
+- Cache repeated ownership comparisons without increasing the inspection budget.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - node --input-type=module -e 'import {readRulesSnapshot} from "./plugins/rules-local/src/snapshot.ts";const
+    r=await readRulesSnapshot(process.cwd(),"default");if(r.authority.status!=="ready")throw
+    Error("Rules authority unavailable")'

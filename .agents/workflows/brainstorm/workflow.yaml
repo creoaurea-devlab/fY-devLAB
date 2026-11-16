@@ -1,0 +1,13 @@
+schema_version: 1
+kind: brainstorm
+agent: planner
+procedure:
+- Identify the desired outcome, constraints and current source evidence; record assumptions separately.
+- Compare a small number of concrete options by caller impact, complexity, ownership and recovery.
+- Recommend an option with tradeoffs and unresolved decisions; finish when the decision is assessed or
+  the remaining question is precise.
+guidance:
+- .agents/guides/VERIFICATION.md
+verification:
+  default: review
+  reason: The deliverable is an evidence-backed option assessment, so code tests are normally unnecessary.

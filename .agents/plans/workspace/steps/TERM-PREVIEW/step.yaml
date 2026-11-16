@@ -1,0 +1,38 @@
+schema_version: 1
+id: TERM-PREVIEW
+title: Retained native preview split and first-use ratio
+outcome: Retained native preview split and first-use ratio
+kind: feature
+effect: change_source
+owner: preview-view
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/ui-preview/package.json
+- plugins/ui-preview/PROVENANCE.json
+- plugins/ui-preview/src/devtools.tsx
+- plugins/ui-preview/src/fullscreen.ts
+- plugins/ui-preview/src/index.ts
+- plugins/ui-preview/src/inspector.tsx
+- plugins/ui-preview/src/layout.tsx
+- plugins/ui-preview/src/pane.tsx
+- plugins/ui-preview/src/preferences.ts
+- plugins/ui-preview/src/preview.css
+- plugins/ui-preview/src/server-state.ts
+- plugins/ui-preview/src/view.tsx
+- plugins/ui-preview/src/workspace.ts
+needs:
+- TERM-UI-CONTRACT
+acceptance:
+- A11
+- A14
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/terminal-browser.py --case workspace
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

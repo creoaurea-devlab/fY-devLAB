@@ -1,0 +1,88 @@
+.terminal-node-surface {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+.flow-node:has(.terminal-node-surface) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.flow-node:has(.terminal-node-surface) > .flow-node-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+}
+.devlab-terminal {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  background: hsl(var(--background, 220 27% 9%));
+  color: hsl(var(--foreground, 216 38% 89%));
+  overflow: hidden;
+}
+.terminal-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.terminal-screen {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.terminal-error {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 50%;
+  font-size: 10px;
+  color: hsl(var(--destructive, 0 93% 82%));
+  padding: 3px 2px 0;
+  overflow: hidden;
+}
+.terminal-error-message {
+  min-height: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.terminal-error-actions {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-top: 3px;
+}
+.terminal-error button {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.terminal-error button:focus-visible {
+  outline: 2px solid hsl(var(--ring, 201 80% 60%));
+  outline-offset: 2px;
+}
+.devlab-terminal .xterm {
+  height: 100%;
+}
+.devlab-terminal .xterm-helper-textarea {
+  min-height: 0 !important;
+  box-shadow: none !important;
+}
+

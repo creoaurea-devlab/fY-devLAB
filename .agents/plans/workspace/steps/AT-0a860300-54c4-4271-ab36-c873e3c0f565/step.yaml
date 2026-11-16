@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-0a860300-54c4-4271-ab36-c873e3c0f565
+title: 'Disconnect planning and execution: browser-bootstrap'
+outcome: 'Disconnect planning and execution: browser-bootstrap'
+kind: feature
+effect: change_source
+owner: browser-bootstrap
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- src/main.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

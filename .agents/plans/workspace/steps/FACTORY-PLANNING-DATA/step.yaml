@@ -1,0 +1,21 @@
+schema_version: 1
+id: FACTORY-PLANNING-DATA
+title: Read the relocated installed planning data adapter
+outcome: Read the relocated installed planning data adapter
+kind: maintenance
+effect: change_source
+owner: planning-service
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- plugins/planning-local/src/store.ts
+needs: []
+acceptance:
+- Planning uses installed data code and preserves canonical writer behavior.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

@@ -1,0 +1,41 @@
+schema_version: 1
+id: TH-23
+title: Add supported model settings to the existing Codex controls
+outcome: Add supported model settings to the existing Codex controls
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- TH-CONTROLS-CLIENT
+- TH-26
+acceptance:
+- Extend current Codex controls with available model/effort, requested/effective values
+  and policy locks; preserve existing login/output/Stop workflow.
+- Settings drafts survive pane switches; unsupported values have clear reasons and
+  save failures retain inputs. Do not create a new ui-harness package merely to add
+  controls.
+- Load and register docs/protocols/ui-design.md for execution; verify keyboard/focus,
+  failure/retry, project switching and retention of editor drafts, preview and terminal
+  owners in the actual affected flow. Existing smoke checks alone do not prove the
+  new behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

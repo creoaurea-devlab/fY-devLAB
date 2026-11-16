@@ -1,0 +1,31 @@
+schema_version: 1
+id: TRAFFIC-UI
+title: Add retained TRAFFIC workspace tab
+outcome: Add retained TRAFFIC workspace tab
+kind: feature
+effect: change_source
+owner: workspace-shell
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+- packages/contracts/src/rules.ts
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/traffic.tsx
+- plugins/ui-shell/src/devlab.css
+needs:
+- TRAFFIC-OWNERSHIP
+- TRAFFIC-HTTP
+acceptance:
+- Top TRAFFIC tab shows Running, Reserved, Waiting and Review lanes with exact claims
+  and identity.
+- Validated read response, refresh/error/project changes show freshness honestly;
+  sibling owners and keyboard behavior remain intact at 1440/820 widths.
+verification:
+  level: targeted
+  reason: Check the changed seam and affected behavior with disposable fixtures.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+spec: .agents/plans/workspace/agent-activity/SPEC.md

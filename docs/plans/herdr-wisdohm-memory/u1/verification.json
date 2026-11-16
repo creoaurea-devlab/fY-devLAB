@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-15",
+  "backup": {
+    "backup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/20261115-144220",
+    "snapshot": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/20261115-144220/project"
+  },
+  "sourceLineCounts": [
+    {
+      "path": "plugins/ui-shell/src/terminals.tsx",
+      "before": 256,
+      "after": 262
+    },
+    {
+      "path": "plugins/ui-shell/src/devlab.css",
+      "before": 946,
+      "after": 949
+    },
+    {
+      "path": "scripts/terminal-lifecycle-browser.py",
+      "before": 277,
+      "after": 305
+    }
+  ],
+  "unchangedFiles": [
+    "package.json",
+    "package-lock.json",
+    "src/server.ts",
+    "src/profile.ts",
+    "src/workspace.ts",
+    "src/main.ts",
+    "node_modules/@devlab/kernel/dist/index.js",
+    "vendor/previous-ui/devlab-kernel-0.1.0.tgz",
+    "vendor/previous-ui/cordis-4.0.0-rc.11-creo.bc9a344.tgz"
+  ],
+  "dependenciesAdded": 0,
+  "applicationSourceFilesAdded": 0,
+  "liveSourceFrontendUpdated": true,
+  "liveBackendRestarted": false,
+  "browserLifecycle": "1440 and 820: passed; zero page errors; owned process cleanup passed",
+  "narrowComparison": "390: passed; 28px header; zero page overflow",
+  "headerHeightBefore": 72,
+  "headerHeightAfter": 28,
+  "headerPixelsSaved": 44,
+  "planScope": "U1; other integration/UI slices remain planned",
+  "handoffDocumentationLinks": {
+    "files": [
+      "README.md",
+      ".agents/MEMORY.md",
+      "docs/plans/herdr-wisdohm-memory.md"
+    ],
+    "missing": []
+  }
+}

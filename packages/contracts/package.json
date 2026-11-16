@@ -1,0 +1,20 @@
+{
+  "name": "@devlab/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./architecture": "./src/architecture.ts",
+    "./browser": "./src/browser.ts",
+    "./preview": "./src/preview.ts",
+    "./projects": "./src/projects.ts",
+    "./servers": "./src/servers.ts",
+    "./terminal": "./src/terminal.ts",
+    "./workspace": "./src/workspace.ts"
+  },
+  "dependencies": {
+    "zod": "3.25.76",
+    "@creoaurea/pop-the-hood": "0.1.0"
+  }
+}

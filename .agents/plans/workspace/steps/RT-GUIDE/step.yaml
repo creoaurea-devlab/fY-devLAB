@@ -1,0 +1,36 @@
+schema_version: 1
+id: RT-GUIDE
+title: Publish agent Kanban recipe and linked local skill entry
+outcome: Publish agent Kanban recipe and linked local skill entry
+kind: feature
+effect: change_source
+owner: planning-protocol
+slice: RT-S2
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- .agents/skills/populate-context/SKILL.md
+- .agents/plans/README.md
+- packages/contracts/src/planner.ts
+write:
+- .agents/plans/README.md
+- .agents/guides/kanban-agent.md
+- .agents/README.md
+needs:
+- RT-CLI
+acceptance:
+- 'A4/A5: One linked quick guide gives exact successful CLI examples for hierarchy
+  creation, edits, task reports, move/reorder and milestone stage/group/archive; distinguish
+  board data from transient UI selection and runtime execution.'
+- Link the existing populate-context local skill as the entry for planning, with exact
+  schema/help paths and returned IDs; reuse skill rather than create another authority.
+  Include stale/conflict retry, meaningful Running/Review handoff and no claimed verification
+  from reported Complete.
+- 'A6: RT-VERIFY uses this guide on a disposable fixture without source searches or
+  trial mutations.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/planning.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

@@ -1,0 +1,61 @@
+schema_version: 1
+id: AR-21
+title: Prove the combined file-authority migration and retire competing definitions
+outcome: Prove the combined file-authority migration and retire competing definitions
+kind: feature
+effect: change_source
+owner: verification
+slice: AGH-S4
+mode: worker
+read:
+- .agents/plans/agent-home/SPEC.md
+- packages/contracts/src/agent-definitions.ts
+- scripts/planner.ts
+- plugins/rules-local/src/read-memory.py
+- scripts/agent-home-fixture.py
+write:
+- scripts/agent-home-runtime.test.py
+- scripts/agent-home.test.ts
+- scripts/wisdohm27.test.py
+- scripts/planning.test.ts
+- scripts/rules.test.ts
+- scripts/wisdom.test.ts
+- scripts/maintenance.test.ts
+- scripts/ui-elements.test.ts
+- scripts/project-development.test.ts
+- scripts/spec-agent.test.ts
+- scripts/process.test.ts
+- scripts/ui-element-brief.test.ts
+needs:
+- AR-12
+- AR-13
+- AR-14
+- AR-15
+- AR-16
+- AR-17
+- AR-20
+- AGH-03
+- AGH-04
+- AGH-05
+- AGH-06
+- AGH-07
+acceptance:
+- 'AH-07: Every selected harness/planner/reader agrees on source generation and no
+  independently editable legacy definition source remains.'
+- 'AH-08: Disposable real-data upgrade and restore preserve all current IDs/reports/session
+  history/claims and fail safely on interruption or concurrent source edits.'
+- 'AH-11: Bugfix and read-only audit complete through actual dispatch/session/evidence
+  paths; wrong-owner/stale input/active-handoff collisions are rejected.'
+- 'AH-03: A low-risk prose step completes with supported attributed review; behavioral/runtime
+  steps require their meaningful checks.'
+- 'AH-12: Trusted Rules Board cannot execute malicious selected-project code; full
+  UI retention/keyboard/failure probes run only for changed interactions.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/agent-home-runtime.test.py
+  - node --test scripts/agent-home.test.ts scripts/agent-definitions.test.ts scripts/planning.test.ts
+    scripts/rules.test.ts scripts/wisdom.test.ts scripts/maintenance.test.ts scripts/ui-elements.test.ts
+  - ./node_modules/.bin/tsc --noEmit
+spec: .agents/plans/agent-home/steps/AR-21/SPEC.md

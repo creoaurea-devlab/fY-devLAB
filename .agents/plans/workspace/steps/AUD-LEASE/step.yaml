@@ -1,0 +1,22 @@
+schema_version: 1
+id: AUD-LEASE
+title: Exclusive terminal lease and safe interrupted recovery
+outcome: Exclusive terminal lease and safe interrupted recovery
+kind: bugfix
+effect: change_source
+owner: terminal-service
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- plugins/terminal-pty/src/persistence.ts
+needs: []
+acceptance:
+- Exclusive terminal lease and safe interrupted recovery
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal-lease.test.ts
+spec: docs/plans/audit-remediation/SPEC.md

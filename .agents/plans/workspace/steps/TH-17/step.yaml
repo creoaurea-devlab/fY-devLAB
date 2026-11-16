@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-17
+title: Preserve safe serial queue scheduling and cancellation
+outcome: Preserve safe serial queue scheduling and cancellation
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- TH-13
+acceptance:
+- Keep the current single-active-task scheduler; bounded parallel scheduling is deferred
+  until a demonstrated need and disjoint-claim design exist.
+- Revalidate queued definitions and prerequisites before starting each task; stop-on-failure/cancel
+  does not discard finished evidence or duplicate starts. Test concurrent hosts and
+  conflicting queue submissions against the existing persistence guarantees.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

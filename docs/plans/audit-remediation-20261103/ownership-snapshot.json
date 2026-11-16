@@ -1,0 +1,923 @@
+{
+  "kind": "read-only reviewed SQL capability snapshot; not live authority",
+  "capabilities": {
+    "project-service": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/project-local/package.json",
+        "plugins/project-local/PROVENANCE.json",
+        "plugins/project-local/src/index.ts",
+        "plugins/project-local/src/template.ts",
+        "plugins/project-local/src/fork.ts"
+      ],
+      "public": [
+        "plugins/project-local/src/index.ts"
+      ],
+      "purpose": "Own confined local project files and isolated development copies with durable source provenance.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "backend-host": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "src/server.ts",
+        "src/profile.ts"
+      ],
+      "public": [
+        "src/server.ts",
+        "src/profile.ts"
+      ],
+      "purpose": "Compose existing backend factories through public contracts; own loopback startup, grants and shutdown.",
+      "uses": [
+        "service-contracts",
+        "terminal-service",
+        "http-transport",
+        "planning-service",
+        "rules-service",
+        "delivery-config",
+        "wisdom-service",
+        "codex-harness",
+        "project-service"
+      ]
+    },
+    "browser-bootstrap": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "src/main.ts",
+        "src/runtime.ts"
+      ],
+      "public": [
+        "src/main.ts",
+        "src/runtime.ts"
+      ],
+      "purpose": "Own React startup, existing ProjectWorkspace, per-project Canvas owners, PreviewWorkspace synchronization and exact cleanup.",
+      "uses": [
+        "workspace-ui",
+        "preview-client",
+        "browser-client",
+        "service-contracts",
+        "preview-view",
+        "canvas-ui",
+        "ui-contracts",
+        "project-view",
+        "hood-view"
+      ]
+    },
+    "workspace-ui": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "src/shell.tsx",
+        "src/contributions.ts",
+        "src/style.css"
+      ],
+      "public": [
+        "src/shell.tsx",
+        "src/contributions.ts"
+      ],
+      "purpose": "Compose the exact existing full-app UI contributions and host shell, using public capability packages and original global styles.",
+      "uses": [
+        "workspace-shell",
+        "canvas-ui",
+        "terminal-view",
+        "ui-contracts",
+        "preview-view",
+        "planning-ui",
+        "rules-ui",
+        "project-view",
+        "hood-view",
+        "spec-ui"
+      ]
+    },
+    "source-maps": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-reproducible-workflow/SKILL.md"
+      ],
+      "paths": [
+        "scripts/architecture.ts"
+      ],
+      "public": [
+        "scripts/architecture.ts"
+      ],
+      "purpose": "Generate source-backed architecture from actual host code and exact installed UI/package sources and manifests.",
+      "uses": [
+        "backend-host",
+        "browser-bootstrap",
+        "workspace-ui",
+        "preview-client"
+      ]
+    },
+    "verification": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-debug-with-evidence/SKILL.md"
+      ],
+      "paths": [
+        "scripts/wisdohm26-sync.test.py",
+        "scripts/browser-fixture.ts",
+        "scripts/host.test.ts",
+        "scripts/setup-terminal.mjs",
+        "scripts/terminal-browser.py",
+        "scripts/terminal-confinement.test.ts",
+        "scripts/terminal-fixture.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/terminal.test.ts",
+        "scripts/ui-copy-browser.py",
+        "scripts/verify-packages.mjs",
+        "scripts/planning-fixture.ts",
+        "scripts/planning.test.ts",
+        "scripts/planning-browser.py",
+        "scripts/terminal-lease.test.ts",
+        "scripts/terminal-lease-fixture.ts",
+        "scripts/terminal-lifecycle-browser.py",
+        "scripts/maintenance.test.ts",
+        "scripts/verify-deployment.ts",
+        "scripts/rules.test.ts",
+        "scripts/rules-browser.py",
+        "scripts/wisdohm26-bootstrap.test.py",
+        "scripts/wisdohm26-rules.test.py",
+        "scripts/ui-element-brief.test.ts",
+        "scripts/dev-ui.test.ts",
+        "scripts/ui-elements.test.ts",
+        "scripts/ui-elements-browser.py",
+        "scripts/ui-elements-fixture.ts",
+        "scripts/prototype.test.ts",
+        "scripts/wisdohm-ui-browser.py",
+        "scripts/wisdohm-ui-hmr.py",
+        "scripts/kanban-disclosure-browser.py",
+        "scripts/wisdom.test.ts",
+        "scripts/spec-agent.test.ts",
+        "scripts/spec-agent-browser.py",
+        "scripts/wisdom-setup-browser.py",
+        "scripts/wisdom-healing.test.ts",
+        "scripts/wisdom-healing-browser.py",
+        "scripts/fixtures/wisdom-legacy.json",
+        "scripts/harness-http.test.ts",
+        "scripts/process.test.ts",
+        "scripts/project-development.test.ts",
+        "scripts/project-thread-delete.test.ts",
+        "scripts/project-workspace.test.ts",
+        "scripts/planning-process-browser.py",
+        "scripts/wisdohm27.test.py",
+        "scripts/rules27.test.py"
+      ],
+      "public": [
+        "scripts/wisdohm26-sync.test.py",
+        "scripts/browser-fixture.ts",
+        "scripts/host.test.ts",
+        "scripts/setup-terminal.mjs",
+        "scripts/terminal-browser.py",
+        "scripts/terminal-confinement.test.ts",
+        "scripts/terminal-fixture.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/terminal.test.ts",
+        "scripts/ui-copy-browser.py",
+        "scripts/verify-packages.mjs",
+        "scripts/planning-fixture.ts",
+        "scripts/planning.test.ts",
+        "scripts/planning-browser.py",
+        "scripts/terminal-lease.test.ts",
+        "scripts/terminal-lease-fixture.ts",
+        "scripts/terminal-lifecycle-browser.py",
+        "scripts/maintenance.test.ts",
+        "scripts/verify-deployment.ts",
+        "scripts/rules.test.ts",
+        "scripts/rules-browser.py",
+        "scripts/wisdohm26-bootstrap.test.py",
+        "scripts/wisdohm26-rules.test.py",
+        "scripts/ui-element-brief.test.ts",
+        "scripts/dev-ui.test.ts",
+        "scripts/ui-elements.test.ts",
+        "scripts/ui-elements-browser.py",
+        "scripts/ui-elements-fixture.ts",
+        "scripts/prototype.test.ts",
+        "scripts/wisdohm-ui-browser.py",
+        "scripts/wisdohm-ui-hmr.py",
+        "scripts/kanban-disclosure-browser.py",
+        "scripts/wisdom.test.ts",
+        "scripts/spec-agent.test.ts",
+        "scripts/spec-agent-browser.py",
+        "scripts/wisdom-setup-browser.py",
+        "scripts/wisdom-healing.test.ts",
+        "scripts/wisdom-healing-browser.py",
+        "scripts/fixtures/wisdom-legacy.json",
+        "scripts/harness-http.test.ts"
+      ],
+      "purpose": "Check provenance, contracts, disposable host persistence, four live previews and resource cleanup.",
+      "uses": [
+        "delivery-config",
+        "project-view",
+        "project-service",
+        "backend-host",
+        "browser-bootstrap",
+        "workspace-ui",
+        "source-maps",
+        "browser-client",
+        "planning-service",
+        "preview-view",
+        "terminal-service",
+        "service-contracts",
+        "http-transport",
+        "planning-ui",
+        "rules-service",
+        "ui-development",
+        "wisdom-service",
+        "ui-contracts",
+        "spec-ui",
+        "rules-ui"
+      ]
+    },
+    "preview-client": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "src/preview-client.ts"
+      ],
+      "public": [
+        "src/preview-client.ts"
+      ],
+      "purpose": "Adapt public ProjectServers unconfigured-state guidance to this manual-setup host; preserve all other service state and errors.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "browser-client": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "packages/client/client.ts",
+        "packages/client/package.json",
+        "packages/client/terminals.ts",
+        "packages/client/planning.ts",
+        "packages/client/harness.ts"
+      ],
+      "public": [
+        "packages/client/client.ts"
+      ],
+      "purpose": "Own @devlab/client public capability implementation and its internal lifecycle.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "service-contracts": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/philosophy-explain-invariants/SKILL.md"
+      ],
+      "paths": [
+        "packages/contracts/package.json",
+        "packages/contracts/src/architecture.ts",
+        "packages/contracts/src/browser.ts",
+        "packages/contracts/src/index.ts",
+        "packages/contracts/src/planning.ts",
+        "packages/contracts/src/preview.ts",
+        "packages/contracts/src/projects.ts",
+        "packages/contracts/src/servers.ts",
+        "packages/contracts/src/terminal.ts",
+        "packages/contracts/src/wisdom.ts",
+        "packages/contracts/src/workspace.ts",
+        "packages/contracts/src/planner.ts",
+        "packages/contracts/src/rules.ts",
+        "packages/contracts/src/harness.ts",
+        "packages/contracts/src/process.ts"
+      ],
+      "public": [
+        "packages/contracts/src/index.ts"
+      ],
+      "purpose": "Own @devlab/contracts public capability implementation and its internal lifecycle.",
+      "uses": []
+    },
+    "http-transport": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/transport-http/package.json",
+        "plugins/transport-http/src/browser.ts",
+        "plugins/transport-http/src/index.ts",
+        "plugins/transport-http/src/projects.ts",
+        "plugins/transport-http/src/servers.ts",
+        "plugins/transport-http/src/planning.ts",
+        "plugins/transport-http/src/rules.ts"
+      ],
+      "public": [
+        "plugins/transport-http/src/index.ts"
+      ],
+      "purpose": "Own @devlab/transport-http public capability implementation and its internal lifecycle.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "canvas-ui": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-canvas/package.json",
+        "plugins/ui-canvas/src/canvas.css",
+        "plugins/ui-canvas/src/index.ts",
+        "plugins/ui-canvas/src/view.tsx",
+        "plugins/ui-canvas/src/workspace.ts"
+      ],
+      "public": [
+        "plugins/ui-canvas/src/index.ts"
+      ],
+      "purpose": "Own @devlab/ui-canvas public capability implementation and its internal lifecycle.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "ui-contracts": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/philosophy-explain-invariants/SKILL.md"
+      ],
+      "paths": [
+        "packages/ui-contracts/package.json",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "public": [
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "purpose": "Own @devlab/ui-contracts public capability implementation and its internal lifecycle.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "workspace-shell": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-shell/package.json",
+        "plugins/ui-shell/src/devlab.css",
+        "plugins/ui-shell/src/index.ts",
+        "plugins/ui-shell/src/servers.tsx",
+        "plugins/ui-shell/src/terminals.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-shell/src/workspace-focus.ts"
+      ],
+      "public": [
+        "plugins/ui-shell/src/index.ts"
+      ],
+      "purpose": "Own workspace surfaces and terminal selection, retained panes, dividers and layout.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "terminal-view": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-terminal/package.json",
+        "plugins/ui-terminal/src/index.ts",
+        "plugins/ui-terminal/src/input.ts",
+        "plugins/ui-terminal/src/terminal.css",
+        "plugins/ui-terminal/src/view.tsx"
+      ],
+      "public": [
+        "plugins/ui-terminal/src/index.ts"
+      ],
+      "purpose": "Own @devlab/ui-terminal public capability implementation and its internal lifecycle.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "terminal-service": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/terminal-pty/native/ownership-sandbox.c",
+        "plugins/terminal-pty/package.json",
+        "plugins/terminal-pty/src/confinement.ts",
+        "plugins/terminal-pty/src/index.ts",
+        "plugins/terminal-pty/src/persistence.ts"
+      ],
+      "public": [
+        "plugins/terminal-pty/src/index.ts"
+      ],
+      "purpose": "Own real terminal processes, immutable ownership policy, confinement, replay, persistence and cleanup.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "delivery-config": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-reproducible-workflow/SKILL.md"
+      ],
+      "paths": [
+        ".gitignore",
+        "package.json",
+        "package-lock.json",
+        "vite.config.ts",
+        "README.md",
+        "vendor/full-ui/catalog.json",
+        "vendor/runtime/catalog.json",
+        ".npmrc",
+        "devlab.preview.json",
+        "tsconfig.json",
+        "index.html"
+      ],
+      "public": [
+        "package.json",
+        "vite.config.ts",
+        "devlab.preview.json"
+      ],
+      "purpose": "Own dependency composition, portable runtime manifests and build configuration; keep implementation in capability modules.",
+      "uses": []
+    },
+    "preview-view": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-preview/package.json",
+        "plugins/ui-preview/PROVENANCE.json",
+        "plugins/ui-preview/src/devtools.tsx",
+        "plugins/ui-preview/src/fullscreen.ts",
+        "plugins/ui-preview/src/index.ts",
+        "plugins/ui-preview/src/inspector.tsx",
+        "plugins/ui-preview/src/layout.tsx",
+        "plugins/ui-preview/src/pane.tsx",
+        "plugins/ui-preview/src/preferences.ts",
+        "plugins/ui-preview/src/preview.css",
+        "plugins/ui-preview/src/server-state.ts",
+        "plugins/ui-preview/src/view.tsx",
+        "plugins/ui-preview/src/workspace.ts",
+        "plugins/ui-preview/src/elements.tsx",
+        "plugins/ui-preview/src/element-brief.ts"
+      ],
+      "public": [
+        "plugins/ui-preview/src/index.ts",
+        "plugins/ui-preview/src/view.tsx"
+      ],
+      "purpose": "Own retained editor/preview split, per-project first-use ratio and pointer/keyboard responsive resizing through existing preview capability.",
+      "uses": [
+        "ui-contracts",
+        "service-contracts"
+      ]
+    },
+    "planning-service": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        "plugins/planning-local/package.json",
+        "plugins/planning-local/src/index.ts",
+        "plugins/planning-local/src/store.ts"
+      ],
+      "public": [
+        "plugins/planning-local/src/index.ts"
+      ],
+      "purpose": "Own canonical plan JSON, reported-progress consistency, guarded project commands, durable locking and recovery.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "planning-ui": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-kanban/package.json",
+        "plugins/ui-kanban/src/forms.tsx",
+        "plugins/ui-kanban/src/index.ts",
+        "plugins/ui-kanban/src/model.ts",
+        "plugins/ui-kanban/src/planning.css",
+        "plugins/ui-kanban/src/view.tsx",
+        "plugins/ui-kanban/src/prototype-variants.tsx",
+        "plugins/ui-kanban/src/prototype.css",
+        "plugins/ui-kanban/src/harness.tsx",
+        "plugins/ui-kanban/src/batch.tsx",
+        "plugins/ui-kanban/src/process.tsx",
+        "plugins/ui-kanban/src/process.css"
+      ],
+      "public": [
+        "plugins/ui-kanban/src/index.ts"
+      ],
+      "purpose": "Own integrated Planning Kanban and dense execution table, shared task inspector, edits and presentation lifecycle.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "planning-tools": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        "scripts/planner.ts"
+      ],
+      "public": [
+        "scripts/planner.ts"
+      ],
+      "purpose": "Expose the same Planning writer to any local coding agent or operator through a bounded JSON CLI.",
+      "uses": [
+        "planning-service",
+        "service-contracts"
+      ]
+    },
+    "planning-protocol": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        ".context/protocols/plan.md",
+        ".context/state/tasks.json",
+        ".context/state/progress.json",
+        "AGENTS.md",
+        ".context/state/index.json",
+        ".context/protocols/maintenance.md",
+        ".context/modules/registry.yaml",
+        ".context/session.py",
+        ".context/tests/test_rules.py",
+        ".context/tests/test_memory.py",
+        "docs/plans/audit-remediation-20261103/**",
+        "_AUDIT/05-INDEPENDENT-REVIEW.md",
+        "_AUDIT/06-WISDOHM-27-REINSTALL.md",
+        "docs/rules/WISDOHM-ADAPTATIONS.json",
+        "docs/rules/WISDOHM-MIGRATION.md"
+      ],
+      "public": [
+        ".context/protocols/plan.md"
+      ],
+      "purpose": "Own product planning, canonical source registry and retained2.4 compatibility; root AGENTS composes the active2.6 journey.",
+      "uses": []
+    },
+    "process-definition": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        "devlab.process.json"
+      ],
+      "public": [
+        "devlab.process.json"
+      ],
+      "purpose": "Own the declarative project process graph; stage, step and agent metadata never execute commands.",
+      "uses": []
+    },
+    "rules-service": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/rules-local/package.json",
+        "plugins/rules-local/README.md",
+        "plugins/rules-local/src/index.ts",
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/rules-local/src/read-memory.py"
+      ],
+      "public": [
+        "plugins/rules-local/src/index.ts"
+      ],
+      "purpose": "Observe project rule sources and evidence without executing project code or mutating operational memory.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "rules-ui": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-rules/package.json",
+        "plugins/ui-rules/src/index.ts",
+        "plugins/ui-rules/src/view.tsx",
+        "plugins/ui-rules/src/rules.css",
+        "plugins/ui-rules/src/controls.tsx",
+        "plugins/ui-rules/src/healing.ts",
+        "plugins/ui-rules/src/healing-control.tsx",
+        "plugins/ui-rules/src/harness.tsx",
+        "plugins/ui-rules/src/memory.tsx",
+        "plugins/ui-rules/src/use-snapshot.ts",
+        "plugins/ui-rules/src/memory.css"
+      ],
+      "public": [
+        "plugins/ui-rules/src/index.ts"
+      ],
+      "purpose": "Present read-only rule inspection and compact WISDOHM controls for reviewed setup and user-triggered, project-scoped Codex healing with observed health.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "rules-bootstrap": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        "scripts/wisdohm26-sync.py",
+        "scripts/wisdohm26-bootstrap.py",
+        "scripts/wisdohm27-reinstall.py"
+      ],
+      "public": [
+        "scripts/wisdohm26-bootstrap.py"
+      ],
+      "purpose": "Explicit administrative import of historical facts and current reviewed provenance without guarded completion claims.",
+      "uses": [
+        "governance-runtime"
+      ]
+    },
+    "governance-runtime": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-single-source-of-truth/SKILL.md"
+      ],
+      "paths": [
+        ".wisdohm/orchestration.py",
+        ".wisdohm/config/agents.yaml",
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        ".wisdohm/BOOT.md",
+        ".wisdohm/common.py",
+        ".wisdohm/config/project.yaml",
+        ".wisdohm/journey.yaml",
+        ".wisdohm/policy.yaml",
+        ".wisdohm/protocols/maintenance.md",
+        ".wisdohm/protocols/rules.md",
+        ".wisdohm/protocols/updates.md",
+        ".wisdohm/router.py",
+        ".wisdohm/session.py",
+        ".wisdohm/store.py",
+        ".agents/skills/spec-agent/SKILL.md",
+        ".wisdohm/planning.py",
+        ".wisdohm/routing.py",
+        ".wisdohm/workspaces.py",
+        ".wisdohm/config/owner-profiles.yaml"
+      ],
+      "public": [
+        ".wisdohm/router.py",
+        ".wisdohm/store.py",
+        ".wisdohm/common.py"
+      ],
+      "purpose": "Own the copied2.6 agent runtime and human policy; SQLite alone owns operational memory. Maintenance adaptation preserves local reviewed source pins.",
+      "uses": []
+    },
+    "ui-development": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/pragmatic-reproducible-workflow/SKILL.md"
+      ],
+      "paths": [
+        "scripts/dev-ui.mjs",
+        "scripts/prototype.mjs"
+      ],
+      "public": [
+        "scripts/dev-ui.mjs",
+        "scripts/prototype.mjs"
+      ],
+      "purpose": "Own explicitly attached Vite UI development process/listener and cleanup; never own or restart the backend.",
+      "uses": []
+    },
+    "project-view": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-projects/PROVENANCE.json",
+        "plugins/ui-projects/package.json",
+        "plugins/ui-projects/src/adoption.tsx",
+        "plugins/ui-projects/src/build.tsx",
+        "plugins/ui-projects/src/editor.tsx",
+        "plugins/ui-projects/src/index.ts",
+        "plugins/ui-projects/src/preview-groups.tsx",
+        "plugins/ui-projects/src/projects.css",
+        "plugins/ui-projects/src/view.tsx",
+        "plugins/ui-projects/src/workspace.ts"
+      ],
+      "public": [
+        "plugins/ui-projects/src/index.ts"
+      ],
+      "purpose": "Own retained project explorer, file tree, editor/build and sidebar capability composition.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "hood-view": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-hood/PROVENANCE.json",
+        "plugins/ui-hood/package.json",
+        "plugins/ui-hood/src/graph.ts",
+        "plugins/ui-hood/src/hood.css",
+        "plugins/ui-hood/src/index.ts",
+        "plugins/ui-hood/src/layout.ts",
+        "plugins/ui-hood/src/view.tsx"
+      ],
+      "public": [
+        "plugins/ui-hood/src/index.ts"
+      ],
+      "purpose": "Own Pop the Hood presentation and separate architecture/harness/memory layers through public render seams.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "wisdom-service": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/wisdom-tool/package.json",
+        "plugins/wisdom-tool/src/index.ts",
+        "plugins/wisdom-tool/src/preview.ts",
+        "plugins/wisdom-tool/src/bundle.json",
+        "plugins/wisdom-tool/src/population.ts",
+        "plugins/wisdom-tool/src/cli.ts",
+        "plugins/wisdom-tool/SETUP.md"
+      ],
+      "public": [
+        "plugins/wisdom-tool/src/index.ts"
+      ],
+      "purpose": "Install and populate portable WISDOHM with project-owned routing, source-backed initial memory, reviewed repair and CLI; preserve existing custom authority.",
+      "uses": [
+        "service-contracts"
+      ]
+    },
+    "spec-ui": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/refactoring-characterize-behavior/SKILL.md"
+      ],
+      "paths": [
+        "plugins/ui-spec/package.json",
+        "plugins/ui-spec/src/index.ts",
+        "plugins/ui-spec/src/view.tsx",
+        "plugins/ui-spec/src/model.ts",
+        "plugins/ui-spec/src/spec.css"
+      ],
+      "public": [
+        "plugins/ui-spec/src/index.ts"
+      ],
+      "purpose": "Own user-triggered read-only SPEC Agent generation, reviewed specification draft and canonical Kanban handoff.",
+      "uses": [
+        "service-contracts",
+        "ui-contracts"
+      ]
+    },
+    "codex-harness": {
+      "archived": false,
+      "guidance": [
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        "docs/rules/sources/Proto/Code-Maintenance-Skills-and-Rules/skills/clean-code-errors-and-tests/SKILL.md"
+      ],
+      "paths": [
+        "plugins/codex-harness/package.json",
+        "plugins/codex-harness/src/index.ts",
+        "plugins/codex-harness/src/connection.ts",
+        "plugins/codex-harness/src/service.ts",
+        "plugins/codex-harness/src/service.test.ts",
+        "plugins/codex-harness/src/connection.test.ts"
+      ],
+      "public": [
+        "plugins/codex-harness/src/index.ts"
+      ],
+      "purpose": "Own the removable Codex login and single-task execution MVP, durable results and cleanup behind the neutral HarnessService.",
+      "uses": [
+        "service-contracts"
+      ]
+    }
+  },
+  "profiles": {
+    "project-service": "backend",
+    "backend-host": "backend",
+    "browser-bootstrap": "browser",
+    "workspace-ui": "browser",
+    "source-maps": "delivery",
+    "verification": "verification",
+    "preview-client": "browser",
+    "browser-client": "browser",
+    "service-contracts": "contracts",
+    "http-transport": "backend",
+    "canvas-ui": "browser",
+    "ui-contracts": "contracts",
+    "workspace-shell": "browser",
+    "terminal-view": "browser",
+    "terminal-service": "backend",
+    "delivery-config": "delivery",
+    "preview-view": "browser",
+    "planning-service": "planning",
+    "planning-ui": "browser",
+    "planning-tools": "planning",
+    "planning-protocol": "governance",
+    "process-definition": "planning",
+    "rules-service": "backend",
+    "rules-ui": "browser",
+    "rules-bootstrap": "governance",
+    "governance-runtime": "governance",
+    "ui-development": "delivery",
+    "project-view": "browser",
+    "hood-view": "browser",
+    "wisdom-service": "backend",
+    "spec-ui": "browser",
+    "codex-harness": "backend"
+  }
+}

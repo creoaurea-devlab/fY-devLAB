@@ -1,0 +1,31 @@
+schema_version: 1
+id: AR-12
+title: Expose the same agent-home writer through the existing CLI
+outcome: Expose the same agent-home writer through the existing CLI
+kind: feature
+effect: change_source
+owner: planning-tools
+slice: AGH-S2
+mode: worker
+read:
+- scripts/planner.ts
+- plugins/planning-local/src/index.ts
+- packages/contracts/src/planner.ts
+write:
+- scripts/planner.ts
+needs:
+- AR-11
+acceptance:
+- 'AH-07: Offline CLI and application use the same selected definition/report writer
+  and conflict semantics.'
+- 'AH-09: Snapshot is read-only; import/export identifies source authority and provenance
+  and preserves canonical task IDs.'
+- 'AH-03: CLI accepts supported assessment evidence without demanding invented shell
+  checks for low-risk prose.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node scripts/planner.ts --root . snapshot
+  - node --test scripts/planning.test.ts
+spec: .agents/plans/agent-home/steps/AR-12/SPEC.md

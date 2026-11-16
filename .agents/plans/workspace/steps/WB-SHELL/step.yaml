@@ -1,0 +1,32 @@
+schema_version: 1
+id: WB-SHELL
+title: Add retained Whiteboard selection beside existing workspace views
+outcome: Add retained Whiteboard selection beside existing workspace views
+kind: feature
+effect: change_source
+owner: workspace-shell
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/devlab.css
+needs:
+- WB-CONTRACTS
+acceptance:
+- 'A1/A3/A5: Workflow, Build canvas, Terminals and Whiteboard remain accessible through
+  existing compact view controls.'
+- Shell owns selection/retained mounting only; hide Whiteboard without disposing its
+  owner or resetting other panes.
+- Optional unavailable seam remains actionable; note/terminal typing keeps its keyboard
+  semantics.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

@@ -1,0 +1,958 @@
+
+
+
+
+/* Claude Flow Editor — Dark-first developer tool
+   Palette: Deep slate backgrounds, orange/amber Claude accent, cool slate text
+   Inspired by VS Code / Cursor aesthetic */
+
+.devlab .herdr-workspace,.devlab .herdr-project{height:100%;width:100%;flex:1;min-height:0;min-width:0;display:flex;flex-direction:column}
+.devlab .herdr-project{container-type:size}
+.devlab .herdr-project[hidden]{display:none}
+.devlab .herdr-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:28px;padding:3px 8px;border-bottom:1px solid hsl(var(--border));font-size:12px}
+.devlab .herdr-toolbar button,.devlab .herdr-toolbar input,.devlab .herdr-toolbar select,.devlab .herdr-toolbar textarea{font:inherit;padding:3px 6px;min-width:0;max-width:100%;border:1px solid hsl(var(--border));border-radius:4px;color:hsl(var(--foreground));background:hsl(var(--card))}
+.devlab .herdr-toolbar select{max-width:200px}.devlab .herdr-actions{position:relative;margin-left:auto}.devlab .herdr-actions summary{cursor:pointer;white-space:nowrap}
+.devlab .herdr-options{position:absolute;right:0;top:25px;z-index:30;width:min(560px,calc(100cqw - 16px));max-height:min(65vh,calc(100cqh - 80px));overflow:auto;padding:12px;background:hsl(var(--popover));border:1px solid hsl(var(--border));border-radius:5px;box-shadow:0 8px 20px #0004}
+.devlab .herdr-options p{margin:0 0 10px;overflow-wrap:anywhere}.devlab .herdr-fields{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.devlab .herdr-fields textarea{flex:1;min-width:100px}.devlab .herdr-empty{margin:auto;padding:24px;max-width:640px;overflow-wrap:anywhere;font-size:13px}.devlab .herdr-empty h3{font-size:16px;margin-bottom:10px}.devlab .herdr-tui{flex:1;min-height:0;display:flex}.devlab .herdr-tui>.devlab-terminal{flex:1;min-width:0}.devlab .herdr-notice{font-size:12px;padding:6px 10px;color:hsl(var(--destructive));overflow-wrap:anywhere}
+
+@layer base {
+  .devlab {
+    /* Light mode (secondary) */
+    --background: 220 16% 97%;
+    --foreground: 220 20% 12%;
+    --card: 220 14% 99%;
+    --card-foreground: 220 20% 12%;
+    --popover: 220 14% 99%;
+    --popover-foreground: 220 20% 12%;
+    --primary: 24 95% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 20% 25%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 10% 52%;
+    --accent: 220 14% 90%;
+    --accent-foreground: 220 20% 18%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 24 95% 50%;
+    --radius: 0.5rem;
+
+    /* Claude-specific tokens */
+    --claude-orange: 24 95% 50%;
+    --claude-orange-dim: 24 80% 40%;
+    --claude-node-bg: 220 14% 99%;
+    --claude-node-border: 220 13% 85%;
+    --claude-node-selected: 24 95% 50%;
+    --claude-canvas-bg: 220 15% 94%;
+    --claude-canvas-dots: 220 15% 84%;
+
+    /* Status colors */
+    --status-complete: #10b981;
+    --status-error: #ef4444;
+    --status-running: #3fb950;
+    --status-stopped: #484f58;
+  }
+
+  .devlab.dark {
+    --background: 220 18% 10%;
+    --foreground: 220 10% 82%;
+    --card: 220 17% 13%;
+    --card-foreground: 220 10% 82%;
+    --popover: 220 17% 13%;
+    --popover-foreground: 220 10% 82%;
+    --primary: 28 95% 60%;
+    --primary-foreground: 220 20% 8%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 72%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 220 8% 50%;
+    --accent: 220 15% 20%;
+    --accent-foreground: 220 10% 80%;
+    --destructive: 0 65% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 20%;
+    --input: 220 14% 20%;
+    --ring: 28 95% 60%;
+
+    /* Claude-specific tokens dark */
+    --claude-orange: 28 95% 60%;
+    --claude-orange-dim: 28 70% 45%;
+    --claude-node-bg: 220 17% 13%;
+    --claude-node-border: 220 14% 22%;
+    --claude-node-selected: 28 95% 60%;
+    --claude-canvas-bg: 220 18% 9%;
+    --claude-canvas-dots: 220 18% 17%;
+
+    /* Status colors */
+    --status-complete: #10b981;
+    --status-error: #ef4444;
+    --status-running: #3fb950;
+    --status-stopped: #484f58;
+  }
+}
+
+@layer base {
+  .devlab * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  .devlab {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .devlab {
+    background: hsl(var(--background)); color: hsl(var(--foreground));
+    font-family: 'Inter', 'Geist', system-ui, sans-serif;
+    font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+    line-height: 1.5;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .devlab h1, .devlab h2, .devlab h3, .devlab h4, .devlab h5, .devlab h6 {
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  button { cursor: pointer; }
+}
+
+/* ─── React Flow Overrides ─────────────────────────────────── */
+.react-flow__background {
+  background-color: hsl(var(--claude-canvas-bg));
+}
+
+.react-flow__background pattern circle,
+.react-flow__background pattern path {
+  fill: hsl(var(--claude-canvas-dots)) !important;
+  stroke: none;
+}
+
+.react-flow__edge-path {
+  stroke: hsl(var(--border));
+  stroke-width: 1.5;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: hsl(var(--primary));
+  stroke-width: 2;
+}
+
+.react-flow__edge-path.animated {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+
+@keyframes dashdraw {
+  to { stroke-dashoffset: -10; }
+}
+
+.react-flow__handle {
+  background: hsl(var(--primary)) !important;
+  border: 2px solid hsl(var(--background)) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.35);
+  background: hsl(var(--primary)) !important;
+}
+
+.react-flow__handle-left { left: -5px !important; }
+.react-flow__handle-right { right: -5px !important; }
+.react-flow__handle-top { top: -5px !important; }
+.react-flow__handle-bottom { bottom: -5px !important; }
+
+.react-flow__controls {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.react-flow__controls-button {
+  background: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  fill: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow__controls-button:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--foreground)) !important;
+  fill: hsl(var(--foreground)) !important;
+}
+
+.react-flow__minimap {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.react-flow__minimap-mask { fill: hsl(var(--background) / 0.6) !important; }
+
+/* Connection line */
+.react-flow__connection-line {
+  stroke: hsl(var(--primary));
+  stroke-width: 2;
+  stroke-dasharray: 5;
+}
+
+/* ─── Node base styles ────────────────────────────────────── */
+.flow-node {
+  background: hsl(var(--claude-node-bg));
+  border: 1.5px solid hsl(var(--claude-node-border));
+  border-radius: 10px;
+  min-width: 220px;
+  max-width: 280px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+
+/* React Flow owns terminal dimensions; the shared card width cap must not
+   constrain the xterm viewport inside a resizable terminal node. */
+.react-flow__node-terminal > .flow-node {
+  min-width: 0;
+  max-width: none;
+}
+
+.flow-node:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.flow-node.selected,
+.flow-node[data-selected="true"] {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3), 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.flow-node.running {
+  border-color: hsl(var(--primary));
+  animation: pulse-border 1.5s ease-in-out infinite;
+}
+
+.flow-node.complete {
+  border-color: hsl(142 72% 45%);
+}
+
+.flow-node.error {
+  border-color: hsl(var(--destructive));
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+  50% { box-shadow: 0 0 0 4px hsl(var(--primary) / 0); }
+}
+
+.flow-node-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.flow-node-header-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.flow-node-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flow-node-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.72rem;
+}
+
+.flow-node-field-label {
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.flow-node-field-value {
+  color: hsl(var(--foreground));
+  text-align: right;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.68rem;
+  background: hsl(var(--muted));
+  padding: 2px 6px;
+  border-radius: 4px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-node-status {
+  padding: 4px 12px;
+  font-size: 0.68rem;
+  color: hsl(var(--muted-foreground));
+  border-top: 1px solid hsl(var(--border));
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.flow-node-status.running { color: hsl(var(--primary)); }
+.flow-node-status.complete { color: hsl(142 72% 45%); }
+.flow-node-status.error { color: hsl(var(--destructive)); }
+
+/* ─── Port labels ─────────────────────────────────────────── */
+.port-label {
+  position: absolute;
+  font-size: 0.62rem;
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ─── Palette sidebar ─────────────────────────────────────── */
+.node-palette {
+  width: 200px;
+  background: hsl(var(--card));
+  border-right: 1px solid hsl(var(--border));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.node-palette-collapsed {
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  padding-top: 8px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.palette-section {
+  padding: 8px;
+}
+
+.palette-section-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--muted-foreground));
+  padding: 4px 4px 6px;
+  margin-bottom: 2px;
+}
+
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: grab;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  border: 1px solid transparent;
+  transition: all 120ms ease;
+  user-select: none;
+}
+
+.palette-item:hover {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--border));
+}
+
+.palette-item:active { cursor: grabbing; }
+
+.palette-item-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+/* ─── Execution Panel ─────────────────────────────────────── */
+.execution-panel {
+  background: hsl(var(--card));
+  border-top: 1px solid hsl(var(--border));
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+}
+
+.execution-log-line {
+  padding: 0 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.execution-log-line.assistant { color: hsl(var(--foreground)); }
+.execution-log-line.tool { color: hsl(var(--primary)); }
+.execution-log-line.system { color: hsl(var(--muted-foreground)); }
+.execution-log-line.error { color: hsl(var(--destructive)); }
+.execution-log-line.result { color: hsl(142 72% 55%); }
+
+/* ─── Config drawer ───────────────────────────────────────── */
+.config-drawer {
+  width: 300px;
+  background: hsl(var(--card));
+  border-left: 1px solid hsl(var(--border));
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Toolbar ─────────────────────────────────────────────── */
+.toolbar {
+  background: hsl(var(--card));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+
+/* ─── Cursor blink ────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: hsl(var(--primary));
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* ─── Spin animation ──────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin { animation: spin 0.8s linear infinite; }
+
+/* ─── Edge delete button ──────────────────────────────────── */
+.react-flow__edge-button {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+/* ─── Footer Dock (v2) ────────────────────────────────────── */
+.footer-dock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  height: 36px;
+  flex-shrink: 0;
+  border-top: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.footer-dock--empty {
+  gap: 6px;
+  color: hsl(var(--muted-foreground));
+}
+
+.footer-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 120ms, border-color 120ms;
+  font-size: 0.65rem;
+  font-family: monospace;
+}
+
+.footer-pill:hover {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.footer-pill--active {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--primary) / 0.5);
+  color: hsl(var(--foreground));
+}
+
+.footer-progress {
+  width: 52px;
+  height: 5px;
+  background: hsl(var(--muted));
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.footer-progress-fill {
+  height: 100%;
+  background: hsl(var(--primary));
+  border-radius: 3px;
+  transition: width 300ms ease;
+}
+
+/* ─── Master Console ──────────────────────────────────────── */
+.console-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 24px;
+  flex-shrink: 0;
+  border-top: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  cursor: pointer;
+  transition: background 120ms;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: hsl(var(--foreground));
+}
+
+.console-bar:hover {
+  background: hsl(var(--accent));
+}
+
+.console-panel {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 200px;
+  border-top: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
+}
+
+.console-header {
+  display: flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.console-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.console-filter-select {
+  font-size: 0.6rem;
+  font-family: monospace;
+  padding: 1px 4px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 3px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  cursor: pointer;
+  outline: none;
+}
+
+.console-filter-select:focus {
+  border-color: hsl(var(--primary) / 0.5);
+}
+
+.console-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+}
+
+.console-action-btn:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+
+/* ─── Project Sidebar (v2) ────────────────────────────────── */
+.project-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  border-left: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+  flex-shrink: 0;
+}
+
+/* ─── Hood slide-in animation ─────────────────────────────── */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ─── FileTreeView hover actions ──────────────────────────── */
+.tree-actions { transition: opacity 100ms; }
+div:hover > .tree-actions { opacity: 1 !important; }
+
+/* ─── Layout Component Refactor v2 ─────────────────────────── */
+
+/* Project Explorer */
+.project-explorer-container{width:240px;min-width:180px;max-width:320px;display:flex;flex-direction:column;border-right:1px solid hsl(var(--border));background:hsl(var(--card));overflow:hidden;flex-shrink:0}
+.project-explorer-collapsed{width:32px;display:flex;flex-direction:column;align-items:center;border-right:1px solid hsl(var(--border));background:hsl(var(--card));padding-top:8px;gap:8px;flex-shrink:0}
+.project-explorer-header{display:flex;align-items:center;gap:4px;padding:6px 8px;border-bottom:1px solid hsl(var(--border));background:hsl(var(--muted));flex-shrink:0}
+.project-explorer-header-title{font-size:0.72rem;font-weight:600;flex:1}
+.project-explorer-header-icon{color:hsl(var(--primary))}
+.project-explorer-new-project{display:flex;align-items:center;gap:3px;padding:4px 8px;background:hsl(var(--muted));border-bottom:1px solid hsl(var(--border))}
+.project-explorer-new-project-input{flex:1;font-size:0.7rem;padding:3px 6px;background:hsl(var(--input));border:1px solid hsl(var(--border));border-radius:4px;color:hsl(var(--foreground));outline:none}
+.project-explorer-project-list{border-bottom:1px solid hsl(var(--border));flex-shrink:0;max-height:120px;overflow:auto}
+.project-explorer-project-item{display:flex;align-items:center;gap:6px;padding:5px 10px;cursor:pointer;font-size:0.7rem}
+.project-explorer-project-item--active{background:hsl(var(--primary) / 0.1);border-left:2px solid hsl(var(--primary))}
+.project-explorer-project-item--inactive{background:transparent;border-left:2px solid transparent}
+.project-explorer-project-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.project-explorer-project-name--active{font-weight:600}
+.project-explorer-files-header{display:flex;align-items:center;gap:4px;padding:4px 8px;border-bottom:1px solid hsl(var(--border));background:hsl(var(--muted));flex-shrink:0}
+.project-explorer-files-header-title{font-size:0.65rem;font-weight:600;flex:1}
+.project-explorer-error{padding:3px 8px;font-size:0.62rem;color:#ef4444;background:#ef444410;border-bottom:1px solid hsl(var(--border))}
+.project-explorer-error-dismiss{background:none;border:none;cursor:pointer;color:#ef4444;margin-left:4px}
+.project-explorer-tree{flex:1;overflow:auto;padding:2px 0}
+.project-explorer-empty{padding:20px 12px;text-align:center;font-size:0.68rem;color:hsl(var(--muted-foreground));line-height:1.5}
+.project-explorer-empty-subtext{font-size:0.6rem}
+.project-explorer-loading{padding:12px;text-align:center;font-size:0.68rem;color:hsl(var(--muted-foreground))}
+
+/* Tree Node */
+.tree-node-row{display:flex;align-items:center;gap:2px;padding:2px 4px;font-size:0.7rem;cursor:pointer;border-left:2px solid transparent}
+.tree-node-row--selected{background:hsl(var(--primary) / 0.12);color:hsl(var(--primary));border-left:2px solid hsl(var(--primary))}
+.tree-node-row--unselected{background:transparent;color:hsl(var(--foreground))}
+.tree-node-icon{flex-shrink:0}
+.tree-node-icon-file{width:10px;flex-shrink:0;text-align:center;font-size:0.6rem}
+.tree-node-icon-folder{color:#f59e0b;flex-shrink:0}
+.tree-node-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tree-node-size{font-size:0.55rem;color:hsl(var(--muted-foreground));flex-shrink:0}
+.tree-actions{display:flex;gap:1px;opacity:0;flex-shrink:0;transition:opacity 100ms}
+.tree-node-row:hover .tree-actions{opacity:1 !important}
+.tree-action-btn{background:none;border:none;cursor:pointer;color:hsl(var(--muted-foreground));padding:1px}
+.tree-action-btn--delete{color:#ef4444}
+.tree-action-btn--confirm{color:#22c55e}
+.tree-node-children{padding-left:14px}
+
+/* Inline Create */
+.inline-create{display:flex;align-items:center;gap:3px;padding:3px 8px;background:hsl(var(--muted))}
+.inline-create-input{flex:1;font-size:0.7rem;padding:2px 6px;background:hsl(var(--input));border:1px solid hsl(var(--border));border-radius:4px;color:hsl(var(--foreground));outline:none}
+
+/* Master Console */
+.console-log-line{display:flex;align-items:flex-start;gap:6px;padding:1px 8px;font-size:0.68rem;font-family:monospace;line-height:1.5;border-bottom:1px solid hsl(var(--border) / 0.3)}
+.console-log-line--error{background:hsl(0 80% 50% / 0.06)}
+.console-log-timestamp{color:hsl(var(--muted-foreground));flex-shrink:0;font-size:0.62rem}
+.console-log-icon{flex-shrink:0;margin-top:2px}
+.console-log-badge{font-size:0.58rem;padding:0 4px;border-radius:3px;flex-shrink:0;white-space:nowrap}
+.console-log-message{word-break:break-word;flex:1}
+.console-log-message--error{color:#ef4444}
+.console-log-message--warn{color:#f59e0b}
+.console-log-meta{font-size:0.58rem;color:hsl(var(--muted-foreground));max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0}
+
+/* Terminal Panel */
+.execution-agent-tab-close,.execution-panel-close{display:inline-flex;align-items:center;justify-content:center;padding:2px;border:0;border-radius:3px;background:transparent;color:hsl(var(--muted-foreground));cursor:pointer}
+.execution-agent-tab-close:hover,.execution-panel-close:hover{background:hsl(var(--destructive) / .14);color:hsl(var(--destructive))}
+.terminal-tab-bar{display:flex;align-items:center;gap:1px;padding:0 4px;flex-shrink:0;border-bottom:1px solid hsl(var(--border));overflow-x:auto;height:28px;background:hsl(var(--card))}
+.terminal-tab{display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:11px;font-family:var(--font-mono,monospace);border:none;cursor:pointer;white-space:nowrap;background:transparent;color:hsl(var(--muted-foreground));flex-shrink:0}
+.terminal-tab--active{background:hsl(var(--accent));color:hsl(var(--foreground))}
+.terminal-tab-status-dot{width:6px;height:6px;border-radius:50%}
+.terminal-tab-status-dot--running{background:#3fb950}
+.terminal-tab-status-dot--stopped{background:#484f58}
+.terminal-tab-kill{margin-left:2px;background:none;border:none;cursor:pointer;padding:1px;color:hsl(var(--muted-foreground));display:inline-flex;align-items:center}
+.terminal-tab-kill:hover{opacity:1}
+.terminal-new-btn{display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;cursor:pointer;width:22px;height:22px;border-radius:4px;background:transparent;color:hsl(var(--muted-foreground))}
+.terminal-new-btn:disabled{opacity:0.5;cursor:not-allowed}
+
+/* Footer */
+.footer-dock{display:flex;align-items:center;gap:5px;padding:0 12px;height:36px;flex-shrink:0;border-top:1px solid hsl(var(--border));background:hsl(var(--card));overflow-x:auto;overflow-y:hidden}
+.footer-dock--empty{gap:6px;color:hsl(var(--muted-foreground))}
+.footer-pill{display:flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;border:1px solid hsl(var(--border));background:hsl(var(--muted));cursor:pointer;white-space:nowrap;transition:background 120ms,border-color 120ms;font-size:0.65rem;font-family:monospace}
+.footer-pill:hover{background:hsl(var(--accent));border-color:hsl(var(--primary) / 0.4)}
+.footer-pill--active{background:hsl(var(--accent));border-color:hsl(var(--primary) / 0.5);color:hsl(var(--foreground))}
+.footer-pill--active[aria-pressed="true"]{box-shadow:0 0 0 1px hsl(var(--primary) / 0.3)}
+.footer-progress{width:52px;height:5px;background:hsl(var(--muted));border-radius:3px;overflow:hidden}
+.footer-progress-fill{height:100%;background:hsl(var(--primary));border-radius:3px;transition:width 300ms ease}
+.footer-pill-hierarchy{font-size:0.58rem;font-family:monospace;color:hsl(var(--muted-foreground));opacity:0.7;letter-spacing:-0.02em}
+.footer-pill-label{font-size:0.65rem;font-family:monospace;letter-spacing:-0.02em}
+.footer-pill-cost{font-size:0.6rem;color:var(--status-complete);font-family:monospace}
+
+
+/* Microkernel view adapter. Original CSS above is retained without Tailwind. */
+html.devlab-mode {font-size:16px;background:#15181e;color:#cdd0d6}
+.devlab{height:100dvh;width:100%;display:flex;flex-direction:column;overflow:hidden;line-height:1.5;font-size:16px}
+.devlab button{padding:0;border:0;border-radius:4px;background:transparent;color:inherit;font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.devlab button:hover{background:hsl(var(--accent))}
+.devlab button:disabled{opacity:.4;cursor:default}
+.devlab input,.devlab textarea,.devlab select{font:inherit;color:hsl(var(--foreground));background:hsl(var(--background));border:1px solid hsl(var(--border));border-radius:4px;min-width:0}
+.devlab button:focus-visible,.devlab input:focus-visible,.devlab textarea:focus-visible,.devlab select:focus-visible{outline:1px solid hsl(var(--primary));outline-offset:2px}
+.devlab svg{flex-shrink:0}
+.devlab .icon-button{width:28px;height:28px;flex-shrink:0;color:hsl(var(--muted-foreground))}
+.devlab .active-icon{background:#4f46e5;color:white}
+.toolbar{gap:3px;padding:8px 16px}
+.devlab-brand{display:flex;align-items:center;gap:8px;margin-right:8px;flex-shrink:0;line-height:1}
+.devlab-brand-logo{display:block;width:117.36px;height:36px;margin-block:-3px;object-fit:contain;border-radius:3px}
+.devlab-brand small{font-size:.6rem;color:hsl(var(--foreground));white-space:nowrap}
+.devlab .project-switcher{font-size:.73rem;height:28px;padding:0 8px;gap:4px;white-space:nowrap}
+.devlab .flow-title{width:135px;border:0;background:transparent;color:hsl(var(--muted-foreground));font-size:.78rem;padding:2px 6px}
+.graph-badge{display:flex;gap:3px;align-items:center;white-space:nowrap;font-size:.6rem;border:1px solid hsl(var(--border));border-radius:5px;padding:1px 6px}
+.canvas-color{display:flex;align-items:center;gap:5px;padding:0 6px;color:hsl(var(--muted-foreground))}
+.canvas-color input{width:22px;height:22px;padding:0;background:transparent}
+.toolbar-spacer{flex:1;min-width:0}
+.workspace-body{flex:1 1 220px;min-height:220px;display:flex;overflow:hidden;position:relative}
+.canvas-loading{flex:1;display:grid;place-items:center;background:hsl(var(--background));color:hsl(var(--muted-foreground));font-size:.75rem;min-width:0}
+.workspace-error{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:hsl(var(--destructive) / .15);color:hsl(var(--destructive));font-size:.72rem;flex-shrink:0}
+.devlab .execution-panel{min-height:40px;flex-shrink:1;display:flex;flex-direction:column;overflow:hidden}
+.execution-tabs{height:40px;flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 10px;user-select:none}
+.execution-tabs>svg{color:hsl(var(--muted-foreground))}
+.agent-tabs{flex:1;display:flex;gap:2px;overflow:auto}
+.devlab .execution-tabs button{font-size:.6rem;padding:2px 7px;white-space:nowrap;color:hsl(var(--muted-foreground))}
+.devlab .execution-tabs .icon-button{padding:2px;width:20px;height:20px}
+.devlab .active-tab{background:hsl(var(--accent));color:hsl(var(--foreground))}
+.agent-play{color:#10b981}
+.execution-split{flex:1;min-height:0;display:flex;overflow:hidden}
+.execution-log{flex:1;min-width:0;overflow:auto;padding-bottom:8px}
+.execution-empty{padding:24px 16px;text-align:center;color:hsl(var(--muted-foreground));font-size:.72rem}
+.execution-empty svg{display:block;margin:0 auto 8px;opacity:.35}
+.agent-chat{width:40%;min-width:280px;max-width:480px;display:flex;flex-direction:column;border-left:1px solid hsl(var(--border))}
+.chat-provider{font-size:.55rem;color:hsl(var(--muted-foreground));padding:4px 8px;height:24px;border-bottom:1px solid hsl(var(--border))}
+.chat-title{display:flex;align-items:center;padding:4px 8px;font-size:.6rem;background:hsl(var(--muted));border-bottom:1px solid hsl(var(--border))}
+.chat-title span{margin-left:auto;color:hsl(var(--muted-foreground));font-size:.55rem}
+.chat-history{flex:1;overflow:auto;min-height:0}
+.chat-empty{text-align:center;color:hsl(var(--muted-foreground));font-size:.65rem;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+.chat-empty svg{opacity:.35}
+.chat-empty p{margin:4px 0}
+.chat-exchange{padding:6px 10px;font-size:.68rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-exchange>div{background:hsl(var(--accent));padding:4px 8px;border-radius:5px}
+.chat-exchange p{margin:4px 0;color:hsl(var(--foreground))}
+.chat-input{display:flex;gap:5px;padding:6px 8px;border-top:1px solid hsl(var(--border));flex-shrink:0}
+.chat-input textarea{flex:1;height:40px;resize:none;padding:5px 8px;font-size:.65rem;background:hsl(var(--background))}
+.chat-input button{width:24px;color:hsl(var(--primary))}
+.terminal-pending{display:grid;place-content:center;justify-items:center;flex:1;color:hsl(var(--muted-foreground));font-size:.72rem}
+.devlab .console-bar{height:24px;justify-content:flex-start;font-family:monospace;font-size:.62rem;border-radius:0;padding:0 12px;color:hsl(var(--muted-foreground));flex-shrink:0;background:hsl(var(--card));gap:6px;border-top:1px solid hsl(var(--border))}
+.devlab .console-bar span:not(:first-of-type){font-size:.55rem}
+.devlab .console-panel{height:180px}
+.console-header{font-size:.65rem;height:24px}
+.console-log-badge{background:hsl(var(--accent));color:hsl(var(--primary))}
+.devlab .footer-pill{font-size:.65rem;padding:2px 8px;border:1px solid hsl(var(--border));background:hsl(var(--muted));font-family:monospace;white-space:nowrap}
+.devlab .footer-pill--active{border-color:hsl(var(--primary) / .5)}
+.devlab .footer-save{font-size:.6rem;color:hsl(var(--muted-foreground));white-space:nowrap}
+.devlab .footer-dock .icon-button{width:20px;height:20px}
+.gear-menu{position:relative}
+.settings-menu{position:absolute;top:32px;right:0;width:200px;padding:6px;z-index:100;background:hsl(var(--popover));border:1px solid hsl(var(--border));border-radius:6px;box-shadow:0 8px 30px #0005}
+.settings-menu button,.settings-menu a{padding:6px 8px!important;text-decoration:none;color:hsl(var(--foreground));font-size:.73rem!important;display:block!important;width:100%;text-align:left}
+.modal-backdrop{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#0009;backdrop-filter:blur(4px)}
+.settings-panel{width:min(600px,calc(100vw - 32px));max-height:88vh;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:12px;display:flex;flex-direction:column;box-shadow:0 20px 80px #0005;font-size:.75rem}
+.settings-header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid hsl(var(--border));flex-shrink:0;min-height:64px}
+.settings-key{font-size:20px;color:hsl(var(--primary))}
+.settings-header button{font-size:.63rem;padding:5px 8px}
+.settings-body{overflow:auto;min-height:0;padding:8px 20px;flex:1}
+.provider-row{padding:14px 0;border-bottom:1px solid hsl(var(--border))}
+.provider-row strong{font-size:.75rem}
+.provider-row>span{display:block;margin-top:6px;color:hsl(var(--muted-foreground));font-family:monospace;font-size:.68rem}
+.shortcuts{font-family:monospace}
+.devlab .react-flow__controls-button{display:flex;align-items:center;justify-content:center;width:26px;height:26px;padding:5px;border-bottom:1px solid hsl(var(--border));border-radius:0}
+
+.server-sessions { padding: 12px 18px; overflow: auto; color: var(--text-primary, inherit); min-height: 0; flex: 1; }
+.server-sessions > p { margin: 0 0 10px; font-size: 12px; opacity: .75; }
+.server-sessions article { border-bottom: 1px solid var(--border-color, #3334); padding: 10px 0; }
+.server-sessions article > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.server-sessions article span { font-size: 11px; text-transform: uppercase; }
+.server-sessions article a { color: inherit; font: 11px monospace; }
+.server-sessions button { padding: 4px 10px; border: 1px solid var(--border-color, #8885); border-radius: 5px; background: transparent; color: inherit; cursor: pointer; }
+.server-sessions button:disabled { opacity: .4; cursor: default; }
+.server-sessions pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.5 monospace; max-height: 160px; overflow: auto; }
+
+/* Actual terminal tabs share the existing execution header row. */
+.devlab .agent-tabs[role="tablist"] { align-items: stretch; overflow-x: auto; overflow-y: hidden; min-width: 0; }
+.devlab .execution-tabs .terminal-tab { flex: 0 0 auto; gap: 5px; padding: 3px 8px; font-family: var(--font-mono, monospace); border-radius: 4px; }
+.devlab .execution-tabs .terminal-tab[aria-selected="true"] { background: hsl(var(--accent)); color: hsl(var(--foreground)); box-shadow: inset 0 -2px hsl(var(--primary)); }
+.devlab .terminal-tab-state { color: hsl(var(--muted-foreground)); font-size: .56rem; }
+.devlab .terminal-tab-status-dot--running { background: var(--status-running); }
+.devlab .terminal-tab-status-dot--stopped { background: var(--status-stopped); }
+.terminal-dock { display: flex; flex: 1; min-width: 0; min-height: 0; flex-direction: column; overflow: hidden; background: hsl(var(--background)); }
+.terminal-dock > .devlab-terminal { flex: 1; min-height: 0; }
+.terminal-dock-empty { margin: auto; padding: 12px; color: hsl(var(--muted-foreground)); font-size: .72rem; }
+.terminal-dock-error { flex: none; margin: 0; padding: 4px 8px; color: hsl(var(--destructive)); font-size: .65rem; }
+
+.workspace-planning-drawer { flex:1; min-height:0; min-width:0; overflow:auto; }
+.workspace-planning-drawer[hidden] { display:none; }
+.execution-panel > .execution-tabs { overflow-x:auto; flex-shrink:0; }
+.execution-tabs > button { flex-shrink:0; }
+
+/* Retained responsive drawers: presentation never owns project or PTY lifetime. */
+.workspace-projects{display:flex;min-height:0;flex:none;overflow:hidden}
+.workspace-projects[hidden],.project-explorer-collapsed[hidden]{display:none!important}
+.project-explorer-close{display:flex;align-items:center;justify-content:center;flex:none;width:16px;height:12px;padding:0;border:0;background:transparent;color:hsl(var(--muted-foreground));cursor:pointer}
+.project-explorer-close:focus-visible{outline:2px solid hsl(var(--ring));outline-offset:-2px}
+@media(max-width:1100px){
+ .workspace-projects{position:absolute;inset:0 auto 0 32px;z-index:20;width:min(280px,calc(100% - 40px));border-right:1px solid hsl(var(--border));box-shadow:6px 0 18px hsl(var(--background)/.4)}
+ .workspace-projects>.project-explorer-container{width:100%;min-width:0;max-width:none}
+ .workspace-projects .project-explorer-header{height:32px;min-height:32px}
+ .workspace-projects .project-actions-toggle,.workspace-projects .project-explorer-close{height:28px}
+ .workspace-projects .project-explorer-close{width:28px}
+ .project-flow-stage{position:relative}
+ .project-flow-stage .node-palette{position:absolute;inset:0 auto 0 32px;z-index:15;width:min(240px,calc(100% - 40px));max-height:100%;box-shadow:6px 0 18px hsl(var(--background)/.4)}
+}
+
+/* Main stages retain their mounted editor, preview and terminal owners. */
+.devlab{position:relative;--workspace-bar-height:36px}
+.devlab>.toolbar,.devlab .workspace-rail,.terminal-workspace-toolbar,.terminal-pane-toolbar{box-sizing:border-box;height:var(--workspace-bar-height);min-height:var(--workspace-bar-height);flex-shrink:0;font-family:inherit;font-size:11px;line-height:1.4}
+.devlab>.toolbar{padding:3px 12px;gap:4px}
+.workspace-flow-tools{display:contents}
+.terminal-toolbar-spacer{display:none}
+.devlab[data-terminal-mainview="true"] .workspace-flow-tools{display:none}
+.devlab[data-terminal-mainview="true"] .terminal-toolbar-spacer{display:block;flex:1}
+.devlab[data-terminal-mainview="true"]>.toolbar>.devlab-brand{margin-right:4px}
+.devlab .workspace-body{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;min-height:0;min-width:0;flex:1}
+.workspace-body>.workspace-projects,.workspace-body>.project-explorer-collapsed{grid-column:1;grid-row:1}
+.workspace-main-stage{grid-column:2;grid-row:1;display:flex;min-width:0;min-height:0;overflow:hidden}
+.workspace-main-stage>*{min-width:0;min-height:0}
+.project-build-stage[hidden]{display:none!important}
+.workspace-output-space{grid-column:1 / -1;grid-row:2}
+.workspace-output-space[hidden]{display:none!important}
+.devlab[data-terminal-mainview="true"] .project-preview-editor{position:relative}
+.devlab .workspace-rail{flex:none;border-top:1px solid hsl(var(--border));background:hsl(var(--card));overflow-x:auto;overflow-y:hidden;gap:4px;scrollbar-width:thin;z-index:31}
+.workspace-rail>.agent-tabs{min-width:64px;flex:1}
+.workspace-rail>button{flex:none}
+.devlab .workspace-body .execution-panel{position:absolute;inset:auto 0 0;min-width:0;min-height:0;z-index:2;background:hsl(var(--card));border-top:1px solid hsl(var(--border));box-shadow:none}
+.devlab .workspace-body .execution-panel[data-terminal-workspace="true"]{position:relative;inset:auto;flex:1;width:100%;height:100%;max-height:none;border-top:0}
+.devlab .execution-panel[hidden],.workspace-terminal-retained[hidden]{display:none!important}
+.workspace-terminal-retained{display:flex;flex:1;min-width:0;min-height:0;overflow:hidden}
+.workspace-terminal-retained>.terminal-dock{flex:1}
+.devlab>.console-panel{position:absolute;inset-inline:0;bottom:var(--workspace-bar-height);z-index:30;max-height:60vh;border-top:1px solid hsl(var(--border));box-shadow:0 -6px 18px hsl(var(--background)/.35)}
+
+/* Fullscreen/focus retains the same shell and preview grid. */
+.devlab[data-preview-focused="true"]{--workspace-bar-height:28px;position:fixed;inset:0;width:100vw;height:100dvh;z-index:1000}
+.devlab[data-preview-focused="true"]>.toolbar{display:none}
+.devlab[data-preview-focused="true"] .workspace-body>.workspace-projects,.devlab[data-preview-focused="true"] .workspace-body>.project-explorer-collapsed{display:none!important}
+.devlab[data-preview-focused="true"] .workspace-body{min-height:0;grid-template-columns:0 minmax(0,1fr)}
+.workspace-focus-error{font-size:10px;color:hsl(var(--muted-foreground));max-width:240px;flex:0 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.devlab:fullscreen{width:100vw;height:100dvh;background:hsl(var(--background))}
+
+/* One compact header per terminal; secondary controls share one disclosure. */
+.terminal-workspace-toolbar,.terminal-pane-toolbar{display:flex;align-items:center;gap:4px;flex:none;padding:3px 6px;border-bottom:1px solid hsl(var(--border));color:hsl(var(--foreground));background:hsl(var(--card));white-space:nowrap}
+.devlab .terminal-workspace-toolbar>.icon-button,.devlab .terminal-toolbar-controls>.icon-button,.devlab .terminal-pane-toolbar .icon-button{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;min-height:24px;flex:none;box-sizing:border-box;padding:0;border:0;border-radius:4px;background:transparent;color:hsl(var(--muted-foreground));cursor:pointer}
+.devlab .terminal-workspace-toolbar>.icon-button:hover,.devlab .terminal-pane-toolbar .icon-button:hover{background:hsl(var(--accent));color:hsl(var(--foreground))}
+.terminal-workspace-toolbar button:focus-visible,.terminal-pane-toolbar :focus-visible,.terminal-pane-divider:focus-visible,.terminal-panel-height:focus-visible{outline:1px solid hsl(var(--primary));outline-offset:2px}
+.terminal-workspace-toolbar button:disabled,.terminal-pane-toolbar :disabled{opacity:.4;cursor:default}
+.terminal-workspace-tabs{display:flex;align-items:center;gap:2px;flex:1;min-width:0;height:100%;overflow-x:auto;scrollbar-width:thin}
+.devlab .terminal-workspace-tabs>.terminal-tab{flex:none;gap:5px;height:24px;padding:2px 8px;font:11px/1.4 var(--font-mono,monospace);color:hsl(var(--muted-foreground))}
+.devlab .terminal-workspace-tabs>.terminal-tab[aria-selected="true"]{background:hsl(var(--accent));color:hsl(var(--foreground));box-shadow:inset 0 -2px hsl(var(--primary))}
+.terminal-workspace-tabs .terminal-tab-state{font-size:9px;color:hsl(var(--muted-foreground))}
+.terminal-workspace-hint{margin-left:auto;color:hsl(var(--muted-foreground));white-space:nowrap;font-size:10px}
+.terminal-workspace-panes{display:flex;flex:1;min-width:0;min-height:0;overflow:auto;align-items:stretch}
+.terminal-workspace-pane{display:flex;flex:1 1 0;min-width:260px;min-height:150px;flex-direction:column;overflow:hidden;background:hsl(var(--background))}
+.terminal-workspace-pane[hidden]{display:none!important}
+.terminal-workspace-pane>.devlab-terminal{flex:1;min-height:0}
+.terminal-pane-toolbar,.terminal-workspace-toolbar{height:28px;min-height:28px;padding-block:2px}
+.terminal-pane-toolbar{position:relative;flex-wrap:nowrap;min-width:0;overflow:visible}
+.terminal-pane-controls{display:flex;align-items:center;gap:2px;flex:none}
+.terminal-pane-controls[hidden]{display:none!important}
+.devlab .terminal-pane-toolbar>.terminal-pane-name,.terminal-pane-toolbar>input{justify-content:flex-start;flex:1;min-width:0;max-width:none;height:24px;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:inherit;font-weight:600;padding:2px 4px}
+.terminal-pane-state{display:inline-flex;align-items:center;gap:4px;flex:none;color:hsl(var(--muted-foreground));font-size:10px}
+.terminal-pane-actions{flex:none}
+.terminal-pane-actions>summary{list-style:none}
+.terminal-pane-actions>summary::-webkit-details-marker{display:none}
+.terminal-pane-actions:not([open])>.terminal-pane-menu{display:none}
+.terminal-pane-menu{position:fixed;z-index:1100;display:flex;flex-direction:column;gap:8px;width:264px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);box-sizing:border-box;overflow:auto;padding:10px;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:4px;box-shadow:0 4px 16px hsl(var(--background)/.5);white-space:normal}
+.devlab .terminal-pane-menu>button{justify-content:flex-start;height:24px;min-height:24px;padding:2px 6px;font:inherit}
+.terminal-pane-menu label{display:flex;align-items:center;justify-content:space-between;gap:8px;color:hsl(var(--muted-foreground))}
+.terminal-pane-menu select{max-width:160px;height:24px;font:inherit}
+.terminal-pane-menu p{margin:0;font-family:inherit;font-size:10px;line-height:1.4;color:hsl(var(--muted-foreground))}
+.terminal-pane-menu p[role="alert"]{color:hsl(var(--destructive))}
+.terminal-pane-divider{flex:0 0 7px;min-height:100%;cursor:col-resize;touch-action:none;background:hsl(var(--border));border-inline:2px solid hsl(var(--card));box-sizing:border-box}
+.terminal-pane-divider:hover,.terminal-pane-divider:focus-visible{background:hsl(var(--primary))}
+.terminal-workspace-panes--vertical{flex-direction:column}
+.terminal-workspace-panes--vertical>.terminal-workspace-pane{min-height:180px;min-width:0;flex-basis:0}
+.terminal-workspace-panes--vertical>.terminal-pane-divider{min-height:7px;flex-basis:7px;cursor:row-resize;border-inline:0;border-block:2px solid hsl(var(--card))}
+.terminal-panel-height{flex:none;height:7px;box-sizing:border-box;background:hsl(var(--border));border-block:2px solid hsl(var(--card));cursor:row-resize;touch-action:none}
+.terminal-panel-height:hover{background:hsl(var(--primary))}
+.execution-panel[data-terminal-workspace="true"] .terminal-panel-height{display:none}
+@media(max-width:900px){.terminal-workspace-hint{display:none}.devlab>.toolbar{padding-inline:6px}.devlab[data-terminal-mainview="true"] .devlab-brand small{display:none}}
+
+/* The main terminal strip shares the app bar; only session tabs scroll. */
+.devlab>.toolbar>.terminal-toolbar-controls{display:flex;align-items:center;white-space:nowrap;flex:1;min-width:130px;height:28px;min-height:28px;padding:0 2px;border:0;background:transparent;gap:3px}
+.devlab[data-terminal-mainview="true"] .terminal-toolbar-spacer{display:none}
+.devlab[data-terminal-mainview="true"] .terminal-workspace-tabs{min-width:42px;overscroll-behavior-x:contain}
+.devlab[data-terminal-mainview="true"] .project-mode-toggle button{padding-inline:6px}
+@media(max-width:900px){.devlab[data-terminal-mainview="true"] .devlab-brand>div:last-child{display:none}.devlab[data-terminal-mainview="true"] .devlab-brand-logo{width:104.32px;height:32px}.devlab[data-terminal-mainview="true"] .project-switcher{max-width:110px}}
+
+.workspace-view-switch{min-width:0;overflow-x:auto;scrollbar-width:thin}.workspace-view-switch>button{flex:none}
+.workspace-traffic-stage{flex:1;min-width:0;min-height:0;display:flex;overflow:hidden}.workspace-traffic-stage[hidden]{display:none}
+.traffic-board{flex:1;min-width:0;min-height:0;overflow:auto;padding:16px;color:hsl(var(--foreground));background:hsl(var(--background));font-size:12px;line-height:1.5}
+.traffic-header{display:flex;align-items:start;justify-content:space-between;gap:12px}.traffic-header h2{margin:0;font-size:18px;letter-spacing:.05em}.traffic-header p{margin:2px 0 0;color:hsl(var(--muted-foreground))}.traffic-header button{flex:none}
+.traffic-sources{display:flex;flex-wrap:wrap;gap:4px 12px;margin:12px 0;color:hsl(var(--muted-foreground))}.traffic-warning{margin:8px 0;padding:8px;border:1px solid hsl(var(--destructive));border-radius:4px}
+.traffic-lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.traffic-lanes>section{min-width:0;padding:8px;border:1px solid hsl(var(--border));border-radius:6px;background:hsl(var(--card))}.traffic-lanes h3{display:flex;justify-content:space-between;margin:0 0 8px;font-size:13px}.traffic-lanes h3 span{color:hsl(var(--muted-foreground))}.traffic-lanes article{display:grid;gap:2px;margin:0 0 6px;padding:8px;border:1px solid hsl(var(--border));border-radius:4px;overflow-wrap:anywhere}.traffic-lanes article strong{font-size:12px}.traffic-lanes article small,.traffic-lanes>section>p{color:hsl(var(--muted-foreground))}.traffic-lanes article ul{margin:4px 0 0;padding-left:16px}.traffic-lanes code{font-size:11px;user-select:text}.traffic-board button:focus-visible,.workspace-view-switch button:focus-visible{outline:2px solid hsl(var(--ring));outline-offset:2px}
+@media(max-width:1100px){.traffic-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.traffic-lanes{grid-template-columns:minmax(0,1fr)}}
+
+/* Compact navigation wraps so disclosures remain usable on narrow screens. */
+@media(max-width:700px){.devlab>.toolbar{height:auto;min-height:36px;flex-wrap:wrap;padding:3px 6px}.devlab>.toolbar>.devlab-brand{display:none}.devlab>.toolbar>.project-switcher{max-width:110px}.devlab>.toolbar>.toolbar-spacer{display:none}}

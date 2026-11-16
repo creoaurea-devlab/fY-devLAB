@@ -1,0 +1,21 @@
+schema_version: 1
+id: FACTORY-COMPOSE
+title: Register the single runtime and .agents host state
+outcome: Register the single runtime and .agents host state
+kind: maintenance
+effect: change_source
+owner: backend-host
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- src/profile.ts
+needs: []
+acceptance:
+- Host composition imports src/runtime and isolates disposable fixture state.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

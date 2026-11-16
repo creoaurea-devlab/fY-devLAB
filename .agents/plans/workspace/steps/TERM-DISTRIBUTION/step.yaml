@@ -1,0 +1,32 @@
+schema_version: 1
+id: TERM-DISTRIBUTION
+title: Terminal DISTRIBUTION
+outcome: Terminal DISTRIBUTION
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: TERM-S1
+mode: orchestrator
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- package.json
+- package-lock.json
+- vendor/full-ui/catalog.json
+- vendor/runtime/catalog.json
+- vite.config.ts
+- README.md
+needs:
+- TERM-CONTRACT
+acceptance:
+- A01
+- A07
+- A09
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node scripts/setup-terminal.mjs
+  - node scripts/verify-packages.mjs
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

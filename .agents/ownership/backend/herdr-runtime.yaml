@@ -1,0 +1,18 @@
+schema_version: 1
+id: herdr-runtime
+purpose: Own dedicated project Herdr servers, verified containment, private state, public protocol and lifecycle.
+group: backend
+paths:
+- plugins/herdr-runtime/support/devlab-herdr-bwrap.apparmor
+- plugins/herdr-runtime/support/install-sandbox.sh
+- plugins/herdr-runtime/src/index.ts
+- plugins/herdr-runtime/src/capsule.ts
+- plugins/herdr-runtime/src/protocol.ts
+- plugins/herdr-runtime/README.md
+public:
+- plugins/herdr-runtime/src/index.ts
+uses:
+- service-contracts
+- terminal-service
+guidance:
+- .agents/skills/domain-backend/SKILL.md

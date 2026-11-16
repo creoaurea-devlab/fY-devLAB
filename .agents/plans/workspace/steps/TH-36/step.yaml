@@ -1,0 +1,37 @@
+schema_version: 1
+id: TH-36
+title: Implement Codex thread/turn operations and normalized run events
+outcome: Implement Codex thread/turn operations and normalized run events
+kind: feature
+effect: plan
+owner: codex-harness
+slice: TH-S03
+mode: worker
+read:
+- .context/modules/registry.yaml
+- packages/contracts/src/index.ts
+- packages/ui-contracts/src/index.ts
+write: []
+needs:
+- TH-05
+- TH-08
+- TH-09
+- TH-11
+acceptance:
+- 'PLANNED PATHS — TH-01 must reconcile exact ownership and this task write scope
+  before execution: plugins/codex-harness/src/runs.ts, plugins/codex-harness/src/runs.test.ts.
+  No implementation permission is inferred from an empty scope.'
+- Implement HarnessRuntime using thread/start/resume/read and turn/start/steer/interrupt
+  supported by the pinned protocol; attach validated settings and explicit skill inputs.
+- Map item/turn/output/tool/file/usage/error events to neutral event identities; correlate
+  approval requests and maintain thread/turn ownership. Prevent cross-project thread
+  reuse and duplicate starts.
+- Protocol fixture tests cover start, continuation, steering, interruption, reconnect,
+  partial output, usage unknowns and unsupported operations. Execution service never
+  imports or sends raw Codex methods.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/runs.test.ts

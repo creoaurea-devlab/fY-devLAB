@@ -1,0 +1,41 @@
+schema_version: 1
+id: RT-UI
+title: Make Run direct with persistent compact execution feedback
+outcome: Make Run direct with persistent compact execution feedback
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- docs/protocols/ui-design.md
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+write:
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- RT-CLIENT
+acceptance:
+- 'A1: Task/slice/milestone Run dispatches once without the second Start/confirmation
+  presentation; blocked cases show inline reasons and preserve draft protection and
+  queue rules.'
+- 'A2/A3: Existing Execution view shows compact real steps and last observed activity;
+  raw log expands on demand; review wait, quiet running, stopped, failure and lost
+  observation differ clearly.'
+- 'A4: Make Add slice and Add task easy to find in milestone/slice and empty states;
+  keep the global + New menu and accessible labels with explicit disabled reasons.'
+- Load docs/protocols/ui-design.md and scoped browser guidance; preserve focus, drafts,
+  mounted terminal/preview owners and cleanup. Record real browser evidence during
+  RT-VERIFY.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node --test scripts/process.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

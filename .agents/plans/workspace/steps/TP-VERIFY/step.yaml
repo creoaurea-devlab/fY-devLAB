@@ -1,0 +1,36 @@
+schema_version: 1
+id: TP-VERIFY
+title: Verify terminal recovery, fit and existing-project preview setup together
+outcome: Verify terminal recovery, fit and existing-project preview setup together
+kind: bugfix
+effect: change_source
+owner: verification
+slice: TP-S1
+mode: worker
+read: []
+write:
+- scripts/terminal.test.ts
+- scripts/wisdom.test.ts
+- scripts/terminal-preview-browser.py
+needs:
+- TP-TERM
+- TP-TERMUI
+- TP-PREVIEW
+- TP-INFER
+- TP-LOCK
+- TP-PREVIEW-SCOPE
+acceptance:
+- Actual disposable Off terminal launches with incomplete ownership metadata; strict
+  modes remain guarded.
+- At1440/820 and scaled small nodes, terminal grid/error/retry geometry stays in bounds.
+- Browser preview-only review/apply/start for an existing project preserves custom
+  rules and works without manual descriptor editing.
+- Late replies and compatible UI refresh preserve unrelated sessions/drafts; all disposable
+  resources clean up.
+verification:
+  level: integration
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - node --test scripts/terminal.test.ts scripts/wisdom.test.ts
+  - /usr/bin/python3 scripts/terminal-preview-browser.py

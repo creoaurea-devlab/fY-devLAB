@@ -1,0 +1,29 @@
+schema_version: 1
+id: WIS-UI-SPEC-COMPOSE
+title: Connect SPEC Agent to retained workspace and Planning
+outcome: Connect SPEC Agent to retained workspace and Planning
+kind: feature
+effect: change_source
+owner: workspace-ui
+slice: WIS-UI-S1
+mode: worker
+read:
+- docs/plans/spec-agent/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- src/shell.tsx
+needs: []
+acceptance:
+- PROTOTYPING retains its mounted editor/preview owners.
+- SPEC Agent requires explicit generation and review; only reviewed canonical tasks
+  are added to Kanban.
+- Cancellation, failures, keyboard and retained resource behavior pass both viewport
+  fixtures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check
+  - python3 scripts/spec-agent-browser.py
+spec: docs/plans/spec-agent/SPEC.md

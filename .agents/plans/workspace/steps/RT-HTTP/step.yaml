@@ -1,0 +1,26 @@
+schema_version: 1
+id: RT-HTTP
+title: Expose validated runtime steps through existing Harness routes
+outcome: Expose validated runtime steps through existing Harness routes
+kind: feature
+effect: change_source
+owner: http-transport
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- packages/contracts/src/harness.ts
+write:
+- plugins/transport-http/src/index.ts
+needs:
+- RT-SERVICE
+acceptance:
+- 'A2/A3: Existing activity/run routes deliver the canonical observation contract
+  with existing project isolation and validation. Preserve existing callers and errors.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node --test scripts/harness-http.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

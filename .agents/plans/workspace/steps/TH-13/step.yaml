@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-13
+title: Harden existing attempt intent and replay reconciliation
+outcome: Harden existing attempt intent and replay reconciliation
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- TH-03
+acceptance:
+- Extend the existing durable attempts ledger rather than create a second execution
+  database or task-execution package.
+- Test same command replay, changed payload rejection, persistence failure and crash
+  before/after remote acknowledgement; uncertain starts retain identity and never
+  automatically repeat mutations.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

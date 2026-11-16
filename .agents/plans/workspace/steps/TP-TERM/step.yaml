@@ -1,0 +1,26 @@
+schema_version: 1
+id: TP-TERM
+title: Open ordinary terminals without requiring optional ownership metadata
+outcome: Open ordinary terminals without requiring optional ownership metadata
+kind: bugfix
+effect: change_source
+owner: terminal-service
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/terminal-pty/src/index.ts
+needs: []
+acceptance:
+- Off without an assigned owner starts in an existing folder despite an unrelated
+  or incomplete WISDOHM database.
+- Guided/Strict and assigned ownership still fail closed on invalid definitions.
+- Ownership data errors are concise and do not misdiagnose PyYAML; existing running
+  sessions and policy stay intact.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/terminal.test.ts

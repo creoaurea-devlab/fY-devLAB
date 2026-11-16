@@ -1,0 +1,37 @@
+schema_version: 1
+id: TH-01
+title: Reconcile deferred roadmap and historical task reports against source evidence
+outcome: Reconcile deferred roadmap and historical task reports against source evidence
+kind: feature
+effect: change_source
+owner: planning-protocol
+slice: TH-S01
+mode: orchestrator
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- .context/state/tasks.json
+- .context/state/progress.json
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/connection.ts
+write:
+- .context/state/tasks.json
+- .context/state/progress.json
+needs: []
+acceptance:
+- Audit the remaining TH-LATER overlaps against TH-MVP and TH-Q; preserve IDs/history
+  and never infer completion solely from source existence.
+- Replace obsolete proposed task-execution/ui-harness paths and unowned checks with
+  exact canonical owner scopes before execution; add or amend registry only in a separately
+  declared governance change if necessary.
+- Reconcile terminal pending/running reports against real current acceptance, and
+  clarify the vague test task AT-834d5097-2bfd-4ed1-b116-6323b939120b without silently
+  deleting or completing it.
+- Use the shared writer for reviewed changes; preserve TH-MVP-4 Review until real
+  acceptance and keep experiments visible unless archive is explicitly chosen.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node scripts/planner.ts snapshot
+  - node --test scripts/planning.test.ts scripts/maintenance.test.ts

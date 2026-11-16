@@ -1,0 +1,27 @@
+schema_version: 1
+id: PLAN-POLL-OPT
+title: Avoid unchanged Planning poll renders
+outcome: Avoid unchanged Planning poll renders
+kind: maintenance
+effect: change_source
+owner: planning-ui
+slice: KAN-S2
+mode: worker
+read:
+- packages/contracts/src/planner.ts
+- plugins/planning-local/src/store.ts
+write:
+- plugins/ui-kanban/src/view.tsx
+needs: []
+acceptance:
+- Unchanged successful polls preserve the rendered snapshot and avoid repeated React
+  commits.
+- New content, permission or ownership changes and error recovery remain visible;
+  older revisions remain rejected.
+- Project switching, cleanup and unsaved editor fields retain existing behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts

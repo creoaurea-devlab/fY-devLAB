@@ -1,0 +1,27 @@
+schema_version: 1
+id: TH-MVP-1
+title: Connect Codex login
+outcome: Connect Codex login
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- plugins/codex-harness/package.json
+- plugins/codex-harness/src/index.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.test.ts
+needs: []
+acceptance:
+- Codex-managed login/cancel and account readiness; credentials stay in Codex. Fake
+  protocol tests cover success/failure; real login requires user.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/*.test.ts

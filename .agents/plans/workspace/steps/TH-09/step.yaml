@@ -1,0 +1,35 @@
+schema_version: 1
+id: TH-09
+title: Discover and explicitly select project skills
+outcome: Discover and explicitly select project skills
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-07
+acceptance:
+- Discover supported project-scoped skills and structured selection; validate selected
+  source and changed/missing paths before dispatch.
+- Distinguish selected from auto-discovered skills and unsupported disabling; test
+  stale listings and unavailable dependencies without mutating global skill files.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

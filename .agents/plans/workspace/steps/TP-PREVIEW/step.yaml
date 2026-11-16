@@ -1,0 +1,29 @@
+schema_version: 1
+id: TP-PREVIEW
+title: Offer project preview setup directly in the unconfigured pane
+outcome: Offer project preview setup directly in the unconfigured pane
+kind: bugfix
+effect: change_source
+owner: preview-view
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/ui-preview/src/pane.tsx
+- plugins/ui-preview/src/preview.css
+- plugins/ui-preview/package.json
+needs:
+- TP-ADOPT
+- TP-OWNERS
+acceptance:
+- Missing descriptors show a working Prepare preview route in the pane instead of
+  manual file instructions.
+- Unknown/invalid setups stay actionable without overwriting existing files.
+- Prepared previews start via the existing shared server owner; retained editor/iframe/terminal
+  identity and focus are preserved.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

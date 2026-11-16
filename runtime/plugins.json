@@ -1,0 +1,13 @@
+{
+  "canvas-store": true,
+  "project-local": true,
+  "terminal-pty": true,
+  "herdr-runtime": true,
+  "rules-local": true,
+  "runtime-control": true,
+  "workspace-search": true,
+  "project-server": true,
+  "preview-inspector": true,
+  "registry-map": true,
+  "transport-http": true
+}

@@ -1,0 +1,33 @@
+schema_version: 1
+id: backend-host
+purpose: Compose existing backend factories through public contracts; own loopback
+  startup, grants and shutdown.
+group: backend
+paths:
+- runtime/launch.ts
+- src/server.ts
+- src/profile.ts
+- runtime/index.ts
+- runtime/server.ts
+- runtime/registry-router.ts
+- runtime/plugins.json
+- runtime/README.md
+- runtime/RESEARCH.md
+public:
+- src/server.ts
+- src/profile.ts
+- runtime/index.ts
+- runtime/registry-router.ts
+uses:
+- herdr-runtime
+- deepseek-runtime
+- runtime-control
+- workspace-search
+- service-contracts
+- terminal-service
+- http-transport
+- rules-service
+- delivery-config
+- project-service
+guidance:
+- .agents/skills/domain-backend/SKILL.md

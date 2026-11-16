@@ -1,0 +1,22 @@
+schema_version: 1
+id: AUD-DELIVERY
+title: Expose reproducible deployment freshness verification
+outcome: Expose reproducible deployment freshness verification
+kind: bugfix
+effect: change_source
+owner: delivery-config
+slice: AUD-S1
+mode: orchestrator
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- package.json
+needs: []
+acceptance:
+- Expose reproducible deployment freshness verification
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run verify:deployment
+spec: docs/plans/audit-remediation/SPEC.md

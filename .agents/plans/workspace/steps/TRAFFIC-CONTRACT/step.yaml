@@ -1,0 +1,26 @@
+schema_version: 1
+id: TRAFFIC-CONTRACT
+title: Define bounded TRAFFIC activity contract
+outcome: Define bounded TRAFFIC activity contract
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+write:
+- packages/contracts/src/rules.ts
+needs:
+- AGENTS-VIEW-SPEC
+acceptance:
+- Rules activity DTO validates bounded sessions and exact claims with explicit observedAt/truncation/error
+  state.
+- Optional Rules service activity method is browser-neutral and does not imply a held
+  claim proves process liveness.
+verification:
+  level: targeted
+  reason: Bind exact ownership and check the changed public seam.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+spec: .agents/plans/workspace/agent-activity/SPEC.md

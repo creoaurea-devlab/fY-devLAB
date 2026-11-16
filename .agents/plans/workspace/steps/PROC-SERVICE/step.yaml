@@ -1,0 +1,33 @@
+schema_version: 1
+id: PROC-SERVICE
+title: Read global queue activity and dispatch explicit triage roles
+outcome: Read global queue activity and dispatch explicit triage roles
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: PROC-S2
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/process.ts
+- .wisdohm/config/agents.yaml
+- plugins/codex-harness/src/connection.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- PROC-PROFILES
+- PROC-CONTRACTS
+acceptance:
+- Global activity returns actual project-tagged active/history runs and queues across
+  the live catalog while preserving existing project lists.
+- Selected-task triage resolves canonical profile and skill text, validates role identity/idempotency,
+  and keeps diagnosis/verification from planner workflow mutations. Profile instructions
+  alone do not enforce filesystem confinement; no autonomous loop or trusted completion
+  is claimed.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/service.test.ts
+  - npx tsc --noEmit

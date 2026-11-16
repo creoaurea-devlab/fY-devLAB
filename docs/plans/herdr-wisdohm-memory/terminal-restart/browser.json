@@ -1,0 +1,11 @@
+{
+  "sessions": 2,
+  "sameProcessIdentities": true,
+  "backgroundJobSurvivedOffline": true,
+  "shellVariablesAndCwd": true,
+  "partialCommandExecutedOnce": true,
+  "retainedOutput": true,
+  "selectedProjectAndTerminalView": true,
+  "selectedPanesAndPreferences": true,
+  "duplicates": 0
+}

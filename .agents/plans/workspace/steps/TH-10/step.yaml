@@ -1,0 +1,35 @@
+schema_version: 1
+id: TH-10
+title: Expose supported tool and permission controls
+outcome: Expose supported tool and permission controls
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-08
+acceptance:
+- Discover effective built-in/MCP tools, auth requirements and supported settings;
+  expose inherited, unsupported or persistent effects explicitly.
+- Apply supported allow/deny choices only; prove denial in fixtures and retain backend
+  ownership of credentials. Defer plugin-install APIs and unneeded frameworks.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

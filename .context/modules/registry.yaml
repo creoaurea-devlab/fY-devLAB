@@ -1,0 +1,853 @@
+{
+  "schema_version": 1,
+  "project": "devlab-minimal-host",
+  "modules": {
+    "agentic-plugin": {
+      "agent": "backend",
+      "paths": [
+        "plugins/agentic/**"
+      ],
+      "purpose": "Own independent bounded agent sessions and immutable host-bound Memory Node workers.",
+      "depends_on": [
+        "automation-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/agentic/src/index.mjs",
+        "plugins/agentic/src/memory/index.mjs"
+      ]
+    },
+    "backend-host": {
+      "agent": "backend",
+      "paths": [
+        "runtime/launch.ts",
+        "src/server.ts",
+        "src/profile.ts",
+        "runtime/index.ts",
+        "runtime/server.ts",
+        "runtime/registry-router.ts",
+        "runtime/plugins.json",
+        "runtime/README.md",
+        "runtime/RESEARCH.md"
+      ],
+      "purpose": "Compose existing backend factories through public contracts; own loopback startup, grants and shutdown.",
+      "depends_on": [
+        "herdr-runtime",
+        "deepseek-runtime",
+        "runtime-control",
+        "workspace-search",
+        "service-contracts",
+        "terminal-service",
+        "http-transport",
+        "rules-service",
+        "delivery-config",
+        "project-service"
+      ],
+      "public_surfaces": [
+        "src/server.ts",
+        "src/profile.ts",
+        "runtime/index.ts",
+        "runtime/registry-router.ts"
+      ]
+    },
+    "browser-plugin": {
+      "agent": "backend",
+      "paths": [
+        "plugins/browser/**"
+      ],
+      "purpose": "Own native Chromium surfaces and deterministic observed-node control; no models or semantic memory.",
+      "depends_on": [
+        "automation-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/browser/src/index.mjs",
+        "plugins/browser/src/native.mjs"
+      ]
+    },
+    "deepseek-runtime": {
+      "agent": "backend",
+      "paths": [
+        "runtime/deepseek/catalogue.ts",
+        "runtime/deepseek/worker.ts",
+        "runtime/deepseek/adapter.ts",
+        "runtime/deepseek/registry-router.ts",
+        "runtime/deepseek/host.ts",
+        "runtime/deepseek/install.ts",
+        "runtime/deepseek/panel.html",
+        "runtime/deepseek/README.md"
+      ],
+      "purpose": "Own the isolated unchanged upstream DeepSeek Harness host, adapters, registry federation and per-package lifecycle testing.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "runtime/deepseek/adapter.ts",
+        "runtime/deepseek/registry-router.ts"
+      ]
+    },
+    "herdr-runtime": {
+      "agent": "backend",
+      "paths": [
+        "plugins/herdr-runtime/support/devlab-herdr-bwrap.apparmor",
+        "plugins/herdr-runtime/support/install-sandbox.sh",
+        "plugins/herdr-runtime/src/index.ts",
+        "plugins/herdr-runtime/src/capsule.ts",
+        "plugins/herdr-runtime/src/protocol.ts",
+        "plugins/herdr-runtime/README.md"
+      ],
+      "purpose": "Own dedicated project Herdr servers, verified containment, private state, public protocol and lifecycle.",
+      "depends_on": [
+        "service-contracts",
+        "terminal-service"
+      ],
+      "public_surfaces": [
+        "plugins/herdr-runtime/src/index.ts"
+      ]
+    },
+    "http-transport": {
+      "agent": "backend",
+      "paths": [
+        "plugins/transport-http/src/herdr.ts",
+        "plugins/transport-http/src/runtime.ts",
+        "plugins/transport-http/package.json",
+        "plugins/transport-http/src/browser.ts",
+        "plugins/transport-http/src/index.ts",
+        "plugins/transport-http/src/projects.ts",
+        "plugins/transport-http/src/servers.ts",
+        "plugins/transport-http/src/rules.ts",
+        "plugins/transport-http/src/terminals.ts"
+      ],
+      "purpose": "Own @devlab/transport-http public capability implementation and its internal lifecycle.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/transport-http/src/index.ts"
+      ]
+    },
+    "project-service": {
+      "agent": "backend",
+      "paths": [
+        "plugins/project-local/package.json",
+        "plugins/project-local/PROVENANCE.json",
+        "plugins/project-local/src/index.ts",
+        "plugins/project-local/src/template.ts",
+        "plugins/project-local/src/fork.ts",
+        "plugins/project-local/src/preimp.ts"
+      ],
+      "purpose": "Own confined local project files and isolated development copies with durable source provenance.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/project-local/src/index.ts"
+      ]
+    },
+    "rules-service": {
+      "agent": "backend",
+      "paths": [
+        "plugins/rules-local/package.json",
+        "plugins/rules-local/README.md",
+        "plugins/rules-local/src/index.ts",
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/rules-local/src/read-memory.py"
+      ],
+      "purpose": "Observe project rule sources and evidence without executing project code or mutating operational memory.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/rules-local/src/index.ts"
+      ]
+    },
+    "runtime-control": {
+      "agent": "backend",
+      "paths": [
+        "runtime/plugins/control.ts"
+      ],
+      "purpose": "Own restart-aware runtime selection, bounded local diagnostics and configuration rewind.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "runtime/plugins/control.ts"
+      ]
+    },
+    "terminal-service": {
+      "agent": "backend",
+      "paths": [
+        "plugins/terminal-pty/native/ownership-sandbox.c",
+        "plugins/terminal-pty/package.json",
+        "plugins/terminal-pty/src/confinement.ts",
+        "plugins/terminal-pty/src/index.ts",
+        "plugins/terminal-pty/src/persistence.ts"
+      ],
+      "purpose": "Own real terminal processes, immutable ownership policy, confinement, replay, persistence and cleanup.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/terminal-pty/src/index.ts"
+      ]
+    },
+    "workspace-search": {
+      "agent": "backend",
+      "paths": [
+        "runtime/plugins/workspace-search.ts"
+      ],
+      "purpose": "Own bounded cancellable read-only search through admitted project service APIs.",
+      "depends_on": [
+        "service-contracts",
+        "project-service",
+        "runtime-control"
+      ],
+      "public_surfaces": [
+        "runtime/plugins/workspace-search.ts"
+      ]
+    },
+    "browser-bootstrap": {
+      "agent": "browser",
+      "paths": [
+        "src/main.ts",
+        "src/workspace.ts"
+      ],
+      "purpose": "Own React startup, existing ProjectWorkspace, per-project Canvas owners, PreviewWorkspace synchronization and exact cleanup.",
+      "depends_on": [
+        "workspace-ui",
+        "preview-client",
+        "browser-client",
+        "service-contracts",
+        "preview-view",
+        "canvas-ui",
+        "ui-contracts",
+        "project-view",
+        "hood-view"
+      ],
+      "public_surfaces": [
+        "src/main.ts",
+        "src/workspace.ts"
+      ]
+    },
+    "browser-client": {
+      "agent": "browser",
+      "paths": [
+        "packages/client/client.ts",
+        "packages/client/package.json",
+        "packages/client/terminals.ts",
+        "packages/client/planning.ts",
+        "packages/client/harness.ts"
+      ],
+      "purpose": "Own @devlab/client public capability implementation and its internal lifecycle.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "packages/client/client.ts"
+      ]
+    },
+    "canvas-ui": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-canvas/package.json",
+        "plugins/ui-canvas/src/canvas.css",
+        "plugins/ui-canvas/src/index.ts",
+        "plugins/ui-canvas/src/view.tsx",
+        "plugins/ui-canvas/src/workspace.ts"
+      ],
+      "purpose": "Own @devlab/ui-canvas public capability implementation and its internal lifecycle.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-canvas/src/index.ts"
+      ]
+    },
+    "hood-view": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-hood/src/runtime.tsx",
+        "plugins/ui-hood/PROVENANCE.json",
+        "plugins/ui-hood/package.json",
+        "plugins/ui-hood/src/hood.css",
+        "plugins/ui-hood/src/index.ts",
+        "plugins/ui-hood/src/view.tsx",
+        "plugins/ui-hood/src/anatomy.tsx",
+        "plugins/ui-hood/src/anatomy-model.ts",
+        "plugins/ui-hood/src/plugins.tsx"
+      ],
+      "purpose": "Own layered app anatomy, source graph and plugin inspection through public read-only seams.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-hood/src/index.ts"
+      ]
+    },
+    "memory-prototype": {
+      "agent": "browser",
+      "paths": [
+        "_prototype/index.html",
+        "_prototype/app.js",
+        "_prototype/style.css",
+        "_prototype/memory.js",
+        "_prototype/data/memory-data.js"
+      ],
+      "purpose": "Own the standalone Agentic Memory Layer prototype and its existing view integration.",
+      "depends_on": [],
+      "public_surfaces": [
+        "_prototype/memory.js"
+      ]
+    },
+    "preview-client": {
+      "agent": "browser",
+      "paths": [
+        "src/preview-client.ts"
+      ],
+      "purpose": "Adapt public ProjectServers unconfigured-state guidance to this manual-setup host; preserve all other service state and errors.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "src/preview-client.ts"
+      ]
+    },
+    "preview-view": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-preview/package.json",
+        "plugins/ui-preview/PROVENANCE.json",
+        "plugins/ui-preview/src/devtools.tsx",
+        "plugins/ui-preview/src/fullscreen.ts",
+        "plugins/ui-preview/src/index.ts",
+        "plugins/ui-preview/src/inspector.tsx",
+        "plugins/ui-preview/src/layout.tsx",
+        "plugins/ui-preview/src/pane.tsx",
+        "plugins/ui-preview/src/prototype.tsx",
+        "plugins/ui-preview/src/preferences.ts",
+        "plugins/ui-preview/src/preview.css",
+        "plugins/ui-preview/src/server-state.ts",
+        "plugins/ui-preview/src/view.tsx",
+        "plugins/ui-preview/src/workspace.ts",
+        "plugins/ui-preview/src/elements.tsx",
+        "plugins/ui-preview/src/element-brief.ts"
+      ],
+      "purpose": "Own retained editor/preview split, per-project first-use ratio and pointer/keyboard responsive resizing through existing preview capability.",
+      "depends_on": [
+        "ui-contracts",
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-preview/src/index.ts",
+        "plugins/ui-preview/src/view.tsx"
+      ]
+    },
+    "project-view": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-projects/PROVENANCE.json",
+        "plugins/ui-projects/package.json",
+        "plugins/ui-projects/src/build.tsx",
+        "plugins/ui-projects/src/editor.tsx",
+        "plugins/ui-projects/src/index.ts",
+        "plugins/ui-projects/src/preview-groups.tsx",
+        "plugins/ui-projects/src/projects.css",
+        "plugins/ui-projects/src/view.tsx",
+        "plugins/ui-projects/src/workspace.ts"
+      ],
+      "purpose": "Own retained project explorer, file tree, editor/build and sidebar capability composition.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-projects/src/index.ts"
+      ]
+    },
+    "rules-ui": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-rules/package.json",
+        "plugins/ui-rules/src/index.ts",
+        "plugins/ui-rules/src/view.tsx",
+        "plugins/ui-rules/src/rules.css",
+        "plugins/ui-rules/src/harness.tsx",
+        "plugins/ui-rules/src/memory.tsx",
+        "plugins/ui-rules/src/use-snapshot.ts",
+        "plugins/ui-rules/src/memory.css"
+      ],
+      "purpose": "Present read-only rule inspection and compact WISDOHM controls for reviewed setup and user-triggered, project-scoped Codex healing with observed health.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-rules/src/index.ts"
+      ]
+    },
+    "terminal-view": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-terminal/package.json",
+        "plugins/ui-terminal/src/index.ts",
+        "plugins/ui-terminal/src/input.ts",
+        "plugins/ui-terminal/src/terminal.css",
+        "plugins/ui-terminal/src/view.tsx"
+      ],
+      "purpose": "Own @devlab/ui-terminal public capability implementation and its internal lifecycle.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-terminal/src/index.ts"
+      ]
+    },
+    "workspace-shell": {
+      "agent": "browser",
+      "paths": [
+        "plugins/ui-shell/src/herdr.tsx",
+        "plugins/ui-shell/package.json",
+        "plugins/ui-shell/src/devlab.css",
+        "plugins/ui-shell/src/creo-aurea-devlab.png",
+        "plugins/ui-shell/src/index.ts",
+        "plugins/ui-shell/src/servers.tsx",
+        "plugins/ui-shell/src/terminals.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-shell/src/workspace-focus.ts",
+        "plugins/ui-shell/src/controls.tsx"
+      ],
+      "purpose": "Own workspace surfaces and terminal selection, retained panes, dividers and layout.",
+      "depends_on": [
+        "service-contracts",
+        "ui-contracts"
+      ],
+      "public_surfaces": [
+        "plugins/ui-shell/src/index.ts"
+      ]
+    },
+    "workspace-ui": {
+      "agent": "browser",
+      "paths": [
+        "src/shell.tsx",
+        "src/contributions.ts",
+        "src/style.css"
+      ],
+      "purpose": "Compose the exact existing full-app UI contributions and host shell, using public capability packages and original global styles.",
+      "depends_on": [
+        "workspace-shell",
+        "canvas-ui",
+        "terminal-view",
+        "ui-contracts",
+        "preview-view",
+        "rules-ui",
+        "project-view",
+        "hood-view"
+      ],
+      "public_surfaces": [
+        "src/shell.tsx",
+        "src/contributions.ts"
+      ]
+    },
+    "automation-contracts": {
+      "agent": "contracts",
+      "paths": [
+        "packages/automation-contracts/src/**"
+      ],
+      "purpose": "Own neutral versioned Browser and Agentic contracts without runtime services.",
+      "depends_on": [],
+      "public_surfaces": [
+        "packages/automation-contracts/src/browser.ts"
+      ]
+    },
+    "service-contracts": {
+      "agent": "contracts",
+      "paths": [
+        "packages/contracts/src/herdr.ts",
+        "packages/contracts/src/deepseek.ts",
+        "packages/contracts/src/runtime.ts",
+        "packages/contracts/package.json",
+        "packages/contracts/src/architecture.ts",
+        "packages/contracts/src/browser.ts",
+        "packages/contracts/src/index.ts",
+        "packages/contracts/src/preview.ts",
+        "packages/contracts/src/projects.ts",
+        "packages/contracts/src/preimp.ts",
+        "packages/contracts/src/servers.ts",
+        "packages/contracts/src/terminal.ts",
+        "packages/contracts/src/workspace.ts",
+        "packages/contracts/src/rules.ts",
+        "packages/contracts/src/ownership.ts"
+      ],
+      "purpose": "Own @devlab/contracts public capability implementation and its internal lifecycle.",
+      "depends_on": [],
+      "public_surfaces": [
+        "packages/contracts/src/index.ts"
+      ]
+    },
+    "ui-contracts": {
+      "agent": "contracts",
+      "paths": [
+        "packages/ui-contracts/package.json",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "purpose": "Own @devlab/ui-contracts public capability implementation and its internal lifecycle.",
+      "depends_on": [
+        "service-contracts"
+      ],
+      "public_surfaces": [
+        "packages/ui-contracts/src/index.ts"
+      ]
+    },
+    "governance-runtime": {
+      "agent": "coordination",
+      "paths": [
+        ".wisdohm/orchestration.py",
+        ".wisdohm/config/agents.yaml",
+        ".agents/skills/wisdohm-orchestrate/SKILL.md",
+        ".agents/skills/wisdohm-owner/SKILL.md",
+        ".wisdohm/BOOT.md",
+        ".wisdohm/common.py",
+        ".wisdohm/config/project.yaml",
+        ".wisdohm/journey.yaml",
+        ".wisdohm/policy.yaml",
+        ".wisdohm/protocols/maintenance.md",
+        ".wisdohm/protocols/rules.md",
+        ".wisdohm/protocols/updates.md",
+        ".wisdohm/router.py",
+        ".wisdohm/session.py",
+        ".wisdohm/store.py",
+        ".agents/skills/spec-agent/SKILL.md",
+        ".wisdohm/planning.py",
+        ".wisdohm/routing.py",
+        ".wisdohm/workspaces.py",
+        ".wisdohm/config/owner-profiles.yaml",
+        ".agents/agents/**",
+        ".agents/workflows/**",
+        ".agents/ownership/**",
+        ".agents/runtime/definitions.py",
+        ".agents/skills/domain-source-of-truth/SKILL.md",
+        ".agents/skills/domain-backend/SKILL.md",
+        ".agents/skills/domain-browser/SKILL.md",
+        ".agents/skills/domain-contracts/SKILL.md",
+        ".agents/skills/domain-verification/SKILL.md",
+        ".agents/skills/domain-delivery/SKILL.md",
+        ".agents/runtime/router.py",
+        ".agents/runtime/session.py",
+        ".agents/runtime/common.py",
+        ".agents/runtime/planning.py",
+        ".agents/runtime/store.py",
+        ".agents/runtime/routing.py",
+        ".agents/runtime/workspaces.py",
+        ".agents/runtime/orchestration.py",
+        ".agents/data/**",
+        ".agents/BOOT.md",
+        ".agents/policy.yaml",
+        ".agents/protocols/rules.md",
+        ".agents/protocols/work.md",
+        ".agents/protocols/updates.md",
+        "docs/history/updates-before-simplification-20261115.md",
+        ".agents/protocols/maintenance.md",
+        ".agents/project.yaml",
+        ".wisdohm/protocols/work.md",
+        ".agents/skills/populate-context/SKILL.md"
+      ],
+      "purpose": "Own planning/history data adapters and reviewed local guidance. The automatic Codex executor is owned separately by codex-harness in src/runtime.",
+      "depends_on": [],
+      "public_surfaces": [
+        ".agents/data/definitions.py",
+        ".wisdohm/router.py",
+        ".agents/runtime/router.py",
+        ".agents/runtime/store.py",
+        ".agents/runtime/common.py",
+        ".agents/runtime/definitions.py"
+      ]
+    },
+    "planning-protocol": {
+      "agent": "coordination",
+      "paths": [
+        "_preimp/README.md",
+        ".context/protocols/plan.md",
+        ".context/state/tasks.json",
+        ".context/state/progress.json",
+        "AGENTS.md",
+        ".agents/DEVLAB.md",
+        ".agents/MEMORY.md",
+        "docs/plans/simplification.md",
+        "docs/plans/herdr-wisdohm-memory.md",
+        "docs/plans/herdr-wisdohm-memory/**",
+        ".context/state/index.json",
+        ".context/protocols/maintenance.md",
+        ".context/modules/registry.yaml",
+        ".context/session.py",
+        ".context/tests/test_rules.py",
+        ".context/tests/test_memory.py",
+        "docs/plans/audit-remediation-20261103/**",
+        "_AUDIT/05-INDEPENDENT-REVIEW.md",
+        "_AUDIT/06-WISDOHM-27-REINSTALL.md",
+        "docs/rules/WISDOHM-ADAPTATIONS.json",
+        "docs/rules/WISDOHM-MIGRATION.md",
+        ".context/config/project.yaml",
+        ".agents/README.md",
+        ".agents/guides/**",
+        ".agents/templates/**",
+        ".agents/plans/**"
+      ],
+      "purpose": "Own current project memory, simplification planning and agent guidance; preserve historical planning metadata without resuming its executor.",
+      "depends_on": [],
+      "public_surfaces": [
+        ".context/protocols/plan.md"
+      ]
+    },
+    "process-definition": {
+      "agent": "coordination",
+      "paths": [
+        "devlab.process.json"
+      ],
+      "purpose": "Own the declarative project process graph; stage, step and agent metadata never execute commands.",
+      "depends_on": [],
+      "public_surfaces": [
+        "devlab.process.json"
+      ]
+    },
+    "rules-bootstrap": {
+      "agent": "coordination",
+      "paths": [
+        "scripts/wisdohm26-sync.py",
+        "scripts/wisdohm26-bootstrap.py",
+        "scripts/wisdohm27-reinstall.py"
+      ],
+      "purpose": "Explicit administrative import of historical facts and current reviewed provenance without guarded completion claims.",
+      "depends_on": [
+        "governance-runtime"
+      ],
+      "public_surfaces": [
+        "scripts/wisdohm26-bootstrap.py"
+      ]
+    },
+    "automation-desktop": {
+      "agent": "delivery",
+      "paths": [
+        "apps/automation-desktop/**"
+      ],
+      "purpose": "Compose the two automation features in an owned standalone desktop host; preserve DevLab live owners.",
+      "depends_on": [
+        "browser-plugin",
+        "agentic-plugin",
+        "automation-contracts",
+        "service-contracts"
+      ],
+      "public_surfaces": []
+    },
+    "delivery-config": {
+      "agent": "delivery",
+      "paths": [
+        ".gitignore",
+        "_LAB/README.md",
+        "package.json",
+        "package-lock.json",
+        "vite.config.ts",
+        "README.md",
+        "docs/history/README-before-simplification-20261115.md",
+        "handover.md",
+        "vendor/full-ui/catalog.json",
+        "vendor/runtime/catalog.json",
+        ".npmrc",
+        "devlab.preview.json",
+        "tsconfig.json",
+        "index.html",
+        "docs/refactor-provenance.json"
+      ],
+      "purpose": "Own dependency composition, portable runtime manifests and build configuration; keep implementation in capability modules.",
+      "depends_on": [],
+      "public_surfaces": [
+        "package.json",
+        "vite.config.ts",
+        "devlab.preview.json"
+      ]
+    },
+    "source-maps": {
+      "agent": "delivery",
+      "paths": [
+        "scripts/architecture.ts"
+      ],
+      "purpose": "Generate source-backed architecture from actual host code and exact installed UI/package sources and manifests.",
+      "depends_on": [
+        "project-service",
+        "backend-host",
+        "browser-bootstrap",
+        "workspace-ui",
+        "preview-client"
+      ],
+      "public_surfaces": [
+        "scripts/architecture.ts"
+      ]
+    },
+    "ui-development": {
+      "agent": "delivery",
+      "paths": [
+        "scripts/dev-ui.mjs",
+        "scripts/prototype.mjs"
+      ],
+      "purpose": "Own explicitly attached Vite UI development process/listener and cleanup; never own or restart the backend.",
+      "depends_on": [],
+      "public_surfaces": [
+        "scripts/dev-ui.mjs",
+        "scripts/prototype.mjs"
+      ]
+    },
+    "verification": {
+      "agent": "verification",
+      "paths": [
+        "scripts/herdr.test.ts",
+        "scripts/herdr-browser.mjs",
+        "scripts/runtime-integration.test.ts",
+        "scripts/deepseek-runtime.test.ts",
+        "scripts/deepseek-runtime-browser.mjs",
+        "scripts/runtime-plugins.test.ts",
+        "scripts/runtime-plugins-browser.mjs",
+        "scripts/preview-fullscreen.test.ts",
+        "scripts/preview-compact-browser.mjs",
+        "scripts/project-groups-browser.mjs",
+        "scripts/terminal-restart-browser.mjs",
+        "scripts/runtime-profile.test.ts",
+        "scripts/preimp.test.ts",
+        "scripts/preimp-browser.mjs",
+        "scripts/agentic-memory-binding.test.mjs",
+        "scripts/agentic-sessions.test.mjs",
+        "scripts/agentic-boundaries.test.mjs",
+        "scripts/agentic-channel.test.mjs",
+        "scripts/agentic-standalone.test.mjs",
+        "scripts/agentic-browser-native.test.mjs",
+        "scripts/fixtures/agentic-browser/**",
+        "scripts/terminal-ownership-browser.mjs",
+        "scripts/terminal-preview-browser.py",
+        "scripts/wisdohm26-sync.test.py",
+        "scripts/browser-fixture.ts",
+        "scripts/host.test.ts",
+        "scripts/setup-terminal.mjs",
+        "scripts/terminal-browser.py",
+        "scripts/traffic-browser.py",
+        "scripts/terminal-confinement.test.ts",
+        "scripts/terminal-fixture.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/terminal.test.ts",
+        "scripts/ui-copy-browser.py",
+        "scripts/verify-packages.mjs",
+        "scripts/planning-fixture.ts",
+        "scripts/planning.test.ts",
+        "scripts/planning-browser.py",
+        "scripts/terminal-lease.test.ts",
+        "scripts/terminal-lease-fixture.ts",
+        "scripts/terminal-lifecycle-browser.py",
+        "scripts/maintenance.test.ts",
+        "scripts/verify-deployment.ts",
+        "scripts/rules.test.ts",
+        "scripts/rules-browser.py",
+        "scripts/wisdohm26-bootstrap.test.py",
+        "scripts/wisdohm26-rules.test.py",
+        "scripts/ui-element-brief.test.ts",
+        "scripts/dev-ui.test.ts",
+        "scripts/ui-elements.test.ts",
+        "scripts/ui-elements-browser.py",
+        "scripts/ui-elements-fixture.ts",
+        "scripts/prototype.test.ts",
+        "scripts/wisdohm-ui-browser.py",
+        "scripts/wisdohm-ui-hmr.py",
+        "scripts/kanban-disclosure-browser.py",
+        "scripts/wisdom.test.ts",
+        "scripts/spec-agent.test.ts",
+        "scripts/spec-agent-browser.py",
+        "scripts/wisdom-setup-browser.py",
+        "scripts/wisdom-healing.test.ts",
+        "scripts/wisdom-healing-browser.py",
+        "scripts/fixtures/wisdom-legacy.json",
+        "scripts/harness-http.test.ts",
+        "scripts/process.test.ts",
+        "scripts/project-development.test.ts",
+        "scripts/project-thread-delete.test.ts",
+        "scripts/project-workspace.test.ts",
+        "scripts/planning-process-browser.py",
+        "scripts/wisdohm27.test.py",
+        "scripts/rules27.test.py",
+        "scripts/terminal-relocation.test.ts",
+        "scripts/runtime-startup.test.ts",
+        "scripts/client-lifecycle.test.ts",
+        "scripts/runtime-lifecycle.test.ts",
+        "scripts/wisdohm27-integration.test.py",
+        "scripts/agent-home-runtime.test.py",
+        "scripts/agent-home.test.ts",
+        "scripts/agent-definitions.test.ts",
+        "scripts/agent-home-fixture.py",
+        "scripts/anatomy.test.ts",
+        "scripts/boundaries.test.ts",
+        "scripts/anatomy-browser.mjs",
+        "scripts/hood-minimap-browser.mjs"
+      ],
+      "purpose": "Check provenance, contracts, disposable host persistence, four live previews and resource cleanup.",
+      "depends_on": [
+        "herdr-runtime",
+        "hood-view",
+        "delivery-config",
+        "project-view",
+        "project-service",
+        "backend-host",
+        "browser-bootstrap",
+        "workspace-ui",
+        "source-maps",
+        "browser-client",
+        "preview-view",
+        "terminal-service",
+        "service-contracts",
+        "http-transport",
+        "rules-service",
+        "ui-development",
+        "ui-contracts",
+        "rules-ui"
+      ],
+      "public_surfaces": [
+        "scripts/wisdohm26-sync.test.py",
+        "scripts/browser-fixture.ts",
+        "scripts/host.test.ts",
+        "scripts/setup-terminal.mjs",
+        "scripts/terminal-browser.py",
+        "scripts/terminal-confinement.test.ts",
+        "scripts/terminal-fixture.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/terminal.test.ts",
+        "scripts/ui-copy-browser.py",
+        "scripts/verify-packages.mjs",
+        "scripts/planning-fixture.ts",
+        "scripts/planning.test.ts",
+        "scripts/planning-browser.py",
+        "scripts/terminal-lease.test.ts",
+        "scripts/terminal-lease-fixture.ts",
+        "scripts/terminal-lifecycle-browser.py",
+        "scripts/maintenance.test.ts",
+        "scripts/verify-deployment.ts",
+        "scripts/rules.test.ts",
+        "scripts/rules-browser.py",
+        "scripts/wisdohm26-bootstrap.test.py",
+        "scripts/wisdohm26-rules.test.py",
+        "scripts/ui-element-brief.test.ts",
+        "scripts/dev-ui.test.ts",
+        "scripts/ui-elements.test.ts",
+        "scripts/ui-elements-browser.py",
+        "scripts/ui-elements-fixture.ts",
+        "scripts/prototype.test.ts",
+        "scripts/wisdohm-ui-browser.py",
+        "scripts/wisdohm-ui-hmr.py",
+        "scripts/kanban-disclosure-browser.py",
+        "scripts/wisdom.test.ts",
+        "scripts/spec-agent.test.ts",
+        "scripts/spec-agent-browser.py",
+        "scripts/wisdom-setup-browser.py",
+        "scripts/wisdom-healing.test.ts",
+        "scripts/wisdom-healing-browser.py",
+        "scripts/fixtures/wisdom-legacy.json",
+        "scripts/harness-http.test.ts"
+      ]
+    }
+  }
+}

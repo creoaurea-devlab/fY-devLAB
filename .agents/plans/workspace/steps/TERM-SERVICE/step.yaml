@@ -1,0 +1,28 @@
+schema_version: 1
+id: TERM-SERVICE
+title: Terminal SERVICE
+outcome: Terminal SERVICE
+kind: feature
+effect: change_source
+owner: terminal-service
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+needs:
+- TERM-CONFINEMENT
+acceptance:
+- A01
+- A07
+- A08
+- A09
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

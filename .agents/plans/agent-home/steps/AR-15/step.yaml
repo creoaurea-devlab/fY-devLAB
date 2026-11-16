@@ -1,0 +1,27 @@
+schema_version: 1
+id: AR-15
+title: Resolve project-copy ownership from the selected definition snapshot
+outcome: Resolve project-copy ownership from the selected definition snapshot
+kind: feature
+effect: change_source
+owner: project-service
+slice: AGH-S2
+mode: worker
+read:
+- plugins/project-local/src/fork.ts
+- packages/contracts/src/ownership.ts
+write:
+- plugins/project-local/src/fork.ts
+needs:
+- AR-10
+acceptance:
+- 'AH-06: Development-copy owner/path lookup uses the same selected capability generation
+  as path routing.'
+- 'AH-09: Fork provenance, source isolation, protected backup roots and stale-write
+  errors retain their behavior.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/project-development.test.ts scripts/project-thread-delete.test.ts
+spec: .agents/plans/agent-home/steps/AR-15/SPEC.md

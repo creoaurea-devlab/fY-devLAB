@@ -1,0 +1,21 @@
+schema_version: 1
+id: hood-view
+purpose: Own layered app anatomy, source graph and plugin inspection through public read-only seams.
+group: browser
+paths:
+- plugins/ui-hood/src/runtime.tsx
+- plugins/ui-hood/PROVENANCE.json
+- plugins/ui-hood/package.json
+- plugins/ui-hood/src/hood.css
+- plugins/ui-hood/src/index.ts
+- plugins/ui-hood/src/view.tsx
+- plugins/ui-hood/src/anatomy.tsx
+- plugins/ui-hood/src/anatomy-model.ts
+- plugins/ui-hood/src/plugins.tsx
+public:
+- plugins/ui-hood/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

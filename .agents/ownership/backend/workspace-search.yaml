@@ -1,0 +1,14 @@
+schema_version: 1
+id: workspace-search
+purpose: Own bounded cancellable read-only search through admitted project service APIs.
+group: backend
+paths:
+- runtime/plugins/workspace-search.ts
+public:
+- runtime/plugins/workspace-search.ts
+uses:
+- service-contracts
+- project-service
+- runtime-control
+guidance:
+- .agents/skills/domain-backend/SKILL.md

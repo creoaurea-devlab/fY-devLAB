@@ -1,0 +1,125 @@
+schema_version: 1
+id: DA-BROWSER
+title: Audit browser state, interactions, capability boundaries and recovery
+outcome: Audit browser state, interactions, capability boundaries and recovery
+kind: audit
+effect: plan
+owner: workspace-shell
+slice: DA-S1
+mode: worker
+read:
+- packages/client/client.ts
+- packages/client/harness.ts
+- packages/client/package.json
+- packages/client/planning.ts
+- packages/client/terminals.ts
+- packages/ui-contracts/package.json
+- packages/ui-contracts/src/index.ts
+- plugins/ui-canvas/package.json
+- plugins/ui-canvas/src/canvas.css
+- plugins/ui-canvas/src/index.ts
+- plugins/ui-canvas/src/view.tsx
+- plugins/ui-canvas/src/workspace.ts
+- plugins/ui-hood/PROVENANCE.json
+- plugins/ui-hood/package.json
+- plugins/ui-hood/src/graph.ts
+- plugins/ui-hood/src/hood.css
+- plugins/ui-hood/src/index.ts
+- plugins/ui-hood/src/layout.ts
+- plugins/ui-hood/src/view.tsx
+- plugins/ui-kanban/package.json
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/forms.tsx
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/index.ts
+- plugins/ui-kanban/src/model.ts
+- plugins/ui-kanban/src/planning.css
+- plugins/ui-kanban/src/process.css
+- plugins/ui-kanban/src/process.tsx
+- plugins/ui-kanban/src/prototype-variants.tsx
+- plugins/ui-kanban/src/prototype.css
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-preview/PROVENANCE.json
+- plugins/ui-preview/package.json
+- plugins/ui-preview/src/devtools.tsx
+- plugins/ui-preview/src/element-brief.ts
+- plugins/ui-preview/src/elements.tsx
+- plugins/ui-preview/src/fullscreen.ts
+- plugins/ui-preview/src/index.ts
+- plugins/ui-preview/src/inspector.tsx
+- plugins/ui-preview/src/layout.tsx
+- plugins/ui-preview/src/pane.tsx
+- plugins/ui-preview/src/preferences.ts
+- plugins/ui-preview/src/preview.css
+- plugins/ui-preview/src/server-state.ts
+- plugins/ui-preview/src/view.tsx
+- plugins/ui-preview/src/workspace.ts
+- plugins/ui-projects/PROVENANCE.json
+- plugins/ui-projects/package.json
+- plugins/ui-projects/src/adoption.tsx
+- plugins/ui-projects/src/build.tsx
+- plugins/ui-projects/src/editor.tsx
+- plugins/ui-projects/src/index.ts
+- plugins/ui-projects/src/preview-groups.tsx
+- plugins/ui-projects/src/projects.css
+- plugins/ui-projects/src/view.tsx
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-rules/package.json
+- plugins/ui-rules/src/controls.tsx
+- plugins/ui-rules/src/harness.tsx
+- plugins/ui-rules/src/healing-control.tsx
+- plugins/ui-rules/src/healing.ts
+- plugins/ui-rules/src/index.ts
+- plugins/ui-rules/src/memory.css
+- plugins/ui-rules/src/memory.tsx
+- plugins/ui-rules/src/rules.css
+- plugins/ui-rules/src/use-snapshot.ts
+- plugins/ui-rules/src/view.tsx
+- plugins/ui-shell/package.json
+- plugins/ui-shell/src/devlab.css
+- plugins/ui-shell/src/index.ts
+- plugins/ui-shell/src/servers.tsx
+- plugins/ui-shell/src/terminals.tsx
+- plugins/ui-shell/src/traffic.tsx
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/workspace-focus.ts
+- plugins/ui-spec/package.json
+- plugins/ui-spec/src/index.ts
+- plugins/ui-spec/src/model.ts
+- plugins/ui-spec/src/spec.css
+- plugins/ui-spec/src/view.tsx
+- plugins/ui-terminal/package.json
+- plugins/ui-terminal/src/index.ts
+- plugins/ui-terminal/src/input.ts
+- plugins/ui-terminal/src/terminal.css
+- plugins/ui-terminal/src/view.tsx
+- plugins/ui-whiteboard/package.json
+- plugins/ui-whiteboard/src/document.test.ts
+- plugins/ui-whiteboard/src/document.ts
+- plugins/ui-whiteboard/src/index.ts
+- plugins/ui-whiteboard/src/view.tsx
+- plugins/ui-whiteboard/src/whiteboard.css
+- plugins/ui-whiteboard/src/workspace.test.ts
+- plugins/ui-whiteboard/src/workspace.ts
+- src/contributions.ts
+- src/main.ts
+- src/preview-client.ts
+- src/profile.ts
+- src/runtime.ts
+- src/server.ts
+- src/shell.tsx
+- src/style.css
+write: []
+needs: []
+acceptance:
+- Inspect real consumers and source, distinguish reproduced/source-supported/unresolved
+  findings with exact lines, trigger, consequence and owner.
+- Report relevant checks and scope limits; preserve source, live user data, retained
+  resources, running/review claims and immutable editions.
+- Assess declared engineering rules, avoid speculative refactors or unverified compliance
+  claims.
+verification:
+  level: review
+  reason: Source-backed audit with disposable reproductions where useful; does not
+    authorize fixes.
+  checks: []

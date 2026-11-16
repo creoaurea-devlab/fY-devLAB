@@ -1,0 +1,37 @@
+schema_version: 1
+id: planning-protocol
+purpose: Own current project memory, simplification planning and agent guidance;
+  preserve historical planning metadata without resuming its executor.
+group: coordination
+paths:
+- _preimp/README.md
+- .context/protocols/plan.md
+- .context/state/tasks.json
+- .context/state/progress.json
+- AGENTS.md
+- .agents/DEVLAB.md
+- .agents/MEMORY.md
+- docs/plans/simplification.md
+- docs/plans/herdr-wisdohm-memory.md
+- docs/plans/herdr-wisdohm-memory/**
+- .context/state/index.json
+- .context/protocols/maintenance.md
+- .context/modules/registry.yaml
+- .context/session.py
+- .context/tests/test_rules.py
+- .context/tests/test_memory.py
+- docs/plans/audit-remediation-20261103/**
+- _AUDIT/05-INDEPENDENT-REVIEW.md
+- _AUDIT/06-WISDOHM-27-REINSTALL.md
+- docs/rules/WISDOHM-ADAPTATIONS.json
+- docs/rules/WISDOHM-MIGRATION.md
+- .context/config/project.yaml
+- .agents/README.md
+- .agents/guides/**
+- .agents/templates/**
+- .agents/plans/**
+public:
+- .context/protocols/plan.md
+uses: []
+guidance:
+- .agents/skills/domain-source-of-truth/SKILL.md

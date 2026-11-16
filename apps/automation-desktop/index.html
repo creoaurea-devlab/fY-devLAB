@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'">
+  <title>Browser + Agentic</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header id="app-header"><strong>Browser</strong><select id="pane-picker" aria-label="Select browser session"></select><span id="mode"></span><span id="status" role="status"></span><button id="drawer-toggle" aria-expanded="false">Task & memory</button></header>
+  <main><section id="workspace" aria-label="Native browser panes"></section>
+    <aside id="drawer" hidden aria-label="Selected agent session">
+      <header><strong id="session-label">Session</strong><button id="drawer-close" aria-label="Close task drawer">×</button></header>
+      <p id="memory-label"></p>
+      <p id="provider-status" role="status">Checking installed Codex…</p>
+      <button id="codex-login" type="button" hidden>Sign in to Codex</button>
+      <form id="task-form"><label>Task<textarea id="task" rows="4" maxlength="16000" required placeholder="What should this session do?"></textarea></label>
+        <label>Model<select id="model" required><option value="">Loading models…</option></select></label>
+        <label>Maximum duration<select id="duration"><option value="60000">1 minute</option><option value="1800000">30 minutes</option></select></label>
+        <label>Maximum tool calls<input id="max-tools" type="number" min="1" max="200" step="1" value="10" required></label>
+        <p class="muted">Codex uses this pane’s browser and private memory. Shell and filesystem tools are unavailable.</p>
+        <div class="actions"><button id="start" aria-describedby="provider-status" disabled>Run task</button><button id="stop" type="button">Stop</button></div>
+      </form>
+      <output id="run-status" aria-live="polite">No active run</output><pre id="run-result" aria-label="Agent reply"></pre>
+      <details id="run-activity" hidden open><summary>Tool activity</summary><ol id="run-events" aria-label="Tool activity"></ol></details>
+      <details open><summary>Personal memory</summary>
+        <form id="memory-form"><label>Key<input id="memory-key" maxlength="240" required></label><label>Memory<textarea id="memory-text" rows="3" maxlength="16000" required></textarea></label>
+          <div class="actions"><button>Remember</button><button type="button" id="recall">Refresh</button></div>
+        </form>
+        <p class="muted">Private to this profile. Memories are evidence, never permissions. Shared-procedure review is unavailable in this slice.</p>
+        <div id="memories"></div>
+      </details>
+    </aside>
+  </main>
+  <script type="module" src="./renderer.mjs"></script>
+</body>
+</html>

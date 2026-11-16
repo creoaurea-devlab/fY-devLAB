@@ -1,0 +1,34 @@
+schema_version: 1
+id: AR-35
+title: Reconcile source-backed memory and combined handover
+outcome: Reconcile source-backed memory and combined handover
+kind: bugfix
+effect: change_source
+owner: planning-protocol
+slice: ARSC-M4-S1
+mode: worker
+read:
+- docs/rules/WISDOHM-MIGRATION.md
+- docs/rules/WISDOHM-ADAPTATIONS.json
+- docs/plans/audit-remediation-20261103/tickets.json
+write:
+- docs/rules/WISDOHM-MIGRATION.md
+- docs/rules/WISDOHM-ADAPTATIONS.json
+needs:
+- AR-34
+acceptance:
+- 'AC-10: Combined checks bind current source and integration acceptance, with failures
+  and limitations preserved.'
+- 'AC-03: Recovery locations and tested restore procedure are documented, without
+  rewriting historical provenance.'
+- 'AC-10: Four-group review, changelog/progress and affected SQL facts are recorded
+  before guarded finish.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check:wisdom
+  - npm run check
+  - npm run build
+  - python3 docs/plans/audit-remediation-20261103/validate.py --root .
+spec: docs/plans/audit-remediation-20261103/milestones/M4-closeout/slices/S1-combined/AR-35.md

@@ -1,0 +1,33 @@
+schema_version: 1
+id: AR-30
+title: Share Kanban harness polling while preserving visible activity
+outcome: Share Kanban harness polling while preserving visible activity
+kind: bugfix
+effect: change_source
+owner: planning-ui
+slice: ARSC-M3-S2
+mode: worker
+read:
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/harness.tsx
+write:
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/harness.tsx
+needs:
+- AR-21
+acceptance:
+- 'AC-08: One owner coordinates identical account/run/activity reads for a visible
+  project.'
+- 'AC-09: Hidden queue drawer does not independently duplicate polling, while planner
+  activity remains current.'
+- 'AC-09: Drafts, paused foreign queues and task selection survive refresh and project
+  switching.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-kanban python3 scripts/kanban-disclosure-browser.py
+  - npx tsc --noEmit
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S2-browser/AR-30.md

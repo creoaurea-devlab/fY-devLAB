@@ -1,0 +1,17 @@
+schema_version: 1
+id: rules-service
+purpose: Observe project rule sources and evidence without executing project code
+  or mutating operational memory.
+group: backend
+paths:
+- plugins/rules-local/package.json
+- plugins/rules-local/README.md
+- plugins/rules-local/src/index.ts
+- plugins/rules-local/src/snapshot.ts
+- plugins/rules-local/src/read-memory.py
+public:
+- plugins/rules-local/src/index.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

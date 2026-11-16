@@ -1,0 +1,36 @@
+schema_version: 1
+id: TH-11
+title: Correlate approval and user-input requests with fail-closed replies
+outcome: Correlate approval and user-input requests with fail-closed replies
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-10
+acceptance:
+- Replace blanket request rejection only for explicitly supported request types with
+  project/thread/turn/request correlation. Unknown types retain refusal.
+- Late/duplicate/wrong-project replies, cancellation, UI disconnect and expiry never
+  grant permission. Test denial and concurrent pending requests with the existing
+  connection fixture.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

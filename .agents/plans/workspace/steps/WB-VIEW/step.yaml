@@ -1,0 +1,34 @@
+schema_version: 1
+id: WB-VIEW
+title: Build minimal Whiteboard notes, shapes, edges and group controls
+outcome: Build minimal Whiteboard notes, shapes, edges and group controls
+kind: feature
+effect: change_source
+owner: whiteboard-ui
+slice: WB-S2
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- docs/protocols/ui-design.md
+- plugins/ui-canvas/src/view.tsx
+write:
+- plugins/ui-whiteboard/package.json
+- plugins/ui-whiteboard/src/index.ts
+- plugins/ui-whiteboard/src/view.tsx
+- plugins/ui-whiteboard/src/whiteboard.css
+needs:
+- WB-DOC
+acceptance:
+- 'A2/A5: create/edit/move/resize/connect/group/ungroup/hide/show work through the
+  declared owner, with keyboard alternatives and focus return.'
+- Stable ui-whiteboard panel contribution uses existing ReactFlow/Dagre; explicit
+  layout is undoable and never rearranges on typing/HMR.
+- No backend implementation, new generation provider or Obsidian vault writes.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

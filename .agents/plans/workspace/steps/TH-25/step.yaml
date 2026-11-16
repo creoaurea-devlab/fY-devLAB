@@ -1,0 +1,40 @@
+schema_version: 1
+id: TH-25
+title: Present correlated approvals and request outcomes
+outcome: Present correlated approvals and request outcomes
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- TH-24
+- TH-11
+acceptance:
+- Display active request identity and supported approve/deny/input actions only while
+  valid; stale replies remain visible failures.
+- Test focus return, dismissal, disconnected UI, cancellation and request expiry;
+  no duplicate response or automatic approval. Reuse recovery controls from TH-26.
+- Load and register docs/protocols/ui-design.md for execution; verify keyboard/focus,
+  failure/retry, project switching and retention of editor drafts, preview and terminal
+  owners in the actual affected flow. Existing smoke checks alone do not prove the
+  new behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

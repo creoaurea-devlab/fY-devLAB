@@ -1,0 +1,81 @@
+schema_version: 1
+id: AGH-03
+title: Relocate the control runtime and policy into the agent home
+outcome: Relocate the control runtime and policy into the agent home
+kind: feature
+effect: change_source
+owner: governance-runtime
+slice: AGH-S3
+mode: worker
+read:
+- .wisdohm/BOOT.md
+- .wisdohm/router.py
+- .wisdohm/session.py
+- .wisdohm/common.py
+- .wisdohm/planning.py
+- .wisdohm/store.py
+- .wisdohm/routing.py
+- .wisdohm/workspaces.py
+- .wisdohm/orchestration.py
+- .wisdohm/protocols/maintenance.md
+- .agents/plans/authority.yaml
+write:
+- .agents/runtime/router.py
+- .agents/runtime/session.py
+- .agents/runtime/common.py
+- .agents/runtime/planning.py
+- .agents/runtime/store.py
+- .agents/runtime/routing.py
+- .agents/runtime/workspaces.py
+- .agents/runtime/orchestration.py
+- .agents/BOOT.md
+- .agents/policy.yaml
+- .agents/protocols/rules.md
+- .agents/protocols/work.md
+- .agents/protocols/updates.md
+- .agents/protocols/maintenance.md
+- .wisdohm/router.py
+- .agents/project.yaml
+- .wisdohm/BOOT.md
+- .wisdohm/session.py
+- .wisdohm/common.py
+- .wisdohm/planning.py
+- .wisdohm/store.py
+- .wisdohm/routing.py
+- .wisdohm/workspaces.py
+- .wisdohm/orchestration.py
+- .wisdohm/policy.yaml
+- .wisdohm/journey.yaml
+- .wisdohm/config/project.yaml
+- .wisdohm/config/agents.yaml
+- .wisdohm/config/owner-profiles.yaml
+- .wisdohm/protocols/rules.md
+- .wisdohm/protocols/work.md
+- .wisdohm/protocols/updates.md
+- .wisdohm/protocols/maintenance.md
+- .agents/skills/wisdohm-owner/SKILL.md
+- .agents/skills/wisdohm-orchestrate/SKILL.md
+needs:
+- AR-13
+acceptance:
+- 'AH-10: Runtime source/policy/guidance entry lives under .agents; the old router
+  is an explicit minimal forwarding compatibility entry.'
+- 'AH-08: devLAB operational data is migrated through online backup/validated restore;
+  no source-release database is copied and session roots/history keep their meaning.'
+- 'AH-06: Maintenance pins are re-resolved/reviewed with confinement and profile-skill
+  hashing retained.'
+- 'AH-10: Existing callers continue through one selected implementation; old full
+  runtime copies are archived only after reference tracing.'
+- 'AH-10: Retire/archive old full control files within the declared old-file scope;
+  leave only intentionally required forwarding entries/derived views, and preserve
+  source/config/data restore evidence.'
+- 'AH-10: Update the existing owner/orchestration skills to selected file-authority
+  semantics and source-generation routing; preserve advisory telemetry and evidence
+  distinctions.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/wisdohm27.test.py
+  - python3 .agents/runtime/router.py --target . db status
+spec: .agents/plans/agent-home/steps/AGH-03/SPEC.md

@@ -1,0 +1,17 @@
+schema_version: 1
+id: browser-client
+purpose: Own @devlab/client public capability implementation and its internal lifecycle.
+group: browser
+paths:
+- packages/client/client.ts
+- packages/client/package.json
+- packages/client/terminals.ts
+- packages/client/planning.ts
+- packages/client/harness.ts
+public:
+- packages/client/client.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

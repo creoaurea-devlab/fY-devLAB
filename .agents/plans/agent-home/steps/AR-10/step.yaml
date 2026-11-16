@@ -1,0 +1,87 @@
+schema_version: 1
+id: AR-10
+title: Load agent definitions and grouped ownership through one runtime interface
+outcome: Load agent definitions and grouped ownership through one runtime interface
+kind: feature
+effect: change_source
+owner: governance-runtime
+slice: AGH-S1
+mode: worker
+read:
+- .wisdohm/orchestration.py
+- .wisdohm/planning.py
+- .wisdohm/common.py
+- .wisdohm/config/agents.yaml
+- .wisdohm/config/owner-profiles.yaml
+- packages/contracts/src/agent-definitions.ts
+write:
+- .agents/runtime/definitions.py
+- .wisdohm/orchestration.py
+- .wisdohm/planning.py
+- .wisdohm/common.py
+- .wisdohm/journey.yaml
+- .agents/ownership/backend/project-service.yaml
+- .agents/ownership/backend/backend-host.yaml
+- .agents/ownership/browser/browser-bootstrap.yaml
+- .agents/ownership/browser/workspace-ui.yaml
+- .agents/ownership/delivery/source-maps.yaml
+- .agents/ownership/verification/verification.yaml
+- .agents/ownership/browser/preview-client.yaml
+- .agents/ownership/browser/browser-client.yaml
+- .agents/ownership/contracts/service-contracts.yaml
+- .agents/ownership/backend/http-transport.yaml
+- .agents/ownership/browser/canvas-ui.yaml
+- .agents/ownership/contracts/ui-contracts.yaml
+- .agents/ownership/browser/workspace-shell.yaml
+- .agents/ownership/browser/terminal-view.yaml
+- .agents/ownership/backend/terminal-service.yaml
+- .agents/ownership/delivery/delivery-config.yaml
+- .agents/ownership/browser/preview-view.yaml
+- .agents/ownership/coordination/planning-service.yaml
+- .agents/ownership/browser/planning-ui.yaml
+- .agents/ownership/coordination/planning-tools.yaml
+- .agents/ownership/coordination/planning-protocol.yaml
+- .agents/ownership/coordination/process-definition.yaml
+- .agents/ownership/backend/rules-service.yaml
+- .agents/ownership/browser/rules-ui.yaml
+- .agents/ownership/coordination/rules-bootstrap.yaml
+- .agents/ownership/coordination/governance-runtime.yaml
+- .agents/ownership/delivery/ui-development.yaml
+- .agents/ownership/browser/project-view.yaml
+- .agents/ownership/browser/hood-view.yaml
+- .agents/ownership/backend/wisdom-service.yaml
+- .agents/ownership/browser/spec-ui.yaml
+- .agents/ownership/backend/codex-harness.yaml
+- .agents/skills/domain-source-of-truth/SKILL.md
+- .agents/skills/domain-backend/SKILL.md
+- .agents/skills/domain-browser/SKILL.md
+- .agents/skills/domain-contracts/SKILL.md
+- .agents/skills/domain-verification/SKILL.md
+- .agents/skills/domain-delivery/SKILL.md
+needs:
+- AR-09
+- AGH-01
+acceptance:
+- 'AH-01: One bounded data loader resolves step → kind workflow → execution role →
+  ownership segment/domain skills; it returns source digests/revisions.'
+- 'AH-06: Ownership grouping changes navigation without merging disjoint capability
+  scopes; exact ownership is unique and dependencies remain acyclic.'
+- 'AH-07: During transition, existing SQL/JSON authorities remain active. Full per-step
+  YAML and ownership files become authoritative only at explicit activation.'
+- 'AH-01: Kind discovery comes from workflow metadata; old runtime lists are generated
+  compatibility values. Review-assessment semantics implement the AR-09 contract.'
+- 'AH-06: Publish one staged ownership segment file per existing capability, including
+  domain skills/profile mapping; activation selects these instead of SQL ownership,
+  without editing live grants.'
+- 'AH-06: Materialize six selected domain skill assets under .agents with provenance.
+  Canonical ownership segments reference those domain skills and permitted role IDs;
+  workflow chooses execution role. Active reads retire old external skill/profile
+  references at activation, retaining originals as provenance.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/wisdohm27.test.py
+  - node --test scripts/agent-definitions.test.ts
+  - python3 .agents/runtime/definitions.py validate --root .
+spec: .agents/plans/agent-home/steps/AR-10/SPEC.md

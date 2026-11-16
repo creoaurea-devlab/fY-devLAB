@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "generator": "devlab-full-ui-copy/v1",
+  "sourceRoot": "/home/creoaurea/Documents/_PROTOCOLS/DevLab-Workspace/DevLab-Full",
+  "buildConvention": "scripts/package-reusable.mjs",
+  "node": "24.18.0",
+  "packages": [
+    {
+      "name": "@devlab/ui-projects",
+      "version": "0.1.0",
+      "source": "plugins/ui-projects",
+      "archive": "devlab-ui-projects-0.1.0-full-bed7d325.tgz",
+      "sha256": "45ecc07bddee8ce2d21b14006f9e18a1aa3f9f88f2fbbe1b55ff7481446e3c70",
+      "integrity": "sha512-1sBNf8cJq4YW/pwRdTYtsNL5/jJxRiZ0nEwoAGE0lxoelWL9vRIp0y9Rsd5nUJM9rccjt2RhiaiahngJ70qf3w==",
+      "bytes": 27581,
+      "exports": [
+        ".",
+        "./view",
+        "./workspace",
+        "./editor",
+        "./build",
+        "./adoption",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "lucide-react": "0.468.0"
+      },
+      "sourceFiles": {
+        "plugins/ui-projects/package.json": "75fe7b661a970a3a61c173732b9ba01fb794ac5f88589a6f656137fec8f71565",
+        "plugins/ui-projects/src/adoption.tsx": "0921ae46cabc9c9477638ac75788afedd429a0504ce5c60b2e12c867a1b7af0e",
+        "plugins/ui-projects/src/build.tsx": "421e2931ac29b349b1ef80ae0ea430e971788d6034a8eaa39f75e1931ec7027d",
+        "plugins/ui-projects/src/editor.tsx": "e0fbe07bc311d41856605803145da86763c9b4ec0255301beab86adc9c2fa4d7",
+        "plugins/ui-projects/src/index.ts": "2a288c6031aa503e1088e9918a19fb9e18c4c18a822f4110141d6a54c03da02c",
+        "plugins/ui-projects/src/preview-groups.tsx": "1f958e99705cf756eeafb6910bccfc106c47ab6bcc53b5023b7d1c5dd38ca6c4",
+        "plugins/ui-projects/src/projects.css": "69ef6ed5a69fd54e829ad14e3474b4026f30de9fa31f80172024461007963bc1",
+        "plugins/ui-projects/src/view.tsx": "bed7d325b0b7677ef532a03700ce03c420ee4f2c2f60486528bff650db20c066",
+        "plugins/ui-projects/src/workspace.ts": "ff0b3087ac65bc15c038c89e62459490dab0f47b7e7c9f003b6f634179937777"
+      },
+      "files": {
+        "dist/adoption.d.ts": "a590992f122b4fc514fd6d6b2a04844bb6a4b110bd561d83f510f41d8aa6ec95",
+        "dist/adoption.js": "0c2606ebdffd4af29d3deb80658c41ff0d07f2362818bbba24186b240403d911",
+        "dist/build.d.ts": "54f6d4f473da828be634a32328884b6693816026af089312563240975d53a150",
+        "dist/build.js": "26abff3120f7a13054b42fd5608054c519e3311b24357afda7794c8776fb2713",
+        "dist/chunk-4LVWNYC5.js": "5376760faacf60f3aa12529c50a74108323dc3b5964a82d31f77a67b80197b15",
+        "dist/chunk-JJQLF4Y5.js": "949720751bc24b38fcc3309fe8a49bf642a9ec54b96a8e8a635841426838465a",
+        "dist/chunk-SK4QVQO4.js": "ec4364343933eba3e33eacef527b4d78e2fbf3c38a46a81ede384b9bdd3b095e",
+        "dist/editor.d.ts": "a45a080be1430cb41bde8dba7e8c1fe22b940469167169ed428f3de6160157f3",
+        "dist/editor.js": "3ed8466975ca48e14d25cea571a3313d431afe9136253f72af258a539348a5b8",
+        "dist/index.css": "9645692391e81c927c18363908771974c7c2a7377dcfc1979bb39c8256d452ed",
+        "dist/index.d.ts": "5f1cc77542155cd6cf40d9d1a269e1c9e1b052067edc156746c3637289ee5738",
+        "dist/index.js": "2cf05ca3483f45ab977ac37f13d7d01e7910de2f9c4b47927cf43b196af177c6",
+        "dist/preview-groups.d.ts": "572c734f82e8556eedac3894dee376dfbc84b7938371daf41485314e060ea533",
+        "dist/view.css": "9645692391e81c927c18363908771974c7c2a7377dcfc1979bb39c8256d452ed",
+        "dist/view.d.ts": "cdaf8df35479c8ba9a4caef527babc8b93ff2c6ca8c53bac4f44cd644bd509a4",
+        "dist/view.js": "f2243dc676abbab89d07232d93a2b79b0a0b4a9d236455b46c8a2ff301dfac74",
+        "dist/workspace.d.ts": "0d5270f379fbc2ddb723a39ff5fe81e725deccaa06fc215420992932ebd171f1",
+        "dist/workspace.js": "107f477f6cd07538cc0efdfa4002463f00544f816436618896a6c2bb17845d4c",
+        "source/package.json": "75fe7b661a970a3a61c173732b9ba01fb794ac5f88589a6f656137fec8f71565",
+        "source/src/adoption.tsx": "0921ae46cabc9c9477638ac75788afedd429a0504ce5c60b2e12c867a1b7af0e",
+        "source/src/build.tsx": "421e2931ac29b349b1ef80ae0ea430e971788d6034a8eaa39f75e1931ec7027d",
+        "source/src/editor.tsx": "e0fbe07bc311d41856605803145da86763c9b4ec0255301beab86adc9c2fa4d7",
+        "source/src/index.ts": "2a288c6031aa503e1088e9918a19fb9e18c4c18a822f4110141d6a54c03da02c",
+        "source/src/preview-groups.tsx": "1f958e99705cf756eeafb6910bccfc106c47ab6bcc53b5023b7d1c5dd38ca6c4",
+        "source/src/projects.css": "69ef6ed5a69fd54e829ad14e3474b4026f30de9fa31f80172024461007963bc1",
+        "source/src/view.tsx": "bed7d325b0b7677ef532a03700ce03c420ee4f2c2f60486528bff650db20c066",
+        "source/src/workspace.ts": "ff0b3087ac65bc15c038c89e62459490dab0f47b7e7c9f003b6f634179937777"
+      }
+    },
+    {
+      "name": "@devlab/ui-kanban",
+      "version": "0.1.0",
+      "source": "plugins/ui-kanban",
+      "archive": "devlab-ui-kanban-0.1.0.tgz",
+      "sha256": "0052b8c84e2152c472d4d03c988fe90f393ebc27b0d205164fbfee385a58a0ae",
+      "integrity": "sha512-051oxDLklfmAyTtTYyHnRnwqyeB6ndgM5m0S2Ts/gFr2XwqpdT/X1BLSZqCzj/PD+FuePeOCV8NG5WKm03k2lw==",
+      "bytes": 25105,
+      "exports": [
+        ".",
+        "./view",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1"
+      },
+      "sourceFiles": {
+        "plugins/ui-kanban/package.json": "d1196d54d1f62cc4cacf42df89fb693288c33c85cc6c257102e777efbb9ed3e2",
+        "plugins/ui-kanban/src/ATCard.tsx": "5d9ee9cecf3849835fdcaa814e4dfaeaa9aca012c62adb8caf70765c827fa9d7",
+        "plugins/ui-kanban/src/board.css": "251a1a88028487ac45fd3122f0a3f37a5e25bf3d562c61c652d6c634cecb4339",
+        "plugins/ui-kanban/src/ExecutionSwimlanes.tsx": "7da2d41f6c1c7cf17c1dd0a0d07e183e814d22f2da7bfa3cc8176c35844ae1c1",
+        "plugins/ui-kanban/src/index.ts": "a9af8edebe214e302f882d98a780fa521f81b0b37e7873756cc81c5594277391",
+        "plugins/ui-kanban/src/interactions.ts": "6b319581d66d596c1eab212db275e1d686e4a163289af535deda751852ed6139",
+        "plugins/ui-kanban/src/MilestoneBoard.tsx": "8ba706f6d9d7e27d1a5b1ee7c63c542c3071caab449005090ecce4a536db780b",
+        "plugins/ui-kanban/src/MilestoneSection.tsx": "ef9d3a0ad4521af8e8aaf1380683325b0a56866991d9e1bdc19902a6e7ace0b2",
+        "plugins/ui-kanban/src/model.ts": "8e8fd13a9fb2ca8551ca5215336c432e311d17737a5bedb8b5f326f88ef12b5f",
+        "plugins/ui-kanban/src/SLLane.tsx": "a4f04f037e31e7e20a849a41735c97729708f5c331491db546ebd3858989060c",
+        "plugins/ui-kanban/src/TaskDropZone.tsx": "ebb666269ef7da5c825a1458f43e1d682dc59877e850c1b98488c77f82427a32",
+        "plugins/ui-kanban/src/TaskInspector.tsx": "b6bc3dadebb4e099a3ca0f07ddfc57f6f5aa0faf557bc04cffe2eba84b2ab057",
+        "plugins/ui-kanban/src/types.ts": "7b09818fa99560c742fdd4c71e1b0a1141762c7f6ce13ee7f67d3b7e02269644"
+      },
+      "files": {
+        "dist/ATCard.d.ts": "caec200da18e9441fccac95b09a2c74c19745898ef450c9aac556fa69ec0f3bb",
+        "dist/ExecutionSwimlanes.d.ts": "590baced031842dcdfef54f36eae8c8f798c76590a4a1456c78350b9cc7d311e",
+        "dist/index.css": "cc1b1dcca2cf64bec2685bda481eb6734fd58ee9a03c9337a27e2264d69a4055",
+        "dist/index.d.ts": "60dd092addd79c594b5ce4b063d2e2b4950a136da0bab7dbb23a795ed6e0752b",
+        "dist/index.js": "7351194bb04059106b93756e1587c10785a890b05741e87add7229aeb0c7325c",
+        "dist/interactions.d.ts": "4c94f87033f8b8a8dafc6197fbc8d7587408f36dea4d1c5aa689b3261e0984f0",
+        "dist/MilestoneBoard.d.ts": "780482ad34d287bd9c63f4f7856b39aeca1c88b6d6fc9cc4fc5b09f144ff0ac2",
+        "dist/MilestoneSection.d.ts": "b1399615bb6ccf60a9066b84f2b105ecf960548e5e7d6365cb74baf6e23d39ae",
+        "dist/model.d.ts": "5e60ecaf4ecfaa6e9e61fce009eeec085bdd10eb4c034e4fcf93e9976eb78285",
+        "dist/SLLane.d.ts": "171f99b8fc406a8bfb2d6d9dde7462dcb2bce889d94119a2007a184f75eefe13",
+        "dist/TaskDropZone.d.ts": "1e1e9da34b3f6ed1e17faedfaf403dbc38c4b796b971ba344fe20a2719db547f",
+        "dist/TaskInspector.d.ts": "2d11c33698fd5eec3cfbd73300caa77d1f53b5262f7033135bcf6c6c94c6a10a",
+        "dist/types.d.ts": "2183b71d34e788027bd3a0f23d41296aa34607303b227ef971729a8733bc94fe",
+        "dist/view.css": "cc1b1dcca2cf64bec2685bda481eb6734fd58ee9a03c9337a27e2264d69a4055",
+        "dist/view.d.ts": "780482ad34d287bd9c63f4f7856b39aeca1c88b6d6fc9cc4fc5b09f144ff0ac2",
+        "dist/view.js": "236fa11fdf53ee72ebb4468a7d8fc99be79c18fa58ac372047d88d6b5cf826fb",
+        "source/package.json": "d1196d54d1f62cc4cacf42df89fb693288c33c85cc6c257102e777efbb9ed3e2",
+        "source/src/ATCard.tsx": "5d9ee9cecf3849835fdcaa814e4dfaeaa9aca012c62adb8caf70765c827fa9d7",
+        "source/src/board.css": "251a1a88028487ac45fd3122f0a3f37a5e25bf3d562c61c652d6c634cecb4339",
+        "source/src/ExecutionSwimlanes.tsx": "7da2d41f6c1c7cf17c1dd0a0d07e183e814d22f2da7bfa3cc8176c35844ae1c1",
+        "source/src/index.ts": "a9af8edebe214e302f882d98a780fa521f81b0b37e7873756cc81c5594277391",
+        "source/src/interactions.ts": "6b319581d66d596c1eab212db275e1d686e4a163289af535deda751852ed6139",
+        "source/src/MilestoneBoard.tsx": "8ba706f6d9d7e27d1a5b1ee7c63c542c3071caab449005090ecce4a536db780b",
+        "source/src/MilestoneSection.tsx": "ef9d3a0ad4521af8e8aaf1380683325b0a56866991d9e1bdc19902a6e7ace0b2",
+        "source/src/model.ts": "8e8fd13a9fb2ca8551ca5215336c432e311d17737a5bedb8b5f326f88ef12b5f",
+        "source/src/SLLane.tsx": "a4f04f037e31e7e20a849a41735c97729708f5c331491db546ebd3858989060c",
+        "source/src/TaskDropZone.tsx": "ebb666269ef7da5c825a1458f43e1d682dc59877e850c1b98488c77f82427a32",
+        "source/src/TaskInspector.tsx": "b6bc3dadebb4e099a3ca0f07ddfc57f6f5aa0faf557bc04cffe2eba84b2ab057",
+        "source/src/types.ts": "7b09818fa99560c742fdd4c71e1b0a1141762c7f6ce13ee7f67d3b7e02269644"
+      }
+    },
+    {
+      "name": "@creoaurea/pop-the-hood",
+      "version": "0.1.0",
+      "source": "packages/pop-the-hood",
+      "archive": "creoaurea-pop-the-hood-0.1.0-grouped-frames.tgz",
+      "sha256": "5b3c743b2caf89b42f14f8c8e961730cfd93511224d84c9817f4de311d0590ba",
+      "integrity": "sha512-1ar/WQo2339AslYosu08zH/cf+21mRJPiygISHuVoaqDb+kBwsVk57NTsJm1c9iDm/Xna5WYlQToJ2z2ppGBQA==",
+      "bytes": 226770,
+      "exports": [
+        "./contracts",
+        "./analyzer",
+        "./react",
+        "./graph",
+        "./layout",
+        "./node",
+        "./browser",
+        "./http",
+        "./style.css"
+      ],
+      "dependencies": {
+        "zod": "3.25.76"
+      },
+      "peerDependencies": {
+        "react": "^18.3.1 || ^19.0.0",
+        "react-dom": "^18.3.1 || ^19.0.0",
+        "@xyflow/react": "12.12.0",
+        "@dagrejs/dagre": "3.1.1",
+        "lucide-react": "0.468.0",
+        "typescript": "5.9.3"
+      },
+      "sourceFiles": {
+        "packages/pop-the-hood/package.json": "b7c602421a03396711de34065b8ea4e64eae56cd41c629efe662f8574264ffba",
+        "packages/pop-the-hood/src/analyzer.ts": "46a9ce1a7ac49f9541cd800fb37d85d62943843a33dec0cf52f539c0cba9c65c",
+        "packages/pop-the-hood/src/browser.ts": "cb2e2cbd05bd57c20c8d43954b7ad49df1ed7aa07dfd959dbbc8fba7ed46ba78",
+        "packages/pop-the-hood/src/cli.ts": "d92fbd92919ab16505724fc00d8f237751a38644e5beaa795d5d0c551790c5c1",
+        "packages/pop-the-hood/src/contracts.ts": "bb1f9cc389ec17cf7af077e851c886bb66316e409fdf7ecd0ca5139ae87f3bdd",
+        "packages/pop-the-hood/src/graph.ts": "e3c497717f437bd70deac21fb30c712b14ca459e840c678046930f858a6089a3",
+        "packages/pop-the-hood/src/hood.css": "cd5eb12c1aa3463e3b56222f99216618593ace30714c70e1660c345f5a137a19",
+        "packages/pop-the-hood/src/http.ts": "733d96f6edf0c13abaae1838ea865ce779aad1b353ef112061ae8fd53c490e59",
+        "packages/pop-the-hood/src/layout.ts": "908dd5fda7a36254f338d6615feb3f5089e33c4244b8427d03b3792532999688",
+        "packages/pop-the-hood/src/node.ts": "d442967c4d43bc66044d791660d9034dc2df74fd216d77a7400356d550ccb90a",
+        "packages/pop-the-hood/src/react.tsx": "af4a32f5e4b26dad9b8bef7c711da05ec6c5901be60b37e2f3eb23a66300dbe4",
+        "packages/pop-the-hood/src/standalone.tsx": "717892793fb3fc1384fcf382519320b8de045d0687e83f7bbbc816ab397cab2c",
+        "packages/pop-the-hood/templates/README.md": "b5ea4f872785db62817a83f89b23e3dcb985e29225693aca487c8b18aba96074",
+        "packages/pop-the-hood/templates/feature/adapter.ts": "12ec3f6171063226e6b7d1720bc01194d14ed34273d5a4e586f1e6ca063023ee",
+        "packages/pop-the-hood/templates/feature/contracts.ts": "60b50505a5b86add53e52cf6f9679ffb747d44a8f085429c88039faa14cc1b45",
+        "packages/pop-the-hood/templates/feature/hood.registry.json": "a1cf5c64d7ce0624d13d76c9c2a86eade2df63520deb8cf34dd7fb3160c5a382",
+        "packages/pop-the-hood/templates/feature/plugin.ts": "7934ea8ff722be7269d26a921f025e9c9debc2b6574d78c74069a60dcd9c2836"
+      },
+      "patches": [
+        {
+          "path": "packages/pop-the-hood/src/layout.ts",
+          "originalSha256": "908dd5fda7a36254f338d6615feb3f5089e33c4244b8427d03b3792532999688",
+          "sha256": "d632b0cbf3c6964440d5811482a6e5bca3f8692015cb8f6b42dae949ed4fb4df",
+          "reason": "Recursive Dagre subtree blocks; balance disconnected siblings without inventing edges."
+        },
+        {
+          "path": "packages/pop-the-hood/src/react.tsx",
+          "originalSha256": "af4a32f5e4b26dad9b8bef7c711da05ec6c5901be60b37e2f3eb23a66300dbe4",
+          "sha256": "944df99ecec2d66618d8b93ce276096a688aabb30e6ac209e9ee8eb03dd2cfc4",
+          "reason": "Render noninteractive ownership/package block frames and allow0.01 overview zoom."
+        }
+      ],
+      "files": {
+        "dist/analyzer.d.ts": "f13487cf3c6262794f2e50115ccf0e656fec91db5f9adf09bc252d442d6ff802",
+        "dist/analyzer.js": "b4f15844e4d602025aea37a934065a7c36a32dd8698ea4d8faea9339dee260cb",
+        "dist/browser.d.ts": "9599e2ee97a095e28282e3d918b5ba3a6fb7ce3ddf20fb4897bac72fdc30e6e4",
+        "dist/browser.js": "fd9845277627bb9c5cdb535eed4668690b305afbda8e694652f93acd1b3a38f5",
+        "dist/chunk-BFY77GL4.js": "03f39dca2eca026e8058a928a1f587368b413bb16d3f45f58d0d2196b4df336f",
+        "dist/chunk-FYB2VQGT.js": "0479e4c05b3d14f7abc64ac9e714be3e33f0be0877d8f40de86df85b8022c4c6",
+        "dist/chunk-LYSTB4IU.js": "760e3eb3c4c0941ef43a1005db95989e460ebb06cbf61f069cf1c29ecdb5bf98",
+        "dist/chunk-WCHHU42N.js": "957609e20720f8be40e282bed9c578c60502ae03ab59ec72b2a19cc4c34cf19d",
+        "dist/chunk-ZEOC6RL4.js": "3a8f40a27cc028d481a5286c66c7953d4b7c3935a75489a507ddc91a77189379",
+        "dist/cli.d.ts": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012",
+        "dist/cli.js": "5ea49de58ae62d94157ed90539f3051e7a66850192a99de95e13d88ed84c73c8",
+        "dist/contracts.d.ts": "191b5f52fa63cddf6209dce67fc0bb08ba9ee2a473a004a73c54d1e8f624bf99",
+        "dist/contracts.js": "9c4e2284c3578980d12d9ba3d82c06d7130199753e317c846c3feb874560ac60",
+        "dist/graph.d.ts": "4d5d223b8eb851e7bad37f18c3d22aeb9d81fe7291602028f4782ac5d20c5540",
+        "dist/graph.js": "66016ab2c0ecf2493e44cc85075a30d23bd110cb4b83fe68e61f79a34d3cfc78",
+        "dist/http.d.ts": "e32c79825bc215db33993baf1b82bc422102a3299bb24c6a6051765ea47d2392",
+        "dist/http.js": "c4b8130f2a2a57377fe565f69180d5ace399a606b46d2f26fa6260d7462aa72d",
+        "dist/layout.d.ts": "a3376d7484c80456efef6c03f8ce2270f9a8bdff70c320c2572503430ac5d2ec",
+        "dist/layout.js": "6480bfeb63ca36d11f0ef96b156a162a50407c9fce36128fab5fafc0b8b31075",
+        "dist/node.d.ts": "f2db163cdd90c7e243e98471247c3cea5f0022e2c51ea38d3919b6b40e869216",
+        "dist/node.js": "2afb78604f2f7e05c7bc291e9a7f98847e74ce3081a6d671401b72e9fd96f63b",
+        "dist/react.css": "a05a5a2dc2da5c6abe29fbbb42184fadd5633c64e637ba9d033565dfd11c5d8f",
+        "dist/react.d.ts": "083c1bc1ef9aa74449a2e41bae4a0f0d96d674dd03ed1082219c3af2eb153aa7",
+        "dist/react.js": "8ac8868f2d3ee5874342b6cb4050c10141bbda621bd0b145a2c6ca245b2e373a",
+        "dist/standalone.d.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "source/package.json": "b7c602421a03396711de34065b8ea4e64eae56cd41c629efe662f8574264ffba",
+        "source/src/analyzer.ts": "46a9ce1a7ac49f9541cd800fb37d85d62943843a33dec0cf52f539c0cba9c65c",
+        "source/src/browser.ts": "cb2e2cbd05bd57c20c8d43954b7ad49df1ed7aa07dfd959dbbc8fba7ed46ba78",
+        "source/src/cli.ts": "d92fbd92919ab16505724fc00d8f237751a38644e5beaa795d5d0c551790c5c1",
+        "source/src/contracts.ts": "bb1f9cc389ec17cf7af077e851c886bb66316e409fdf7ecd0ca5139ae87f3bdd",
+        "source/src/graph.ts": "e3c497717f437bd70deac21fb30c712b14ca459e840c678046930f858a6089a3",
+        "source/src/hood.css": "cd5eb12c1aa3463e3b56222f99216618593ace30714c70e1660c345f5a137a19",
+        "source/src/http.ts": "733d96f6edf0c13abaae1838ea865ce779aad1b353ef112061ae8fd53c490e59",
+        "source/src/layout.ts": "d632b0cbf3c6964440d5811482a6e5bca3f8692015cb8f6b42dae949ed4fb4df",
+        "source/src/node.ts": "d442967c4d43bc66044d791660d9034dc2df74fd216d77a7400356d550ccb90a",
+        "source/src/react.tsx": "944df99ecec2d66618d8b93ce276096a688aabb30e6ac209e9ee8eb03dd2cfc4",
+        "source/src/standalone.tsx": "717892793fb3fc1384fcf382519320b8de045d0687e83f7bbbc816ab397cab2c",
+        "source/templates/README.md": "b5ea4f872785db62817a83f89b23e3dcb985e29225693aca487c8b18aba96074",
+        "source/templates/feature/adapter.ts": "12ec3f6171063226e6b7d1720bc01194d14ed34273d5a4e586f1e6ca063023ee",
+        "source/templates/feature/contracts.ts": "60b50505a5b86add53e52cf6f9679ffb747d44a8f085429c88039faa14cc1b45",
+        "source/templates/feature/hood.registry.json": "a1cf5c64d7ce0624d13d76c9c2a86eade2df63520deb8cf34dd7fb3160c5a382",
+        "source/templates/feature/plugin.ts": "7934ea8ff722be7269d26a921f025e9c9debc2b6574d78c74069a60dcd9c2836",
+        "web/app.css": "c20509b28dd917e70fdc26b0be52fa4af4488982c360b0671ec0b13c54a80bfd",
+        "web/app.js": "2a8c2103f0c5c84777df0ebaba8b75751c73ac87896386f04ce9f3ab25e0591b",
+        "web/index.html": "9a981166caae738e490d49cb03521850bff8debabbfd78b1407d39c4e084bd64"
+      }
+    }
+  ],
+  "originalSourceUnchanged": true,
+  "previousVendorFilesUnchanged": 34,
+  "presentationFiles": {
+    "src/shell.tsx": {
+      "source": "apps/web/src/shell.tsx",
+      "sha256": "30d5e5b126ac2a4023bb19f0366b3aefa1735845ee76d157b1ebf1673c8176c1",
+      "originalSha256": "a7d900a7abb766746bff921528b6c5b6f4500fdcbefae82f718b845ba19f6132",
+      "adaptation": "Compose plugin development forks and matching retained DevLab previews through typed capability seams; preserve original archives and existing workspace owners.",
+      "previousSha256": "620aae99c79dcb835c63befce2ad038b476b52bd3298add474ee1c9f8f715993",
+      "review": "Compose the optional Whiteboard renderer with a selected project owner outside render. Reviewed with existing editor/preview/terminal lifecycle preserved."
+    },
+    "src/contributions.ts": {
+      "source": "apps/web/src/contributions.ts",
+      "sha256": "b2adb2cc5ad1ccde4d93922c6189d04cb8ec75e7d5e13a3305041f2d4bf2c9ff",
+      "originalSha256": "6a814fb580ebb1f6ba654f91386f0d3e5afa40fdeaaadc2153b76ae7a3038b6e",
+      "adaptation": "Compose PROTOTYPING and real SPEC Agent through typed capability seams; preserve existing owners and original archives.",
+      "previousSha256": "d529d5a9ca0275949e2802789d17f0f24f1dd27ce90c03fc704004e3a95c6365",
+      "review": "Register the independent ui-whiteboard contribution using the existing panel slot. Reviewed with existing editor/preview/terminal lifecycle preserved."
+    },
+    "src/style.css": {
+      "source": "apps/web/src/style.css",
+      "sha256": "6c48843cfb1ea61228c58a6e3d8db9aaeb142a9d4b966bde2c1e7116e9a1f7d6"
+    },
+    "src/main.ts": {
+      "source": "DevTest/src/main.ts before Prototyping",
+      "sha256": "2c29f812fa062c848765396338c475636d544f61a7b3f6cbcacc3e518eb57626",
+      "adaptation": "Retain source/domain owners across compatible UI refresh and register isolated element renderer; original source/archive preserved.",
+      "baselineSha256": "0960e912707fd9532e5d7e2aef5df66e348763fe9355a5ffe50d73b24c0bad56",
+      "baselineArchive": "/media/creoaurea/Local-Ai/DevLab-Workspace/Backups/DevTest-WISDOHM26-final-20261031T221924Z.manifest.json",
+      "reference": "Read-only Full/kernel apps/web/src/main.ts HMR session pattern",
+      "previousSha256": "ea44b74ca09c706d03b8d693f86b9ef8a88913215ed95e2bae7d3e0fbfb691dc",
+      "review": "Pass the retained Whiteboard provider and guard every dirty/saving board on unload. Reviewed with existing editor/preview/terminal lifecycle preserved."
+    }
+  },
+  "localPackages": [
+    {
+      "name": "@devlab/client",
+      "source": "packages/client",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/contracts",
+      "source": "packages/contracts",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/transport-http",
+      "source": "plugins/transport-http",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/ui-canvas",
+      "source": "plugins/ui-canvas",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/ui-contracts",
+      "source": "packages/ui-contracts",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/ui-shell",
+      "source": "plugins/ui-shell",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/ui-terminal",
+      "source": "plugins/ui-terminal",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/terminal-pty",
+      "source": "plugins/terminal-pty",
+      "adaptation": "Editable capability source derived from preserved original archive; original checkouts/archives remain unchanged."
+    },
+    {
+      "name": "@devlab/ui-preview",
+      "source": "plugins/ui-preview"
+    },
+    {
+      "name": "@devlab/planning-local",
+      "source": "plugins/planning-local",
+      "adaptation": "Project-local agent-neutral planner capability; canonical JSON definitions/reported progress and integrated drawer. Original archives preserved."
+    },
+    {
+      "name": "@devlab/ui-kanban",
+      "source": "plugins/ui-kanban",
+      "adaptation": "Project-local agent-neutral planner capability; canonical JSON definitions/reported progress and integrated drawer. Original archives preserved."
+    },
+    {
+      "name": "@devlab/rules-local",
+      "source": "plugins/rules-local",
+      "adaptation": "Read-only source and operational-evidence inspection capability."
+    },
+    {
+      "name": "@devlab/ui-rules",
+      "source": "plugins/ui-rules",
+      "adaptation": "Accessible read-only Rules Board through existing inspection overlay."
+    },
+    {
+      "name": "@devlab/ui-projects",
+      "source": "plugins/ui-projects",
+      "adaptation": "Promoted preserved implementation for WISDOHM panel/harness/memory composition; original archives unchanged."
+    },
+    {
+      "name": "@devlab/ui-hood",
+      "source": "plugins/ui-hood",
+      "adaptation": "Promoted preserved implementation for WISDOHM panel/harness/memory composition; original archives unchanged."
+    },
+    {
+      "name": "@devlab/wisdom-tool",
+      "source": "plugins/wisdom-tool",
+      "reason": "Clean WISDOHM 2.6 preparation capability using reviewed stock runtime assets."
+    },
+    {
+      "name": "@devlab/ui-spec",
+      "source": "plugins/ui-spec",
+      "adaptation": "Real user-triggered read-only Codex specification runner and reviewed canonical Kanban handoff."
+    },
+    {
+      "name": "@devlab/project-local",
+      "source": "plugins/project-local",
+      "adaptation": "Editable project capability derived from preserved original archive; confined backup access and independent development forks."
+    },
+    {
+      "name": "@devlab/ui-whiteboard",
+      "source": "plugins/ui-whiteboard",
+      "adaptation": "Project-owned human Whiteboard capability; uses existing neutral contracts and canvas dependencies."
+    }
+  ]
+}

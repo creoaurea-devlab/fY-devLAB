@@ -1,0 +1,29 @@
+schema_version: 1
+id: KAN-HTTP
+title: Http — JSON planner
+outcome: Http — JSON planner
+kind: feature
+effect: change_source
+owner: http-transport
+slice: KAN-S1
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- plugins/transport-http/src/planning.ts
+- plugins/transport-http/src/index.ts
+needs:
+- KAN-CONTRACT
+acceptance:
+- Selected local transport exposes bounded schema-validated workspace read/command
+  routes and preserves Host/Origin checks.
+- Conflict errors are actionable; legacy snapshot/move routes remain compatible without
+  simulated execution actions.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

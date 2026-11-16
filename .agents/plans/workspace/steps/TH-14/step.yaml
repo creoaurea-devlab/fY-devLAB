@@ -1,0 +1,36 @@
+schema_version: 1
+id: TH-14
+title: Resume or reconcile saved attempts explicitly
+outcome: Resume or reconcile saved attempts explicitly
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-13
+acceptance:
+- Add explicit recovery through the settled neutral contract; validate project/root/definition/attempt
+  identity before resume or resolution.
+- Keep existing streaming and Stop behavior; failed, disconnected and duplicate terminal
+  events cannot lose output or silently retry. Denied/unknown remote outcome stays
+  visible.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

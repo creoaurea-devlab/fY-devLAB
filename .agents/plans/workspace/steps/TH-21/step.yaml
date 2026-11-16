@@ -1,0 +1,29 @@
+schema_version: 1
+id: TH-21
+title: Expose recovery and evidence through the existing browser client
+outcome: Expose recovery and evidence through the existing browser client
+kind: feature
+effect: change_source
+owner: browser-client
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- packages/client/harness.ts
+write:
+- packages/client/harness.ts
+needs:
+- TH-19
+acceptance:
+- Extend harnessClient against public schemas, preserving optional capability failure
+  and cleanup behavior.
+- Reject wrong-project or invalid responses and surface stale-state errors; do not
+  access server implementation or credentials.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/harness-http.test.ts

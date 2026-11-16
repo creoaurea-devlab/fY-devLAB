@@ -1,0 +1,39 @@
+schema_version: 1
+id: CL-RECOVERY-ACTIVATE
+title: Activate terminal lifetime recovery and verify current live owners
+outcome: Activate terminal lifetime recovery and verify current live owners
+kind: audit
+effect: plan
+owner: delivery-config
+slice: TP-S1
+mode: worker
+read:
+- src/profile.ts
+- src/server.ts
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+- plugins/codex-harness/src/connection.ts
+write: []
+needs:
+- CL-TERM-LIFETIME
+- CL-TERM-CGROUP-TEST
+acceptance:
+- Retain both currently running terminal shell/server process identities through activation
+  by first moving their verified tmux owners out of the old backend control group.
+- Preserve frontend PID38384 and restore both saved previews at their existing URLs;
+  no blanket page reload or new model turn.
+- Verify the live harness is signed in, a new PTY runs the standalone CLI and sandbox
+  probe, and every newly created preserved terminal server has an independent user
+  scope.
+- 'Preserve original failed activation evidence: PIDs111137 and280476 exited during
+  the first activation; history remains retained. Record this failure explicitly rather
+  than relabeling it passing.'
+- Reopen the user-requested stopped terminal nodes with new owners where needed and
+  verify safe AYE Off terminal/preview preparation without editing its governance.
+verification:
+  level: integration
+  reason: The new source passed real systemd stop recovery; actual API and process
+    identity checks establish guarded activation and recovery while retaining the
+    prior failure.
+  checks:
+  - /usr/bin/python3 /tmp/devlab-codex-launch-20261106/recovery-verify.py

@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-16T02:42:56.477002+00:00",
+  "checkout": "_devLAB-refactored",
+  "scope": "U2 compact preview controls; broader U2 remains in progress",
+  "backup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/compact-preview-20261116-043119",
+  "checks": {
+    "npm run ownership:sync": "passed",
+    "npm run check": {
+      "typeCheck": "passed",
+      "testsPassed": 12
+    },
+    "npm run build": "passed",
+    "node scripts/preview-compact-browser.mjs": {
+      "measurements": [
+        {
+          "width": 1440,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        },
+        {
+          "width": 820,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        },
+        {
+          "width": 390,
+          "toolbar": 28,
+          "drawers": {
+            "Server options": 33,
+            "View": 33,
+            "Inspect": 33,
+            "Tools": 33
+          }
+        }
+      ],
+      "directStartStop": true,
+      "frameAndDraftRetained": true,
+      "escapeAndFocus": true,
+      "terminalPidRetained": true,
+      "stoppedInspectClose": true,
+      "lateStartResponseFenced": true,
+      "unconfiguredAndNoUIRefused": true,
+      "toolbarActionsFit": true,
+      "jsErrors": []
+    },
+    "node scripts/hood-minimap-browser.mjs": {
+      "result": "passed",
+      "viewWidthCases": 6,
+      "widths": [
+        1440,
+        820,
+        390
+      ],
+      "jsErrors": 0
+    }
+  },
+  "review": "review.txt",
+  "productSourceLineDelta": -8,
+  "productFilesAdded": 0,
+  "dependenciesAdded": 0,
+  "backendRestarted": false,
+  "liveWindowsControlled": false,
+  "liveTerminalInputSent": false,
+  "limits": [
+    "Native DevTools states not tested",
+    "No full hidden-view/HMR matrix",
+    "Cancellation covered delayed successful Start response, not install-stage process timing",
+    "Legitimate inspector/tool content can expand beyond the measured default drawer states"
+  ],
+  "sourceSha256": {
+    "plugins/ui-preview/src/pane.tsx": "f9840153a47d31058c68111030669d57fd09aca66ac79e30f001c17f9d6d7dbc",
+    "plugins/ui-preview/src/preview.css": "89cdb9235e24544108969b689e48a9226f72f81d07aac11646b66a453233c338",
+    "scripts/preview-compact-browser.mjs": "2e652c62e58648b3e47829f3acb32e711c79f6af2a1791f1d4d38837bffc2690",
+    "scripts/hood-minimap-browser.mjs": "94ec5bca3a93dfb5a34b8d6d153db685c70a802b0c6a680d384eb55ad203ae03",
+    ".agents/ownership/verification/verification.yaml": "5a1f7fe2b6bf68dfec549d3d2bf6cbd5f70b8405a55e8845ded7fd9ddc356177",
+    ".context/modules/registry.yaml": "aab55bd6000e2d68de6602a456c7971d2bd2f7e25e07cb872be4421953dbc5cb"
+  }
+}

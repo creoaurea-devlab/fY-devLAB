@@ -1,0 +1,46 @@
+schema_version: 1
+id: TERM-ACCEPT
+title: Terminal ACCEPT
+outcome: Terminal ACCEPT
+kind: feature
+effect: change_source
+owner: verification
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- scripts/host.test.ts
+- scripts/setup-terminal.mjs
+- scripts/terminal-browser.py
+- scripts/terminal-confinement.test.ts
+- scripts/terminal-fixture.ts
+- scripts/terminal-process-fixture.ts
+- scripts/terminal.test.ts
+- scripts/ui-copy-browser.py
+- scripts/verify-packages.mjs
+needs:
+- TERM-HOOD
+acceptance:
+- A01
+- A02
+- A03
+- A04
+- A05
+- A06
+- A07
+- A08
+- A09
+- A10
+- A11
+- A12
+- A13
+- A14
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - python3 scripts/terminal-browser.py
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

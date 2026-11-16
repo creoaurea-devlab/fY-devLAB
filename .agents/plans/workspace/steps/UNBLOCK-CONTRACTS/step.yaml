@@ -1,0 +1,25 @@
+schema_version: 1
+id: UNBLOCK-CONTRACTS
+title: Declare strict review settings and verified Complete run/queue states
+outcome: Declare strict review settings and verified Complete run/queue states
+kind: bugfix
+effect: change_source
+owner: service-contracts
+slice: RT-S1
+mode: worker
+read: []
+write:
+- packages/contracts/src/harness.ts
+needs: []
+acceptance:
+- Declare strict review settings and verified Complete run/queue states
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --input-type=module -e 'import assert from "node:assert/strict"; import {
+    HarnessSettingsSchema } from "@devlab/contracts"; assert.deepEqual(HarnessSettingsSchema.parse({humanReview:false}),{humanReview:false});
+    assert.equal(HarnessSettingsSchema.safeParse({humanReview:1}).success,false);
+    assert.equal(HarnessSettingsSchema.safeParse({humanReview:false,extra:true}).success,false)'

@@ -1,0 +1,29 @@
+schema_version: 1
+id: TH-29
+title: Verify recovery transport and evidence failure boundaries
+outcome: Verify recovery transport and evidence failure boundaries
+kind: feature
+effect: change_source
+owner: verification
+slice: TH-EVIDENCE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- scripts/harness-http.test.ts
+write:
+- scripts/harness-http.test.ts
+needs:
+- TH-19
+acceptance:
+- Extend existing HTTP fixtures to exercise valid and stale recovery, cross-project
+  identity, unknown outcome and evidence errors; prove disabled Harness remains removable.
+- Run existing service/connection restart tests together with transport checks; mocked
+  protocol tests are not real account or deployment acceptance.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts plugins/codex-harness/src/service.test.ts
+    plugins/codex-harness/src/connection.test.ts

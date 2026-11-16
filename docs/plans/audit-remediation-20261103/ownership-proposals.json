@@ -1,0 +1,11 @@
+{
+  "note": "Proposed SQL registrations only. AR-01 must validate/apply before use; this JSON is not editable ownership authority.",
+  "paths": {
+    "scripts/terminal-relocation.test.ts": "verification",
+    "scripts/runtime-startup.test.ts": "verification",
+    "scripts/client-lifecycle.test.ts": "verification",
+    "scripts/runtime-lifecycle.test.ts": "verification",
+    "scripts/wisdohm27-integration.test.py": "verification",
+    "packages/contracts/src/ownership.ts": "service-contracts"
+  }
+}

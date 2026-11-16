@@ -1,0 +1,27 @@
+schema_version: 1
+id: PROC-CONTRACTS
+title: Validate bounded Process graphs and Harness activity contracts
+outcome: Validate bounded Process graphs and Harness activity contracts
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: PROC-S1
+mode: worker
+read: []
+write:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/index.ts
+- packages/contracts/src/process.ts
+needs:
+- PROC-OWN
+acceptance:
+- Strict data-only graph bounds, unique IDs, parent and endpoint references, phases
+  and acyclic edges reject invalid/oversized input without traversal crashes.
+- Optional activity and triageRole preserve existing consumers; browser/server share
+  neutral schemas.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/process.test.ts
+  - npx tsc --noEmit

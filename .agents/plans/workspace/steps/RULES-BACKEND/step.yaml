@@ -1,0 +1,27 @@
+schema_version: 1
+id: RULES-BACKEND
+title: RULES-BACKEND
+outcome: RULES-BACKEND
+kind: feature
+effect: change_source
+owner: rules-service
+slice: RULES-S1
+mode: worker
+read:
+- docs/plans/rules-board/SPEC.md
+write:
+- plugins/rules-local/package.json
+- plugins/rules-local/README.md
+- plugins/rules-local/src/index.ts
+- plugins/rules-local/src/snapshot.ts
+- plugins/rules-local/src/read-memory.py
+needs:
+- RULES-CONTRACT
+acceptance:
+- Explicit source and evidence boundaries; real combined verification; preserved originals
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/rules.test.ts
+spec: docs/plans/rules-board/SPEC.md

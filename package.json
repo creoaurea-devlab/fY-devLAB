@@ -1,0 +1,66 @@
+{
+  "name": "devlab-minimal-host",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.18.x"
+  },
+  "scripts": {
+    "build": "npm run setup:terminal && tsc --noEmit && vite build && node scripts/architecture.ts",
+    "start": "node src/server.ts",
+    "check": "tsc --noEmit && node scripts/architecture.ts && node --test scripts/disconnection.test.ts scripts/boundaries.test.ts scripts/anatomy.test.ts scripts/maintenance.test.ts scripts/runtime-profile.test.ts scripts/runtime-plugins.test.ts",
+    "build:terminal-native": "gcc -O2 -Wall -Wextra -Werror -o plugins/terminal-pty/native/ownership-sandbox plugins/terminal-pty/native/ownership-sandbox.c",
+    "setup:terminal": "node scripts/setup-terminal.mjs",
+    "verify:deployment": "node scripts/verify-deployment.ts",
+    "prototype": "node scripts/prototype.mjs",
+    "ownership:sync": "/usr/bin/python3 -I -B .agents/data/definitions.py ownership-projection --root . --output .context/modules/registry.yaml",
+    "start:runtime": "node runtime/launch.ts",
+    "check:runtime": "node --test scripts/deepseek-runtime.test.ts scripts/runtime-integration.test.ts"
+  },
+  "dependencies": {
+    "@creoaurea/pop-the-hood": "file:vendor/full-ui/creoaurea-pop-the-hood-0.1.0-grouped-frames.tgz",
+    "@dagrejs/dagre": "3.1.1",
+    "@devlab/canvas-store": "file:vendor/previous-ui/devlab-canvas-store-0.1.0.tgz",
+    "@devlab/client": "file:packages/client",
+    "@devlab/contracts": "file:packages/contracts",
+    "@devlab/kernel": "file:vendor/previous-ui/devlab-kernel-0.1.0.tgz",
+    "@devlab/preview-inspector": "file:vendor/previous-ui/devlab-preview-inspector-0.1.0.tgz",
+    "@devlab/project-local": "file:plugins/project-local",
+    "@devlab/project-server": "file:vendor/previous-ui/devlab-project-server-0.1.0.tgz",
+    "@devlab/registry-map": "file:vendor/previous-ui/devlab-registry-map-0.1.0.tgz",
+    "@devlab/rules-local": "file:plugins/rules-local",
+    "@devlab/terminal-pty": "file:plugins/terminal-pty",
+    "@devlab/transport-http": "file:plugins/transport-http",
+    "@devlab/ui-browser": "file:vendor/previous-ui/devlab-ui-browser-0.1.0.tgz",
+    "@devlab/ui-canvas": "file:plugins/ui-canvas",
+    "@devlab/ui-contracts": "file:packages/ui-contracts",
+    "@devlab/ui-hood": "file:plugins/ui-hood",
+    "@devlab/ui-host": "file:vendor/previous-ui/devlab-ui-host-0.1.0.tgz",
+    "@devlab/ui-preview": "file:plugins/ui-preview",
+    "@devlab/ui-projects": "file:plugins/ui-projects",
+    "@devlab/ui-rules": "file:plugins/ui-rules",
+    "@devlab/ui-shell": "file:plugins/ui-shell",
+    "@devlab/ui-terminal": "file:plugins/ui-terminal",
+    "@xyflow/react": "12.12.0",
+    "cordis": "file:vendor/previous-ui/cordis-4.0.0-rc.11-creo.bc9a344.tgz",
+    "lucide-react": "0.468.0",
+    "playwright-core": "1.64.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "postcss": "8.5.30",
+    "typescript": "5.9.3",
+    "vite": "6.4.3"
+  },
+  "allowScripts": {
+    "node-pty@1.1.0": true,
+    "esbuild@0.25.12": true
+  },
+  "license": "MIT"
+}

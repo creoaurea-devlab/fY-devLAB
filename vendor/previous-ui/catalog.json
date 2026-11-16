@@ -1,0 +1,894 @@
+{
+  "schemaVersion": 1,
+  "generator": "devlab-reusable-bundles/v1",
+  "sourceDateEpoch": 0,
+  "node": "24.18.0",
+  "platform": "linux",
+  "cordisRevision": "bc9a3449c4a307b68e046c92f999d882b18e009e",
+  "packages": [
+    {
+      "name": "@creoaurea/pop-the-hood",
+      "version": "0.1.0",
+      "source": "packages/pop-the-hood",
+      "kind": "infrastructure",
+      "archive": "packages/creoaurea-pop-the-hood-0.1.0.tgz",
+      "sha256": "011ab706fdb7a39d26aa4043610aa0ad72f2323522d569986e9036759c157b17",
+      "integrity": "sha512-FOrHdLsjOfZoTOu1wQv+8fZsikSgpNhOF0kO/58ghfpT/iAAZpTr0wOL9SljDGJFlkxgHfx2WmrjxYHeXKrwMQ==",
+      "bytes": 222819,
+      "exports": [
+        "./contracts",
+        "./analyzer",
+        "./react",
+        "./graph",
+        "./layout",
+        "./node",
+        "./browser",
+        "./http",
+        "./style.css"
+      ],
+      "dependencies": {
+        "zod": "3.25.76"
+      },
+      "peerDependencies": {
+        "react": "^18.3.1 || ^19.0.0",
+        "react-dom": "^18.3.1 || ^19.0.0",
+        "@xyflow/react": "12.12.0",
+        "@dagrejs/dagre": "3.1.1",
+        "lucide-react": "0.468.0",
+        "typescript": "5.9.3"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/browser-chromium",
+      "version": "0.1.0",
+      "source": "plugins/browser-chromium",
+      "kind": "plugin",
+      "archive": "packages/devlab-browser-chromium-0.1.0.tgz",
+      "sha256": "92214a26f13c1cb5c0aa6bb8b5a182a28af3eb9ea62e833ffe7398808286c180",
+      "integrity": "sha512-ofJFkR7GBfiqcb5kmh1YtnCnZksFEW5UpPvHPoROzmV0JZsUpPpQZOEvu8zKNnDN5k7EuPR3rG4CXdWqpFBdSQ==",
+      "bytes": 9480,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {
+        "playwright-core": "1.64.1"
+      }
+    },
+    {
+      "name": "@devlab/browser-harness",
+      "version": "0.1.0",
+      "source": "plugins/browser-harness",
+      "kind": "plugin",
+      "archive": "packages/devlab-browser-harness-0.1.0.tgz",
+      "sha256": "58b33c0a8c5fa703623fe162573aaff100775d865f9ac363f83b60e773d372d8",
+      "integrity": "sha512-b6Ew1F1PRwoypzfrBKgbOK+hDNXpCY25JC35gPIfeyG77wHwpa1u6CDFIoQRHJ9hXx/vnqAj7gLOFYbJeXog4A==",
+      "bytes": 5361,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/canvas-store",
+      "version": "0.1.0",
+      "source": "plugins/canvas-store",
+      "kind": "plugin",
+      "archive": "packages/devlab-canvas-store-0.1.0.tgz",
+      "sha256": "4677381c9da686914da9526ccb13e95a324e2831b26a63d4a71501d23fe707ef",
+      "integrity": "sha512-kiO6BO+EWtt5HKXHC75Wh/ngmmvvAlECuUjH7FvVKh0lWe/lnCGOJsOkB3dyqrP8WiPPtqk1k9EuQGIUKz2LlA==",
+      "bytes": 2867,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/client",
+      "version": "0.1.0",
+      "source": "apps/web/src/client.ts",
+      "kind": "browser-client",
+      "archive": "packages/devlab-client-0.1.0.tgz",
+      "sha256": "c3e4eddc9ec1f999d62f3974684b3c11543b7012623910680bbccc701f362eb0",
+      "integrity": "sha512-+sz+ZTmnLoZ1MDYeajh7kKDHAzClbs8xYUc92U2uHfvt44DTlFKgeZcpGI0dPzdo/sdDR24MtSwXsGl76/l7Yw==",
+      "bytes": 4583,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0",
+        "@creoaurea/pop-the-hood": "0.1.0",
+        "zod": "3.25.76"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/contracts",
+      "version": "0.1.0",
+      "source": "packages/contracts",
+      "kind": "infrastructure",
+      "archive": "packages/devlab-contracts-0.1.0.tgz",
+      "sha256": "e4b83645456db04b3420793500daf286eed4c53ebec8ae7981322d22c6387aa7",
+      "integrity": "sha512-sgwgobc8r4CucQ+xSBnjvZgjJqNU4oA1vSCwnocXUtTOCVq0YqpMVrqSndq0ZmxMhUDhjhhHZbw5fKUVzCtSkA==",
+      "bytes": 30111,
+      "exports": [
+        ".",
+        "./architecture",
+        "./browser",
+        "./planning",
+        "./preview",
+        "./projects",
+        "./servers",
+        "./terminal",
+        "./wisdom",
+        "./workspace"
+      ],
+      "dependencies": {
+        "zod": "3.25.76",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/kernel",
+      "version": "0.1.0",
+      "source": "packages/kernel",
+      "kind": "infrastructure",
+      "archive": "packages/devlab-kernel-0.1.0.tgz",
+      "sha256": "01b2aef69f03f5006cfc8ce4affe5ea63f556aa6246920f539856cd9a5de9d13",
+      "integrity": "sha512-7y+mUR6EORC/M5o7lB02xubyY8UQo7zDt8TdmuMR/1SsoCzjtddYoYkpabkC996kVuZduIWfRb1TPNejZoaCGQ==",
+      "bytes": 4931,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "cordis": "4.0.0-rc.11-creo.bc9a344"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/model-fake",
+      "version": "0.1.0",
+      "source": "plugins/model-fake",
+      "kind": "plugin",
+      "archive": "packages/devlab-model-fake-0.1.0.tgz",
+      "sha256": "f81955fda4fa1f205b330a53cc1091f52303d5c3e1ca48082261c39877b4eb09",
+      "integrity": "sha512-PK6qc1dAfCrxLAQYLo3nvZu3+w21Dwp3Au4iKo4Af/taTdf7xV8MykNhBVh1cM5/NusdSFbj+wRtV+g5H6L4vw==",
+      "bytes": 1712,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/policy-local",
+      "version": "0.1.0",
+      "source": "plugins/policy-local",
+      "kind": "plugin",
+      "archive": "packages/devlab-policy-local-0.1.0.tgz",
+      "sha256": "edca2bf796fd2b0df6eb2023b8d15b6b85ae331c7205060b79187beb8b1cc8c3",
+      "integrity": "sha512-7aALTWcI6B7zneq0xsy7sIcMR+rmxpV+87iY9qBQbUij5W5swnMAta5xiM1xjSW7LxZpGn8uB85EtJ1aBq8ztQ==",
+      "bytes": 1788,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/preview-inspector",
+      "version": "0.1.0",
+      "source": "plugins/preview-inspector",
+      "kind": "plugin",
+      "archive": "packages/devlab-preview-inspector-0.1.0.tgz",
+      "sha256": "2dce8f045fc1f84107c2eb29025ef3836e116d14bfe1c18848b2a948c39a17df",
+      "integrity": "sha512-6/wftddjogEnEeKnyfQ4r8VPq4bKxLLsfaqP6tEwvfiZ7zuWP2q6glNWaTW1ZU5ejQPuZksNQS/QigsUt9gWOA==",
+      "bytes": 11418,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {
+        "playwright-core": "1.64.1"
+      }
+    },
+    {
+      "name": "@devlab/project-local",
+      "version": "0.1.0",
+      "source": "plugins/project-local",
+      "kind": "plugin",
+      "archive": "packages/devlab-project-local-0.1.0.tgz",
+      "sha256": "79cf8eee22236be60d738c45ef672302b839acca6cbe96fe0dc2705403fd1664",
+      "integrity": "sha512-tHHj9vQdzZEXt9mtfYlul+gD4BSR9YT9PALGV+QKzcyaMQyyGSwvkClW6JETLH5hWXtjAttHDTZoQYVVzUrhuQ==",
+      "bytes": 12853,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/project-server",
+      "version": "0.1.0",
+      "source": "plugins/project-server",
+      "kind": "plugin",
+      "archive": "packages/devlab-project-server-0.1.0.tgz",
+      "sha256": "4b0035eb45230547fb742f5fcca7c59d9c15377ced7e8ad9a113060afc8fd59a",
+      "integrity": "sha512-M12NE98HaYZ/pWm7nJrp+WhhzAf6srSnRg6MRT2sgBT3xPg3ucRizmRb5Ouzp0KtmPCHFaqfS9uLi9QJ3H5w3g==",
+      "bytes": 11370,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/registry-map",
+      "version": "0.1.0",
+      "source": "plugins/registry-map",
+      "kind": "plugin",
+      "archive": "packages/devlab-registry-map-0.1.0.tgz",
+      "sha256": "1abcbcd2c3d292f3e525701886e4e88a8275493de8a78252412d35bae843c48c",
+      "integrity": "sha512-dOIpY3v9TsszHrKo9Etgv0tVh2oqPbRPNv441DbXmgZZCtVkCONKS/FDoOBpbkXcklaU+H55TIh9oS2CwfQq7g==",
+      "bytes": 13054,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/run-controller",
+      "version": "0.1.0",
+      "source": "plugins/run-controller",
+      "kind": "plugin",
+      "archive": "packages/devlab-run-controller-0.1.0.tgz",
+      "sha256": "c877c74cf968a200a7412194c5537a15b739701ac577ca6cb5731537e9c2cf82",
+      "integrity": "sha512-GXBhd4NIrHtH+IBMMyuWWNpUstZfGCysYG5RQkyL0xXWHc372SZWG1EwbbX/6hvv47LG9yx1A0BiGv5iJhrz2w==",
+      "bytes": 5198,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/store-sqlite",
+      "version": "0.1.0",
+      "source": "plugins/store-sqlite",
+      "kind": "plugin",
+      "archive": "packages/devlab-store-sqlite-0.1.0.tgz",
+      "sha256": "cc9a8527d7388ee6a4cf8f26fa8e792f184e426ad388658726098b7c9421fc6a",
+      "integrity": "sha512-NoA+QH8l7knZalVkmIbBBdW7b+aFWVVyyZb/5KpiJsojT/ZgyhSNryDL04sM43bHb6EbO4BglJz4p+zusv5qpQ==",
+      "bytes": 5645,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "zod": "3.25.76"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/terminal-pty",
+      "version": "0.1.0",
+      "source": "plugins/terminal-pty",
+      "kind": "plugin",
+      "archive": "packages/devlab-terminal-pty-0.1.0.tgz",
+      "sha256": "7071019b351fcaf7ebfaaf7300a01f563f742399b658c13770fcc049787408b7",
+      "integrity": "sha512-3BUqEj6J61eNnQuabVuXzl0RAmKB8vQMnB5S3JdP7HR3zZIBsHYUYLogNX7RoU/W2RUswh6ftRY3nmq0+Hx4vQ==",
+      "bytes": 5637,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "node-pty": "1.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/tools-echo",
+      "version": "0.1.0",
+      "source": "plugins/tools-echo",
+      "kind": "plugin",
+      "archive": "packages/devlab-tools-echo-0.1.0.tgz",
+      "sha256": "1a1343800483ec3d09cff0e3949b7dd65d3d54780ee518af8289d0ac2320fff8",
+      "integrity": "sha512-ZEjYu/g4DdUPFPsAnLnfhsiObj3/ArEaJIevsKoKP3Eh7u6YjhWZEJ0gl0yk+LL3JA9tA/9znH+sYtVd45GJ1g==",
+      "bytes": 1763,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/transport-http",
+      "version": "0.1.0",
+      "source": "plugins/transport-http",
+      "kind": "plugin",
+      "archive": "packages/devlab-transport-http-0.1.0.tgz",
+      "sha256": "75abce7b8f83cea20cd780b5ad85c4c2c719b2f4edc3935c72c5f18473a9359c",
+      "integrity": "sha512-feSLYipsERBn79EQOVFKfRkECGKpnO1atAIyGH+Ti+ZMKpwAmR0E2JkbFqM1bbWDdsxLPpWZrTSAk8qo9nry6Q==",
+      "bytes": 10573,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "zod": "3.25.76",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-browser",
+      "version": "0.1.0",
+      "source": "plugins/ui-browser",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-browser-0.1.0.tgz",
+      "sha256": "229d5dfa1ac5154fb068d41dbdf339cd579817f18ab8c863760e3e2467a2c485",
+      "integrity": "sha512-v0VDN+eFE9ZesEEzGQnmxFckKQOixQyx5m41fCeUKO5YnOCG1LaDiCM0toeWNxqx7bT/OZ4wLW+UhBU6fi/4PQ==",
+      "bytes": 14464,
+      "exports": [
+        ".",
+        "./view",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/ui-contracts": "0.1.0",
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "lucide-react": "0.468.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-canvas",
+      "version": "0.1.0",
+      "source": "plugins/ui-canvas",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-canvas-0.1.0.tgz",
+      "sha256": "7f59f2d7a3c6d2c42f322f312caec28be279125099a00cadfc8fff0b76b2896c",
+      "integrity": "sha512-1+0ZMAlyTmO+L1zbTMWLVVqxCb5i//PQ40pyx9RTGXKJVCZInCz9S8SKHoM4x6dSaaxgZh9i2KlRN8g5dVcH3Q==",
+      "bytes": 29957,
+      "exports": [
+        ".",
+        "./view",
+        "./workspace",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "@xyflow/react": "12.12.0",
+        "lucide-react": "0.468.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-contracts",
+      "version": "0.1.0",
+      "source": "packages/ui-contracts",
+      "kind": "infrastructure",
+      "archive": "packages/devlab-ui-contracts-0.1.0.tgz",
+      "sha256": "e87574e8ee15f50f849dccfb18d6a3d1ae06aa1a6b81289fb2480a7b3611e40e",
+      "integrity": "sha512-THf+OkKplQyPeDiIG8w+dpmyQoTUrJu5F0F7rp+0ErA908h86aXQOUI1lxrgnAi1HkCPMQV9ErV+g88L0lTpBQ==",
+      "bytes": 4409,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-diagnostics",
+      "version": "0.1.0",
+      "source": "plugins/ui-diagnostics",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-diagnostics-0.1.0.tgz",
+      "sha256": "8c3fd81bcf80bbb7057684571f1f64c6609a62232177ed3a604cd0ad531e8689",
+      "integrity": "sha512-1kkuf7PtH3om/Fp37J+JOoZVtysl8pMYPRyEqAVA+fwpYuAFr7qQoaoyTJNp16yfMI0MJb8g3mTtR38jzAkBwA==",
+      "bytes": 2978,
+      "exports": [
+        ".",
+        "./view"
+      ],
+      "dependencies": {
+        "@devlab/ui-contracts": "0.1.0",
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-hood",
+      "version": "0.1.0",
+      "source": "plugins/ui-hood",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-hood-0.1.0.tgz",
+      "sha256": "e37a0491c2910abd2a95703ba0bc9be7c4ecce11176610580f47a2698a362d63",
+      "integrity": "sha512-4qw4SXAjuyVvLlKVm2zKWOrJ8HouydljF5KtzQbh4m2ROy5EsboJhbXEFa1uJKAJ4saRowVummu6KQxtBIoddg==",
+      "bytes": 2536,
+      "exports": [
+        ".",
+        "./view"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "@xyflow/react": "12.12.0",
+        "@dagrejs/dagre": "3.1.1",
+        "lucide-react": "0.468.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-host",
+      "version": "0.1.0",
+      "source": "packages/ui-host",
+      "kind": "infrastructure",
+      "archive": "packages/devlab-ui-host-0.1.0.tgz",
+      "sha256": "7413e48f9e8934798315cec917a41bebb877d9edcc60f522d73a305ae3a7c9f8",
+      "integrity": "sha512-nByGxW5tsie1uifNou91pScbcWmBosvc3eIod02YBL22As/8PvC4vZmZpx70/RY2WXQY0TaiZQlRo2wesLKZiQ==",
+      "bytes": 2601,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/ui-contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-preview",
+      "version": "0.1.0",
+      "source": "plugins/ui-preview",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-preview-0.1.0.tgz",
+      "sha256": "e805c5f0a4adbdfe9bfa43eb56ccbfeef88fb36e804d99aeabd4021b72960886",
+      "integrity": "sha512-GY/zCUY/VEOxVTl2IjGKB9+/iZ8gn0/E+sWX+Bh2X5+fThJcab+rD/g7N2lG/Gic3egI+i9WYTzG53aKardSVw==",
+      "bytes": 43269,
+      "exports": [
+        ".",
+        "./view",
+        "./inspector",
+        "./devtools",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/ui-contracts": "0.1.0",
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-projects",
+      "version": "0.1.0",
+      "source": "plugins/ui-projects",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-projects-0.1.0.tgz",
+      "sha256": "1c9494ca838ff6a92fae9948f7b62ee19171c7177d87c6d0cd6f32b677332927",
+      "integrity": "sha512-6WRy1RQYjecgD0lzkUobyiNgxSrZKMgADA8u5hlT/yDyr1JCu9Mk7bSyb3/peoqic+on/nUPfHPr0zkMkRBENA==",
+      "bytes": 27535,
+      "exports": [
+        ".",
+        "./view",
+        "./workspace",
+        "./editor",
+        "./build",
+        "./adoption",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0",
+        "@creoaurea/pop-the-hood": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "lucide-react": "0.468.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-runtime",
+      "version": "0.1.0",
+      "source": "plugins/ui-runtime",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-runtime-0.1.0.tgz",
+      "sha256": "17f966e4595b305ea279f07ca1e16b5407e94c8218b370f0c5eb73c3b3f096d2",
+      "integrity": "sha512-nGvFBBfI6y3ZX0oYjL6MuxX3O29UUy3xsrZI0/QQMfUl8oareXNN4VmUFNOmzV56R1iBMG3NA8mpPLrHU6JHWQ==",
+      "bytes": 3788,
+      "exports": [
+        ".",
+        "./view"
+      ],
+      "dependencies": {
+        "@devlab/ui-contracts": "0.1.0",
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-shell",
+      "version": "0.1.0",
+      "source": "plugins/ui-shell",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-shell-0.1.0.tgz",
+      "sha256": "af63713439edd29208139cbae3d3b091e1c5f5e68d96290678a2768a900710d1",
+      "integrity": "sha512-R3FQoiWI3nJb8QNaR81zDbCbqszRGF8CekMGDPqpCP6FHl3MVRBRGB+g+y8aaM3cc9PcIZdd5Hd8w43IkJQ27w==",
+      "bytes": 43017,
+      "exports": [
+        ".",
+        "./view",
+        "./servers",
+        "./terminals",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "lucide-react": "0.468.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/ui-terminal",
+      "version": "0.1.0",
+      "source": "plugins/ui-terminal",
+      "kind": "plugin",
+      "archive": "packages/devlab-ui-terminal-0.1.0.tgz",
+      "sha256": "188dc88648f72dd4e273f2e1dd2297633daf45e9e0b43886a29e57c4717a2a6e",
+      "integrity": "sha512-Xqmd3w+4BtV7jR2hzrZPvjc+EW9YdOnok6H2vbz2TnsTL7IaHXYmiIWRd3MYW4PrgeIvWl8xBuLvZyyWc+Nw5Q==",
+      "bytes": 8795,
+      "exports": [
+        ".",
+        "./view",
+        "./style.css"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0",
+        "@devlab/ui-contracts": "0.1.0"
+      },
+      "peerDependencies": {
+        "react": "18.3.1",
+        "@xterm/xterm": "6.0.0",
+        "@xterm/addon-fit": "0.11.0"
+      },
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/wisdom-tool",
+      "version": "0.1.0",
+      "source": "plugins/wisdom-tool",
+      "kind": "plugin",
+      "archive": "packages/devlab-wisdom-tool-0.1.0.tgz",
+      "sha256": "c49098ccfbd14ddb6935a06210810f782b35acf91e3a1fcca8fdfb61fde36891",
+      "integrity": "sha512-6rqb43Z275/5nqRbPuK+5AASna0nlflNElFr8u+HGPdTSpAaGHK036U5AJi2UMMRnkYv3w1tIo+Ep01CVsoLAg==",
+      "bytes": 148427,
+      "exports": [
+        ".",
+        "./bundled"
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "@devlab/workspace-local",
+      "version": "0.1.0",
+      "source": "plugins/workspace-local",
+      "kind": "plugin",
+      "archive": "packages/devlab-workspace-local-0.1.0.tgz",
+      "sha256": "3bfef4eecdf237748df91a6a58175e4746596918cf230abc35b5ed107559a00d",
+      "integrity": "sha512-05xGqeAlklzjwMrAamzDvThm0WDfZ0j2wOclKDFBIfQWZotgQ/LsbhrkRaXSpFIaNh8pgh72OPJm6wiWlARoEg==",
+      "bytes": 1977,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "@devlab/contracts": "0.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    },
+    {
+      "name": "cordis",
+      "version": "4.0.0-rc.11-creo.bc9a344",
+      "source": "vendor/cordis",
+      "kind": "vendor-runtime",
+      "archive": "packages/cordis-4.0.0-rc.11-creo.bc9a344.tgz",
+      "sha256": "8c88fb8351fecc61070699b36ecc2f0ab0a32f13b9599e490a6baa32737f510f",
+      "integrity": "sha512-S5HeQ22gM24NnIibKKNbS3vtvBz5CBm6qImajGtbgCBqdyvXpbOJJGdd6DxriED5Wbuwog/IhXXkciW2vClG/w==",
+      "bytes": 46193,
+      "exports": [
+        "."
+      ],
+      "dependencies": {
+        "cosmokit": "1.8.1",
+        "@standard-schema/spec": "1.1.0"
+      },
+      "peerDependencies": {},
+      "optionalDependencies": {}
+    }
+  ],
+  "groups": {
+    "core": {
+      "title": "Contracts, Cordis kernel and React contribution registry",
+      "roots": [
+        "@devlab/contracts",
+        "@devlab/kernel",
+        "@devlab/ui-contracts",
+        "@devlab/ui-host"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/kernel",
+        "@devlab/ui-contracts",
+        "@devlab/ui-host",
+        "cordis"
+      ],
+      "archive": "bundles/core.tar.gz"
+    },
+    "hood": {
+      "title": "Portable source analyzer, viewer and devLAB adapters",
+      "roots": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/registry-map",
+        "@devlab/ui-hood"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/registry-map",
+        "@devlab/ui-contracts",
+        "@devlab/ui-hood"
+      ],
+      "archive": "bundles/hood.tar.gz"
+    },
+    "canvas": {
+      "title": "Editable canvas, workspace owner and SQLite graph store",
+      "roots": [
+        "@devlab/canvas-store",
+        "@devlab/ui-canvas"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/canvas-store",
+        "@devlab/contracts",
+        "@devlab/ui-canvas",
+        "@devlab/ui-contracts"
+      ],
+      "archive": "bundles/canvas.tar.gz"
+    },
+    "terminals": {
+      "title": "Configured roots, native PTY sessions and React terminal",
+      "roots": [
+        "@devlab/workspace-local",
+        "@devlab/terminal-pty",
+        "@devlab/ui-terminal"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/terminal-pty",
+        "@devlab/ui-contracts",
+        "@devlab/ui-terminal",
+        "@devlab/workspace-local"
+      ],
+      "archive": "bundles/terminals.tar.gz"
+    },
+    "projects-preview": {
+      "title": "Projects, source editing, owned servers and inspected previews",
+      "roots": [
+        "@devlab/project-local",
+        "@devlab/ui-projects",
+        "@devlab/project-server",
+        "@devlab/preview-inspector",
+        "@devlab/ui-preview",
+        "@devlab/wisdom-tool"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/preview-inspector",
+        "@devlab/project-local",
+        "@devlab/project-server",
+        "@devlab/ui-contracts",
+        "@devlab/ui-preview",
+        "@devlab/ui-projects",
+        "@devlab/wisdom-tool"
+      ],
+      "archive": "bundles/projects-preview.tar.gz"
+    },
+    "browser": {
+      "title": "Owned Chromium, actor control and browser surface",
+      "roots": [
+        "@devlab/browser-chromium",
+        "@devlab/browser-harness",
+        "@devlab/ui-browser"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/browser-chromium",
+        "@devlab/browser-harness",
+        "@devlab/contracts",
+        "@devlab/ui-browser",
+        "@devlab/ui-contracts"
+      ],
+      "archive": "bundles/browser.tar.gz"
+    },
+    "agent-runtime": {
+      "title": "Durable one-tool offline runtime and diagnostics",
+      "roots": [
+        "@devlab/kernel",
+        "@devlab/model-fake",
+        "@devlab/tools-echo",
+        "@devlab/policy-local",
+        "@devlab/store-sqlite",
+        "@devlab/run-controller",
+        "@devlab/ui-runtime",
+        "@devlab/ui-diagnostics"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/kernel",
+        "@devlab/model-fake",
+        "@devlab/policy-local",
+        "@devlab/run-controller",
+        "@devlab/store-sqlite",
+        "@devlab/tools-echo",
+        "@devlab/ui-contracts",
+        "@devlab/ui-diagnostics",
+        "@devlab/ui-runtime",
+        "cordis"
+      ],
+      "archive": "bundles/agent-runtime.tar.gz"
+    },
+    "react-workspace": {
+      "title": "React shell and all existing UI contributions",
+      "roots": [
+        "@devlab/ui-host",
+        "@devlab/ui-shell",
+        "@devlab/ui-canvas",
+        "@devlab/ui-terminal",
+        "@devlab/ui-projects",
+        "@devlab/ui-preview",
+        "@devlab/ui-browser",
+        "@devlab/ui-hood",
+        "@devlab/ui-runtime",
+        "@devlab/ui-diagnostics",
+        "@devlab/client"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/client",
+        "@devlab/contracts",
+        "@devlab/ui-browser",
+        "@devlab/ui-canvas",
+        "@devlab/ui-contracts",
+        "@devlab/ui-diagnostics",
+        "@devlab/ui-hood",
+        "@devlab/ui-host",
+        "@devlab/ui-preview",
+        "@devlab/ui-projects",
+        "@devlab/ui-runtime",
+        "@devlab/ui-shell",
+        "@devlab/ui-terminal"
+      ],
+      "archive": "bundles/react-workspace.tar.gz"
+    },
+    "http-transport": {
+      "title": "Local HTTP/SSE transport and existing browser client",
+      "roots": [
+        "@devlab/transport-http",
+        "@devlab/client"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/client",
+        "@devlab/contracts",
+        "@devlab/transport-http",
+        "@devlab/ui-contracts"
+      ],
+      "archive": "bundles/http-transport.tar.gz"
+    },
+    "wisdom": {
+      "title": "Reviewed portable Wisdom distribution and preparation adapter",
+      "roots": [
+        "@devlab/wisdom-tool"
+      ],
+      "packages": [
+        "@creoaurea/pop-the-hood",
+        "@devlab/contracts",
+        "@devlab/wisdom-tool"
+      ],
+      "archive": "bundles/wisdom.tar.gz"
+    }
+  },
+  "limits": [
+    "Existing one-tool fake-model/echo runtime; no real provider or new hooks.",
+    "Browser client is same-origin and requires browser fetch/EventSource.",
+    "Native adapters require Node 24/Linux, node-pty and/or separately installed Chromium/display.",
+    "Registry adapter needs a host-specific artifact and manifests; it does not infer another application composition.",
+    "Local reuse only; no registry publication or additional license grant."
+  ]
+}

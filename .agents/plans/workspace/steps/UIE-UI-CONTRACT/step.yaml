@@ -1,0 +1,31 @@
+schema_version: 1
+id: UIE-UI-CONTRACT
+title: UIE-UI-CONTRACT
+outcome: UIE-UI-CONTRACT
+kind: feature
+effect: change_source
+owner: ui-contracts
+slice: UIE-S1
+mode: worker
+read:
+- docs/plans/ui-elements/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- packages/ui-contracts/package.json
+- packages/ui-contracts/src/index.ts
+needs:
+- UIE-CONTRACT
+acceptance:
+- A1
+- A2
+- A3
+- A4
+- A5
+- A6
+- A7
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+spec: docs/plans/ui-elements/SPEC.md

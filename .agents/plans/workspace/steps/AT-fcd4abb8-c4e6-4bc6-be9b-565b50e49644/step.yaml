@@ -1,0 +1,27 @@
+schema_version: 1
+id: AT-fcd4abb8-c4e6-4bc6-be9b-565b50e49644
+title: Activate November UI hot reload configuration
+outcome: Activate November UI hot reload configuration
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: UIE-S2
+mode: worker
+read:
+- .agents/plans/workspace/HMR-INTEGRATION.md
+- scripts/dev-ui.mjs
+- scripts/prototype.mjs
+write:
+- devlab.preview.json
+- README.md
+needs: []
+acceptance:
+- Backend attachment selects November4312 and distinct frontend4313; other workspace
+  untouched.
+- Document repeatable managed frontend startup and persistence/reload boundaries.
+- Existing frontend attachment and prototype validation tests pass.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/dev-ui.test.ts scripts/prototype.test.ts

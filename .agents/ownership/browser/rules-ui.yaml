@@ -1,0 +1,21 @@
+schema_version: 1
+id: rules-ui
+purpose: Present read-only rule inspection and compact WISDOHM controls for reviewed
+  setup and user-triggered, project-scoped Codex healing with observed health.
+group: browser
+paths:
+- plugins/ui-rules/package.json
+- plugins/ui-rules/src/index.ts
+- plugins/ui-rules/src/view.tsx
+- plugins/ui-rules/src/rules.css
+- plugins/ui-rules/src/harness.tsx
+- plugins/ui-rules/src/memory.tsx
+- plugins/ui-rules/src/use-snapshot.ts
+- plugins/ui-rules/src/memory.css
+public:
+- plugins/ui-rules/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

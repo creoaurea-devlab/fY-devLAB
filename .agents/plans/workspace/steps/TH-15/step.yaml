@@ -1,0 +1,37 @@
+schema_version: 1
+id: TH-15
+title: Present current WISDOHM evidence for reviewed completion
+outcome: Present current WISDOHM evidence for reviewed completion
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-EVIDENCE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- .wisdohm/protocols/updates.md
+- .wisdohm/policy.yaml
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- TH-03
+acceptance:
+- Current turn completion only requests Review; keep this safe behavior. Add source-backed
+  inspection of the actual worker session and its declared checks/review/finish evidence.
+- Never create a post-hoc session or infer telemetry from cumulative tokens. Stale
+  definitions/hashes, failed checks, unknown usage or model success text cannot support
+  Complete.
+- Planning CAS conflicts remain visible reconciliation work; Rules Board stays read-only
+  and never executes stored commands. The trusted operator assesses the evidence before
+  reporting completion.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

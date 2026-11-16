@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-Q-2
+title: Expose Run directly on milestone, slice and atomic task cards
+outcome: Expose Run directly on milestone, slice and atomic task cards
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+- plugins/ui-kanban/src/harness.tsx
+needs:
+- TH-Q-1
+acceptance:
+- Visible Run buttons on milestone/slice/task cards and task execution rows open explicit
+  scope confirmation. No dispatch occurs before confirmation.
+- Stopped/failed queue Restart opens fresh confirmation with current definition/digest
+  and new command identity, skipping review/complete tasks; uncertain outcomes cannot
+  blindly restart.
+- Keyboard, focus return, project switching, errors, duplicate clicks and read-only
+  behavior verified with full PlanningView browser fixture.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts

@@ -1,0 +1,21 @@
+schema_version: 1
+id: FACTORY-DISCOVERY
+title: Generate architecture from selected ownership and current files
+outcome: Generate architecture from selected ownership and current files
+kind: maintenance
+effect: change_source
+owner: source-maps
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- scripts/architecture.ts
+needs: []
+acceptance:
+- Current runtime sources are discoverable without indexing absent historical paths.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - DEVLAB_BUILD_DIR=/tmp/devlab-factory-ui-build node scripts/architecture.ts

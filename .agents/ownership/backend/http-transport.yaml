@@ -1,0 +1,21 @@
+schema_version: 1
+id: http-transport
+purpose: Own @devlab/transport-http public capability implementation and its internal
+  lifecycle.
+group: backend
+paths:
+- plugins/transport-http/src/herdr.ts
+- plugins/transport-http/src/runtime.ts
+- plugins/transport-http/package.json
+- plugins/transport-http/src/browser.ts
+- plugins/transport-http/src/index.ts
+- plugins/transport-http/src/projects.ts
+- plugins/transport-http/src/servers.ts
+- plugins/transport-http/src/rules.ts
+- plugins/transport-http/src/terminals.ts
+public:
+- plugins/transport-http/src/index.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

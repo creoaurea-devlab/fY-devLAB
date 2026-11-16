@@ -1,0 +1,17 @@
+schema_version: 1
+id: canvas-ui
+purpose: Own @devlab/ui-canvas public capability implementation and its internal lifecycle.
+group: browser
+paths:
+- plugins/ui-canvas/package.json
+- plugins/ui-canvas/src/canvas.css
+- plugins/ui-canvas/src/index.ts
+- plugins/ui-canvas/src/view.tsx
+- plugins/ui-canvas/src/workspace.ts
+public:
+- plugins/ui-canvas/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

@@ -1,0 +1,37 @@
+{
+  "backup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/20261115-144220",
+  "results": [
+    {
+      "variant": "before",
+      "width": 1440,
+      "paneHeaderHeights": [
+        36
+      ],
+      "separateDockToolbars": 1,
+      "pageOverflow": false,
+      "errors": []
+    },
+    {
+      "variant": "after",
+      "width": 1440,
+      "paneHeaderHeights": [
+        28
+      ],
+      "separateDockToolbars": 0,
+      "pageOverflow": false,
+      "errors": []
+    },
+    {
+      "variant": "after",
+      "width": 390,
+      "paneHeaderHeights": [
+        28
+      ],
+      "separateDockToolbars": 0,
+      "pageOverflow": false,
+      "errors": []
+    }
+  ],
+  "singlePaneHeaderPixelsSaved": 44,
+  "liveUserApiUsed": false
+}

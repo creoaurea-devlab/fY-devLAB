@@ -1,0 +1,6 @@
+schema_version: 1
+id: coordinator
+purpose: Select ready work, settle contracts and integrate disjoint owner outcomes.
+instructions: .agents/agents/coordinator/agent.md
+skills:
+- .agents/skills/wisdohm-orchestrate/SKILL.md

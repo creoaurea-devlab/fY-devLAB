@@ -1,0 +1,24 @@
+schema_version: 1
+id: FACTORY-CONTRACT
+title: Declare automatic phase, attempts and failed queue task progress
+outcome: Declare automatic phase, attempts and failed queue task progress
+kind: maintenance
+effect: change_source
+owner: service-contracts
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/rules.ts
+needs: []
+acceptance:
+- No human-review setting in commands; expose phase and bounded repair progress.
+- Rules UI accepts the automatic factory phases while keeping historical receipts
+  readable.
+verification:
+  level: targeted
+  reason: Minimal checks on the changed public behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

@@ -1,0 +1,1136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wisdom orchestration registries",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[\\\\\\u0000*?\\[\\]])[^\\u0000]+$"
+    },
+    "paths": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/path"
+      },
+      "uniqueItems": true
+    },
+    "ids": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "strings": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "uniqueItems": true
+    },
+    "index": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "registries",
+        "memory",
+        "max_context_chars",
+        "decision_tree"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "registries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tasks",
+            "features",
+            "ui",
+            "decisions",
+            "handoffs",
+            "addons"
+          ],
+          "properties": {
+            "tasks": {
+              "$ref": "#/$defs/path"
+            },
+            "features": {
+              "$ref": "#/$defs/path"
+            },
+            "ui": {
+              "$ref": "#/$defs/path"
+            },
+            "decisions": {
+              "$ref": "#/$defs/path"
+            },
+            "handoffs": {
+              "$ref": "#/$defs/path"
+            },
+            "addons": {
+              "$ref": "#/$defs/path"
+            }
+          }
+        },
+        "memory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "codebase",
+            "changelog",
+            "progress",
+            "goals",
+            "decisions",
+            "roadmap",
+            "features",
+            "ui"
+          ],
+          "properties": {
+            "codebase": {
+              "$ref": "#/$defs/paths"
+            },
+            "changelog": {
+              "$ref": "#/$defs/paths"
+            },
+            "progress": {
+              "$ref": "#/$defs/paths"
+            },
+            "goals": {
+              "$ref": "#/$defs/paths"
+            },
+            "decisions": {
+              "$ref": "#/$defs/paths"
+            },
+            "roadmap": {
+              "$ref": "#/$defs/paths"
+            },
+            "features": {
+              "$ref": "#/$defs/paths"
+            },
+            "ui": {
+              "$ref": "#/$defs/paths"
+            }
+          }
+        },
+        "max_context_chars": {
+          "type": "integer",
+          "minimum": 1500,
+          "maximum": 100000
+        },
+        "decision_tree": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/decision_branch"
+          }
+        }
+      }
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "goal",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "goal": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "slice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "milestone",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "milestone": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slice",
+        "title",
+        "effect",
+        "agent",
+        "module",
+        "mode",
+        "depends_on",
+        "read",
+        "write",
+        "verify",
+        "acceptance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "slice": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "effect": {
+          "$ref": "#/$defs/id"
+        },
+        "agent": {
+          "$ref": "#/$defs/id"
+        },
+        "module": {
+          "$ref": "#/$defs/id"
+        },
+        "mode": {
+          "enum": [
+            "worker",
+            "orchestrator"
+          ]
+        },
+        "depends_on": {
+          "$ref": "#/$defs/ids"
+        },
+        "children": {
+          "$ref": "#/$defs/ids"
+        },
+        "read": {
+          "$ref": "#/$defs/paths"
+        },
+        "write": {
+          "$ref": "#/$defs/paths"
+        },
+        "verify": {
+          "$ref": "#/$defs/strings"
+        },
+        "acceptance": {
+          "$ref": "#/$defs/strings"
+        },
+        "feature": {
+          "$ref": "#/$defs/id"
+        },
+        "ui": {
+          "$ref": "#/$defs/ids"
+        },
+        "spec": {
+          "$ref": "#/$defs/path"
+        }
+      }
+    },
+    "tasks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "goals",
+        "milestones",
+        "slices",
+        "tasks"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "goals": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/goal"
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/milestone"
+          }
+        },
+        "slices": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/slice"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/task"
+          }
+        }
+      }
+    },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "entrypoint"
+      ],
+      "properties": {
+        "module": {
+          "$ref": "#/$defs/id"
+        },
+        "entrypoint": {
+          "$ref": "#/$defs/path"
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "modules",
+        "tasks",
+        "entrypoints",
+        "requires",
+        "checks",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "modules": {
+          "$ref": "#/$defs/ids"
+        },
+        "tasks": {
+          "$ref": "#/$defs/ids"
+        },
+        "entrypoints": {
+          "$ref": "#/$defs/paths"
+        },
+        "requires": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/interface"
+          }
+        },
+        "checks": {
+          "$ref": "#/$defs/strings"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "implemented",
+            "verified"
+          ]
+        }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "feature",
+        "module",
+        "entrypoint",
+        "states",
+        "checks",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "feature": {
+          "$ref": "#/$defs/id"
+        },
+        "module": {
+          "$ref": "#/$defs/id"
+        },
+        "entrypoint": {
+          "$ref": "#/$defs/path"
+        },
+        "states": {
+          "$ref": "#/$defs/strings"
+        },
+        "checks": {
+          "$ref": "#/$defs/strings"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "implemented",
+            "verified"
+          ]
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "summary",
+        "status",
+        "tasks",
+        "modules",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "status": {
+          "enum": [
+            "proposed",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "tasks": {
+          "$ref": "#/$defs/ids"
+        },
+        "modules": {
+          "$ref": "#/$defs/ids"
+        },
+        "evidence": {
+          "$ref": "#/$defs/paths"
+        }
+      }
+    },
+    "addon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "modules",
+        "tasks",
+        "entrypoints",
+        "depends_on",
+        "requires",
+        "context",
+        "checks",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "version": {
+          "$ref": "#/$defs/text"
+        },
+        "modules": {
+          "$ref": "#/$defs/ids"
+        },
+        "tasks": {
+          "$ref": "#/$defs/ids"
+        },
+        "entrypoints": {
+          "$ref": "#/$defs/paths"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/ids"
+        },
+        "requires": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/interface"
+          }
+        },
+        "context": {
+          "$ref": "#/$defs/paths"
+        },
+        "checks": {
+          "$ref": "#/$defs/strings"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "implemented",
+            "verified"
+          ]
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "task",
+        "agent",
+        "module",
+        "receipt_digest",
+        "changed",
+        "summary",
+        "next",
+        "receipt"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "task": {
+          "$ref": "#/$defs/id"
+        },
+        "agent": {
+          "$ref": "#/$defs/id"
+        },
+        "module": {
+          "$ref": "#/$defs/id"
+        },
+        "receipt_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "changed": {
+          "$ref": "#/$defs/paths"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "next": {
+          "$ref": "#/$defs/text"
+        },
+        "receipt": {
+          "$ref": "#/$defs/receipt"
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/feature"
+          }
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/surface"
+          }
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "handoffs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/handoff"
+          }
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "addons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/addon"
+          }
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "decisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "items"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/decision"
+          }
+        }
+      }
+    },
+    "decision_branch": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "if",
+            "then"
+          ],
+          "properties": {
+            "if": {
+              "enum": [
+                "read_only",
+                "has_children",
+                "owned_module"
+              ]
+            },
+            "then": {
+              "enum": [
+                "inspect",
+                "orchestrate",
+                "worker"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "else"
+          ],
+          "properties": {
+            "else": {
+              "const": "triage"
+            }
+          }
+        }
+      ]
+    },
+    "hashes": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/path"
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "maxProperties": 10000
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ]
+    },
+    "memory_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "updated",
+            "unchanged",
+            "not_applicable"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "proposal": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "status",
+        "reason"
+      ]
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "codebase": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "changelog": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "progress": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "goals": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "decisions": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "roadmap": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "features": {
+          "$ref": "#/$defs/memory_item"
+        },
+        "ui": {
+          "$ref": "#/$defs/memory_item"
+        }
+      },
+      "required": [
+        "codebase",
+        "changelog",
+        "progress",
+        "goals",
+        "decisions",
+        "roadmap",
+        "features",
+        "ui"
+      ]
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "$ref": "#/$defs/text"
+        },
+        "exit": {
+          "type": "integer"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "output_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "command",
+        "exit"
+      ]
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gate": {
+          "enum": [
+            "WRITE",
+            "VERIFY"
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "pass",
+            "fail"
+          ]
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "at": {
+          "$ref": "#/$defs/text"
+        },
+        "prev": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "writes": {
+          "$ref": "#/$defs/paths"
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "enum": [
+                "executed",
+                "host-attested"
+              ]
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/check"
+              }
+            }
+          },
+          "required": [
+            "source",
+            "checks"
+          ]
+        },
+        "outputs": {
+          "$ref": "#/$defs/hashes"
+        }
+      },
+      "required": [
+        "gate",
+        "outcome",
+        "attempt",
+        "at",
+        "prev",
+        "evidence",
+        "evidence_digest",
+        "digest"
+      ]
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "working_folder": {
+          "$ref": "#/$defs/text"
+        },
+        "task": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "$ref": "#/$defs/id"
+        },
+        "explicit_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "intent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "modules": {
+          "$ref": "#/$defs/ids"
+        },
+        "read": {
+          "$ref": "#/$defs/paths"
+        },
+        "write": {
+          "$ref": "#/$defs/paths"
+        },
+        "risk": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "verify": {
+          "$ref": "#/$defs/strings"
+        },
+        "assumptions": {
+          "$ref": "#/$defs/strings"
+        },
+        "evidence": {
+          "$ref": "#/$defs/hashes"
+        },
+        "approval_key": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "approval": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "waiting_for_human"
+          ]
+        },
+        "gate_chain": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/gate"
+          }
+        },
+        "declaration": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "working_folder",
+        "task",
+        "role",
+        "explicit_role",
+        "intent",
+        "modules",
+        "read",
+        "write",
+        "risk",
+        "verify",
+        "assumptions",
+        "evidence",
+        "approval_key",
+        "approval",
+        "status",
+        "gate_chain",
+        "declaration"
+      ]
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "task": {
+          "$ref": "#/$defs/id"
+        },
+        "agent": {
+          "$ref": "#/$defs/id"
+        },
+        "module": {
+          "$ref": "#/$defs/id"
+        },
+        "parent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contract_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "proof": {
+          "$ref": "#/$defs/contract"
+        },
+        "outputs": {
+          "$ref": "#/$defs/hashes"
+        },
+        "changed": {
+          "$ref": "#/$defs/paths"
+        },
+        "memory": {
+          "$ref": "#/$defs/memory"
+        },
+        "children": {
+          "$ref": "#/$defs/ids"
+        },
+        "next": {
+          "$ref": "#/$defs/text"
+        },
+        "closed_at": {
+          "$ref": "#/$defs/text"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "journal_prefix": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "task",
+        "agent",
+        "module",
+        "parent",
+        "contract_digest",
+        "proof",
+        "outputs",
+        "changed",
+        "memory",
+        "children",
+        "next",
+        "closed_at",
+        "digest",
+        "journal_prefix"
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/index"
+    },
+    {
+      "$ref": "#/$defs/tasks"
+    },
+    {
+      "$ref": "#/$defs/features"
+    },
+    {
+      "$ref": "#/$defs/ui"
+    },
+    {
+      "$ref": "#/$defs/decisions"
+    },
+    {
+      "$ref": "#/$defs/handoffs"
+    },
+    {
+      "$ref": "#/$defs/addons"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+schema_version: 1
+id: AR-16
+title: Build every Codex dispatch from agent-home definitions and real claims
+outcome: Build every Codex dispatch from agent-home definitions and real claims
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: AGH-S2
+mode: worker
+read:
+- plugins/codex-harness/src/service.ts
+- packages/contracts/src/harness.ts
+- packages/contracts/src/agent-definitions.ts
+- .agents/guides/VERIFICATION.md
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- AR-11
+- AR-10
+- AGH-02
+acceptance:
+- 'AH-01: Ordinary implementation and triage both load canonical step, workflow, role,
+  ownership/domain skills and source generation through the same resolver.'
+- 'AH-11: Dispatch rechecks current task digest, prerequisites, active/review handoffs
+  and exact claims before starting the provider turn.'
+- 'AH-11: A real step-bound WISDOHM session is created and claimed before provider
+  execution; ambiguous launch/cancellation retains recoverable identity.'
+- 'AH-03: Harness selects evidence requirements from structured verification policy;
+  it does not demand tests for every prose task or equate provider exit0 with verified
+  completion.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/service.test.ts scripts/harness-http.test.ts
+spec: .agents/plans/agent-home/steps/AR-16/SPEC.md

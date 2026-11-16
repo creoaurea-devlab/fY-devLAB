@@ -1,0 +1,34 @@
+schema_version: 1
+id: TH-31
+title: Prove adapter removal and document extension wiring
+outcome: Prove adapter removal and document extension wiring
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: TH-S08
+mode: orchestrator
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write:
+- README.md
+needs:
+- TH-22
+- TH-27
+- TH-29
+acceptance:
+- Document public ports, source owners, factory/contribution wiring, effective config,
+  credential scope and removal procedure with official sources https://developers.openai.com/codex/app-server
+  and https://developers.openai.com/codex/sdk.
+- In a disposable checkout disable/remove adapter package and composition entry, confirm
+  build/start and planning UI still work; execution displays unavailable and persisted
+  history remains readable.
+- Document adding a future adapter without importing vendor types into Kanban or execution
+  policy; no speculative multi-provider implementation.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - npm run build

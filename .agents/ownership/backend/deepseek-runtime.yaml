@@ -1,0 +1,20 @@
+schema_version: 1
+id: deepseek-runtime
+purpose: Own the isolated unchanged upstream DeepSeek Harness host, adapters, registry federation and per-package lifecycle testing.
+group: backend
+paths:
+- runtime/deepseek/catalogue.ts
+- runtime/deepseek/worker.ts
+- runtime/deepseek/adapter.ts
+- runtime/deepseek/registry-router.ts
+- runtime/deepseek/host.ts
+- runtime/deepseek/install.ts
+- runtime/deepseek/panel.html
+- runtime/deepseek/README.md
+public:
+- runtime/deepseek/adapter.ts
+- runtime/deepseek/registry-router.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

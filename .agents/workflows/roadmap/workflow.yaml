@@ -1,0 +1,15 @@
+schema_version: 1
+kind: roadmap
+agent: planner
+procedure:
+- Read existing canonical tasks and reuse identities for already planned outcomes.
+- Arrange useful increments around real prerequisites and disjoint owner scopes; make shared-file sequencing
+  explicit.
+- Link each increment to an implementation template and acceptance; finish when the graph is coherent
+  and the first task has a concrete entry point.
+guidance:
+- .agents/guides/VERIFICATION.md
+verification:
+  default: review
+  reason: Validate task coverage, dependency direction and owner handoffs rather than testing unimplemented
+    behavior.

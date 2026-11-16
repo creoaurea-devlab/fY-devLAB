@@ -1,0 +1,26 @@
+schema_version: 1
+id: PROC-PROFILES
+title: Assess declare reusable diagnosis repair and verification roles
+outcome: Assess declare reusable diagnosis repair and verification roles
+kind: audit
+effect: inspect
+owner: governance-runtime
+slice: PROC-S1
+mode: worker
+read:
+- .agents/skills/wisdohm-owner/SKILL.md
+- .wisdohm/config/agents.yaml
+write: []
+needs:
+- PROC-OWN
+acceptance:
+- YAML owns named profile descriptions and Markdown skill references; descriptions
+  do not launch agents or grant filesystem confinement.
+- This product task assesses the already-guarded foundation output read-only; implementation
+  scope and actual receipt remain in its canonical WISDOHM owner session. Legacy planner
+  general-role roots do not authorize edits to this source.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/wisdohm26-rules.test.py

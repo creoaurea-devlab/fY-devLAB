@@ -1,0 +1,39 @@
+schema_version: 1
+id: TH-24
+title: Show effective skills, tools and permission selections
+outcome: Show effective skills, tools and permission selections
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- TH-23
+acceptance:
+- Show skill source, selected invocation, tool/auth state and supported permission
+  controls; distinguish inherited/global effects before persistent changes.
+- Handle empty/stale discovery and unsupported controls visibly; maintain accessible
+  keyboard selection and retained drafts.
+- Load and register docs/protocols/ui-design.md for execution; verify keyboard/focus,
+  failure/retry, project switching and retention of editor drafts, preview and terminal
+  owners in the actual affected flow. Existing smoke checks alone do not prove the
+  new behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

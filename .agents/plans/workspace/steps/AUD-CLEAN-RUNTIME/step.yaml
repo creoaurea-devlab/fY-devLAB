@@ -1,0 +1,22 @@
+schema_version: 1
+id: AUD-CLEAN-RUNTIME
+title: Remove unused native runtime options
+outcome: Remove unused native runtime options
+kind: bugfix
+effect: change_source
+owner: browser-bootstrap
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- src/runtime.ts
+needs: []
+acceptance:
+- Remove unused native runtime options
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/host.test.ts
+spec: docs/plans/audit-remediation/SPEC.md

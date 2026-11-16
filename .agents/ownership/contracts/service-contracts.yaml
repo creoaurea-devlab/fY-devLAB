@@ -1,0 +1,25 @@
+schema_version: 1
+id: service-contracts
+purpose: Own @devlab/contracts public capability implementation and its internal lifecycle.
+group: contracts
+paths:
+- packages/contracts/src/herdr.ts
+- packages/contracts/src/deepseek.ts
+- packages/contracts/src/runtime.ts
+- packages/contracts/package.json
+- packages/contracts/src/architecture.ts
+- packages/contracts/src/browser.ts
+- packages/contracts/src/index.ts
+- packages/contracts/src/preview.ts
+- packages/contracts/src/projects.ts
+- packages/contracts/src/preimp.ts
+- packages/contracts/src/servers.ts
+- packages/contracts/src/terminal.ts
+- packages/contracts/src/workspace.ts
+- packages/contracts/src/rules.ts
+- packages/contracts/src/ownership.ts
+public:
+- packages/contracts/src/index.ts
+uses: []
+guidance:
+- .agents/skills/domain-contracts/SKILL.md

@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-a7223b53-b1a4-4337-8dea-ee2eaf223a32
+title: 'Disconnect planning and execution: workspace-shell'
+outcome: 'Disconnect planning and execution: workspace-shell'
+kind: feature
+effect: change_source
+owner: workspace-shell
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- plugins/ui-shell/src/view.tsx
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

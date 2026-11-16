@@ -1,0 +1,30 @@
+schema_version: 1
+id: RT-CLI
+title: Expose a discoverable Kanban command and schema quick view
+outcome: Expose a discoverable Kanban command and schema quick view
+kind: feature
+effect: change_source
+owner: planning-tools
+slice: RT-S2
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- packages/contracts/src/planner.ts
+- scripts/planner.ts
+- .agents/plans/README.md
+write:
+- scripts/planner.ts
+needs: []
+acceptance:
+- 'A4/A5: Add direct help/schema discovery derived from current public contracts,
+  including create-vs-update IDs, task owner fields, dependencies and verification
+  policy. Reuse apply writer and existing runtime facilities.'
+- Examples cover snapshot, hierarchy creation, status, move, milestone-state and stale/idempotent
+  commands; do not maintain a duplicate schema or execute project rules.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node --test scripts/planning.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

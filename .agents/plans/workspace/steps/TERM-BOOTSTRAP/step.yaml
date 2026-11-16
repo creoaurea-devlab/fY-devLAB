@@ -1,0 +1,26 @@
+schema_version: 1
+id: TERM-BOOTSTRAP
+title: Terminal BOOTSTRAP
+outcome: Terminal BOOTSTRAP
+kind: feature
+effect: change_source
+owner: browser-bootstrap
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- src/main.ts
+needs:
+- TERM-CLIENT
+- TERM-PROFILE
+acceptance:
+- A01
+- A05
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

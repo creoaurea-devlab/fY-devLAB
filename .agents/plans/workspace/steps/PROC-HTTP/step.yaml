@@ -1,0 +1,25 @@
+schema_version: 1
+id: PROC-HTTP
+title: Expose validated global activity through Harness HTTP
+outcome: Expose validated global activity through Harness HTTP
+kind: feature
+effect: change_source
+owner: http-transport
+slice: PROC-S2
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/process.ts
+write:
+- plugins/transport-http/src/index.ts
+needs:
+- PROC-SERVICE
+acceptance:
+- Activity and triage payloads use neutral validation; optional capability absence
+  fails clearly; existing per-project routes remain usable.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts
+  - npx tsc --noEmit

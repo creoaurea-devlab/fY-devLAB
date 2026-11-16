@@ -1,0 +1,14 @@
+schema_version: 1
+kind: bugfix
+agent: implementer
+procedure:
+- Reproduce expected versus observed behavior, or identify the exact evidence gap before changing source.
+- Isolate the owning cause and apply the smallest correction while preserving unrelated behavior.
+- Rerun the failure and a nearby valid case; retain a regression test when the risk and recurrence justify
+  it. Finish when the causal correction is demonstrated.
+guidance:
+- .agents/guides/CODE.md
+- .agents/guides/VERIFICATION.md
+verification:
+  default: targeted
+  reason: A reproduced failure and a nearby valid case usually provide the strongest bounded evidence.

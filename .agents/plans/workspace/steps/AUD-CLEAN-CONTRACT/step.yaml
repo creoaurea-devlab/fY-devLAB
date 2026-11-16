@@ -1,0 +1,23 @@
+schema_version: 1
+id: AUD-CLEAN-CONTRACT
+title: Remove uncalled preview inference implementation
+outcome: Remove uncalled preview inference implementation
+kind: bugfix
+effect: change_source
+owner: service-contracts
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- packages/contracts/src/preview.ts
+needs: []
+acceptance:
+- Remove uncalled preview inference implementation
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit --pretty false
+  - node --test scripts/host.test.ts
+spec: docs/plans/audit-remediation/SPEC.md

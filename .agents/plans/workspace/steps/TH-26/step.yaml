@@ -1,0 +1,44 @@
+schema_version: 1
+id: TH-26
+title: Guard task and queue dispatch with fresh draft preflight
+outcome: Guard task and queue dispatch with fresh draft preflight
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- packages/ui-contracts/src/index.ts
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- TH-37
+- TH-21
+acceptance:
+- Use the retained ProjectWorkspace already passed to PlanningView; recheck conflicting
+  dirty paths immediately before task or queue submission.
+- Conflicting, unknown or stale draft state blocks start with Save or Cancel guidance;
+  no automatic discard/save and no retained-owner remount.
+- Show explicit reconciliation/resume actions from the saved attempt identity; never
+  turn refresh or retry into a second launch.
+- Load and register docs/protocols/ui-design.md for execution; verify keyboard/focus,
+  failure/retry, project switching and retention of editor drafts, preview and terminal
+  owners in the actual affected flow. Existing smoke checks alone do not prove the
+  new behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

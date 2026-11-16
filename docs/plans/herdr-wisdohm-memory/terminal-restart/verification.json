@@ -1,0 +1,75 @@
+{
+  "observedAt": "2026-11-16T01:42:51.693360+00:00",
+  "edition": "_devLAB-refactored",
+  "scope": "S2.4 terminal project/surface bookmark and disposable restart verification",
+  "checks": [
+    {
+      "command": "node --test --test-name-pattern='independent tmux owner|SIGKILL backend crash|Systemd service stop|restart retains|temporary owner inspection' scripts/terminal.test.ts",
+      "passed": 5,
+      "log": "terminal-tests.log"
+    },
+    {
+      "command": "node --test scripts/project-workspace.test.ts",
+      "passed": 13,
+      "log": "workspace-tests.log"
+    },
+    {
+      "command": "npm run ownership:sync",
+      "result": "passed",
+      "log": "ownership-sync.log"
+    },
+    {
+      "command": "npm run check",
+      "passed": 12,
+      "typeCheck": "passed",
+      "log": "check.log"
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "log": "build.log"
+    },
+    {
+      "command": "node scripts/terminal-restart-browser.mjs",
+      "result": "passed",
+      "log": "browser.log",
+      "assertions": "browser.json"
+    }
+  ],
+  "liveReadOnlyAudit": {
+    "runningSessions": 11,
+    "savedRecords": 11,
+    "matchingProcessIdentitiesAndSockets": 11,
+    "inputSent": false,
+    "signalsSent": false,
+    "backendRestarted": false,
+    "windowsReloaded": false,
+    "newIndependentSystemdScopesPresent": false,
+    "backendLaunch": "pre-existing manual process; user unit inactive"
+  },
+  "limits": [
+    "App/backend restart and browser reload, not machine reboot/logout.",
+    "Bounded output: tmux captures last 2000 lines; default replay ring 1 MiB.",
+    "Uncertain input is not automatically replayed; test covers text already delivered before outage.",
+    "Editor drafts, graph selection/viewport reload recovery and complete cross-window matrix remain outside this change.",
+    "No reproduction or diagnosis of the live Codex warning/blink incident.",
+    "Changed workspace owners require deliberate reload after saving drafts."
+  ],
+  "harnessCorrection": "Compare explicitly chosen preferences instead of raw JSON equality after default normalization; choose nondefault split orientation and sizes.",
+  "sourceSha256": {
+    "src/main.ts": "9a131de1566ea6adc18e933af53b85d4a956b999996cef263818afb374214950",
+    "src/workspace.ts": "663edba061e600ac89bd14fc08e804b4ffe8588793a7aa9093d227504798b7cb",
+    "plugins/ui-projects/src/workspace.ts": "a3287d514d2ed53611e59c192ba3039f2f0d71e219fdcc755d5e017de1097878",
+    "plugins/terminal-pty/src/index.ts": "214ade472b150621ad8ca685477c924410ec44d5c5abe268df618ec4f0628cf1",
+    "plugins/terminal-pty/src/persistence.ts": "283d21624968243091b77023aca2ae449ae08b128abb511345a890a2e42edda4",
+    "plugins/ui-terminal/src/input.ts": "4f11792d4dfa9f3e2ccf9cc9b165d1c33a27f1612adab3c22951779b82533bc1",
+    "plugins/ui-shell/src/terminals.tsx": "b9d7e44cbb3c1608be568cab460fa81a4ebadc7b5070942e1abfdebd58e66cf1",
+    "runtime/index.ts": "edfd8d5b554f60f7d5ea6181a1b9ffa2f79df6535440e3be8681d77d505ddd07",
+    "runtime/server.ts": "53dfe03e201f96573c9376fecd3f2647fa6338aaacc44b4a15a7de78047600e8",
+    "scripts/project-workspace.test.ts": "e8cdb0d7ab28f213d12291cece3719348439ae8e7d189179ca857e249115a00b",
+    "scripts/terminal.test.ts": "7d3c9e9223330f6023a632163a45fd9574b6f90c87e1f755eee50a922d24dabb",
+    "scripts/terminal-restart-browser.mjs": "da367bcf4d4aac8c2a75db6ffa1275f51421730aabe16f08ef7de96a09af54e5",
+    ".agents/ownership/verification/verification.yaml": "be52cc2e807f7f4c5698239b473ebadf3d9ceeff75bb3bb794d8edd3d08bf27c",
+    ".context/modules/registry.yaml": "ce5f8c81347073d9518313424e8452620c36079abe7b4e153c1d7632fe528373"
+  }
+}

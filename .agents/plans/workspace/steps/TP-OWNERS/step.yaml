@@ -1,0 +1,26 @@
+schema_version: 1
+id: TP-OWNERS
+title: Declare connected preview setup and regression ownership
+outcome: Declare connected preview setup and regression ownership
+kind: bugfix
+effect: change_source
+owner: governance-runtime
+slice: TP-S1
+mode: worker
+read: []
+write:
+- .agents/ownership/browser/preview-view.yaml
+- .agents/ownership/browser/project-view.yaml
+- .agents/ownership/verification/verification.yaml
+needs: []
+acceptance:
+- Preview consumes the existing public project-adoption component through an acyclic
+  declared dependency.
+- New regression browser script has one exact owner; unrelated claims and Running/Review
+  task definitions stay unchanged.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - python3 .agents/runtime/definitions.py validate --root .

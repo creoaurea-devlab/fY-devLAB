@@ -1,0 +1,24 @@
+schema_version: 1
+id: UNBLOCK-UI
+title: Expose compact execution settings and show verified completion
+outcome: Expose compact execution settings and show verified completion
+kind: bugfix
+effect: change_source
+owner: planning-ui
+slice: RT-S1
+mode: worker
+read: []
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+needs:
+- UNBLOCK-CLIENT-CHECK
+acceptance:
+- Expose compact execution settings and show verified completion
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit

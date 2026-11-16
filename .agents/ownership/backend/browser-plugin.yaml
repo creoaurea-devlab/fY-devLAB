@@ -1,0 +1,12 @@
+schema_version: 1
+id: browser-plugin
+purpose: Own native Chromium surfaces and deterministic observed-node control; no models or semantic memory.
+group: backend
+paths:
+- plugins/browser/**
+public:
+- plugins/browser/src/index.mjs
+- plugins/browser/src/native.mjs
+uses:
+- automation-contracts
+guidance: []

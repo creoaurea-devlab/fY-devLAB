@@ -1,0 +1,12 @@
+schema_version: 1
+id: runtime-control
+purpose: Own restart-aware runtime selection, bounded local diagnostics and configuration rewind.
+group: backend
+paths:
+- runtime/plugins/control.ts
+public:
+- runtime/plugins/control.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

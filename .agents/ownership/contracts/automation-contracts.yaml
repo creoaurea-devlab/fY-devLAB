@@ -1,0 +1,10 @@
+schema_version: 1
+id: automation-contracts
+purpose: Own neutral versioned Browser and Agentic contracts without runtime services.
+group: contracts
+paths:
+- packages/automation-contracts/src/**
+public:
+- packages/automation-contracts/src/browser.ts
+uses: []
+guidance: []

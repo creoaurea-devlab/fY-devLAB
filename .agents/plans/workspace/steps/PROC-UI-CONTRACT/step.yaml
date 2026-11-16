@@ -1,0 +1,22 @@
+schema_version: 1
+id: PROC-UI-CONTRACT
+title: Expose Process as a planning initial view
+outcome: Expose Process as a planning initial view
+kind: feature
+effect: change_source
+owner: ui-contracts
+slice: PROC-S1
+mode: worker
+read: []
+write:
+- packages/ui-contracts/src/index.ts
+needs:
+- PROC-CONTRACTS
+acceptance:
+- Public initialView accepts process alongside board and execution without changing
+  workspace owner identity.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit

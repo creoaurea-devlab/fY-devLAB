@@ -1,0 +1,23 @@
+schema_version: 1
+id: UNBLOCK-HISTORY
+title: Declared historical roots remain readable when the old directory is recreated
+outcome: Declared historical roots remain readable when the old directory is recreated
+kind: bugfix
+effect: change_source
+owner: governance-runtime
+slice: RT-S1
+mode: worker
+read: []
+write:
+- .agents/runtime/store.py
+- .agents/runtime/planning.py
+needs: []
+acceptance:
+- Declared historical roots remain readable when the old directory is recreated
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/agent-home-runtime.test.py

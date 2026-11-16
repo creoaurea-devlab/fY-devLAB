@@ -1,0 +1,51 @@
+schema_version: 1
+id: FACTORY-RUNTIME
+title: Replace governed executor with one serial file-backed Codex loop
+outcome: Replace governed executor with one serial file-backed Codex loop
+kind: maintenance
+effect: change_source
+owner: codex-harness
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- src/runtime/engine.ts
+- src/runtime/flow.ts
+- src/runtime/connection.ts
+- src/runtime/index.ts
+- src/runtime/engine.test.ts
+- src/runtime/connection.test.ts
+- .agents/factory/README.md
+- .agents/factory/steps/plan/step.yaml
+- .agents/factory/steps/plan/policy.json
+- .agents/factory/steps/plan/PROMPT.md
+- .agents/factory/steps/build/step.yaml
+- .agents/factory/steps/build/policy.json
+- .agents/factory/steps/build/PROMPT.md
+- .agents/factory/steps/check/step.yaml
+- .agents/factory/steps/check/policy.json
+- .agents/factory/steps/check/PROMPT.md
+- .agents/factory/steps/repair/step.yaml
+- .agents/factory/steps/repair/policy.json
+- .agents/factory/steps/repair/PROMPT.md
+- plugins/codex-harness/src/index.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.test.ts
+- src/runtime/cli.ts
+- plugins/codex-harness/package.json
+needs: []
+acceptance:
+- Plan/build/check/repair without human gates, two repairs maximum, actual sandbox
+  check evidence.
+- Per-project .agents state survives restart; uncertain writes are not blindly replayed;
+  stop closes the active turn.
+- Queue continues independent tasks after exhausted failure and preserves blocked
+  prerequisites.
+verification:
+  level: targeted
+  reason: Minimal checks on the changed public behavior.
+  checks:
+  - node --test src/runtime/engine.test.ts src/runtime/connection.test.ts

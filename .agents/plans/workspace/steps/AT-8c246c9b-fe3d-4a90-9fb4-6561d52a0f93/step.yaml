@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-8c246c9b-fe3d-4a90-9fb4-6561d52a0f93
+title: 'Disconnect planning and execution: ui-contracts'
+outcome: 'Disconnect planning and execution: ui-contracts'
+kind: feature
+effect: change_source
+owner: ui-contracts
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- packages/ui-contracts/src/index.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

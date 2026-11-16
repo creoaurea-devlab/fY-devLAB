@@ -1,0 +1,23 @@
+schema_version: 1
+id: FACTORY-DELIVERY
+title: Remove the unused package and reduce default checks
+outcome: Remove the unused package and reduce default checks
+kind: maintenance
+effect: change_source
+owner: delivery-config
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- package.json
+- package-lock.json
+needs: []
+acceptance:
+- No forwarding execution package remains; dependency lock matches.
+- Default checks are types and focused runtime/HTTP checks.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - npm run check

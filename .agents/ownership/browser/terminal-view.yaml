@@ -1,0 +1,18 @@
+schema_version: 1
+id: terminal-view
+purpose: Own @devlab/ui-terminal public capability implementation and its internal
+  lifecycle.
+group: browser
+paths:
+- plugins/ui-terminal/package.json
+- plugins/ui-terminal/src/index.ts
+- plugins/ui-terminal/src/input.ts
+- plugins/ui-terminal/src/terminal.css
+- plugins/ui-terminal/src/view.tsx
+public:
+- plugins/ui-terminal/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

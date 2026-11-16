@@ -1,0 +1,27 @@
+schema_version: 1
+id: AT-4dc17f34-47f6-4855-bda7-fe3da9bc6368
+title: 'Disconnect planning and execution: delivery-config'
+outcome: 'Disconnect planning and execution: delivery-config'
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- package.json
+- package-lock.json
+- devlab.preview.json
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

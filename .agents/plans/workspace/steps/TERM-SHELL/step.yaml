@@ -1,0 +1,38 @@
+schema_version: 1
+id: TERM-SHELL
+title: Terminal SHELL
+outcome: Terminal SHELL
+kind: feature
+effect: change_source
+owner: workspace-shell
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/ui-shell/src/terminals.tsx
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/devlab.css
+needs:
+- TERM-UI-CONTRACT
+- TERM-RENDERER
+- TERM-PREVIEW
+acceptance:
+- A02
+- A03
+- A04
+- A05
+- A06
+- A08
+- A11
+- A12
+- A13
+- A14
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/terminal-browser.py
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

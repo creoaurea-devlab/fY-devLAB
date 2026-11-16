@@ -1,0 +1,29 @@
+schema_version: 1
+id: TERM-HOOD
+title: Terminal HOOD
+outcome: Terminal HOOD
+kind: feature
+effect: change_source
+owner: source-maps
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- scripts/architecture.ts
+needs:
+- TERM-SHELL
+- TERM-CANVAS
+- TERM-PROFILE
+- TERM-BOOTSTRAP
+acceptance:
+- A05
+- A11
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - node --test scripts/host.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

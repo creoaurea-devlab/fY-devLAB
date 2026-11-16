@@ -1,0 +1,36 @@
+schema_version: 1
+id: AR-20
+title: Package the portable agent home with one selected runtime
+outcome: Package the portable agent home with one selected runtime
+kind: feature
+effect: change_source
+owner: wisdom-service
+slice: AGH-S3
+mode: worker
+read:
+- plugins/wisdom-tool/src/bundle.json
+- plugins/wisdom-tool/src/population.ts
+- plugins/wisdom-tool/src/index.ts
+- .agents/plans/authority.yaml
+write:
+- plugins/wisdom-tool/src/bundle.json
+- plugins/wisdom-tool/src/population.ts
+- plugins/wisdom-tool/src/index.ts
+- plugins/wisdom-tool/SETUP.md
+needs:
+- AR-10
+- AR-13
+- AGH-03
+acceptance:
+- 'AH-10: Portable bundle contains reviewed .agents role/workflow/skill/runtime sources
+  and no populated database, secrets or devLAB absolute paths.'
+- 'AH-09: Existing custom targets receive reviewed conflicts, not wholesale runtime
+  replacement.'
+- 'AH-08: Interrupted setup/repair preserves a recoverable chosen authority and reports
+  actual partial state.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/wisdom.test.ts scripts/wisdom-healing.test.ts
+spec: .agents/plans/agent-home/steps/AR-20/SPEC.md

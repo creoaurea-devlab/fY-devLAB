@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "adapter": "vite",
+  "start": [
+    "node",
+    "scripts/dev-ui.mjs",
+    "--backend",
+    "http://127.0.0.1:4322",
+    "--port",
+    "{port}"
+  ],
+  "port": 4323,
+  "autoStart": false,
+  "timeoutMs": 30000,
+  "views": [
+    {
+      "id": "workspace",
+      "label": "Workspace",
+      "path": "/"
+    }
+  ],
+  "tokens": [],
+  "inspection": "bridge"
+}

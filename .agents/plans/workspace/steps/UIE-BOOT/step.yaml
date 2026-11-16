@@ -1,0 +1,34 @@
+schema_version: 1
+id: UIE-BOOT
+title: UIE-BOOT
+outcome: UIE-BOOT
+kind: feature
+effect: change_source
+owner: browser-bootstrap
+slice: UIE-S2
+mode: worker
+read:
+- docs/plans/ui-elements/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- src/main.ts
+- src/runtime.ts
+needs:
+- UIE-KANBAN
+- UIE-SOURCE
+- UIE-DEVELOPMENT
+acceptance:
+- A1
+- A2
+- A3
+- A4
+- A5
+- A6
+- A7
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - python3 scripts/ui-elements-browser.py
+spec: docs/plans/ui-elements/SPEC.md

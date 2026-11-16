@@ -1,0 +1,30 @@
+schema_version: 1
+id: RUN-HISTORY
+title: Read explicitly declared relocated history without rewriting imports or accepting
+  foreign writes
+outcome: Read explicitly declared relocated history without rewriting imports or accepting
+  foreign writes
+kind: bugfix
+effect: change_source
+owner: governance-runtime
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+write:
+- .agents/runtime/store.py
+- .agents/project.yaml
+- .agents/runtime/session.py
+needs: []
+acceptance:
+- Read explicitly declared relocated history without rewriting imports or accepting
+  foreign writes
+- Preserve existing resources, historical evidence, sandbox restrictions and unrelated
+  source; run declared checks and record actual limitations.
+- Retained facts remain visibly historical and stale; archived sources do not masquerade
+  as current proof or block a fresh session memory review.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/agent-home-runtime.test.py

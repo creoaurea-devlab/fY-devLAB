@@ -1,0 +1,38 @@
+schema_version: 1
+id: TH-06
+title: Implement Codex-managed ChatGPT login and account state
+outcome: Implement Codex-managed ChatGPT login and account state
+kind: feature
+effect: plan
+owner: codex-harness
+slice: TH-S02
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write: []
+needs:
+- TH-05
+acceptance:
+- 'PLANNED PATHS — before execution, TH-01 must reconcile exact ownership and this
+  task write scope through the shared planner: plugins/codex-harness/src/account.ts,
+  plugins/codex-harness/src/index.ts, plugins/codex-harness/src/account.test.ts. Empty/partial
+  write scope is not permission to start.'
+- Use account/read, account/login/start with managed ChatGPT login, completion/update
+  notifications, cancel and explicit logout; expose device flow only when supported
+  by installed runtime.
+- Codex owns OAuth token persistence/refresh. Choose and document shared existing
+  Codex credentials versus a dedicated Codex home before implementation; never copy
+  tokens into browser, planner JSON, logs or project Git.
+- Test logged-out, expired, cancelled, failed and successful login; correlate login
+  IDs and reject stale completion. Logout clearly states its credential scope and
+  requires user action.
+- 'A real user completes login during acceptance; record only redacted status. No
+  account access or successful login is assumed from installation. Source: https://developers.openai.com/codex/app-server#authentication-modes'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/account.test.ts

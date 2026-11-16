@@ -1,0 +1,29 @@
+schema_version: 1
+id: TH-CONTROLS-CLIENT
+title: Expose validated settings and approvals in the browser client
+outcome: Expose validated settings and approvals in the browser client
+kind: feature
+effect: change_source
+owner: browser-client
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- packages/client/harness.ts
+write:
+- packages/client/harness.ts
+needs:
+- TH-CONTROLS-HTTP
+- TH-21
+acceptance:
+- Validate all discovery/settings/reply responses through neutral schemas; expose
+  explicit failures and preserve client cleanup.
+- Keep runtime credentials and server implementations outside browser code.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/harness-http.test.ts

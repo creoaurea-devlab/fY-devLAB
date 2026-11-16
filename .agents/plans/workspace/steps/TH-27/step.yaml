@@ -1,0 +1,33 @@
+schema_version: 1
+id: TH-27
+title: Register the Harness contribution without remounting workspace owners
+outcome: Register the Harness contribution without remounting workspace owners
+kind: feature
+effect: change_source
+owner: workspace-ui
+slice: TH-S07
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write:
+- src/contributions.ts
+- src/shell.tsx
+needs:
+- TH-23
+- TH-26
+acceptance:
+- Register ui-harness through existing contribution/render facilities and expose the
+  run view from Kanban. Keep Rules Board inspection read-only.
+- Toggle/close Harness and switch projects while preserving editor buffers, preview/terminal
+  identities and active run monitoring. Remove contribution cleanly when capability
+  is disabled.
+- Load/register docs/protocols/ui-design.md before UI work; preserve mounted editor,
+  preview and terminal owners, keyboard access and unsaved drafts.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

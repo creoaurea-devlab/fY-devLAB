@@ -1,0 +1,28 @@
+schema_version: 1
+id: AR-25
+title: Serialize project auto-start with deletion and explicit start
+outcome: Serialize project auto-start with deletion and explicit start
+kind: bugfix
+effect: change_source
+owner: http-transport
+slice: ARSC-M3-S1
+mode: worker
+read:
+- plugins/transport-http/src/projects.ts
+- plugins/transport-http/src/index.ts
+write:
+- plugins/transport-http/src/projects.ts
+- plugins/transport-http/src/index.ts
+needs:
+- TERM-TRANSPORT
+acceptance:
+- 'AC-05: Auto-start participates in existing per-project action ownership.'
+- 'AC-05: Immediate delete/start cannot race an untracked startup, and failures are
+  visible.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/project-thread-delete.test.ts scripts/project-development.test.ts
+    scripts/host.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S1-backend/AR-25.md

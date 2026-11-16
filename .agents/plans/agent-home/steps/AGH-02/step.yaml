@@ -1,0 +1,35 @@
+schema_version: 1
+id: AGH-02
+title: Store reported workflow state independently from definition projections
+outcome: Store reported workflow state independently from definition projections
+kind: feature
+effect: change_source
+owner: governance-runtime
+slice: AGH-S2
+mode: worker
+read:
+- .wisdohm/store.py
+- .wisdohm/session.py
+- packages/contracts/src/planner.ts
+- scripts/agent-home-fixture.py
+write:
+- .wisdohm/store.py
+- .wisdohm/session.py
+needs:
+- AR-10
+acceptance:
+- 'AH-08: Reported progress/order/idempotency history migrates into explicit operational
+  storage without fake execution sessions or promotion to verified evidence.'
+- 'AH-08: Versioned transactional upgrade preserves sessions, notes/events, reports,
+  claims and prior failed checks; online backup precedes upgrade.'
+- 'AH-07: Definition SQL rows are identified as derived projections after activation;
+  refreshing them cannot erase reports or execution evidence.'
+- 'AH-03: Source review, assessed discovery and executed checks have supported finish
+  semantics matched to the declared verification choice.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 -B scripts/wisdohm27.test.py
+  - python3 -B scripts/agent-home-fixture.py --self-check
+spec: .agents/plans/agent-home/steps/AGH-02/SPEC.md

@@ -1,0 +1,24 @@
+schema_version: 1
+id: TP-TERMUI
+title: Keep terminal grid and recoverable errors within resized nodes
+outcome: Keep terminal grid and recoverable errors within resized nodes
+kind: bugfix
+effect: change_source
+owner: terminal-view
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/ui-terminal/src/view.tsx
+- plugins/ui-terminal/src/terminal.css
+needs: []
+acceptance:
+- Terminal grid fits its content area without losing the last row/column.
+- Long error paths wrap and scroll while Retry remains reachable in small/scaled nodes.
+- Compatible changes retain existing terminal identity, output and input ownership.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

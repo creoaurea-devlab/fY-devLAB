@@ -1,0 +1,27 @@
+schema_version: 1
+id: AUD-PROTOCOL
+title: Route maintained Proto guidance and faithful owner dependencies
+outcome: Route maintained Proto guidance and faithful owner dependencies
+kind: bugfix
+effect: change_source
+owner: planning-protocol
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- AGENTS.md
+- .context/protocols/maintenance.md
+- .context/modules/registry.yaml
+- .context/session.py
+- .context/tests/test_rules.py
+needs: []
+acceptance:
+- Route maintained Proto guidance and faithful owner dependencies
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/maintenance.test.ts
+  - python3 -B -m unittest discover -s .context/tests
+spec: docs/plans/audit-remediation/SPEC.md

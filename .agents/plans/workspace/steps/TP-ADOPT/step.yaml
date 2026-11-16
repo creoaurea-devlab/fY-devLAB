@@ -1,0 +1,25 @@
+schema_version: 1
+id: TP-ADOPT
+title: Reuse preview-only setup with explicit apply-and-start action
+outcome: Reuse preview-only setup with explicit apply-and-start action
+kind: bugfix
+effect: change_source
+owner: project-view
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/ui-projects/src/adoption.tsx
+needs: []
+acceptance:
+- Preview-only entry preserves existing project governance and reviews only preview
+  changes.
+- Apply and start names its behavior, uses existing setup service and exposes recoverable
+  errors.
+- Existing full-project adoption path and selection fencing remain compatible.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

@@ -1,0 +1,27 @@
+schema_version: 1
+id: WB-CONTRACTS
+title: Define Whiteboard document, owner and optional render contracts
+outcome: Define Whiteboard document, owner and optional render contracts
+kind: feature
+effect: change_source
+owner: ui-contracts
+slice: WB-S1
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+write:
+- packages/ui-contracts/src/index.ts
+needs:
+- WB-OWNERS
+acceptance:
+- Public browser-neutral DTOs and owner/provider hooks match SPEC connected contracts.
+- Optional whiteboardWorkspace/renderWhiteboard props preserve current consumers;
+  no browser implementation dependencies.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

@@ -1,0 +1,26 @@
+schema_version: 1
+id: PROC-HTTP-TEST
+title: Verify activity and triage client HTTP failures
+outcome: Verify activity and triage client HTTP failures
+kind: feature
+effect: change_source
+owner: verification
+slice: PROC-S4
+mode: worker
+read:
+- packages/client/harness.ts
+- packages/contracts/src/harness.ts
+- plugins/transport-http/src/index.ts
+write:
+- scripts/harness-http.test.ts
+needs:
+- PROC-CLIENT
+acceptance:
+- Exercise valid activity and triage requests plus malformed, unavailable and cross-project
+  behavior with disposable protocol fixtures; distinguish mock runs from actual account
+  execution.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts plugins/codex-harness/src/service.test.ts

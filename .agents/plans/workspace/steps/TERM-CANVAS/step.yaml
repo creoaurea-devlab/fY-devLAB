@@ -1,0 +1,29 @@
+schema_version: 1
+id: TERM-CANVAS
+title: Terminal CANVAS
+outcome: Terminal CANVAS
+kind: feature
+effect: change_source
+owner: canvas-ui
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/ui-canvas/src/view.tsx
+needs:
+- TERM-UI-CONTRACT
+- TERM-RENDERER
+acceptance:
+- A05
+- A07
+- A12
+- A13
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/terminal-browser.py
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

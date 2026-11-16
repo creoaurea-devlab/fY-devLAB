@@ -1,0 +1,7 @@
+# Dedicated Bubblewrap copy: permits namespace creation without changing the
+# system-wide unprivileged-userns restriction or profiles for other applications.
+abi <abi/4.0>,
+include <tunables/global>
+profile devlab-herdr-bwrap /usr/local/libexec/devlab-herdr-bwrap flags=(unconfined) {
+  userns,
+}

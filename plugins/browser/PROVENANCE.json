@@ -1,0 +1,17 @@
+{
+  "inspected": "2026-11-16",
+  "puppeteer": "25.4.0",
+  "sources": [
+    {
+      "source": "../NANO/nanobrowser/src/browser-control/core/geometry.ts",
+      "sha256": "8e794edce948ddb35b6f0418cf7c1af5da4edbf00421e57ba18db8ca67a7823b",
+      "adapted": "src/native/geometry.mjs"
+    },
+    {
+      "source": "../gogogoogle/pool/Seo.googleauto.etc/_archive/SEOTOOLS/node_modules/puppeteer-core/lib/puppeteer/cdp/ExtensionTransport.js",
+      "sha256": "eea24f9a214909b83e403e37d73c760e4107c595cbb416631c551abf9ca9cc73",
+      "adapted": "src/native/debugger-transport.mjs"
+    }
+  ],
+  "modifications": "Electron debugger transport, bounded public host operations, Puppeteer-supplied ancestry and raw CDP hit tests. Not a copy of the complete Nanobrowser layer."
+}

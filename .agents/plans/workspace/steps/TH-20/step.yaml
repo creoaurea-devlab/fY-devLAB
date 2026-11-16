@@ -1,0 +1,29 @@
+schema_version: 1
+id: TH-20
+title: Define retained-project draft preflight query
+outcome: Define retained-project draft preflight query
+kind: feature
+effect: change_source
+owner: ui-contracts
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-kanban/src/view.tsx
+- packages/ui-contracts/src/index.ts
+write:
+- packages/ui-contracts/src/index.ts
+needs: []
+acceptance:
+- Expose a narrow ProjectWorkspace query for project identity, unsaved paths and freshness
+  without giving consumers draft mutation access.
+- Unavailable/stale query results must remain distinct from an empty clean result;
+  retain existing optional capability consumers.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

@@ -1,0 +1,27 @@
+project: devLAB
+history_roots:
+- /home/creoaurea/Documents/DEV_FOCUS/devLAB
+- /home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/devLAB
+mode: autonomous
+commands:
+  setup: npm ci
+  typecheck: ./node_modules/.bin/tsc --noEmit
+  test: npm run check
+  build: npm run build
+  dev: npm start
+  deployment: npm run verify:deployment
+rules:
+  protected_paths:
+  - .git/
+  - .env
+  - '**/secrets/**'
+ownership: {}
+journey:
+  gates:
+  - PLAN
+  - BUILD
+  - CHECK
+  - REPAIR
+  - DONE
+  accent: cyan
+  bold: true

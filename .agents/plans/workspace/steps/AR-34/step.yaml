@@ -1,0 +1,51 @@
+schema_version: 1
+id: AR-34
+title: Verify backend and browser lifecycle scenarios together
+outcome: Verify backend and browser lifecycle scenarios together
+kind: bugfix
+effect: change_source
+owner: verification
+slice: ARSC-M3-S4
+mode: worker
+read:
+- scripts/project-workspace.test.ts
+- scripts/terminal-process-fixture.ts
+- scripts/kanban-disclosure-browser.py
+write:
+- scripts/client-lifecycle.test.ts
+- scripts/runtime-lifecycle.test.ts
+- scripts/terminal-process-fixture.ts
+- scripts/terminal.test.ts
+- scripts/project-workspace.test.ts
+- scripts/ui-elements-browser.py
+- scripts/kanban-disclosure-browser.py
+- scripts/wisdom-setup-browser.py
+needs:
+- TH-05
+- TERM-SERVICE
+- AR-25
+- TERM-CLIENT
+- AR-28
+- AR-29
+- AR-30
+- AR-31
+- AR-33
+- AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0
+acceptance:
+- 'AC-05: Disposable process/reconnect/backpressure/deletion probes pass without affecting
+  live resources.'
+- 'AC-09: Real keyboard/failure/retention interactions pass at supported widths, with
+  draft/owner identity assertions.'
+- 'AC-08: Fixed-workload polling counts are recorded; no speed claim without measured
+  evidence.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/client-lifecycle.test.ts scripts/runtime-lifecycle.test.ts
+    scripts/project-workspace.test.ts scripts/terminal.test.ts
+  - UI_ELEMENTS_EVIDENCE_DIR=/tmp/devlab-audit-ui-elements python3 scripts/ui-elements-browser.py
+  - KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-kanban python3 scripts/kanban-disclosure-browser.py
+  - python3 scripts/wisdom-setup-browser.py --width 1440
+  - python3 scripts/wisdom-setup-browser.py --width 820
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S4-integration/AR-34.md

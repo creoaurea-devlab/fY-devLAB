@@ -1,0 +1,25 @@
+schema_version: 1
+id: RULES-MIGRATION
+title: RULES-MIGRATION
+outcome: RULES-MIGRATION
+kind: feature
+effect: change_source
+owner: rules-bootstrap
+slice: RULES-S2
+mode: worker
+read:
+- docs/plans/rules-board/SPEC.md
+write:
+- scripts/wisdohm26-bootstrap.py
+needs:
+- RULES-INTEGRATION
+acceptance:
+- Explicit source and evidence boundaries; real combined verification; preserved originals
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/wisdohm26-bootstrap.test.py
+  - npm run check
+  - npm run build
+spec: docs/plans/rules-board/SPEC.md

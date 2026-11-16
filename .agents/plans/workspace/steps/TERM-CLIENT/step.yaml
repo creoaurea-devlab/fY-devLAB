@@ -1,0 +1,26 @@
+schema_version: 1
+id: TERM-CLIENT
+title: Terminal CLIENT
+outcome: Terminal CLIENT
+kind: feature
+effect: change_source
+owner: browser-client
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- packages/client/client.ts
+- packages/client/terminals.ts
+needs:
+- TERM-CONTRACT
+acceptance:
+- A01
+- A07
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

@@ -1,0 +1,29 @@
+schema_version: 1
+id: PROC-DEFINITION
+title: Assess create the editable project process definition
+outcome: Assess create the editable project process definition
+kind: audit
+effect: inspect
+owner: process-definition
+slice: PROC-S1
+mode: worker
+read:
+- .wisdohm/config/agents.yaml
+- packages/contracts/src/process.ts
+- devlab.process.json
+write: []
+needs:
+- PROC-PROFILES
+- PROC-CONTRACTS
+acceptance:
+- Root JSON contains planning, executing and reviewing stages with nested steps and
+  triage profile references; graph metadata does not execute commands or copy runtime
+  status.
+- This product task assesses the already-guarded foundation output read-only; implementation
+  scope and actual receipt remain in its canonical WISDOHM owner session. Legacy planner
+  general-role roots do not authorize edits to this source.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/process.test.ts

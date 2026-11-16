@@ -1,0 +1,19 @@
+schema_version: 1
+id: AT-834d5097-2bfd-4ed1-b116-6323b939120b
+title: test
+outcome: test
+kind: feature
+effect: plan
+owner: planning-ui
+slice: TERM-S1
+mode: worker
+read: []
+write: []
+needs: []
+acceptance:
+- I want it to be more compact cards
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - I want it to be more compact cards

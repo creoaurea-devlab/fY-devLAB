@@ -1,0 +1,34 @@
+schema_version: 1
+id: TH-18
+title: Recover interrupted queues without replaying completed work
+outcome: Recover interrupted queues without replaying completed work
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- TH-14
+- TH-17
+acceptance:
+- Replace the current permanent reconciliation-required blockage with explicit identity-checked
+  queue reconciliation and resume.
+- Reconcile saved attempt with remote thread/turn state before continuation; changed
+  root/definition/policy or unknown remote outcome requires operator resolution.
+- Test restart before/after acknowledgement, partially finished queue, unavailable
+  login and changed task definition; no completed mutation is replayed.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

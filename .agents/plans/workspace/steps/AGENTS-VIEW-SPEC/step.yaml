@@ -1,0 +1,33 @@
+schema_version: 1
+id: AGENTS-VIEW-SPEC
+title: Reconcile active-agent visibility and owner-scoped parallel orchestration plan
+outcome: Reconcile active-agent visibility and owner-scoped parallel orchestration
+  plan
+kind: spec
+effect: change_source
+owner: planning-protocol
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/ui-shell/src/view.tsx
+- .agents/runtime/orchestration.py
+write:
+- .agents/plans/workspace/agent-activity/SPEC.md
+needs: []
+acceptance:
+- Assess current Harness activity/queue APIs and agent-home sessions/claims; reuse
+  existing overlapping task IDs and preserve Running/Review handoffs.
+- Record an executable proposal with exact owners and dependencies for actual active
+  agents, task/slice/owner, phase/waiting reason and freshness; reported Running is
+  separate from live execution.
+- Settle connected contracts and disjoint writes before concurrent dispatch; unknown
+  telemetry remains unknown. No agent execution is started by this planning task.
+verification:
+  level: review
+  reason: Source-backed specification assessment.
+  checks: []
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

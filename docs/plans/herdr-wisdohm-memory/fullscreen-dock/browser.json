@@ -1,0 +1,49 @@
+{
+  "measurements": [
+    {
+      "width": 1440,
+      "toolbar": 28,
+      "drawers": {
+        "Server options": 33,
+        "View": 33,
+        "Inspect": 33,
+        "Tools": 33
+      }
+    },
+    {
+      "width": 820,
+      "toolbar": 28,
+      "drawers": {
+        "Server options": 33,
+        "View": 33,
+        "Inspect": 33,
+        "Tools": 33
+      }
+    },
+    {
+      "width": 390,
+      "toolbar": 28,
+      "drawers": {
+        "Server options": 33,
+        "View": 33,
+        "Inspect": 33,
+        "Tools": 33
+      }
+    }
+  ],
+  "directStartStop": true,
+  "frameAndDraftRetained": true,
+  "escapeAndFocus": true,
+  "terminalPidRetained": true,
+  "stoppedInspectClose": true,
+  "lateStartResponseFenced": true,
+  "fullscreenDock": true,
+  "fullscreenIframeRetained": true,
+  "drawerFocusIntentRetained": true,
+  "fullscreenTerminalAndServers": true,
+  "fullscreenTerminalInput": true,
+  "pendingRequestRecovered": true,
+  "unconfiguredAndNoUIRefused": true,
+  "toolbarActionsFit": true,
+  "jsErrors": []
+}

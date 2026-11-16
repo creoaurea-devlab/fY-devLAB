@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-03
+title: Define identity-bound recovery and evidence contracts
+outcome: Define identity-bound recovery and evidence contracts
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- packages/contracts/src/index.ts
+write:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/index.ts
+needs:
+- TH-MVP-2
+- TH-Q-1
+acceptance:
+- Extend the existing HarnessService with explicit reconciliation/resume and evidence
+  observation states; preserve existing start/list/stop callers.
+- Bind actions to project, saved attempt, definition and expected state; uncertain
+  outcome cannot become retry or complete by implication. Settle consumers before
+  parallel implementation.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/harness-http.test.ts

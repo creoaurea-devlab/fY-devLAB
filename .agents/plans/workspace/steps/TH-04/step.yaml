@@ -1,0 +1,39 @@
+schema_version: 1
+id: TH-04
+title: Declare local packages and reproducible Codex compatibility
+outcome: Declare local packages and reproducible Codex compatibility
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: TH-S01
+mode: orchestrator
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+- package.json
+- src/profile.ts
+write:
+- package.json
+- package-lock.json
+needs:
+- TH-01
+- TH-02
+- TH-03
+- TH-33
+- TH-34
+- TH-35
+acceptance:
+- Compose local @devlab/codex-harness, @devlab/task-execution and @devlab/ui-harness
+  packages through package manifests; keep server packages out of browser imports.
+- 'Pin/test compatible installed Codex version and schema generation workflow. Investigation
+  observed codex-cli 0.166.0; recheck at implementation. App-server is experimental:
+  explicit compatibility refusal on unsupported protocol.'
+- Do not add both openai and @openai/codex-sdk without an implemented consumer. Document
+  app-server choice versus Codex SDK automation at https://developers.openai.com/codex/sdk
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node scripts/verify-packages.mjs
+  - ./node_modules/.bin/tsc --noEmit

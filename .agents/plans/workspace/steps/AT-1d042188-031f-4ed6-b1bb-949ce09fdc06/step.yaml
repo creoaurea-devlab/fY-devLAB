@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-1d042188-031f-4ed6-b1bb-949ce09fdc06
+title: 'Disconnect planning and execution: backend-host'
+outcome: 'Disconnect planning and execution: backend-host'
+kind: feature
+effect: change_source
+owner: backend-host
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- src/profile.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

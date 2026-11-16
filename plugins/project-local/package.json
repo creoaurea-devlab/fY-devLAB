@@ -1,0 +1,12 @@
+{
+  "name": "@devlab/project-local",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@devlab/contracts": "0.1.0"
+  }
+}

@@ -1,0 +1,48 @@
+schema_version: 1
+id: TH-12
+title: Validate a Kanban atomic task and compile its execution brief
+outcome: Validate a Kanban atomic task and compile its execution brief
+kind: feature
+effect: plan
+owner: planning-protocol
+slice: TH-S04
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+- plugins/planning-local/src/index.ts
+- plugins/ui-kanban/src/model.ts
+- .wisdohm/BOOT.md
+write: []
+needs:
+- TH-03
+- TH-08
+- TH-09
+- TH-10
+acceptance:
+- 'DEFERRED: proposed task-execution owner is outside MVP; register and reconcile
+  scope before implementing.'
+- 'PLANNED PATHS — before execution, TH-01 must reconcile exact ownership and this
+  task write scope through the shared planner: plugins/task-execution/package.json,
+  plugins/task-execution/src/index.ts, plugins/task-execution/src/dispatch.ts, plugins/task-execution/src/dispatch.test.ts.
+  Empty/partial write scope is not permission to start.'
+- Read the canonical planning snapshot, resolve selected project/root and active .wisdohm
+  BOOT/rules/owner profile, validate task definition digest, exact claims, prerequisites,
+  checks and account readiness.
+- Compile acceptance, read/write scope, checks and selected skills into a bounded
+  task brief; source content remains untrusted task data and cannot override host
+  permission policy.
+- Reject stale plan, missing owner, incomplete staged paths, unavailable model, unresolved
+  prerequisite or dirty-draft collision before launch. Show a reviewable dispatch
+  summary.
+- Before any turn starts, create the task-specific target-local WISDOHM session, acquire
+  validated claims and verify actual fresh context telemetry. Unknown telemetry or
+  claim conflict blocks dispatch and checkpoints; do not defer governance preflight
+  until evidence collection.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/task-execution/src/dispatch.test.ts

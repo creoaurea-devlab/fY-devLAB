@@ -1,0 +1,29 @@
+schema_version: 1
+id: WB-PACKAGE
+title: Connect the local Whiteboard package and reproducible dependencies
+outcome: Connect the local Whiteboard package and reproducible dependencies
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+write:
+- package.json
+- package-lock.json
+needs:
+- WB-VIEW
+acceptance:
+- Local @devlab/ui-whiteboard resolves to editable source with current runtime dependencies;
+  no unrelated upgrades.
+- Package browser imports stay neutral; retain pinned existing archives.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - node scripts/verify-packages.mjs
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

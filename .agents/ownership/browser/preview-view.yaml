@@ -1,0 +1,30 @@
+schema_version: 1
+id: preview-view
+purpose: Own retained editor/preview split, per-project first-use ratio and pointer/keyboard
+  responsive resizing through existing preview capability.
+group: browser
+paths:
+- plugins/ui-preview/package.json
+- plugins/ui-preview/PROVENANCE.json
+- plugins/ui-preview/src/devtools.tsx
+- plugins/ui-preview/src/fullscreen.ts
+- plugins/ui-preview/src/index.ts
+- plugins/ui-preview/src/inspector.tsx
+- plugins/ui-preview/src/layout.tsx
+- plugins/ui-preview/src/pane.tsx
+- plugins/ui-preview/src/prototype.tsx
+- plugins/ui-preview/src/preferences.ts
+- plugins/ui-preview/src/preview.css
+- plugins/ui-preview/src/server-state.ts
+- plugins/ui-preview/src/view.tsx
+- plugins/ui-preview/src/workspace.ts
+- plugins/ui-preview/src/elements.tsx
+- plugins/ui-preview/src/element-brief.ts
+public:
+- plugins/ui-preview/src/index.ts
+- plugins/ui-preview/src/view.tsx
+uses:
+- ui-contracts
+- service-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

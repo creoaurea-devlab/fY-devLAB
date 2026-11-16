@@ -1,0 +1,29 @@
+schema_version: 1
+id: RT-SERVICE
+title: Persist concise execution events and honest runtime state
+outcome: Persist concise execution events and honest runtime state
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- packages/contracts/src/harness.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- RT-CONTRACTS
+acceptance:
+- 'A2/A3: Emit real bounded steps from existing Harness lifecycle and preserve them
+  across reopen/restart, including quiet, failed, stopped and reconciliation-required
+  cases.'
+- Prove duplicate dispatch protection, review wait, cleanup, old ledger compatibility
+  and no fabricated heartbeat or automatic completion.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/service.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

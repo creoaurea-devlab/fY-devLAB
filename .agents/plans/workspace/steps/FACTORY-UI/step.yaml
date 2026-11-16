@@ -1,0 +1,26 @@
+schema_version: 1
+id: FACTORY-UI
+title: Wire automatic execution progress into task inspector and queue
+outcome: Wire automatic execution progress into task inspector and queue
+kind: maintenance
+effect: change_source
+owner: planning-ui
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/model.ts
+- plugins/ui-kanban/src/view.tsx
+needs: []
+acceptance:
+- Remove human-review controls and manual completion prompts; show phases, attempts,
+  failed tasks and saved output.
+- Preserve draft and owner lifecycle and existing accessible controls.
+verification:
+  level: targeted
+  reason: Minimal checks on the changed public behavior.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

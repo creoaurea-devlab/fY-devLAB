@@ -1,0 +1,29 @@
+schema_version: 1
+id: KAN-PROFILE
+title: Profile — JSON planner
+outcome: Profile — JSON planner
+kind: feature
+effect: change_source
+owner: backend-host
+slice: KAN-S1
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- src/profile.ts
+needs:
+- KAN-SERVICE
+- KAN-HTTP
+acceptance:
+- Profile selects the local planning service and HTTP capability with explicit process/workspace
+  grants.
+- Existing terminal/preview providers remain selected; live health reports13 actual
+  backend plugins.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

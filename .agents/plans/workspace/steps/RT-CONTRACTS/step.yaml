@@ -1,0 +1,27 @@
+schema_version: 1
+id: RT-CONTRACTS
+title: Define truthful compact runtime observation contracts
+outcome: Define truthful compact runtime observation contracts
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+write:
+- packages/contracts/src/harness.ts
+needs: []
+acceptance:
+- 'A2/A3: Declare bounded ordered step observations, freshness and legacy-run semantics;
+  distinguish output silence from unknown connection/process state.'
+- Settle persisted event DTO and compatibility before runtime, HTTP, client or UI
+  changes; preserve existing status/output consumers.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+spec: .agents/plans/runtime-focus/SPEC.md

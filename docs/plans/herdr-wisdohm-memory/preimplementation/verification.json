@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-16",
+  "checkout": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored",
+  "source": {
+    "packages/contracts/src/preimp.ts": {
+      "sha256": "ebb867835798972d5cc018df5ee9bc3d97dfb5d6626fee82e5c7ed9806fd9145",
+      "lines": 35
+    },
+    "packages/contracts/src/projects.ts": {
+      "sha256": "bd77af5c4fd512f843c86c591718e35ed52fb6d304ce6d15cd7c0b32aca15591",
+      "lines": 41
+    },
+    "packages/contracts/src/index.ts": {
+      "sha256": "040dc978e7c32163f48e1ccab0c21bf9dd9ce28616d1385cc5b8749b0d338330",
+      "lines": 88
+    },
+    "plugins/project-local/src/preimp.ts": {
+      "sha256": "ec75fb3d70b93ae7f6c2ff16a95134f12f5dc5a7999d04c025916389ac3328a4",
+      "lines": 201
+    },
+    "plugins/project-local/src/index.ts": {
+      "sha256": "f1e47b1c4ec0809228a6c2d7c57d08f32ce5b5a512064c2d0b8e5a336c06242a",
+      "lines": 680
+    },
+    "plugins/ui-preview/src/prototype.tsx": {
+      "sha256": "7780efa1a35e4a9877138d9c1fdcfeb69f611378f308295c4205f8a7bb21fc17",
+      "lines": 126
+    },
+    "plugins/ui-preview/src/pane.tsx": {
+      "sha256": "765486044fe69c903f2e767bbdfd51b36669c3308af4d758cddf2ec695dade47",
+      "lines": 563
+    },
+    "plugins/ui-preview/src/preview.css": {
+      "sha256": "799af156caa708ad4899530a70b886ae3a686c9613e753d3cb9c43720db68ff5",
+      "lines": 652
+    },
+    "plugins/transport-http/src/projects.ts": {
+      "sha256": "9e70302de7b59227464ec67c7f7f0e1965a511971586138a58373d94eeecb1d1",
+      "lines": 115
+    },
+    "plugins/transport-http/src/index.ts": {
+      "sha256": "78ad341bc89c4df9bcbcbcd45f031f5b0ed3f7c222a6b091d76b8111116cadc8",
+      "lines": 330
+    },
+    "packages/client/client.ts": {
+      "sha256": "b908a2f2f33fa3bcaf0199e0571c0da454e77481e2b5838917e04c1cee8f7af7",
+      "lines": 242
+    },
+    "plugins/ui-projects/src/workspace.ts": {
+      "sha256": "4c72a08a157828a9243bd30df57ff95769e04cc634bedda385f3c1a543a7ba1d",
+      "lines": 545
+    },
+    "scripts/architecture.ts": {
+      "sha256": "7660f7c3f07b9164b80c6d357ac37c675f439745ce975c837fe49c37eba40450",
+      "lines": 141
+    },
+    "vite.config.ts": {
+      "sha256": "ce9a4cd683a216acc8acb8e6eca6a178324f9142cd4b1380ee9149ce35ad274e",
+      "lines": 79
+    },
+    "tsconfig.json": {
+      "sha256": "dfe138195b80f7e1c900d507e28cd81e1ef15f05b52c9bfc92fbe683ce4d5c77",
+      "lines": 32
+    },
+    "scripts/boundaries.test.ts": {
+      "sha256": "0490086342a65d8495c8ea278111636a6b3d375bb7482308713df60449470ab1",
+      "lines": 104
+    },
+    "scripts/preimp.test.ts": {
+      "sha256": "e6e4c784fc6cbfd76144a6eb0fc9f89f3ef6574f671d34f3d7abe0e7f242c7d8",
+      "lines": 141
+    },
+    "scripts/preimp-browser.mjs": {
+      "sha256": "aa6ced4fddea3d5af6c95984f8eb3177a5f079a885ac8143f2dc5879829ec428",
+      "lines": 118
+    }
+  },
+  "checks": {
+    "focused": {
+      "passed": 23,
+      "log": "focused.log"
+    },
+    "check": {
+      "passed": 12,
+      "log": "check.log"
+    },
+    "build": {
+      "passed": true,
+      "log": "build.log"
+    },
+    "browser": {
+      "results": [
+        {
+          "width": 1440,
+          "isolation": {
+            "parentDenied": true,
+            "storageDenied": true,
+            "networkDenied": true
+          },
+          "retainedNormalFrame": true,
+          "retainedPrototypeState": true,
+          "reviewedMerge": true,
+          "geometry": {
+            "width": 1440,
+            "scroll": 1440
+          }
+        },
+        {
+          "width": 820,
+          "isolation": {
+            "parentDenied": true,
+            "storageDenied": true,
+            "networkDenied": true
+          },
+          "retainedNormalFrame": true,
+          "retainedPrototypeState": true,
+          "reviewedMerge": true,
+          "geometry": {
+            "width": 820,
+            "scroll": 820
+          }
+        },
+        {
+          "width": 390,
+          "isolation": {
+            "parentDenied": true,
+            "storageDenied": true,
+            "networkDenied": true
+          },
+          "retainedNormalFrame": true,
+          "retainedPrototypeState": true,
+          "reviewedMerge": true,
+          "geometry": {
+            "width": 390,
+            "scroll": 390
+          }
+        }
+      ],
+      "viteStagingBlocked": true
+    },
+    "registry": {
+      "ownerConnection": true,
+      "stagedSourceInspectable": true,
+      "prototypeKeyboardResize": true,
+      "productionSourceUnchanged": true,
+      "buildGraphAvailable": true,
+      "backendPluginCount": 8,
+      "snapshotId": "6fc31af09a6f17d6cc6832a57a914b61b1be256870b41c3f3de65afbd8804196"
+    }
+  },
+  "liveRestartPerformed": false,
+  "gitUsed": false,
+  "newFeatureFiles": 3,
+  "newDependencies": 0,
+  "newBackendPlugins": 0,
+  "firstTask": "_preimp/compact-node-catalog",
+  "firstTaskPromoted": false,
+  "limits": [
+    "one canonical owner per task",
+    "additions/replacements only",
+    "operator checks are notes, not execution receipts",
+    "per-file atomic replacement and resumable journal, not a multi-file transaction",
+    "external writers outside in-process queue",
+    "prototype CSP does not prevent iframe self-navigation",
+    "live activation requires controlled restart and reload"
+  ]
+}

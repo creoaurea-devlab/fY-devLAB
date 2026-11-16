@@ -1,0 +1,14 @@
+schema_version: 1
+kind: spec
+agent: planner
+procedure:
+- Trace current behavior and callers; define the intended outcome and compatibility requirements.
+- Write exact owner scopes, public contracts, failure states, acceptance and a proportionate check choice.
+- Split independent implementation steps and map every requirement to acceptance; finish when a worker
+  can implement without inventing missing contracts.
+guidance:
+- .agents/guides/VERIFICATION.md
+verification:
+  default: review
+  reason: Review coverage, scope and observable acceptance; execute a probe only when an uncertain design
+    claim needs evidence.

@@ -1,0 +1,27 @@
+schema_version: 1
+id: UNBLOCK-VERIFY
+title: Verify recreated roots, settings and full browser behavior on disposable projects
+outcome: Verify recreated roots, settings and full browser behavior on disposable
+  projects
+kind: bugfix
+effect: change_source
+owner: verification
+slice: RT-S3
+mode: worker
+read: []
+write:
+- scripts/agent-home-runtime.test.py
+- scripts/planning-process-browser.py
+needs: []
+acceptance:
+- Verify recreated roots, settings and full browser behavior on disposable projects
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts
+  - PROCESS_RUN_ONLY=1 DEVLAB_BUILD_DIR=/tmp/devlab-unblock-build /usr/bin/python3
+    scripts/planning-process-browser.py
+  - DEVLAB_BUILD_DIR=/tmp/devlab-unblock-build /usr/bin/python3 scripts/planning-process-browser.py

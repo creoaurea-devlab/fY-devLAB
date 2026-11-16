@@ -1,0 +1,22 @@
+schema_version: 1
+id: AUD-CONTRACT
+title: Explicit retained Canvas terminal presentation activity
+outcome: Explicit retained Canvas terminal presentation activity
+kind: bugfix
+effect: change_source
+owner: ui-contracts
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- packages/ui-contracts/src/index.ts
+needs: []
+acceptance:
+- Explicit retained Canvas terminal presentation activity
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit --pretty false
+spec: docs/plans/audit-remediation/SPEC.md

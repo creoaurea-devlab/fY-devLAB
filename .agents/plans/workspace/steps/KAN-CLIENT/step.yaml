@@ -1,0 +1,28 @@
+schema_version: 1
+id: KAN-CLIENT
+title: Client — JSON planner
+outcome: Client — JSON planner
+kind: feature
+effect: change_source
+owner: browser-client
+slice: KAN-S1
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- packages/client/planning.ts
+- packages/client/client.ts
+needs:
+- KAN-CONTRACT
+acceptance:
+- Browser helper reads and edits the same project-scoped workspace with validated
+  command envelopes.
+- Existing terminal/client methods retain their implementation and public behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

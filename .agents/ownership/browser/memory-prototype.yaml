@@ -1,0 +1,14 @@
+schema_version: 1
+id: memory-prototype
+purpose: Own the standalone Agentic Memory Layer prototype and its existing view integration.
+group: browser
+paths:
+  - _prototype/index.html
+  - _prototype/app.js
+  - _prototype/style.css
+  - _prototype/memory.js
+  - _prototype/data/memory-data.js
+public:
+  - _prototype/memory.js
+uses: []
+guidance: []

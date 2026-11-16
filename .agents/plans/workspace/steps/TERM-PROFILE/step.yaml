@@ -1,0 +1,27 @@
+schema_version: 1
+id: TERM-PROFILE
+title: Terminal PROFILE
+outcome: Terminal PROFILE
+kind: feature
+effect: change_source
+owner: backend-host
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- src/profile.ts
+needs:
+- TERM-SERVICE
+- TERM-TRANSPORT
+- TERM-DISTRIBUTION
+acceptance:
+- A01
+- A09
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/host.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

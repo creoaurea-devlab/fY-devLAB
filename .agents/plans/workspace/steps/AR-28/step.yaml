@@ -1,0 +1,28 @@
+schema_version: 1
+id: AR-28
+title: Dispose canvas owners only after confirmed thread deletion
+outcome: Dispose canvas owners only after confirmed thread deletion
+kind: bugfix
+effect: change_source
+owner: browser-bootstrap
+slice: ARSC-M3-S2
+mode: worker
+read:
+- src/runtime.ts
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-canvas/src/workspace.ts
+write:
+- src/runtime.ts
+needs:
+- AR-21
+acceptance:
+- 'AC-09: Successful deletion releases the removed runtime owner and beforeunload
+  resources once.'
+- 'AC-09: Failed deletion, transient load absence and normal switching retain owners
+  and unsaved drafts.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/runtime-lifecycle.test.ts scripts/project-workspace.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S2-browser/AR-28.md

@@ -1,0 +1,23 @@
+schema_version: 1
+id: TP-INFER
+title: Preview Vite UI without forwarding flags to custom process wrappers
+outcome: Preview Vite UI without forwarding flags to custom process wrappers
+kind: bugfix
+effect: change_source
+owner: wisdom-service
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/wisdom-tool/src/preview.ts
+needs: []
+acceptance:
+- Simple supported dev scripts retain current behavior.
+- Wrapped Vite dev scripts use a port-controlled Vite UI command with an explicit
+  backend warning, preserving the project script and rules.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - node --test scripts/wisdom.test.ts

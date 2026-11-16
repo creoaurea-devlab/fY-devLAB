@@ -1,0 +1,23 @@
+schema_version: 1
+id: workspace-ui
+purpose: Compose the exact existing full-app UI contributions and host shell, using
+  public capability packages and original global styles.
+group: browser
+paths:
+- src/shell.tsx
+- src/contributions.ts
+- src/style.css
+public:
+- src/shell.tsx
+- src/contributions.ts
+uses:
+- workspace-shell
+- canvas-ui
+- terminal-view
+- ui-contracts
+- preview-view
+- rules-ui
+- project-view
+- hood-view
+guidance:
+- .agents/skills/domain-browser/SKILL.md

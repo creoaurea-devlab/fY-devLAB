@@ -1,0 +1,27 @@
+schema_version: 1
+id: RULES-UI
+title: RULES-UI
+outcome: RULES-UI
+kind: feature
+effect: change_source
+owner: rules-ui
+slice: RULES-S1
+mode: worker
+read:
+- docs/plans/rules-board/SPEC.md
+write:
+- plugins/ui-rules/package.json
+- plugins/ui-rules/src/index.ts
+- plugins/ui-rules/src/view.tsx
+- plugins/ui-rules/src/rules.css
+needs:
+- RULES-CONTRACT
+acceptance:
+- Explicit source and evidence boundaries; real combined verification; preserved originals
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - python3 scripts/rules-browser.py
+spec: docs/plans/rules-board/SPEC.md

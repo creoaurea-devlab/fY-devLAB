@@ -1,0 +1,288 @@
+{
+  "source": "../../../../DevLab",
+  "reason": "Existing one-to-four preview pane implementation is newer than the original reusable snapshot.",
+  "generator": "Existing reusable-bundles packager; declaration inputs include Vite ImportMeta types. Implementation files unchanged. Existing dependency metadata retained.",
+  "packages": [
+    {
+      "name": "@creoaurea/pop-the-hood",
+      "archive": "creoaurea-pop-the-hood-0.1.0.tgz",
+      "sha256": "011ab706fdb7a39d26aa4043610aa0ad72f2323522d569986e9036759c157b17"
+    },
+    {
+      "name": "@devlab/browser-chromium",
+      "archive": "devlab-browser-chromium-0.1.0.tgz",
+      "sha256": "92214a26f13c1cb5c0aa6bb8b5a182a28af3eb9ea62e833ffe7398808286c180"
+    },
+    {
+      "name": "@devlab/browser-harness",
+      "archive": "devlab-browser-harness-0.1.0.tgz",
+      "sha256": "58b33c0a8c5fa703623fe162573aaff100775d865f9ac363f83b60e773d372d8"
+    },
+    {
+      "name": "@devlab/canvas-store",
+      "archive": "devlab-canvas-store-0.1.0.tgz",
+      "sha256": "4677381c9da686914da9526ccb13e95a324e2831b26a63d4a71501d23fe707ef"
+    },
+    {
+      "name": "@devlab/client",
+      "archive": "devlab-client-0.1.0.tgz",
+      "sha256": "c3e4eddc9ec1f999d62f3974684b3c11543b7012623910680bbccc701f362eb0"
+    },
+    {
+      "name": "@devlab/contracts",
+      "archive": "devlab-contracts-0.1.0.tgz",
+      "sha256": "e4b83645456db04b3420793500daf286eed4c53ebec8ae7981322d22c6387aa7"
+    },
+    {
+      "name": "@devlab/kernel",
+      "archive": "devlab-kernel-0.1.0.tgz",
+      "sha256": "01b2aef69f03f5006cfc8ce4affe5ea63f556aa6246920f539856cd9a5de9d13"
+    },
+    {
+      "name": "@devlab/model-fake",
+      "archive": "devlab-model-fake-0.1.0.tgz",
+      "sha256": "f81955fda4fa1f205b330a53cc1091f52303d5c3e1ca48082261c39877b4eb09"
+    },
+    {
+      "name": "@devlab/policy-local",
+      "archive": "devlab-policy-local-0.1.0.tgz",
+      "sha256": "edca2bf796fd2b0df6eb2023b8d15b6b85ae331c7205060b79187beb8b1cc8c3"
+    },
+    {
+      "name": "@devlab/preview-inspector",
+      "archive": "devlab-preview-inspector-0.1.0.tgz",
+      "sha256": "2dce8f045fc1f84107c2eb29025ef3836e116d14bfe1c18848b2a948c39a17df"
+    },
+    {
+      "name": "@devlab/project-local",
+      "archive": "devlab-project-local-0.1.0.tgz",
+      "sha256": "79cf8eee22236be60d738c45ef672302b839acca6cbe96fe0dc2705403fd1664"
+    },
+    {
+      "name": "@devlab/project-server",
+      "archive": "devlab-project-server-0.1.0.tgz",
+      "sha256": "4b0035eb45230547fb742f5fcca7c59d9c15377ced7e8ad9a113060afc8fd59a"
+    },
+    {
+      "name": "@devlab/registry-map",
+      "archive": "devlab-registry-map-0.1.0.tgz",
+      "sha256": "1abcbcd2c3d292f3e525701886e4e88a8275493de8a78252412d35bae843c48c"
+    },
+    {
+      "name": "@devlab/run-controller",
+      "archive": "devlab-run-controller-0.1.0.tgz",
+      "sha256": "c877c74cf968a200a7412194c5537a15b739701ac577ca6cb5731537e9c2cf82"
+    },
+    {
+      "name": "@devlab/store-sqlite",
+      "archive": "devlab-store-sqlite-0.1.0.tgz",
+      "sha256": "cc9a8527d7388ee6a4cf8f26fa8e792f184e426ad388658726098b7c9421fc6a"
+    },
+    {
+      "name": "@devlab/terminal-pty",
+      "archive": "devlab-terminal-pty-0.1.0.tgz",
+      "sha256": "7071019b351fcaf7ebfaaf7300a01f563f742399b658c13770fcc049787408b7"
+    },
+    {
+      "name": "@devlab/tools-echo",
+      "archive": "devlab-tools-echo-0.1.0.tgz",
+      "sha256": "1a1343800483ec3d09cff0e3949b7dd65d3d54780ee518af8289d0ac2320fff8"
+    },
+    {
+      "name": "@devlab/transport-http",
+      "archive": "devlab-transport-http-0.1.0.tgz",
+      "sha256": "75abce7b8f83cea20cd780b5ad85c4c2c719b2f4edc3935c72c5f18473a9359c"
+    },
+    {
+      "name": "@devlab/ui-browser",
+      "archive": "devlab-ui-browser-0.1.0.tgz",
+      "sha256": "229d5dfa1ac5154fb068d41dbdf339cd579817f18ab8c863760e3e2467a2c485"
+    },
+    {
+      "name": "@devlab/ui-canvas",
+      "archive": "devlab-ui-canvas-0.1.0.tgz",
+      "sha256": "7f59f2d7a3c6d2c42f322f312caec28be279125099a00cadfc8fff0b76b2896c"
+    },
+    {
+      "name": "@devlab/ui-contracts",
+      "archive": "devlab-ui-contracts-0.1.0.tgz",
+      "sha256": "e87574e8ee15f50f849dccfb18d6a3d1ae06aa1a6b81289fb2480a7b3611e40e"
+    },
+    {
+      "name": "@devlab/ui-diagnostics",
+      "archive": "devlab-ui-diagnostics-0.1.0.tgz",
+      "sha256": "8c3fd81bcf80bbb7057684571f1f64c6609a62232177ed3a604cd0ad531e8689"
+    },
+    {
+      "name": "@devlab/ui-hood",
+      "archive": "devlab-ui-hood-0.1.0.tgz",
+      "sha256": "e37a0491c2910abd2a95703ba0bc9be7c4ecce11176610580f47a2698a362d63"
+    },
+    {
+      "name": "@devlab/ui-host",
+      "archive": "devlab-ui-host-0.1.0.tgz",
+      "sha256": "7413e48f9e8934798315cec917a41bebb877d9edcc60f522d73a305ae3a7c9f8"
+    },
+    {
+      "name": "@devlab/ui-preview",
+      "archive": "devlab-ui-preview-0.1.0.tgz",
+      "sha256": "e805c5f0a4adbdfe9bfa43eb56ccbfeef88fb36e804d99aeabd4021b72960886"
+    },
+    {
+      "name": "@devlab/ui-projects",
+      "archive": "devlab-ui-projects-0.1.0.tgz",
+      "sha256": "1c9494ca838ff6a92fae9948f7b62ee19171c7177d87c6d0cd6f32b677332927"
+    },
+    {
+      "name": "@devlab/ui-runtime",
+      "archive": "devlab-ui-runtime-0.1.0.tgz",
+      "sha256": "17f966e4595b305ea279f07ca1e16b5407e94c8218b370f0c5eb73c3b3f096d2"
+    },
+    {
+      "name": "@devlab/ui-shell",
+      "archive": "devlab-ui-shell-0.1.0.tgz",
+      "sha256": "af63713439edd29208139cbae3d3b091e1c5f5e68d96290678a2768a900710d1"
+    },
+    {
+      "name": "@devlab/ui-terminal",
+      "archive": "devlab-ui-terminal-0.1.0.tgz",
+      "sha256": "188dc88648f72dd4e273f2e1dd2297633daf45e9e0b43886a29e57c4717a2a6e"
+    },
+    {
+      "name": "@devlab/wisdom-tool",
+      "archive": "devlab-wisdom-tool-0.1.0.tgz",
+      "sha256": "c49098ccfbd14ddb6935a06210810f782b35acf91e3a1fcca8fdfb61fde36891"
+    },
+    {
+      "name": "@devlab/workspace-local",
+      "archive": "devlab-workspace-local-0.1.0.tgz",
+      "sha256": "3bfef4eecdf237748df91a6a58175e4746596918cf230abc35b5ed107559a00d"
+    },
+    {
+      "name": "cordis",
+      "archive": "cordis-4.0.0-rc.11-creo.bc9a344.tgz",
+      "sha256": "8c88fb8351fecc61070699b36ecc2f0ab0a32f13b9599e490a6baa32737f510f"
+    }
+  ],
+  "implementationFiles": {
+    "packages/contracts/src/architecture.ts": "1af3363ecca9c81d9cfbd0cab6f7488543e3f264cf9507dcef5e0bd4279676f6",
+    "packages/contracts/src/browser.ts": "b5b0f5feb211fa38ca29f06ae9ca0f4913e92f53c32b2e9f709e10c62a0b97f6",
+    "packages/contracts/src/index.ts": "f022de36ba823e1e85fd2e0bea206e83732f9ed36ecbbbf993e88c37ad03bcc4",
+    "packages/contracts/src/planning.ts": "c3ebe82966e79a4298d63f5152931b52609f785c0dbe5008255137911323dabe",
+    "packages/contracts/src/preview.ts": "77562fc777d276c28030103d2ed6e14beff3f44385618ce3cfc9e7875320ce70",
+    "packages/contracts/src/projects.ts": "6c95cf89e08ed34c98c378ad92accaf1ecc8b0380d4fac26d9e4e56ab7d8500c",
+    "packages/contracts/src/servers.ts": "39e01dc54c9922e75665dd24dc160efa41f2bc421f1bcc71eb1bb9d9f24b0a52",
+    "packages/contracts/src/terminal.ts": "3063c45203bf52c69f8af450dee6e8dfd9e54cbb409d28fbd64d8f025afa7265",
+    "packages/contracts/src/wisdom.ts": "ebba7892fc6489eac68d71c94bb24a01453c40d2cc47bddc33c2e2998069cf81",
+    "packages/contracts/src/workspace.ts": "068a0fcfeacaffbebbbef5b7508b0ce1bda6de04457dc1d1e4fdc67aa455dc85",
+    "packages/kernel/src/index.ts": "e56b2e28d3d7904f6bd9232fb04a6a583e54d13e526f6cb0ea19a18f74543bf9",
+    "packages/pop-the-hood/src/analyzer.ts": "46a9ce1a7ac49f9541cd800fb37d85d62943843a33dec0cf52f539c0cba9c65c",
+    "packages/pop-the-hood/src/browser.ts": "cb2e2cbd05bd57c20c8d43954b7ad49df1ed7aa07dfd959dbbc8fba7ed46ba78",
+    "packages/pop-the-hood/src/cli.ts": "d92fbd92919ab16505724fc00d8f237751a38644e5beaa795d5d0c551790c5c1",
+    "packages/pop-the-hood/src/contracts.ts": "bb1f9cc389ec17cf7af077e851c886bb66316e409fdf7ecd0ca5139ae87f3bdd",
+    "packages/pop-the-hood/src/graph.ts": "e3c497717f437bd70deac21fb30c712b14ca459e840c678046930f858a6089a3",
+    "packages/pop-the-hood/src/hood.css": "cd5eb12c1aa3463e3b56222f99216618593ace30714c70e1660c345f5a137a19",
+    "packages/pop-the-hood/src/http.ts": "733d96f6edf0c13abaae1838ea865ce779aad1b353ef112061ae8fd53c490e59",
+    "packages/pop-the-hood/src/layout.ts": "908dd5fda7a36254f338d6615feb3f5089e33c4244b8427d03b3792532999688",
+    "packages/pop-the-hood/src/node.ts": "d442967c4d43bc66044d791660d9034dc2df74fd216d77a7400356d550ccb90a",
+    "packages/pop-the-hood/src/react.tsx": "af4a32f5e4b26dad9b8bef7c711da05ec6c5901be60b37e2f3eb23a66300dbe4",
+    "packages/pop-the-hood/src/standalone.tsx": "717892793fb3fc1384fcf382519320b8de045d0687e83f7bbbc816ab397cab2c",
+    "packages/pop-the-hood/templates/README.md": "b5ea4f872785db62817a83f89b23e3dcb985e29225693aca487c8b18aba96074",
+    "packages/pop-the-hood/templates/feature/adapter.ts": "12ec3f6171063226e6b7d1720bc01194d14ed34273d5a4e586f1e6ca063023ee",
+    "packages/pop-the-hood/templates/feature/contracts.ts": "60b50505a5b86add53e52cf6f9679ffb747d44a8f085429c88039faa14cc1b45",
+    "packages/pop-the-hood/templates/feature/hood.registry.json": "a1cf5c64d7ce0624d13d76c9c2a86eade2df63520deb8cf34dd7fb3160c5a382",
+    "packages/pop-the-hood/templates/feature/plugin.ts": "7934ea8ff722be7269d26a921f025e9c9debc2b6574d78c74069a60dcd9c2836",
+    "packages/ui-contracts/src/index.ts": "a019de2d3d6ddc1a650b732972e3f556b3081b82b1bc01368fb487b672ad5118",
+    "packages/ui-host/src/index.ts": "4005973505743e365a7a6f65059e1cdb2d2a3c6d911d335d7c0e9fe6644f2bfb",
+    "plugins/browser-chromium/src/index.ts": "3b1c880b5f31ed9d0c250528b1fffd7528b072da56612f5d54da19d3df7a26d7",
+    "plugins/browser-chromium/src/playwright.ts": "a2a9601e3b05c949dcfd48556170faa49aec286b47f1d69255e01382d0c27e1c",
+    "plugins/browser-harness/src/index.ts": "75108837817b9e9cf1be9d39e6cea9e8a15fdaec5352a726745608cec2c33635",
+    "plugins/canvas-store/src/index.ts": "d796d9fca9a3a96e6f8824f916cf899f402bc79f1ea14b7da6d77c306ffc1b61",
+    "plugins/model-fake/src/index.ts": "2d7362891a7911c00209e90ffec72c17ec40525a165a0ad5450271501e1c9617",
+    "plugins/policy-local/src/index.ts": "5aff7771b6a803b118f04bc1c19f570b23c7d9a2da9ea2e20115dd720c351610",
+    "plugins/preview-inspector/src/bridge-script.ts": "9f70e9e2aacfd7eccee802ce42982f985e6f45d57324d15c02cb270189164918",
+    "plugins/preview-inspector/src/devtools.ts": "7205bf550745b6c9c1bc6bb6c015eb246c3950d24488df34759924d378e5e336",
+    "plugins/preview-inspector/src/index.ts": "957feb955943e6307858455d970275e989371bd99b68697cc89a6e8dc2640595",
+    "plugins/preview-inspector/src/native-target.ts": "152ba3cef32beea319fe81a3a0d0a0e8ef2b4ecd7a59088f4661624be50fc8f6",
+    "plugins/project-local/src/index.ts": "656935e858aa289ae591c71ebdf5b0008507079007586f03c1aa2139fc5facf1",
+    "plugins/project-local/src/template.ts": "a91db909616bdca0526cf4cfc3f52ed4103d7854f13f300ba2e4b1c87c74fd99",
+    "plugins/project-server/src/index.ts": "012559a6b91345a6a11616003559fe475693ab205753209617820d7cf6ec9350",
+    "plugins/registry-map/build/snapshot.ts": "0a2132f0a05e75851fe3322450231d63993d7b6aefb7d4d005333add1a629007",
+    "plugins/registry-map/src/channels.ts": "58e6a10ee85ea625c1c7caebfb856e98012ff3261a15a1e1b52d0a963a383a84",
+    "plugins/registry-map/src/index.ts": "79db4ba7505480164193256d650555535b91e7b2082fbd1f9cf0b409f0b4e9d2",
+    "plugins/run-controller/src/index.ts": "de251b6aaa5675cdd64c3c959dfac3a6c75fb0eb2c2bc2dbbd614e286111b94f",
+    "plugins/store-sqlite/src/index.ts": "44f615cf901e6a3a1fd4a692662950276f7d3c4b3a722807b2dc2dd4373ba9f5",
+    "plugins/store-sqlite/src/worker.ts": "c72617d4368dae13386bac998749d1612bedc12c03b2730b72e1b4f86466e88f",
+    "plugins/terminal-pty/src/index.ts": "13ea37f62df18012bca9b921ac2ac51db4f1ea6130e984d81757e2918a1ea9d8",
+    "plugins/tools-echo/src/index.ts": "5ebd4f80aa5fa7e60be3a1054b3fcd9f291952845ac389f70c386d0bdce74714",
+    "plugins/transport-http/src/browser.ts": "6728d83ae21a56fa344879be98f4b8bc11eb4eede123f73d7241056d6dd0df8e",
+    "plugins/transport-http/src/index.ts": "73194fa1834113ca69456cd7ce800fab3f3012a59c4589c1f24a362c4f01c1d4",
+    "plugins/transport-http/src/projects.ts": "88ac4e0accef6cfe3800e68e1a776017c8d30980860a88ca61d83039b77271cc",
+    "plugins/transport-http/src/servers.ts": "66d9db1b92d647c9b1b4f7d3ef2834d820c5da373f9a02a1ea124e80daa8e641",
+    "plugins/ui-browser/src/browser.css": "95b6dbe892afc2f5ca2410ec37cc352edf3c12b7f277b4f42ddbb3b8604b7310",
+    "plugins/ui-browser/src/index.ts": "7ddb6eb77a97bd3ae430f3adb6181087ad5ebf32394086f52cec819525da57a9",
+    "plugins/ui-browser/src/view.tsx": "7688fd09b12b447c31a0bd18143064518b71c816f740c3e184ad6f20c0e6be57",
+    "plugins/ui-canvas/src/canvas.css": "af0b3ba4d5c9490da34fd5c8f02737dfffb4979105488b3094a278dbf56dbe8a",
+    "plugins/ui-canvas/src/index.ts": "80bd42f1e098626392f182ea7cd24eea80726facd08fb0f74f1022f9fa0bd3ac",
+    "plugins/ui-canvas/src/view.tsx": "c93fa5c22335b27a355d339574ca8dc174f3b7797bda01e63c95d50b16a2e7ce",
+    "plugins/ui-canvas/src/workspace.ts": "aaaf635b6eafb40c7ad94d68412513e0be5426061ae3cb4e6c9fd551a46e24f9",
+    "plugins/ui-diagnostics/src/index.ts": "e28120d3537f52db654b618bf12a1f43a219d300a478d94b88d4f67be004c855",
+    "plugins/ui-diagnostics/src/view.tsx": "d6ce582ae67263ab0165499ba0cd8928630f268005149221b635e0a6b08150dc",
+    "plugins/ui-hood/src/graph.ts": "412d2bbd663d80feb533084ca2d18acfaf72ee7ee36559c6d17ef1745fe76f92",
+    "plugins/ui-hood/src/hood.css": "151531db18196ade0948c2649705156600d9c21d8992c99784b15fb9be9dbc7c",
+    "plugins/ui-hood/src/index.ts": "43b416d074b28f30fb92304fed0919cb01d095b076ea369c35e6c6dac3a22e87",
+    "plugins/ui-hood/src/layout.ts": "939b95c6da98cceff3e8c1db5ed854c4bf82de87e5486d88c8ee037c21515a05",
+    "plugins/ui-hood/src/view.tsx": "e2496cab3ec5d561873435d0640230621bb5b41404cf9801dcc441e6b838f729",
+    "plugins/ui-preview/src/devtools.tsx": "b942a2da3858950e80a22b849799f9ec1fbd9a5bd49a19e98934061c022f7e02",
+    "plugins/ui-preview/src/fullscreen.ts": "dbeb322b251fd2d2ce8ba3c44b363435d90a9bebd33a091eaab5064355821463",
+    "plugins/ui-preview/src/index.ts": "7cc611fb59ed0bf6fc5de5577b90e440b40405e9539bd812e13da6bc6dd30f74",
+    "plugins/ui-preview/src/inspector.tsx": "06c3a8a6c28a70235d9efb7fb681f6eb109a8d4c65d39d116b932334d4c98d19",
+    "plugins/ui-preview/src/layout.tsx": "859d8d69fc60808bb94934b2b76429cc1395c40286fb072ab341f3edaf386fae",
+    "plugins/ui-preview/src/pane.tsx": "af6bf1adeb2572324f684ab319c5bcf4b9eb54b10a1d3e33ca6a167e427a456a",
+    "plugins/ui-preview/src/preferences.ts": "b35441159b19bbe278b6f211a92070b3db3ec21d3dbfa1c80e5252bfc8e50ee9",
+    "plugins/ui-preview/src/preview.css": "bea740c58bb12484d5fc111b4c8e82a107bd84cbe7359ae18e2c7af7b3ec24d0",
+    "plugins/ui-preview/src/server-state.ts": "3e1d6d4917a205453583a0b56dafbb9a6b3d8aee4a733a7a9021689faf630257",
+    "plugins/ui-preview/src/view.tsx": "d5c03bf139affa366cfaed21cabc5085087b98492b4a8676ef803fb7995c999a",
+    "plugins/ui-preview/src/workspace.ts": "d744d45d4e7a125d7db37a199a7329b8d8cf54c1926eb376b7a963716dbba1f6",
+    "plugins/ui-projects/src/adoption.tsx": "8c4927465fd930a2ecc6c74afd64b6a96403f68cdd50ea23546bc82e7e6f8df1",
+    "plugins/ui-projects/src/build.tsx": "421e2931ac29b349b1ef80ae0ea430e971788d6034a8eaa39f75e1931ec7027d",
+    "plugins/ui-projects/src/editor.tsx": "e0fbe07bc311d41856605803145da86763c9b4ec0255301beab86adc9c2fa4d7",
+    "plugins/ui-projects/src/index.ts": "2a288c6031aa503e1088e9918a19fb9e18c4c18a822f4110141d6a54c03da02c",
+    "plugins/ui-projects/src/preview-groups.tsx": "1f958e99705cf756eeafb6910bccfc106c47ab6bcc53b5023b7d1c5dd38ca6c4",
+    "plugins/ui-projects/src/projects.css": "69ef6ed5a69fd54e829ad14e3474b4026f30de9fa31f80172024461007963bc1",
+    "plugins/ui-projects/src/view.tsx": "658faebd685a55406abb80bda72f586a67cf5e17506ec11a1df0adab248bb183",
+    "plugins/ui-projects/src/workspace.ts": "ff0b3087ac65bc15c038c89e62459490dab0f47b7e7c9f003b6f634179937777",
+    "plugins/ui-runtime/src/index.ts": "2aab6aafbeac5181557330d3283274fa9bd24054de5e7ecd4dcd30fde97943c4",
+    "plugins/ui-runtime/src/view.tsx": "69234f4730d8d7732ae8194a7f9de6b4e039ddb7da0aa8ded594b231c77ed034",
+    "plugins/ui-shell/src/devlab.css": "7ae59386869985b0c67d7a0c44e55739fcd4f3c8cffafdb0fee1d9aa14309149",
+    "plugins/ui-shell/src/index.ts": "bc752428f8b6bb64accdb07331e1fa489aace0619b115a0d7fd04ad0f3a3939b",
+    "plugins/ui-shell/src/servers.tsx": "dbf092e32abc8bbe4b57a9161523ed08a48489fa4b37b431f5f9992bad473bc1",
+    "plugins/ui-shell/src/terminals.tsx": "40e54f240085dec46691cb801749cfabbd55e14ce91183c89de3a89ab1a0a76e",
+    "plugins/ui-shell/src/view.tsx": "9ccfc890d303c6758bd2579c89a8eb4bc993d1216bcd3b473e810ada9bb44a12",
+    "plugins/ui-shell/src/workspace-focus.ts": "c598e097cbb8bfd63041bbeb7f5ac4d101305cff9358185e86a2836093c21755",
+    "plugins/ui-terminal/src/index.ts": "d31a0a885c2ae32b206c47d62b886454ca7a68bea6a2cffd499b3a710bda679f",
+    "plugins/ui-terminal/src/input.ts": "4f11792d4dfa9f3e2ccf9cc9b165d1c33a27f1612adab3c22951779b82533bc1",
+    "plugins/ui-terminal/src/terminal.css": "7b60ef435556d61b052ad202f00be394543f5cb37422ee31517b1eb6b5e53ee4",
+    "plugins/ui-terminal/src/view.tsx": "2a5e246b83a3e3318c7360bc4b3b5d45655551666b4e90a8befd4245f54903ab",
+    "plugins/wisdom-tool/assets/AGENTS.fragment.md": "034a808e151c2393c7a88f597b803b2b990a5482736d8cb45413f6133b9a8d0f",
+    "plugins/wisdom-tool/assets/distribution.json": "568e0be67fae1e0f52746ae56395bba633f4634e2d58a8d8c04954c9c7cdbf6c",
+    "plugins/wisdom-tool/assets/planea-protocol.md": "eb8f062dbb3b49a818ec02c17e83d808020756f462f9eafecc41a7740256f85a",
+    "plugins/wisdom-tool/assets/planea-roadmap.schema.json": "7505710b62c36d880e62e65d7fbece19e1611aeb5ef5f4560598e1e16f5c62f0",
+    "plugins/wisdom-tool/assets/planoria.md": "2f12b5f8a654767d7134c9a5d232f866ca0ddf95e9f97f8d496cd7790e3c23f3",
+    "plugins/wisdom-tool/assets/preview.project.schema.json": "0de94ad1f14c56c10d117b4f985e7342460caa65863b2c3644de2708ea2b82a7",
+    "plugins/wisdom-tool/assets/project-preview.md": "9f0373d653626c68e1d2c2bc57c3bef28132cfc57a4da0a856595f9f899790d2",
+    "plugins/wisdom-tool/assets/ui-agent-protocol.md": "3f7dacbf1946db94b8689130eaec43200cdb50077ea6f20f765455efd27cf5ef",
+    "plugins/wisdom-tool/assets/ui-agent.md": "669c9c159562c81aee7dc00cc77d5ac249ea0f5b3c3650c132eef25d87e4c2d7",
+    "plugins/wisdom-tool/assets/ui-map.txt": "7504274c00ee3d3a7715a8e8bc22f72b387a201dff6a7124899cc7102419645e",
+    "plugins/wisdom-tool/src/assets.d.ts": "9681c3f9228a2a5c97f17330c2e6146a9a48d4ffe7aa9800b8e29c6480a2b1c4",
+    "plugins/wisdom-tool/src/bundled.ts": "f12054a84404b6120cc2cd86adabfb9d25d8fcbb91003005484e04e62224c0aa",
+    "plugins/wisdom-tool/src/index.ts": "fc9d0d348bdffc239c339947e5642faf80c5f6b1cc7f7f2cdb97743ca6abdec7",
+    "plugins/wisdom-tool/src/preview.ts": "028c4783bd9d659f5b6d10574a3ca9b2e67b5bd83f9eea4add67fb5b753b009b",
+    "plugins/workspace-local/src/index.ts": "a687811ef88e09b7ae434fd50b6a71115564dfc181b2d1ecff03d0fefbbfd8cf"
+  },
+  "hostFiles": {
+    "src/runtime.ts": "10151e8024342a2da34884dc8922be606df9afd5e9333bfd22e068127d983c2c",
+    "src/shell.tsx": "a7d900a7abb766746bff921528b6c5b6f4500fdcbefae82f718b845ba19f6132",
+    "src/style.css": "6c48843cfb1ea61228c58a6e3d8db9aaeb142a9d4b966bde2c1e7116e9a1f7d6"
+  }
+}

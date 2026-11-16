@@ -1,0 +1,91 @@
+{
+  "$schema": "./schemas/settings.schema.json",
+  "schema_version": 1,
+  "mode": "autonomous",
+  "routing": {
+    "selection_order": [
+      "explicit_role",
+      "task_intent",
+      "ownership",
+      "fallback"
+    ],
+    "route_roles": {
+      "bugfix": "bugfix",
+      "refactor": "refactor",
+      "architecture": "architect",
+      "testing": "testing",
+      "ui": "ui",
+      "wiring": "wiring",
+      "triage": "triage",
+      "audit": "audit",
+      "docs": "docs"
+    },
+    "role_flows": {
+      "architect": [
+        "ARCHITECTURE",
+        "STRUCTURE"
+      ],
+      "backend": [
+        "ARCHITECTURE",
+        "INTEGRATIONS",
+        "CONVENTIONS"
+      ],
+      "frontend": [
+        "ARCHITECTURE",
+        "CONVENTIONS"
+      ],
+      "styling": [
+        "CONVENTIONS"
+      ],
+      "types": [
+        "CONVENTIONS",
+        "STRUCTURE"
+      ],
+      "testing": [
+        "TESTING"
+      ],
+      "bugfix": [
+        "ARCHITECTURE",
+        "TESTING"
+      ],
+      "feature-orchestrator": [
+        "STRUCTURE",
+        "STATE"
+      ],
+      "refactor": [
+        "ARCHITECTURE",
+        "CONVENTIONS"
+      ],
+      "ui": [
+        "CONVENTIONS"
+      ],
+      "triage": [
+        "STRUCTURE"
+      ],
+      "audit": [
+        "TESTING"
+      ],
+      "wiring": [
+        "ARCHITECTURE",
+        "INTEGRATIONS"
+      ],
+      "docs": [
+        "STRUCTURE"
+      ]
+    }
+  },
+  "human_in_loop": {
+    "checkpoints": [
+      "before_write"
+    ]
+  },
+  "population": {
+    "strategy": "on_demand",
+    "registry": ".wisdom/agents/agents.json",
+    "source_scope": []
+  },
+  "self_healing": {
+    "enabled": true,
+    "max_attempts": 3
+  }
+}

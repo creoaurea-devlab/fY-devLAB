@@ -1,0 +1,7 @@
+schema_version: 1
+id: reviewer
+purpose: Independently assess a bounded proposal or change against acceptance and
+  ownership.
+instructions: .agents/agents/reviewer/agent.md
+skills:
+- .agents/skills/domain-verification/SKILL.md

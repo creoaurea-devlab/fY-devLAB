@@ -1,0 +1,30 @@
+schema_version: 1
+id: WIS-UI-KANBAN-QA
+title: Verify disclosure keyboard, statuses, filtering and owner retention
+outcome: Verify disclosure keyboard, statuses, filtering and owner retention
+kind: feature
+effect: change_source
+owner: verification
+slice: WIS-UI-S1
+mode: worker
+read:
+- docs/protocols/ui-design.md
+- docs/plans/kanban-disclosures/SPEC.md
+write:
+- scripts/kanban-disclosure-browser.py
+- scripts/planning-browser.py
+- scripts/ui-elements-browser.py
+needs: []
+acceptance:
+- Milestone and slice disclosure is keyboard-accessible in Structure and Board.
+- Dashes represent actual ordered task statuses and browsing remains read-only.
+- Filters, project changes, compatible refresh and retained editor/preview/terminal
+  owners behave correctly.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check
+  - python3 scripts/kanban-disclosure-browser.py
+spec: docs/plans/kanban-disclosures/SPEC.md

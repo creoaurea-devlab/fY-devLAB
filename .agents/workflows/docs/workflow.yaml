@@ -1,0 +1,14 @@
+schema_version: 1
+kind: docs
+agent: implementer
+procedure:
+- Read the authoritative behavior or contract and identify the reader action the document should enable.
+- Update the smallest relevant text or pointer; keep each rule in one authoritative place.
+- Review correctness and references, and check runnable examples only where they changed or carry material
+  risk. Finish when the reader can follow the documented action.
+guidance:
+- .agents/guides/VERIFICATION.md
+verification:
+  default: review
+  reason: Low-risk prose normally needs careful content and link review; use a parser or smoke check only
+    for executable examples or configuration.

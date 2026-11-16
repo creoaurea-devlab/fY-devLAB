@@ -1,0 +1,31 @@
+schema_version: 1
+id: CL-TERM-CGROUP-TEST
+title: Verify terminal recovery across actual systemd service stop
+outcome: Verify terminal recovery across actual systemd service stop
+kind: bugfix
+effect: change_source
+owner: verification
+slice: TP-S1
+mode: worker
+read:
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+- scripts/terminal-process-fixture.ts
+- scripts/terminal.test.ts
+write:
+- scripts/terminal.test.ts
+needs: []
+acceptance:
+- A preserved Linux tmux owner has its own user scope, and a real backend service
+  stop or cgroup cleanup leaves the shell PID, state and ownership intact.
+- Ordinary and Strict terminals retain their existing policy; explicit close still
+  cleans the shell, descendants and owned tmux process.
+- Do not weaken backend KillMode, sandbox policy, resource cleanup or change user
+  credentials.
+verification:
+  level: integration
+  reason: The live failure requires a real service control-group reproduction plus
+    existing PTY recovery and confinement cases.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/terminal.test.ts scripts/terminal-lease.test.ts

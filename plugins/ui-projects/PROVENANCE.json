@@ -1,0 +1,15 @@
+{
+  "source": "Preserved installed ui-projects source from vendor/full-ui or vendor/previous-ui archive",
+  "reason": "Add public WISDOHM UI composition seams while retaining existing workspace owners",
+  "baseline": {
+    "package.json": "75fe7b661a970a3a61c173732b9ba01fb794ac5f88589a6f656137fec8f71565",
+    "src/adoption.tsx": "0921ae46cabc9c9477638ac75788afedd429a0504ce5c60b2e12c867a1b7af0e",
+    "src/projects.css": "69ef6ed5a69fd54e829ad14e3474b4026f30de9fa31f80172024461007963bc1",
+    "src/build.tsx": "421e2931ac29b349b1ef80ae0ea430e971788d6034a8eaa39f75e1931ec7027d",
+    "src/editor.tsx": "e0fbe07bc311d41856605803145da86763c9b4ec0255301beab86adc9c2fa4d7",
+    "src/workspace.ts": "ff0b3087ac65bc15c038c89e62459490dab0f47b7e7c9f003b6f634179937777",
+    "src/view.tsx": "bed7d325b0b7677ef532a03700ce03c420ee4f2c2f60486528bff650db20c066",
+    "src/preview-groups.tsx": "1f958e99705cf756eeafb6910bccfc106c47ab6bcc53b5023b7d1c5dd38ca6c4",
+    "src/index.ts": "2a288c6031aa503e1088e9918a19fb9e18c4c18a822f4110141d6a54c03da02c"
+  }
+}

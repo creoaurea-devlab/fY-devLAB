@@ -1,0 +1,14 @@
+{
+  "name": "@devlab/transport-http",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@devlab/contracts": "0.1.0",
+    "zod": "3.25.76",
+    "@creoaurea/pop-the-hood": "0.1.0"
+  }
+}

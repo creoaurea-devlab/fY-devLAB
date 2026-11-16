@@ -1,0 +1,22 @@
+schema_version: 1
+id: project-view
+purpose: Own retained project explorer, file tree, editor/build and sidebar capability
+  composition.
+group: browser
+paths:
+- plugins/ui-projects/PROVENANCE.json
+- plugins/ui-projects/package.json
+- plugins/ui-projects/src/build.tsx
+- plugins/ui-projects/src/editor.tsx
+- plugins/ui-projects/src/index.ts
+- plugins/ui-projects/src/preview-groups.tsx
+- plugins/ui-projects/src/projects.css
+- plugins/ui-projects/src/view.tsx
+- plugins/ui-projects/src/workspace.ts
+public:
+- plugins/ui-projects/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

@@ -1,0 +1,21 @@
+{
+  "name": "@devlab/ui-shell",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./view": "./src/view.tsx",
+    "./servers": "./src/servers.tsx",
+    "./terminals": "./src/terminals.tsx",
+    "./style.css": "./src/devlab.css"
+  },
+  "dependencies": {
+    "@devlab/contracts": "0.1.0",
+    "@devlab/ui-contracts": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "lucide-react": "0.468.0"
+  }
+}

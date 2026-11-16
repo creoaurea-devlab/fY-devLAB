@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-d5b86520-9f0d-4fb5-94e7-0c2d9c5c86d6
+title: 'Disconnect planning and execution: browser-client'
+outcome: 'Disconnect planning and execution: browser-client'
+kind: feature
+effect: change_source
+owner: browser-client
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- packages/client/client.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

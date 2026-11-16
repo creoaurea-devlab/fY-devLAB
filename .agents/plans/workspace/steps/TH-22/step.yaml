@@ -1,0 +1,33 @@
+schema_version: 1
+id: TH-22
+title: Compose optional backend factories and teardown wiring
+outcome: Compose optional backend factories and teardown wiring
+kind: feature
+effect: change_source
+owner: backend-host
+slice: TH-S06
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+- src/server.ts
+write:
+- src/profile.ts
+needs:
+- TH-05
+- TH-18
+- TH-19
+acceptance:
+- Compose codex-harness and task-execution via public factories and explicit ServiceMap
+  contracts/grants. Kernel changes are unnecessary; no vendor source patching.
+- Feature enablement selects factories and transport options in one place. Removing
+  Codex adapter leaves planning available and execution unavailable with a reason.
+- Shutdown preserves durable intent and terminates only owned resources; do not restart
+  live preview/terminal owners to register the harness.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/host.test.ts

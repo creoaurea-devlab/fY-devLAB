@@ -1,0 +1,25 @@
+{
+  "edition": "2.6.0",
+  "source": "/home/creoaurea/Documents/DEV_FOCUS/_SOT/WISDOHM-2.6",
+  "installedWith": "official deploy --ide codex",
+  "at": "2026-10-31T21:59:42.790781+00:00",
+  "localChanges": {
+    "AGENTS.md": "Merge project-specific planning, ownership and preservation rules into active2.6 entry.",
+    ".wisdohm/session.py": "Preserve local pin and ownership adapter; validate profile/skill inputs and emit current numbered-rule receipt before and after agent actions, including failure.",
+    ".wisdohm/protocols/maintenance.md": "Rebased self-contained Proto references; required source receipt.",
+    ".wisdohm/protocols/updates.md": "Preserve after-each-atomic-change note obligation.",
+    ".wisdohm/config/project.yaml": "Actual project commands; optional ownership mapping remains empty because the local adapter uses the canonical registry.",
+    ".wisdohm/orchestration.py": "Resolve canonical owners to validated reusable agent profiles and project-local skills; exact-path routing does not launch workers.",
+    ".wisdohm/config/agents.yaml": "Reusable role profiles and skill references; owner assignment remains in canonical registry.",
+    ".context/modules/registry.yaml": "Assign each canonical capability an agent profile; preserve single path/dependency authority.",
+    ".agents/skills/wisdohm-orchestrate/SKILL.md": "Host task orchestration protocol using actual owners, disjoint workers and combined verification.",
+    ".agents/skills/wisdohm-owner/SKILL.md": "Per-owner execution and handoff skill; real gates and workspace retention.",
+    "scripts/wisdohm26-sync.py": "Explicit audited administrative fact sync with history retention and source checks, no guarded DONE.",
+    ".wisdohm/protocols/rules.md": "Explicit YAGNI/KISS, DRY, SOLID, real rule declarations and owner orchestration contracts.",
+    ".wisdohm/BOOT.md": "Route tasks through canonical owner profiles and define truthful rule-count declarations before and after agent runs.",
+    ".wisdohm/router.py": "Emit explicit R0 before/after entrypoint failure when active BOOT validation fails."
+  },
+  "stockInstallerManifestPreserved": true,
+  "bootstrap": "Explicit host-authorized administrative import; no synthetic context or guarded DONE.",
+  "hardeningAuthorization": "2026-11-01 user approved this task only administrative exception while host telemetry unavailable; normal guards unchanged."
+}

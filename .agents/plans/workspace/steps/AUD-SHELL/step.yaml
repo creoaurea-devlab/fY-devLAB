@@ -1,0 +1,23 @@
+schema_version: 1
+id: AUD-SHELL
+title: Publish actual terminal presentation activity from shell
+outcome: Publish actual terminal presentation activity from shell
+kind: bugfix
+effect: change_source
+owner: workspace-shell
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- plugins/ui-shell/src/view.tsx
+needs:
+- AUD-CONTRACT
+acceptance:
+- Publish actual terminal presentation activity from shell
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/terminal-lifecycle-browser.py
+spec: docs/plans/audit-remediation/SPEC.md

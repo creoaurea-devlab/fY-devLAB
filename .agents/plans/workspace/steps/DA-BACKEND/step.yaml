@@ -1,0 +1,84 @@
+schema_version: 1
+id: DA-BACKEND
+title: Audit backend authority, persistence, process cleanup and error boundaries
+outcome: Audit backend authority, persistence, process cleanup and error boundaries
+kind: audit
+effect: plan
+owner: codex-harness
+slice: DA-S1
+mode: worker
+read:
+- packages/contracts/package.json
+- packages/contracts/src/agent-definitions.ts
+- packages/contracts/src/architecture.ts
+- packages/contracts/src/browser.ts
+- packages/contracts/src/harness.ts
+- packages/contracts/src/index.ts
+- packages/contracts/src/ownership.ts
+- packages/contracts/src/planner.ts
+- packages/contracts/src/planning.ts
+- packages/contracts/src/preview.ts
+- packages/contracts/src/process.ts
+- packages/contracts/src/projects.ts
+- packages/contracts/src/rules.ts
+- packages/contracts/src/servers.ts
+- packages/contracts/src/terminal.ts
+- packages/contracts/src/wisdom.ts
+- packages/contracts/src/workspace.ts
+- plugins/codex-harness/package.json
+- plugins/codex-harness/src/connection.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/index.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/service.ts
+- plugins/project-local/PROVENANCE.json
+- plugins/project-local/package.json
+- plugins/project-local/src/fork.ts
+- plugins/project-local/src/index.ts
+- plugins/project-local/src/template.ts
+- plugins/rules-local/README.md
+- plugins/rules-local/package.json
+- plugins/rules-local/src/index.ts
+- plugins/rules-local/src/read-memory.py
+- plugins/rules-local/src/snapshot.ts
+- plugins/terminal-pty/native/ownership-sandbox.c
+- plugins/terminal-pty/package.json
+- plugins/terminal-pty/src/confinement.ts
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+- plugins/transport-http/package.json
+- plugins/transport-http/src/browser.ts
+- plugins/transport-http/src/index.ts
+- plugins/transport-http/src/planning.ts
+- plugins/transport-http/src/projects.ts
+- plugins/transport-http/src/rules.ts
+- plugins/transport-http/src/servers.ts
+- plugins/wisdom-tool/SETUP.md
+- plugins/wisdom-tool/package.json
+- plugins/wisdom-tool/src/bundle.json
+- plugins/wisdom-tool/src/cli.ts
+- plugins/wisdom-tool/src/index.ts
+- plugins/wisdom-tool/src/population.ts
+- plugins/wisdom-tool/src/preview.ts
+- src/contributions.ts
+- src/main.ts
+- src/preview-client.ts
+- src/profile.ts
+- src/runtime.ts
+- src/server.ts
+- src/shell.tsx
+- src/style.css
+write: []
+needs: []
+acceptance:
+- Inspect real consumers and source, distinguish reproduced/source-supported/unresolved
+  findings with exact lines, trigger, consequence and owner.
+- Report relevant checks and scope limits; preserve source, live user data, retained
+  resources, running/review claims and immutable editions.
+- Assess declared engineering rules, avoid speculative refactors or unverified compliance
+  claims.
+verification:
+  level: review
+  reason: Source-backed audit with disposable reproductions where useful; does not
+    authorize fixes.
+  checks: []

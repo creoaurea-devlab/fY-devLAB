@@ -1,0 +1,58 @@
+Here’s the slide decoded → practical + usable
+🧠 Core idea (1 sentence)
+Good code = less mental load, not just working output
+🔑 The “secrets” simplified
+1. Complexity = your real enemy
+- Comes from:
+  - too many dependencies
+  - unclear logic (obscurity)
+👉 Goal:
+- reduce things you need to think about at once
+2. Strategic vs Tactical coding
+- Tactical = quick fix, hack, patch
+- Strategic = design so problem doesn’t return
+👉 Rule:
+- short-term speed = long-term pain
+3. “Deep” classes (very important)
+- Bad:
+  - small class, does little, exposes everything
+- Good:
+  - hides complexity inside
+  - simple interface outside
+👉 Think:
+- small API, big power inside
+4. Abstractions = layers
+- Each layer should:
+  - hide complexity below
+  - expose clean logic above
+👉 If layer adds confusion → it’s wrong
+5. Comments = WHY, not WHAT
+- Bad:
+  - // increment i
+- Good:
+  - // retry to handle race condition from API delay
+👉 Code shows what, comments explain why
+6. “Define errors out of existence”
+- Design system so errors can’t happen
+Example:
+- instead of checking null everywhere
+- create type/system where null is impossible
+👉 This is elite-level design thinking
+7. Pull complexity downward
+- High-level code:
+  - should look simple
+- Complexity:
+  - hidden deep inside modules
+👉 Top = clean
+👉 Bottom = messy (but contained)
+🧪 Meta insight (important)
+- This is NOT a recipe system
+- It’s:
+  - spot bad patterns (red flags)
+⚡ TL;DR (ultra short)
+- reduce complexity
+- design before coding
+- hide complexity inside modules
+- keep top-level code simple
+- prevent problems instead of fixing them
+If you want, I can map this directly into your TS vibecoding rules / agent architecture (this fits VERY well with your registry + schema system).

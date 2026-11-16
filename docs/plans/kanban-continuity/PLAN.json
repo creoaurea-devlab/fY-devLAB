@@ -1,0 +1,2364 @@
+{
+  "schemaVersion": 1,
+  "documentRole": "implementation-proposal",
+  "createdAt": "2026-10-31T12:46:14.513470+00:00",
+  "target": "/home/creoaurea/Documents/_PROTOCOLS/DevLab-Workspace/DevTest",
+  "goal": {
+    "id": "G-KANBAN",
+    "title": "One integrated Continuity Planning unit with guarded, source-backed factory workflows"
+  },
+  "executionAuthority": ".context/state/tasks.json",
+  "executionRegistration": "K002 registers exact implementation scopes after K001 readiness; this file is the design/coverage authority, not a runtime status database.",
+  "implementationAuthorized": false,
+  "milestones": [
+    {
+      "id": "M01",
+      "goalId": "G-KANBAN",
+      "title": "Authority and contracts",
+      "phase": "required",
+      "document": "milestones/M01/README.md",
+      "slices": [
+        {
+          "id": "S01",
+          "document": "milestones/M01/slices/S01/README.md"
+        },
+        {
+          "id": "S02",
+          "document": "milestones/M01/slices/S02/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "goalId": "G-KANBAN",
+      "title": "Durable Planning service",
+      "phase": "required",
+      "document": "milestones/M02/README.md",
+      "slices": [
+        {
+          "id": "S03",
+          "document": "milestones/M02/slices/S03/README.md"
+        },
+        {
+          "id": "S04",
+          "document": "milestones/M02/slices/S04/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M03",
+      "goalId": "G-KANBAN",
+      "title": "Singular drawer and Board",
+      "phase": "required",
+      "document": "milestones/M03/README.md",
+      "slices": [
+        {
+          "id": "S05",
+          "document": "milestones/M03/slices/S05/README.md"
+        },
+        {
+          "id": "S06",
+          "document": "milestones/M03/slices/S06/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "goalId": "G-KANBAN",
+      "title": "Work, blueprints and rules",
+      "phase": "required",
+      "document": "milestones/M04/README.md",
+      "slices": [
+        {
+          "id": "S07",
+          "document": "milestones/M04/slices/S07/README.md"
+        },
+        {
+          "id": "S08",
+          "document": "milestones/M04/slices/S08/README.md"
+        },
+        {
+          "id": "S09",
+          "document": "milestones/M04/slices/S09/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "goalId": "G-KANBAN",
+      "title": "Knowledge graph and journal",
+      "phase": "required",
+      "document": "milestones/M05/README.md",
+      "slices": [
+        {
+          "id": "S10",
+          "document": "milestones/M05/slices/S10/README.md"
+        },
+        {
+          "id": "S11",
+          "document": "milestones/M05/slices/S11/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M06",
+      "goalId": "G-KANBAN",
+      "title": "Delivery, evidence and release",
+      "phase": "required",
+      "document": "milestones/M06/README.md",
+      "slices": [
+        {
+          "id": "S12",
+          "document": "milestones/M06/slices/S12/README.md"
+        },
+        {
+          "id": "S13",
+          "document": "milestones/M06/slices/S13/README.md"
+        },
+        {
+          "id": "S14",
+          "document": "milestones/M06/slices/S14/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M07",
+      "goalId": "G-KANBAN",
+      "title": "Portability and shipping acceptance",
+      "phase": "required",
+      "document": "milestones/M07/README.md",
+      "slices": [
+        {
+          "id": "S15",
+          "document": "milestones/M07/slices/S15/README.md"
+        },
+        {
+          "id": "S16",
+          "document": "milestones/M07/slices/S16/README.md"
+        },
+        {
+          "id": "S17",
+          "document": "milestones/M07/slices/S17/README.md"
+        }
+      ]
+    },
+    {
+      "id": "M08",
+      "goalId": "G-KANBAN",
+      "title": "Deferred production extensions",
+      "phase": "deferred",
+      "document": "milestones/M08/README.md",
+      "slices": [
+        {
+          "id": "S18",
+          "document": "milestones/M08/slices/S18/README.md"
+        },
+        {
+          "id": "S19",
+          "document": "milestones/M08/slices/S19/README.md"
+        },
+        {
+          "id": "S20",
+          "document": "milestones/M08/slices/S20/README.md"
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": "F01",
+      "behavior": "Board/Graph/Journal navigation, breadcrumb/page heading, home",
+      "sourceEvidence": "H2\u20133; A58\u201360,130,144. All project views share db."
+    },
+    {
+      "id": "F02",
+      "behavior": "Module/all ownership filter and per-scope entity counts",
+      "sourceEvidence": "A59,62,97,139. Scope limits view; no ownership editor."
+    },
+    {
+      "id": "F03",
+      "behavior": "Project picker/About, Quick tour/sidebar guide, explore graph",
+      "sourceEvidence": "H2\u20133; A122,134,138. Picker is a guide launcher, not project switching. Workspace 02/NEW/prototype label are decorative."
+    },
+    {
+      "id": "F04",
+      "behavior": "Summary counts and compact cards",
+      "sourceEvidence": "A61\u201362. Counts/task fraction/progress/rule count/owner/source/blocker; progress explicitly not quality. priority exists but no editor/display use."
+    },
+    {
+      "id": "F05",
+      "behavior": "Five stages Plan/Queue/Process/Review/Done",
+      "sourceEvidence": "A7\u20138,57,62. Underlying Review key `qa`; no enforced sequential walk."
+    },
+    {
+      "id": "F06",
+      "behavior": "Board search + Ready only + active scope chip",
+      "sourceEvidence": "A62\u201363,140. Search title/id/entity name/spec; Ready means non-Done and no unreleased prerequisite, not full release readiness."
+    },
+    {
+      "id": "F07",
+      "behavior": "Open card by pointer/Enter/Space; linked-work plus",
+      "sourceEvidence": "A61,64; card plus branches releaseId/entity."
+    },
+    {
+      "id": "F08",
+      "behavior": "Drag stage move or inspector stage selector",
+      "sourceEvidence": "A57,64\u201365,102,108. Global active Process WIP=2, prerequisite guard Queue/Process; Done opens release gates; released card cannot reopen."
+    },
+    {
+      "id": "F09",
+      "behavior": "New work from topbar/column/module+",
+      "sourceEvidence": "H3; A69\u201370,131. Choose module and feature/plugin, name+observable outcome; always Plan. Column `data-stage` is not used. Four default tasks are checklist templates, not real planning authority."
+    },
+    {
+      "id": "F10",
+      "behavior": "Extend/Fix/New variant/Next version from capability or exact release",
+      "sourceEvidence": "A68\u201370,126,132\u2013133. Extend/fix/revision differ as intent labels, same inheritance mechanics. No Git branch, code fix or version increment occurs at creation."
+    },
+    {
+      "id": "F11",
+      "behavior": "Inheritance opt-outs + variant isolation",
+      "sourceEvidence": "A69\u201370. Copy spec/acceptance/decisions, overwrite objective; optionally pins/UI+paths; reset all tasks/proof/review. Variant gets entity id, derivedFrom, new UI ids+originId, all parents workspace, empty files, isolation decision, copied current blocking edges."
+    },
+    {
+      "id": "F12",
+      "behavior": "Three graph lenses + focus/all capability selector",
+      "sourceEvidence": "A71\u201386,141. All focus renders module/current-release/work overview regardless lens; focused lineage shows history/variants/up to 3 baseline rules; dependencies includes prerequisites/transitive dependents; rules lens baseline UI + draft rule pins."
+    },
+    {
+      "id": "F13",
+      "behavior": "Typed derived graph layout, node kinds, labels, plus controls",
+      "sourceEvidence": "A71\u201385. Node geometry is derived, not user-editable node-position data. Rules and releases are not capability identities. UI node plus is not rendered; code has a fallback."
+    },
+    {
+      "id": "F14",
+      "behavior": "Graph selection/side inspector, open snapshot/rule/workspace, impact/focus jumps",
+      "sourceEvidence": "A88\u201389,94,126,144\u2013145. Module open selects scope/all graph; rule plus opens revision; UI node opens owner's Blueprint."
+    },
+    {
+      "id": "F15",
+      "behavior": "Background pointer pan, wheel-centered/button/keyboard zoom, fit, resize fit",
+      "sourceEvidence": "A90\u201393,142\u2013143,172. Zoom .18\u20132.3; graph keyboard arrows/+/-/0. No drag node mutation/execution."
+    },
+    {
+      "id": "F16",
+      "behavior": "Add depends_on/related_to link + required reason",
+      "sourceEvidence": "A95\u201396,146\u2013147. Reject missing/self/duplicate/cyclic blocking links. Blocking link invalidates every active source draft; unreleased target demotes Queue/Process to Plan. No remove/edit link handler."
+    },
+    {
+      "id": "F17",
+      "behavior": "One inspector drawer: header/title/status/origin + four tabs/body + common footer",
+      "sourceEvidence": "H4; A98\u2013101; S1,5. Root aside is one flex column, right/full-height width min(720px,100vw), separate scrim, body scroll, fixed header/tabs/footer within it. User requirement: port as singular header+content unit and one mount/lifecycle/bounds/transition; do not split title into shell header and content elsewhere."
+    },
+    {
+      "id": "F18",
+      "behavior": "Overview outcome, ownership/id/current baseline, counts/stage, dependencies/impact, release return",
+      "sourceEvidence": "A102. Entity/release view read-only blueprint yet Link still adds live relationships."
+    },
+    {
+      "id": "F19",
+      "behavior": "Blueprint behavior/outcome/out-of-scope/acceptance editing + disclosure sections",
+      "sourceEvidence": "A104,108. Trim/split lines; identical behavior save does not change revision; actual edit does. Other sections start collapsed/re-render resets disclosure state."
+    },
+    {
+      "id": "F20",
+      "behavior": "Rules browse/details + fixed safe spacing/progress demos",
+      "sourceEvidence": "A103\u2013104,114. Arbitrary expression never executed. Progress validates bounded integers; spacing fixed 8,1.618,4,64 constants."
+    },
+    {
+      "id": "F21",
+      "behavior": "Reuse exact rule version",
+      "sourceEvidence": "A116. Lists unpinned ids, disabled if empty; pin changes selected draft and invalidates proof. Multiple versions of same key can be pinned. No unpin."
+    },
+    {
+      "id": "F22",
+      "behavior": "New custom rule",
+      "sourceEvidence": "A128. Metadata, unique stable key, version1.0.0, pin selected draft, append event; no evaluator."
+    },
+    {
+      "id": "F23",
+      "behavior": "Rule revision + selected consuming draft/new consumer work",
+      "sourceEvidence": "A115. Globally latest key version determines next patch; must exceed latest; append supersedes, replace only matching pin in selected draft; unchanged expression preserves preview tag. No consumer auto-upgrade."
+    },
+    {
+      "id": "F24",
+      "behavior": "UI contract list/register",
+      "sourceEvidence": "A104,117. id/type/parent/token/event + local duplicate/self-parent rejection; declaration only, no actual source-wiring validation. No edit/remove or full hierarchy validation."
+    },
+    {
+      "id": "F25",
+      "behavior": "Declared file scope edit",
+      "sourceEvidence": "A104,108. Dedup paths, reject absolute /, '..' anywhere, backslash, colon; no canonical path/symlink/ownership enforcement. No actual file access."
+    },
+    {
+      "id": "F26",
+      "behavior": "Append design decision/rationale",
+      "sourceEvidence": "A104,118. Changes blueprint revision, event; no editing/deleting."
+    },
+    {
+      "id": "F27",
+      "behavior": "Delivery checklist add/toggle and percent",
+      "sourceEvidence": "A105,108. Every addition/toggle increments draft revision (including completing a task); no rename/remove/reorder."
+    },
+    {
+      "id": "F28",
+      "behavior": "Evidence attach: six categories, passed/failed, reference+note",
+      "sourceEvidence": "A105,109. Manual assertion/current revision; stale retained; no CI/result fetching, proof edit/removal/supersession. Reference is escaped text, not external navigation."
+    },
+    {
+      "id": "F29",
+      "behavior": "Explicit manual review approve/withdraw",
+      "sourceEvidence": "A51\u201356,105,108. Review binds revision; evidence/review themselves do not increment draft revision."
+    },
+    {
+      "id": "F30",
+      "behavior": "Release gate display/modal + version/snapshot commit",
+      "sourceEvidence": "A51\u201357,110\u2013113. Nonempty/all tasks done; nonempty/all current proof pass/non-demo; current manual approval; every blocking target has a release. Unique greater semver per entity and required summary; atomically in-memory snapshot/baseline/card Done via change(). No stage-qa requirement or deployment."
+    },
+    {
+      "id": "F31",
+      "behavior": "History exact-source lineage + field-level before/after",
+      "sourceEvidence": "A106\u2013107. Compare eight blueprint fields, not code diff; latest35 relevant events. Does not compare stale source against current baseline."
+    },
+    {
+      "id": "F32",
+      "behavior": "Archive/restore non-Done card",
+      "sourceEvidence": "A107,127. Confirm; hide execution but keep data; restore always Plan. No board archive filter/list; reachable from capability Delivery/journal. Archived drawer not editable but restore available."
+    },
+    {
+      "id": "F33",
+      "behavior": "Journal search/details/open work/reusable baseline open",
+      "sourceEvidence": "A97,107. Newest append order; module filter can hide project-wide null-entity events; no edits/replay."
+    },
+    {
+      "id": "F34",
+      "behavior": "Agent context JSON export",
+      "sourceEvidence": "A119. identity/revision/origin/spec/tasks/UI/rules/decisions/files/dependency targetReleaseIds; explicitly unenforced/deny deployment; no agent/process launch."
+    },
+    {
+      "id": "F35",
+      "behavior": "Full project export vs separate journal export",
+      "sourceEvidence": "A28,123,161\u2013162. Blob download/object URL revoke; journal lacks full restoration records. No CSV/PDF/share/network."
+    },
+    {
+      "id": "F36",
+      "behavior": "Full v2 JSON replace import/file selection",
+      "sourceEvidence": "A29\u201347,123,125,163,169. Max8MB, parse+validate before confirmation/replacement; clone incoming, append import event+increment project revision, reset scoped view. No merge."
+    },
+    {
+      "id": "F37",
+      "behavior": "Legacy array/visible old-key import",
+      "sourceEvidence": "A123\u2013125,164. Separate old key preserved; one legacy module/entity per card, no releases/rules/proof/review; old Done\u2192Review, dependencies demote Queue/Process\u2192Plan, >2 Process\u2192Queue; old history retained in import events."
+    },
+    {
+      "id": "F38",
+      "behavior": "Destructive reset demo + conflict reload",
+      "sourceEvidence": "A165\u2013166. Explicit confirm warning before reset; clones seed, appends reset event; old project history discarded; reset does not increment seed revision. Reload is real location.reload."
+    },
+    {
+      "id": "F39",
+      "behavior": "Storage unavailable/invalid recovery and cross-tab pause",
+      "sourceEvidence": "A9\u201310,22\u201326,171. Warning/export fallback; revision inequality only; no database/multi-agent transactional safety."
+    },
+    {
+      "id": "F40",
+      "behavior": "Modal/inspector close, scrim/outside click, Escape, focus trap/return, N and / shortcuts, toast",
+      "sourceEvidence": "A99\u2013101,120\u2013121,168\u2013170; H4. Tabs not ARIA tabs; modal lacks explicit accessible label; no unsaved-form dirty guard; no body scroll lock/inert background declaration. Focus return for modal less complete than inspector."
+    },
+    {
+      "id": "F41",
+      "behavior": "Responsive/motion presentation",
+      "sourceEvidence": "S1\u20136. Desktop sidebar\u2192narrow nav at900px; horizontal board inside viewport at1200/600px; graph side moves under; journal aside hidden small; single full-width drawer at mobile; reduced-motion. Archive screenshot only, not independently rerendered."
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "U01",
+      "behavior": "The requested drawer header/content/inspector is one mount, bounds and lifecycle unit."
+    },
+    {
+      "id": "U02",
+      "behavior": "One cohesive header and scoped drawer layout preserve host shell and fit compact/enlarged sizes."
+    },
+    {
+      "id": "U03",
+      "behavior": "Existing project selection and preview/editor/terminal owners survive integration; requests remain project-fenced."
+    },
+    {
+      "id": "U04",
+      "behavior": "Ownership and milestone/slice/AT execution are explicitly linked without duplicate status or invented authority."
+    },
+    {
+      "id": "X01",
+      "behavior": "Existing readiness/coverage is reconciled and source baseline frozen before implementation."
+    },
+    {
+      "id": "X02",
+      "behavior": "One reviewed schema/authority mapping with exact historical pins and task-bound execution facts."
+    },
+    {
+      "id": "X03",
+      "behavior": "Transactional, idempotent, durable, project-isolated API mutations with conflict/recovery checks."
+    },
+    {
+      "id": "X04",
+      "behavior": "Trusted source-bound evidence and review gates; manual/demo/stale proof never fabricates success."
+    },
+    {
+      "id": "X05",
+      "behavior": "Recorded scale/lifecycle budgets and measurements on representative fixtures."
+    },
+    {
+      "id": "X06",
+      "behavior": "Combined source/package/gate/browser acceptance and reversible promotion."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "K001",
+      "milestoneId": "M01",
+      "sliceId": "S01",
+      "title": "Freeze target baseline and reconcile readiness",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [],
+      "acceptance": [
+        "X01"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        ".context/modules/registry.yaml",
+        ".context/config/project.yaml",
+        "tests/continuity/fixtures.ts",
+        "scripts/continuity-browser.py",
+        "tests/continuity/fixtures.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 -B .context/router.py orchestrate validate",
+        "./node_modules/.bin/tsc --noEmit",
+        "node --test tests/continuity/fixtures.test.ts"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M01/slices/S01/K001.md",
+      "outcome": "Re-read concurrent terminal delivery; classify its completed source files without overwriting ongoing work. Capture valid baseline, exact source hashes and disposable HTTP/browser fixtures. An ownership coverage failure blocks feature mutation. Create the common backend/browser verification harness here; its fixture smoke checks are not feature acceptance."
+    },
+    {
+      "id": "K002",
+      "milestoneId": "M01",
+      "sliceId": "S01",
+      "title": "Decide canonical facts and register executable scopes",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [
+        "K001"
+      ],
+      "acceptance": [
+        "U03",
+        "U04",
+        "X02"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        ".context/state/index.json",
+        "docs/plans/kanban-continuity/INTEGRATION.md",
+        "tests/continuity/authority.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit",
+        "python3 -B .context/router.py orchestrate validate",
+        "node --test tests/continuity/authority.test.ts"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M01/slices/S01/K002.md",
+      "outcome": "Record the target-local authority decision; register actual new source ownership and the executable goal/milestone/slice/task graph under existing Wisdom authority. Preserve definitions versus receipt-derived execution states. Resolve metadata schema/version migration without importing Full Planea or sample progress. Define how new files are created and owned before mutation. Decompose cross-owner candidate sets into parent integration/owned child scopes in the actual execution registry; never register these design bundles verbatim as single-module workers. K002 creates the authority/migration test before running it; K001 creates meaningful fixture smoke tests."
+    },
+    {
+      "id": "K003",
+      "milestoneId": "M01",
+      "sliceId": "S02",
+      "title": "Versioned Continuity records and validation",
+      "owner": "service-contracts",
+      "phase": "required",
+      "dependsOn": [
+        "K002"
+      ],
+      "acceptance": [
+        "F11",
+        "F16",
+        "F24",
+        "F30",
+        "F36",
+        "X02"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "packages/contracts/src/continuity.ts",
+        "packages/contracts/src/index.ts",
+        "tests/continuity/contracts.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M01/slices/S02/K003.md",
+      "outcome": "Define strict bounded schemas for capabilities, drafts, pinned rule versions, UI refs, releases with exact dependency-release pins, relationships, review/evidence and journal. Validate every nested ID/reference/enum/cycle and origin. Store formula text as data; preserve distinct project/draft/source revisions. ID uniqueness is per declared namespace/collection, not across repeated snapshot copies of stable UI/decision/rule identities. Define allowed host UI roots such as workspace/shell/topbar/inspector and classify internal versus permitted external parents."
+    },
+    {
+      "id": "K004",
+      "milestoneId": "M01",
+      "sliceId": "S02",
+      "title": "Typed commands, read models and lifecycle contracts",
+      "owner": "service-contracts",
+      "phase": "required",
+      "dependsOn": [
+        "K003"
+      ],
+      "acceptance": [
+        "U03",
+        "F05",
+        "F27",
+        "F34",
+        "X02"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "packages/contracts/src/planning.ts",
+        "packages/contracts/src/continuity.ts",
+        "packages/ui-contracts/src/index.ts",
+        "tests/continuity/contracts.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M01/slices/S02/K004.md",
+      "outcome": "Extend public Planning seam with a versioned Continuity namespace and typed intent/result/error envelopes; keep existing execution commands compatible. Define commandId, actor/project, expected revision/digest, explicit task-to-receipt links and available actions. Never guess receipt identity from task title or copy unchecked ticket.done into execution status. Define the material-change revision matrix now: blueprint/scope/UI/pin/dependency/checklist-definition changes invalidate proof; evidence/review arrival and task-receipt observation do not invalidate themselves. Add a minimal cancellable before-navigation guard/registration+disposal contract: dirty Planning edits can veto project/output/Planning-close transitions before owners mutate, not by subscribing afterward."
+    },
+    {
+      "id": "K005",
+      "milestoneId": "M02",
+      "sliceId": "S03",
+      "title": "Atomic project metadata store and recovery",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K004"
+      ],
+      "acceptance": [
+        "F39",
+        "X03"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/package.json",
+        "plugins/planning-local/src/store.ts",
+        "plugins/planning-local/src/domain.ts",
+        "tests/continuity/store.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M02/slices/S03/K005.md",
+      "outcome": "Implement one project-scoped guarded writer over the selected versioned Continuity document. Validate then lock/CAS/idempotently commit domain state and embedded journal together by atomic durable replacement. Inject failure before/after commit, restart and retry; no partial snapshots, duplicate events or silent lost updates. Keep canonical execution definitions/receipts as separate linked facts, not replicated statuses."
+    },
+    {
+      "id": "K006",
+      "milestoneId": "M02",
+      "sliceId": "S04",
+      "title": "Planning provider, client and transport wiring",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [
+        "K005"
+      ],
+      "acceptance": [
+        "U03",
+        "X03"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/index.ts",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/planning.ts",
+        "plugins/transport-http/src/index.ts",
+        "src/profile.ts",
+        "src/main.ts",
+        "package.json",
+        "package-lock.json",
+        "vendor/full-ui/catalog.json",
+        "scripts/verify-packages.mjs",
+        "tests/continuity/api.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M02/slices/S04/K006.md",
+      "outcome": "Select a target-compatible provider only after private acceptance; use validated snapshot/command paths and existing error mapping. Fence projects, origins, bounds and authorization; register disposal. Preserve terminal changes when enabling planning. Leave unsupported execution actions unavailable with a reason."
+    },
+    {
+      "id": "K007",
+      "milestoneId": "M02",
+      "sliceId": "S04",
+      "title": "Project observation and command generation fences",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [
+        "K006"
+      ],
+      "acceptance": [
+        "U03",
+        "F39"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/PlanningView.tsx",
+        "plugins/ui-kanban/src/index.ts",
+        "tests/continuity/observation.test.ts",
+        "scripts/continuity-browser.py",
+        "plugins/ui-kanban/package.json",
+        "package.json",
+        "package-lock.json",
+        "vendor/full-ui/catalog.json",
+        "scripts/verify-packages.mjs",
+        "plugins/ui-kanban/src/ExecutionSwimlanes.tsx",
+        "plugins/ui-kanban/src/TaskInspector.tsx",
+        "plugins/ui-kanban/src/MilestoneSection.tsx",
+        "plugins/ui-kanban/src/types.ts",
+        "plugins/ui-kanban/src/interactions.ts",
+        "plugins/ui-kanban/src/board.css",
+        "plugins/ui-kanban/src/model.ts",
+        "plugins/ui-kanban/src/ATCard.tsx",
+        "plugins/ui-kanban/src/MilestoneBoard.tsx",
+        "plugins/ui-kanban/src/TaskDropZone.tsx",
+        "plugins/ui-kanban/src/SLLane.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K007",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M02/slices/S04/K007.md",
+      "outcome": "Acquire installed ui-kanban source as a reviewed local override. Preserve visible-only polling, serialized writes, wrong-project checks and stale-response generations. On project switch ignore old callbacks, dispose timers and handle old/new schema or unavailable service truthfully. Local storage holds presentation preferences only. Before any local UI acceptance, acquire the complete installed ui-kanban source inventory/manifest, review hashes and publish its root dependency/lock/catalog as a truthful local override under the one integration writer. Provider-only K006 wiring is not proof this UI source is installed."
+    },
+    {
+      "id": "K008",
+      "milestoneId": "M03",
+      "sliceId": "S05",
+      "title": "One drawer root and cohesive header",
+      "owner": "workspace-shell",
+      "phase": "required",
+      "dependsOn": [
+        "K004",
+        "K007"
+      ],
+      "acceptance": [
+        "U01",
+        "U02",
+        "F17"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-shell/src/devlab.css",
+        "plugins/ui-kanban/src/PlanningView.tsx",
+        "plugins/ui-kanban/src/board.css",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K008",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M03/slices/S05/K008.md",
+      "outcome": "Make one Planning root inside workspace-planning-drawer own header/navigation/contextual tools/body/inspector bounds. Merge revision/loading/refresh into its header and remove competing Plan/transport bands. Add usable Planning-specific resize/expand behavior without reusing terminal size state. Keep other workspace owners mounted. Minimum usable content in expanded mode:320px high where viewport allows; retain36px rail, header/tools and viewport-safe top/bottom bounds. In short viewports use contained scrolling with actions reachable, not negative geometry. Provide named keyboard-resizable separator/min/max state and restore previous bounds."
+    },
+    {
+      "id": "K009",
+      "milestoneId": "M03",
+      "sliceId": "S05",
+      "title": "Shared navigation, scope and presentation state",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K008"
+      ],
+      "acceptance": [
+        "F01",
+        "F02",
+        "F03"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/navigation.tsx",
+        "plugins/ui-kanban/src/presentation.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K009",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M03/slices/S05/K009.md",
+      "outcome": "Implement Board/Graph/Journal, canonical owning-module filter, compact project context, guide and Data entry. Reuse actual ProjectWorkspace project selection; prototype project picker is a guide, not another project owner. Preserve view-local search/lens/focus/selection per project; do not port decorative workspace controls as fake features. Provide N/new-work shortcut outside inputs/overlays; no command is triggered while typing or editing."
+    },
+    {
+      "id": "K010",
+      "milestoneId": "M03",
+      "sliceId": "S06",
+      "title": "Unified inspector lifecycle and dirty protection",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [
+        "K008"
+      ],
+      "acceptance": [
+        "F07",
+        "F17",
+        "F40"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/WorkspaceInspector.tsx",
+        "plugins/ui-kanban/src/overlays.tsx",
+        "plugins/ui-kanban/src/board.css",
+        "scripts/continuity-browser.py",
+        "plugins/ui-projects/src/workspace.ts",
+        "plugins/ui-projects/src/view.tsx",
+        "src/shell.tsx",
+        "plugins/ui-projects/package.json",
+        "package.json",
+        "package-lock.json",
+        "vendor/full-ui/catalog.json",
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-projects/src/projects.css",
+        "plugins/ui-projects/src/index.ts",
+        "plugins/ui-projects/src/preview-groups.tsx",
+        "plugins/ui-projects/src/build.tsx",
+        "plugins/ui-projects/src/editor.tsx",
+        "plugins/ui-projects/src/adoption.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K010",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M03/slices/S06/K010.md",
+      "outcome": "One inspector owns header/tabs/scroll body/footer, fields and unsaved guard. Coordinate nested dialog focus/inertness, Escape topmost close, return focus, tab navigation and scoped announcements. Cancelled tab/close/project/import/archive navigation preserves edits. No viewport-fixed prototype overlay escaping its drawer. Route actual project selection, output changes and Planning close through the K004 cancellable guard before calling selectOutput/ProjectWorkspace.select. Coordinate ProjectWorkspace and project-explorer entrypoints, guard cleanup and asynchronous stale-navigation cancellation. Register the reviewed ui-projects source override before changing it; never mutate installed package files. Acquisition includes the complete ui-projects source inventory and preserves index/editor/build/adoption/style public exports; output/Planning-close guard invocations explicitly include ui-shell view.tsx."
+    },
+    {
+      "id": "K011",
+      "milestoneId": "M03",
+      "sliceId": "S06",
+      "title": "Board projection, summaries and search",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K009",
+        "K010"
+      ],
+      "acceptance": [
+        "F04",
+        "F06",
+        "F07"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/WorkBoard.tsx",
+        "plugins/ui-kanban/src/model.ts",
+        "tests/continuity/projection.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K011",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M03/slices/S06/K011.md",
+      "outcome": "Render five Continuity lanes, source/owner/task/rule badges, summaries, module/search/Ready predicates and empty states from canonical projections. Keep search focus and cursor; filtered views never alter global WIP or task truth. Linked card selection opens the one inspector. Provide / to focus board search outside inputs/overlays, preserving the existing text cursor and focus."
+    },
+    {
+      "id": "K012",
+      "milestoneId": "M03",
+      "sliceId": "S06",
+      "title": "Guarded lane movement and accessible drag",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K011",
+        "K005"
+      ],
+      "acceptance": [
+        "F05",
+        "F08"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/commands.ts",
+        "plugins/ui-kanban/src/WorkBoard.tsx",
+        "plugins/ui-kanban/src/interactions.ts",
+        "tests/continuity/commands.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit",
+        "python3 scripts/continuity-browser.py --case K012"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M03/slices/S06/K012.md",
+      "outcome": "Enforce stage/prerequisite/WIP rules on server, with default prototype Process limit2 applied globally. Preserve existing execution Begin/Verify/Finish/Reset as distinct intents. Drag and keyboard alternatives dispatch the same command; Done opens release gates. Read-only/released/conflicted moves reject without phantom success."
+    },
+    {
+      "id": "K013",
+      "milestoneId": "M04",
+      "sliceId": "S07",
+      "title": "New capability and scoped draft work",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K005",
+        "K010"
+      ],
+      "acceptance": [
+        "F09"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/commands.ts",
+        "plugins/ui-kanban/src/BranchDialog.tsx",
+        "tests/continuity/branching.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S07/K013.md",
+      "outcome": "Create capability identity and initial Plan work atomically from module/kind/title/outcome. Empty input or absent module fails without orphan records. Prototype checklist templates are proposal text, not executable tasks or inherited verified progress."
+    },
+    {
+      "id": "K014",
+      "milestoneId": "M04",
+      "sliceId": "S07",
+      "title": "Exact-source branching and variant isolation",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K013",
+        "K003"
+      ],
+      "acceptance": [
+        "F10",
+        "F11"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/branching.ts",
+        "plugins/ui-kanban/src/BranchDialog.tsx",
+        "tests/continuity/branching.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S07/K014.md",
+      "outcome": "Extend/fix/revision from explicitly selected source release; expose current-baseline comparison. Copy/pin blueprint, rationale and exact rule definitions while resetting completion/proof/review/runtime identities. Variant gets new capability/UI identities, remapped UI parent references and empty write scope; source remains byte-stable. Never silently branch unsaved draft edits or live dependencies while labeling old-release provenance. Explicit inherit-rules and inherit-UI/file-scope opt-outs mirror prototype controls. Remap only internal variant parent IDs; preserve validated host roots and report unknown parents rather than flattening every node to workspace."
+    },
+    {
+      "id": "K015",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Overview projection and record read modes",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K014",
+        "K010"
+      ],
+      "acceptance": [
+        "F18"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/WorkspaceInspector.tsx",
+        "tests/continuity/projection.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K015",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K015.md",
+      "outcome": "Render outcome/owner/stable identity/current baseline/task prerequisites/declared impact in explicit draft/entity/release modes. Historical records are read-only; open links retain the correct source identity. History and archive have separate atomic tasks K043/K044."
+    },
+    {
+      "id": "K016",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Behavior and acceptance blueprint editor",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K014",
+        "K010"
+      ],
+      "acceptance": [
+        "F19"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/Blueprint.tsx",
+        "plugins/planning-local/src/commands.ts",
+        "tests/continuity/revisions.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K016",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K016.md",
+      "outcome": "Edit outcome/spec/out-of-scope/acceptance as one guarded form with dirty-navigation protection. Exact no-op save leaves revision unchanged; material save increments draft revision and stales old proof/review. Declared scope and decision records are separate atomic tasks K045/K046."
+    },
+    {
+      "id": "K017",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Stable UI contract references and source links",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K016"
+      ],
+      "acceptance": [
+        "F24"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/UIContracts.tsx",
+        "plugins/planning-local/src/validation.ts",
+        "tests/continuity/contracts.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K017.md",
+      "outcome": "Register/list scoped UI IDs, parents, tokens and actions; reject duplicate/orphan/cyclic references. Distinguish a declared UI contract from fresh source inventory and observed runtime wiring. Reference existing UI registry/semantic IDs rather than giving competing records authority over the same fact. Allow the explicit K003 host-root namespace; reject only unknown/cyclic internal parents, not valid host references."
+    },
+    {
+      "id": "K018",
+      "milestoneId": "M04",
+      "sliceId": "S09",
+      "title": "Create and pin exact formula versions",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K016",
+        "K003"
+      ],
+      "acceptance": [
+        "F21",
+        "F22"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/rules.ts",
+        "plugins/ui-kanban/src/Rules.tsx",
+        "tests/continuity/rules.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S09/K018.md",
+      "outcome": "Store unique key/version metadata and pin explicit immutable rule IDs to the selected draft. Reuse existing versions with clear empty/unavailable states. Validate input/output/invariant/rationale/example fields and invalidate proof on changed pins without modifying other consumers."
+    },
+    {
+      "id": "K019",
+      "milestoneId": "M04",
+      "sliceId": "S09",
+      "title": "Append rule revisions with explicit consumers",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K018",
+        "K014"
+      ],
+      "acceptance": [
+        "F23"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/rules.ts",
+        "plugins/ui-kanban/src/Rules.tsx",
+        "tests/continuity/rules.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S09/K019.md",
+      "outcome": "Create a unique increasing version and supersedes link; update only the chosen consuming draft. Rule-change work creation plus new pin must be atomic or recoverable; no orphan half-created work and no global auto-repin. Show declared consumers and pinned versions."
+    },
+    {
+      "id": "K020",
+      "milestoneId": "M04",
+      "sliceId": "S09",
+      "title": "Safe rule detail and historical rendering",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K018"
+      ],
+      "acceptance": [
+        "F20"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/Rules.tsx",
+        "plugins/ui-kanban/src/rule-previews.ts",
+        "tests/continuity/rules.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K020",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S09/K020.md",
+      "outcome": "Render stored expressions as text. Only explicitly fixed safe spacing/progress demos may evaluate bounded inputs; edited/custom expressions remain reference-only, never eval/Function. Historical rule detail comes from snapshot definitions, not changed live records."
+    },
+    {
+      "id": "K021",
+      "milestoneId": "M06",
+      "sliceId": "S12",
+      "title": "Task links and revision-bound delivery progress",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K004",
+        "K016",
+        "K006"
+      ],
+      "acceptance": [
+        "F27",
+        "U04"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/execution.ts",
+        "plugins/ui-kanban/src/Delivery.tsx",
+        "tests/continuity/execution.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M06/slices/S12/K021.md",
+      "outcome": "Separate editable proposal checklist items from linked milestone/slice/AT executions. Resolve trusted task-bound checkpoint/receipt identities and freshness; unavailable execution remains unknown/blocked. Define revision rules so real task verification does not retroactively invalidate its own source evidence. No checkbox may fabricate executed checks. Verify recoverable publication across intent\u2192task-definition commit\u2192metadata-link crash points, binding definition digests, command IDs and returned receipt identity. Pending reconciliation is visible and cannot pass release."
+    },
+    {
+      "id": "K022",
+      "milestoneId": "M06",
+      "sliceId": "S12",
+      "title": "Evidence records and source-bound verification",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K021"
+      ],
+      "acceptance": [
+        "F28",
+        "X04"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/evidence.ts",
+        "plugins/ui-kanban/src/Delivery.tsx",
+        "tests/continuity/evidence.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M06/slices/S12/K022.md",
+      "outcome": "Append clearly manual/demo/trusted evidence with check/run identity, source digest, project/draft revision, exact scope and result artifacts. Validate trusted producer rather than user labels/exit-code text. Preserve stale/failing history; define explicit retest/supersession without silently turning a prior failure green."
+    },
+    {
+      "id": "K023",
+      "milestoneId": "M06",
+      "sliceId": "S13",
+      "title": "Manual review and actionable release gates",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K022",
+        "K025"
+      ],
+      "acceptance": [
+        "F29",
+        "F30",
+        "X04"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/release-policy.ts",
+        "plugins/ui-kanban/src/Delivery.tsx",
+        "tests/continuity/release.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M06/slices/S13/K023.md",
+      "outcome": "Bind approval/withdrawal to current draft and return precise missing/stale/blocked gate reasons. All required linked tasks and accepted fresh checks, exact dependency baselines and explicit review are required. Demo/manual assertions alone cannot satisfy trusted execution gates. A visual stage move never completes work. Evaluate selected exact draft dependency pins, not whichever target release is current at query time."
+    },
+    {
+      "id": "K024",
+      "milestoneId": "M06",
+      "sliceId": "S13",
+      "title": "Immutable release snapshot and continuation",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K023",
+        "K014",
+        "K020"
+      ],
+      "acceptance": [
+        "F30",
+        "F31"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/releases.ts",
+        "plugins/ui-kanban/src/ReleaseDialog.tsx",
+        "tests/continuity/release.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M06/slices/S13/K024.md",
+      "outcome": "Commit unique increasing semver, blueprint, full pinned rule definitions, exact dependency release IDs, current accepted evidence/review, parentReleaseId and supersedesReleaseId atomically. Freeze the released card, reject archived/replayed/stale mutations, retain old baselines and expose fresh linked change instead of destructive reopen. Release is not deployment or Git commit. Snapshot exactly the selected/revalidated dependency pins; old unknown imports never acquire current target IDs silently. If the source release is not the current baseline, require an explicit stale-base delta resolution and fresh review bound to that current head before replacing it; revalidate current head inside the commit."
+    },
+    {
+      "id": "K025",
+      "milestoneId": "M05",
+      "sliceId": "S10",
+      "title": "Typed relationships and revision propagation",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K005",
+        "K014"
+      ],
+      "acceptance": [
+        "F16"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/relationships.ts",
+        "plugins/ui-kanban/src/LinkDialog.tsx",
+        "tests/continuity/relationships.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M05/slices/S10/K025.md",
+      "outcome": "Guard depends_on versus related_to with source/target/reason validation, duplicate/self/cycle rejection. Blocking changes invalidate/demote affected source drafts atomically; related links do not become blockers. Derive containment/lineage/rule/UI links from their actual owners. Add explicit draft prerequisite-release selection/pin command and policy: capture only known exact released targets, changing a pin increments draft revision, a target advancing never silently repins existing work. Revalidate those exact pins at release; consumer upgrade proposals remain deferred K037."
+    },
+    {
+      "id": "K026",
+      "milestoneId": "M05",
+      "sliceId": "S10",
+      "title": "Focused graph projections and layout",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K025",
+        "K020",
+        "K009"
+      ],
+      "acceptance": [
+        "F12",
+        "F13"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/graph-model.ts",
+        "plugins/ui-kanban/src/KnowledgeGraph.tsx",
+        "tests/continuity/graph.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K026",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M05/slices/S10/K026.md",
+      "outcome": "Build lineage/dependency/rules-and-UI lenses, all/specific focus, typed nodes and module groups from shared snapshot. Keep stable IDs and ephemeral layout. Reuse installed Dagre where appropriate without copying the executable agent canvas or claiming graph edges are source-code analysis."
+    },
+    {
+      "id": "K027",
+      "milestoneId": "M05",
+      "sliceId": "S10",
+      "title": "Graph interaction, fit and inspector dispatch",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K026",
+        "K010"
+      ],
+      "acceptance": [
+        "F14",
+        "F15"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/KnowledgeGraph.tsx",
+        "plugins/ui-kanban/src/graph-viewport.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K027",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M05/slices/S10/K027.md",
+      "outcome": "Pan/zoom/fit to actual drawer container, handle pointer cancel/resize and keyboard equivalents; dispatch release/module/rule/UI/work node actions correctly. Preserve selected release identity when plus branches. No geometry change mutates capability records."
+    },
+    {
+      "id": "K028",
+      "milestoneId": "M05",
+      "sliceId": "S11",
+      "title": "Journal, impact and context navigation",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K025",
+        "K026",
+        "K015",
+        "K043"
+      ],
+      "acceptance": [
+        "F33"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/ChangeJournal.tsx",
+        "plugins/planning-local/src/projections.ts",
+        "tests/continuity/projection.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K028",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M05/slices/S11/K028.md",
+      "outcome": "Render append-only project/scope/search history, event context and links to exact work/releases; expose declared downstream impact without a source-analysis claim. Project-wide events remain discoverable under filters. Journal export is not a complete backup or tamper-proof ledger."
+    },
+    {
+      "id": "K029",
+      "milestoneId": "M06",
+      "sliceId": "S14",
+      "title": "Agent context export with honest capability status",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K021",
+        "K024",
+        "K017"
+      ],
+      "acceptance": [
+        "F34",
+        "U04"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/handoff.ts",
+        "plugins/ui-kanban/src/WorkspaceInspector.tsx",
+        "tests/continuity/handoff.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M06/slices/S14/K029.md",
+      "outcome": "Export canonical revision/source/task/acceptance/UI/rule/decision/scope/dependency pins and permission declarations. Link to ownership and terminal readiness without granting locks or launching agents. Reject stale/ambiguous snapshots; mark declarations versus enforced claims. No agent threads are introduced."
+    },
+    {
+      "id": "K030",
+      "milestoneId": "M07",
+      "sliceId": "S15",
+      "title": "Project backup and validated replacement import",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K005",
+        "K024"
+      ],
+      "acceptance": [
+        "F35",
+        "F36"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/portability.ts",
+        "plugins/ui-kanban/src/DataDialog.tsx",
+        "tests/continuity/import.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S15/K030.md",
+      "outcome": "Roundtrip full versioned records, pins and history. Parse bounded untrusted JSON, validate nested referential integrity, show replacement impact/backup/export, then require explicit user confirmation and expected revision. Cancel, malformed, stale or interrupted import preserves existing state. Never replace host runtime registries with arbitrary imported task definitions or executable strings."
+    },
+    {
+      "id": "K031",
+      "milestoneId": "M07",
+      "sliceId": "S15",
+      "title": "Legacy and prototype schema migration",
+      "owner": "planning-service",
+      "phase": "required",
+      "dependsOn": [
+        "K030"
+      ],
+      "acceptance": [
+        "F37"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/migrations.ts",
+        "tests/continuity/import.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S15/K031.md",
+      "outcome": "Provide pure tested legacy/prototype-v2 adapters with preview and migration report: old Done becomes unverified Review, preserve text/history, release evidence never invented. Existing demo releases are demo-only, unresolved historical target pins remain explicit unknowns and block trusted release. Handle nested ID remaps, dependency cycles and repeated migration safely."
+    },
+    {
+      "id": "K032",
+      "milestoneId": "M07",
+      "sliceId": "S15",
+      "title": "Storage failure and concurrency recovery UI",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K030",
+        "K007"
+      ],
+      "acceptance": [
+        "F39"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/DataDialog.tsx",
+        "plugins/ui-kanban/src/PlanningView.tsx",
+        "plugins/planning-local/src/portability.ts",
+        "tests/continuity/store.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K032",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S15/K032.md",
+      "outcome": "On failed durable save/CAS conflict preserve edits/exportable state with explicit refresh/reconcile path. Handle same-revision divergence and project deletion via server identity/digest, not browser stamps. Never label memory-only changes as saved. Destructive reset is separate K047."
+    },
+    {
+      "id": "K033",
+      "milestoneId": "M07",
+      "sliceId": "S16",
+      "title": "Responsive and accessible single-unit acceptance",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K012",
+        "K015",
+        "K020",
+        "K027",
+        "K028",
+        "K029",
+        "K032",
+        "K019",
+        "K031",
+        "K043",
+        "K044",
+        "K045",
+        "K046",
+        "K047"
+      ],
+      "acceptance": [
+        "F40",
+        "F41",
+        "U01",
+        "U02"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/board.css",
+        "plugins/ui-kanban/src/overlays.tsx",
+        "scripts/continuity-browser.py",
+        "plugins/ui-kanban/src/WorkspaceInspector.tsx",
+        "plugins/ui-kanban/src/WorkBoard.tsx",
+        "plugins/ui-kanban/src/KnowledgeGraph.tsx",
+        "plugins/ui-kanban/src/navigation.tsx",
+        "plugins/ui-kanban/src/DataDialog.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K033",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S16/K033.md",
+      "outcome": "Verify compact/default/enlarged drawer at1440/820/390 widths, long labels, zoom and reduced motion. Scope all styles to host tokens/container, avoid global prototype selectors. Resolve labels, nested interaction semantics, tab order/focus traps/returns, drag alternatives and all error states with actual rendered checks. Verify expanded minimum320px content when feasible, rail36px retained, no controls outside drawer/viewport, keyboard-resize minimum/maximum values and safe short-viewport overflow. Correct JSX semantics/labels, not CSS alone."
+    },
+    {
+      "id": "K034",
+      "milestoneId": "M07",
+      "sliceId": "S16",
+      "title": "Measured scale and retained lifecycle acceptance",
+      "owner": "verification",
+      "phase": "required",
+      "dependsOn": [
+        "K033"
+      ],
+      "acceptance": [
+        "X05",
+        "U03"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "scripts/continuity-browser.py",
+        "tests/continuity/lifecycle.test.ts",
+        "docs/evidence/kanban-continuity/performance.json"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S16/K034.md",
+      "outcome": "Measure filtering/inspector/graph/pan on recorded machine with representative fixtures, hidden polling, listener/timer cleanup and repeated project/drawer switching. Verify retained PTY, preview iframe, editor draft and resize ownership. Bound graph neighborhoods and output data before considering virtualization; do not claim unmeasured speed."
+    },
+    {
+      "id": "K035",
+      "milestoneId": "M07",
+      "sliceId": "S17",
+      "title": "Combined integration, provenance and controlled promotion",
+      "owner": "integration",
+      "phase": "required",
+      "dependsOn": [
+        "K034",
+        "K024"
+      ],
+      "acceptance": [
+        "X06"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "scripts/host.test.ts",
+        "scripts/verify-packages.mjs",
+        "scripts/architecture.ts",
+        "README.md",
+        "docs/evidence/kanban-continuity/delivery.json",
+        ".context/state/features.json",
+        ".context/state/ui.json",
+        ".context/state/changelog.md",
+        ".context/state/progress.md",
+        ".context/state/events.jsonl"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit",
+        "npm run build",
+        "npm run check",
+        "python3 -B /home/creoaurea/Documents/_PROTOCOLS/WISDOHM2/tests/validate.py --target ."
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S17/K035.md",
+      "outcome": "Run all required checks on combined candidate, compare supplied prototype views, test complete Graph+\u2192Plan\u2192Blueprint\u2192Delivery\u2192verified release\u2192History flow and failure recovery, verify package/source ownership and no demo contamination. Promote verified build only after accounting for active sessions/drafts; preserve prior build/data and exact rollback. Record actual results, not historic prototype test claims."
+    },
+    {
+      "id": "K036",
+      "milestoneId": "M08",
+      "sliceId": "S18",
+      "title": "Rank existing capability and rule candidates",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/discovery.ts",
+        "plugins/ui-kanban/src/BranchDialog.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S18/K036.md",
+      "outcome": "Deferred improvement: search existing names/behaviors/UI/rules before creation; explain a small ranked candidate set and let user choose extend/variant/new. Start with existing indexed text; semantic infrastructure only if justified by evidence."
+    },
+    {
+      "id": "K037",
+      "milestoneId": "M08",
+      "sliceId": "S18",
+      "title": "Consumer upgrade work proposals",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035",
+        "K019",
+        "K025"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/upgrades.ts",
+        "plugins/ui-kanban/src/Rules.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S18/K037.md",
+      "outcome": "Deferred improvement: enumerate declared pinned consumers and tests before rule/contract change, create explicitly selected upgrade drafts, never silent repinning or auto-execution."
+    },
+    {
+      "id": "K038",
+      "milestoneId": "M08",
+      "sliceId": "S19",
+      "title": "Revert proposal from an older release",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035",
+        "K024"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/branching.ts",
+        "plugins/ui-kanban/src/History.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S19/K038.md",
+      "outcome": "Deferred improvement: create fresh draft from old snapshot and show reverse blueprint/code delta only where a real adapter supports it. Preserve accepted history; require fresh proof. No deleting events or claiming repository revert without execution."
+    },
+    {
+      "id": "K039",
+      "milestoneId": "M08",
+      "sliceId": "S19",
+      "title": "Saved graph focus and command navigation",
+      "owner": "planning-ui",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035",
+        "K027"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/presentation.ts",
+        "plugins/ui-kanban/src/navigation.tsx"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "python3 scripts/continuity-browser.py --case K039",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S19/K039.md",
+      "outcome": "Deferred improvement: lazy focused expansion/module clusters/saved views and keyboard command palette if scale measurements justify them. Presentation state does not become domain architecture truth."
+    },
+    {
+      "id": "K040",
+      "milestoneId": "M08",
+      "sliceId": "S20",
+      "title": "Optional source-control provenance adapter",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/source-provenance.ts",
+        "tests/continuity/evidence.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S20/K040.md",
+      "outcome": "Deferred, separately authorized adapter: bind repository/commit/dirty state where Git already exists. No Git initialization, commit, branch or remote operation is authorized by this plan; use source digests in the initial delivery."
+    },
+    {
+      "id": "K041",
+      "milestoneId": "M08",
+      "sliceId": "S20",
+      "title": "Optional CI evidence ingestion adapter",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035",
+        "K022"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/ci-evidence.ts",
+        "tests/continuity/evidence.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S20/K041.md",
+      "outcome": "Deferred, provider-dependent adapter: authenticate origin/run/artifact digests and map real results to check/source/draft identity. Manual references remain manual; no CI account/credential assumed."
+    },
+    {
+      "id": "K042",
+      "milestoneId": "M08",
+      "sliceId": "S20",
+      "title": "Optional structured agent execution adapter",
+      "owner": "planning-service",
+      "phase": "deferred",
+      "dependsOn": [
+        "K035",
+        "K029"
+      ],
+      "acceptance": [],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        ".context/state/tasks.json",
+        ".context/modules/registry.yaml",
+        "packages/client/client.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/agent-execution.ts",
+        "tests/continuity/handoff.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M08/slices/S20/K042.md",
+      "outcome": "Deferred, provider-dependent execution: bind a real runtime session to canonical task, ownership claim, approvals and evidence. Revalidate terminal confinement and claims; browser/context export cannot grant permissions. No conversation-thread feature or automatic agent launch in initial Continuity delivery."
+    },
+    {
+      "id": "K043",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "History: exact-source and current-baseline comparison",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K015"
+      ],
+      "acceptance": [
+        "F31"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/History.tsx",
+        "tests/continuity/projection.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "python3 scripts/continuity-browser.py --case K043",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K043.md",
+      "outcome": "Render the chosen source blueprint and current accepted baseline as distinct comparisons with exact event links. No source-code diff claim. Snapshot definitions are read from the snapshot and remain immutable."
+    },
+    {
+      "id": "K044",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Archive and restore guarded work",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K015"
+      ],
+      "acceptance": [
+        "F32"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/planning-local/src/commands.ts",
+        "plugins/ui-kanban/src/History.tsx",
+        "tests/continuity/commands.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "python3 scripts/continuity-browser.py --case K044",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K044.md",
+      "outcome": "Archive/restore an editable nonreleased work card through one guarded command. Keep history and an explicit archived-work discovery path; restore to Plan. Cancel/stale/released operations leave state unchanged."
+    },
+    {
+      "id": "K045",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Validate and edit declared ownership scope",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K016"
+      ],
+      "acceptance": [
+        "F25"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/Blueprint.tsx",
+        "plugins/planning-local/src/validation.ts",
+        "tests/continuity/revisions.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "python3 scripts/continuity-browser.py --case K045",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K045.md",
+      "outcome": "Edit deduplicated declared paths against canonical ownership and physical path/symlink rules. Changed scope invalidates proof; a text file list is not enforcement. Variant scope begins empty. Reject escaping/unknown/ambiguous paths without mutating the draft."
+    },
+    {
+      "id": "K046",
+      "milestoneId": "M04",
+      "sliceId": "S08",
+      "title": "Append blueprint decisions with rationale",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K016"
+      ],
+      "acceptance": [
+        "F26"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/Blueprint.tsx",
+        "plugins/planning-local/src/commands.ts",
+        "tests/continuity/revisions.test.ts"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "python3 scripts/continuity-browser.py --case K046",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M04/slices/S08/K046.md",
+      "outcome": "Append a scoped decision and required rationale, preserving historical decisions. Blank/no-op/stale writes fail or leave revision unchanged as defined; a material decision increments draft revision and stales review/proof."
+    },
+    {
+      "id": "K047",
+      "milestoneId": "M07",
+      "sliceId": "S15",
+      "title": "Confirmed selected-project demo reset",
+      "owner": "planning-ui",
+      "phase": "required",
+      "dependsOn": [
+        "K032"
+      ],
+      "acceptance": [
+        "F38"
+      ],
+      "candidateReads": [
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/contracts.ts",
+        "tobeimplemented/CA_devLAB_Kanban_v2_Continuity/source/app.js",
+        "packages/contracts/src/planning.ts",
+        ".context/BOOT.md",
+        ".context/protocols/updates.md",
+        "node_modules/@devlab/ui-kanban/source/src/MilestoneBoard.tsx",
+        "plugins/ui-shell/src/view.tsx",
+        "packages/ui-contracts/src/index.ts"
+      ],
+      "candidateWrites": [
+        "plugins/ui-kanban/src/DataDialog.tsx",
+        "plugins/planning-local/src/portability.ts",
+        "tests/continuity/import.test.ts",
+        "scripts/continuity-browser.py"
+      ],
+      "verify": [
+        "python3 -B docs/plans/kanban-continuity/validate_plan.py",
+        "node --test tests/continuity/*.test.ts",
+        "python3 scripts/continuity-browser.py --case K047",
+        "./node_modules/.bin/tsc --noEmit"
+      ],
+      "probeReadiness": "Plan validator exists now. Product fixture harness/probes created at K001 and extended with each named task before feature code; all product verification is planned/unrun. Deferred adapter probes are added only after provider selection.",
+      "document": "milestones/M07/slices/S15/K047.md",
+      "outcome": "Reset only an isolated demo or explicitly selected project through backup/impact preview/confirmation and atomic monotonic revision handling. Never reset all .data, accepted real projects by default, or erase another project. Cancel/failure preserves state; conflict reload uses the dirty-navigation guard."
+    }
+  ],
+  "planningVerification": {
+    "at": "2026-10-31T12:59:33.452684+00:00",
+    "proposal": "passed: 8milestones/20slices/47tasks; required40/deferred7; all41features and10integration acceptance IDs covered; shipping closure contains all40required",
+    "import": "16 original members and archive SHA256 verified",
+    "peerReview": "prototype, architecture and UI reviews reconciled; ID namespaces/UIroots, exactpins, revisionmatrix, navigationguard, package acquisitions and atomic splits corrected",
+    "productAcceptance": "not run; no Kanban implementation or activation",
+    "targetGate": "blocked before and after planning by evolving concurrent terminal ownership coverage; final observed unowned packages/client/terminals.ts",
+    "concurrentSourceObservation": {
+      "baselineFiles": 106,
+      "changedSinceBaseline": [
+        "src/profile.ts",
+        "scripts/architecture.ts",
+        "scripts/host.test.ts",
+        "scripts/terminal.test.ts",
+        "scripts/terminal-confinement.test.ts",
+        "plugins/ui-terminal/src/view.tsx",
+        "plugins/terminal-pty/src/index.ts",
+        "plugins/terminal-pty/src/persistence.ts",
+        "plugins/terminal-pty/native/ownership-sandbox",
+        "plugins/terminal-pty/native/ownership-sandbox.c",
+        "plugins/terminal-pty/native/ownership-sandbox.sha256",
+        "plugins/transport-http/src/index.ts",
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-shell/src/terminals.tsx",
+        "packages/client/client.ts",
+        "vite.config.ts"
+      ],
+      "addedSinceBaseline": [
+        "packages/client/terminals.ts",
+        "scripts/__pycache__/terminal-browser.cpython-313.pyc",
+        "scripts/terminal-browser.py",
+        "scripts/terminal-fixture.ts"
+      ]
+    },
+    "mapsAndSeals": "not resealed against unreconciled concurrent source; K001 must reconcile readiness and source facts before implementation"
+  }
+}

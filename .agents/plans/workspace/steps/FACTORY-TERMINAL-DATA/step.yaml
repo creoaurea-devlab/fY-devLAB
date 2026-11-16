@@ -1,0 +1,22 @@
+schema_version: 1
+id: FACTORY-TERMINAL-DATA
+title: Keep terminal ownership reads on the installed metadata adapter
+outcome: Keep terminal ownership reads on the installed metadata adapter
+kind: maintenance
+effect: change_source
+owner: terminal-service
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- plugins/terminal-pty/src/index.ts
+needs: []
+acceptance:
+- Ownership reads keep their existing consumer contract; retained terminals are not
+  restarted.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

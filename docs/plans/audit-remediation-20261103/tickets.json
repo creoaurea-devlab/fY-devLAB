@@ -1,0 +1,1638 @@
+{
+  "format": 1,
+  "kind": "canonical-plan-linked-audit-specification",
+  "target_root": "/home/creoaurea/Documents/DEV_FOCUS/devLAB",
+  "target_plan_root": "docs/plans/audit-remediation-20261103",
+  "status_authority": ".context/state/tasks.json is product intent; progress.json reports workflow; SQL capabilities own execution scope and SQL sessions own evidence.",
+  "prerequisite": "TH-01 reconciles existing scope and owner handoffs; never start duplicate AR aliases.",
+  "legacy_plan": "All122 existing definitions and reported states are preserved.27 new tasks extend existing goals/plans. Eight audit addenda reuse existing task IDs. Separate provisional SQL AR steps were archived.",
+  "tasks": [
+    {
+      "id": "AR-01",
+      "title": "Register proposed paths and freeze owner contracts",
+      "owner": "planning-protocol",
+      "profile": "governance",
+      "milestone": "M1-foundation",
+      "slice": "S1-preflight",
+      "needs": [],
+      "reads": [
+        ".wisdohm/config/owner-profiles.yaml",
+        ".context/modules/registry.yaml",
+        "docs/plans/audit-remediation-20261103/tickets.json",
+        "docs/plans/audit-remediation-20261103/ownership-proposals.json"
+      ],
+      "writes": [],
+      "checks": [
+        "python3 docs/plans/audit-remediation-20261103/validate.py --root . --require-registered"
+      ],
+      "acceptance": [
+        "AC-01: Every candidate write resolves to exactly one SQL capability, including proposed test files.",
+        "AC-02: New files are registered before a source worker starts; current SQL revisions and paths are recorded.",
+        "AC-03: Legacy task/progress JSON remains byte-identical; source and release copies remain distinct."
+      ],
+      "behavior": "Integration parent assesses any registration already completed during reinstall against current SQL revisions; do not duplicate an accepted edit. Validate remaining proposals and apply only missing revision-checked capability edits through installed WISDOHM. Freeze public contract proposal for AR-09 and owner-to-profile mapping without copying paths into that mapping. This ticket changes SQL ownership records only if needed, never legacy registry source.",
+      "failure_cases": "Refuse ambiguous ownership, stale revision, dependency cycle, missing profile/skill, or capability that captures another worker\u2019s scope.",
+      "rollback": "Restore capability definitions by a new revisioned edit from reviewed previous definitions; never delete existing execution history.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M1-foundation/slices/S1-preflight/AR-01.md",
+      "canonical_task_id": "TH-01",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [],
+      "canonical_slice": "TH-S01",
+      "canonical_milestone": "TH-LATER"
+    },
+    {
+      "id": "AR-02",
+      "title": "Provision a trusted isolated Python runtime",
+      "owner": "delivery-config",
+      "profile": "delivery",
+      "milestone": "M1-foundation",
+      "slice": "S1-preflight",
+      "needs": [
+        "AR-01"
+      ],
+      "reads": [
+        "package.json",
+        "package-lock.json",
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/wisdom-tool/src/population.ts"
+      ],
+      "writes": [
+        "package.json",
+        "package-lock.json",
+        "README.md"
+      ],
+      "checks": [
+        "npm ci --ignore-scripts",
+        "python3 -I -B -c \"import yaml; print(yaml.__version__)\"",
+        "node --version"
+      ],
+      "acceptance": [
+        "AC-04: Chosen trusted interpreter imports PyYAML under isolated mode; clean provisioning and invocation are documented.",
+        "AC-04: Existing Node dependency and Codex composition tasks retain their scopes and IDs."
+      ],
+      "behavior": "Node dependencies were restored during reinstall; TERM-DISTRIBUTION and TH-04 retain package composition outcomes. This new regression scope provisions a trusted isolated Python runtime, preserves -I, and documents interpreter selection for existing callers. Reuse current dependencies and do not change runtime privileges.",
+      "failure_cases": "Missing isolated PyYAML, unsupported Node, unavailable archives, or changed lockfile must produce clear diagnostics. Keep secrets out of logs.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S1-preflight/AR-02.md",
+      "canonical_task_id": "AR-02",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-DISTRIBUTION",
+        "TH-04"
+      ],
+      "canonical_dependencies": [
+        "TH-01"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S1"
+    },
+    {
+      "id": "AR-03",
+      "title": "Add disposable startup and relocation regression fixtures",
+      "owner": "verification",
+      "profile": "verification",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-02"
+      ],
+      "reads": [
+        "plugins/terminal-pty/src/persistence.ts",
+        "plugins/rules-local/src/snapshot.ts",
+        "src/server.ts"
+      ],
+      "writes": [
+        "scripts/terminal-relocation.test.ts",
+        "scripts/runtime-startup.test.ts",
+        "scripts/rules.test.ts",
+        "scripts/client-lifecycle.test.ts",
+        "scripts/runtime-lifecycle.test.ts",
+        "scripts/wisdohm27-integration.test.py"
+      ],
+      "checks": [
+        "DEVLAB_AUDIT_EXPECTATION=baseline node --test scripts/terminal-relocation.test.ts scripts/runtime-startup.test.ts scripts/client-lifecycle.test.ts scripts/runtime-lifecycle.test.ts",
+        "python3 -B scripts/wisdohm27-integration.test.py --expect-baseline"
+      ],
+      "acceptance": [
+        "AC-05: Fixtures reproduce terminal path/socket mismatch without opening or killing live terminals.",
+        "AC-04: Fixture exercises isolated Python reader dependency failure and useful error propagation.",
+        "AC-05: Corrupt, foreign, active and valid records are distinguished.",
+        "AC-05: Create runnable client/runtime lifecycle and 2.7 integration probes before source tickets reference them; explicit baseline assertions pass with nonzero tests while repaired-expectation mode continues to expose missing behavior."
+      ],
+      "behavior": "Create behavior probes against disposable directories, injected executables and fake subprocesses. Baseline mode asserts the exact observed rejection or retention defect, so characterization passes with a nonzero test count without claiming repaired behavior. Write a separate repaired-expectation mode (the default) that requires the desired regression outcome; source owners run that mode after repair. Include fake-EventSource/current-owner retention and installed-2.7 API scenarios. Each repair hands its new expectation result to the verification owner for an explicit assessment substep. If test source must change, define a separate verification-owned SQL substep before edits. No fixture may resolve .data or .wisdohm paths to live project state.",
+      "failure_cases": "Expected baseline errors must be asserted precisely; broad catch-and-pass, skipped scenarios and zero selected tests do not pass. Known-broken outcomes are evidence of the defect, never acceptance of its repair. Fixtures refuse escaped temporary roots and preserve failed output.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-03.md",
+      "canonical_task_id": "AR-03",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-ACCEPT",
+        "AUD-VERIFY"
+      ],
+      "canonical_dependencies": [
+        "AR-02"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S2"
+    },
+    {
+      "id": "AR-04",
+      "title": "Recover relocated terminal records without losing sessions",
+      "owner": "terminal-service",
+      "profile": "backend",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-03"
+      ],
+      "reads": [
+        "plugins/terminal-pty/src/persistence.ts",
+        "plugins/terminal-pty/src/index.ts",
+        "scripts/terminal-relocation.test.ts"
+      ],
+      "writes": [
+        "plugins/terminal-pty/src/persistence.ts"
+      ],
+      "checks": [
+        "node --test scripts/terminal-relocation.test.ts scripts/terminal-lease.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Foreign socket identity yields bounded recoverable handling rather than unconditional activation crash.",
+        "AC-05: Live socket/PID identities are checked before migration; records and output are preserved.",
+        "AC-05: No broad lock unlink or silent discard occurs."
+      ],
+      "behavior": "Introduce a bounded validation/recovery outcome at persistence load; preserve the path/socket identity check and original records. Reattach only identities proven valid; otherwise return explicit recovery information and defer migration.",
+      "failure_cases": "PID reuse, foreign project roots, inaccessible socket, malformed JSON, interrupted recovery, and active owner must fail safely.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-04.md",
+      "canonical_task_id": "TERM-SERVICE",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-03"
+      ],
+      "canonical_slice": "TERM-S1",
+      "canonical_milestone": "TERM-M1"
+    },
+    {
+      "id": "AR-05",
+      "title": "Make isolated Rules snapshot execution dependable",
+      "owner": "rules-service",
+      "profile": "backend",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-03"
+      ],
+      "reads": [
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/rules-local/src/read-memory.py",
+        "scripts/rules.test.ts"
+      ],
+      "writes": [
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/rules-local/README.md"
+      ],
+      "checks": [
+        "node --test scripts/rules.test.ts scripts/runtime-startup.test.ts"
+      ],
+      "acceptance": [
+        "AC-04: The configured trusted reader runs with isolated imports and bounded timeout/output.",
+        "AC-06: Reader does not import or execute project-owned Python modules.",
+        "AC-04: Interpreter/package failures are actionable and distinguishable from invalid project data."
+      ],
+      "behavior": "Use the verified isolated interpreter provisioned by AR-02. Keep the bundled reader path fixed and retain path confinement, timeout and output-size limits.",
+      "failure_cases": "No fallback to arbitrary project python, PYTHONPATH or removal of -I; interrupted reader must be reaped.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-05.md",
+      "canonical_task_id": "AR-05",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "RULES-BACKEND",
+        "WIS-UI-READER"
+      ],
+      "canonical_dependencies": [
+        "AR-03"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S2"
+    },
+    {
+      "id": "AR-06",
+      "title": "Remove unused population YAML dependency safely",
+      "owner": "wisdom-service",
+      "profile": "backend",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-03"
+      ],
+      "reads": [
+        "plugins/wisdom-tool/src/population.ts",
+        "scripts/wisdom.test.ts"
+      ],
+      "writes": [
+        "plugins/wisdom-tool/src/population.ts"
+      ],
+      "checks": [
+        "node --test scripts/wisdom.test.ts"
+      ],
+      "acceptance": [
+        "AC-04: Population with facts does not import unused PyYAML.",
+        "AC-03: Setup validation, rollback and target-gate safeguards remain intact."
+      ],
+      "behavior": "Remove only the demonstrated unused YAML import in the isolated apply script. Keep isolation and safe file replacement. Broader bundle migration is AR-20.",
+      "failure_cases": "Exercise facts present/absent, invalid input, stale hashes, existing authority and partial failure; do not silently recover by overwriting custom runtime.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-06.md",
+      "canonical_task_id": "AR-06",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-03"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S2"
+    },
+    {
+      "id": "AR-07",
+      "title": "Make backend startup failure release acquired resources",
+      "owner": "backend-host",
+      "profile": "backend",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-04",
+        "AR-05",
+        "AR-06"
+      ],
+      "reads": [
+        "src/server.ts",
+        "src/profile.ts",
+        "scripts/runtime-startup.test.ts"
+      ],
+      "writes": [
+        "src/server.ts"
+      ],
+      "checks": [
+        "node --test scripts/runtime-startup.test.ts scripts/host.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Rules snapshot or plugin activation failure reports cause and releases acquired kernel/listener resources.",
+        "AC-05: Failed startup leaves no accidental duplicate backend or orphan child."
+      ],
+      "behavior": "Keep startup composition minimal; use existing kernel disposal lifecycle in a failure path. Never start the production backend as a test.",
+      "failure_cases": "Inject failing rules reader, plugin activation and listen errors; preserve original error if cleanup also fails.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-07.md",
+      "canonical_task_id": "AR-07",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "RULES-INTEGRATION",
+        "TERM-PROFILE",
+        "TH-22"
+      ],
+      "canonical_dependencies": [
+        "TERM-SERVICE",
+        "AR-05",
+        "AR-06"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S2"
+    },
+    {
+      "id": "AR-08",
+      "title": "Verify combined startup recovery baseline",
+      "owner": "verification",
+      "profile": "verification",
+      "milestone": "M1-foundation",
+      "slice": "S2-startup",
+      "needs": [
+        "AR-07"
+      ],
+      "reads": [
+        "scripts/terminal-relocation.test.ts",
+        "scripts/runtime-startup.test.ts",
+        "src/server.ts"
+      ],
+      "writes": [
+        "scripts/runtime-startup.test.ts"
+      ],
+      "checks": [
+        "node --test scripts/terminal-relocation.test.ts scripts/runtime-startup.test.ts scripts/terminal-lease.test.ts scripts/rules.test.ts scripts/wisdom.test.ts"
+      ],
+      "acceptance": [
+        "AC-04: Combined disposable startup tests pass with installed dependencies.",
+        "AC-05: Restored or quarantined records retain original recovery data and unrelated live resources are untouched."
+      ],
+      "behavior": "Reconcile initial fixtures with final behavior; record real outputs and limitations. Do not replace failing assertions with permissive existence checks.",
+      "failure_cases": "Timeout/hang or missing environment prerequisite blocks acceptance; report which layer failed.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M1-foundation/slices/S2-startup/AR-08.md",
+      "canonical_task_id": "AR-08",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-ACCEPT",
+        "AUD-VERIFY"
+      ],
+      "canonical_dependencies": [
+        "AR-07"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M1-S2"
+    },
+    {
+      "id": "AR-09",
+      "title": "Define neutral ownership and planning migration contracts",
+      "owner": "service-contracts",
+      "profile": "contracts",
+      "milestone": "M2-authority",
+      "slice": "S1-contracts",
+      "needs": [
+        "AR-08"
+      ],
+      "reads": [
+        "packages/contracts/src/planner.ts",
+        "packages/contracts/src/rules.ts",
+        ".wisdohm/planning.py",
+        ".wisdohm/config/owner-profiles.yaml"
+      ],
+      "writes": [
+        "packages/contracts/src/ownership.ts",
+        "packages/contracts/src/planner.ts",
+        "packages/contracts/src/rules.ts",
+        "packages/contracts/src/index.ts"
+      ],
+      "checks": [
+        "npx tsc --noEmit",
+        "node --test scripts/planning.test.ts scripts/rules.test.ts"
+      ],
+      "acceptance": [
+        "AC-01: Ownership DTO contains capability ID, revision, paths, public, uses and guidance; profile mapping remains separate.",
+        "AC-07: Plan definitions, reported workflow, assessed findings and verified execution stay distinguishable.",
+        "AC-07: Existing 122 task IDs/hierarchy/dependencies map deliberately and unsupported report semantics are explicit."
+      ],
+      "behavior": "Define small typed read projections and revisioned write contracts for actual consumers. Keep filesystem, Python, SQLite and server implementations out of contracts. Existing planner public methods retain compatible behavior until migration acceptance.",
+      "failure_cases": "Reject malformed paths/revisions, unknown capabilities, ambiguous profile selection and attempts to interpret reported complete as verified execution.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S1-contracts/AR-09.md",
+      "canonical_task_id": "AR-09",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "KAN-CONTRACT",
+        "RULES-CONTRACT"
+      ],
+      "canonical_dependencies": [
+        "AR-08"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S1",
+      "current_spec": ".agents/plans/agent-home/steps/AR-09/SPEC.md"
+    },
+    {
+      "id": "AR-10",
+      "title": "Expose validated SQL ownership projection for trusted consumers",
+      "owner": "governance-runtime",
+      "profile": "governance",
+      "milestone": "M2-authority",
+      "slice": "S1-contracts",
+      "needs": [
+        "AR-09"
+      ],
+      "reads": [
+        ".wisdohm/planning.py",
+        ".wisdohm/store.py",
+        ".wisdohm/config/owner-profiles.yaml",
+        "packages/contracts/src/ownership.ts"
+      ],
+      "writes": [
+        ".wisdohm/orchestration.py"
+      ],
+      "checks": [
+        "python3 -B scripts/wisdohm27-integration.test.py"
+      ],
+      "acceptance": [
+        "AC-01: Projection derives paths/public/uses/guidance only from installed SQL capabilities.",
+        "AC-01: Reusable profiles/skills resolve without a competing path registry.",
+        "AC-01: Path routing and step routing explain current owners and revisions."
+      ],
+      "behavior": "Adapt the existing project orchestration seam to installed 2.7 public planning/store facilities. Use bounded read-only output; no new generic registry framework. Freeze the output before parallel consumer adapters.",
+      "failure_cases": "Missing database/capability/profile, stale revisions or oversized output fail explicitly. Rules Board must not execute this project-owned adapter.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S1-contracts/AR-10.md",
+      "canonical_task_id": "AR-10",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "PROC-OWN",
+        "PROC-PROFILES"
+      ],
+      "canonical_dependencies": [
+        "AR-09"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S1",
+      "current_spec": ".agents/plans/agent-home/steps/AR-10/SPEC.md"
+    },
+    {
+      "id": "AR-11",
+      "title": "Add SQL-backed planner adapter with explicit legacy import",
+      "owner": "planning-service",
+      "profile": "planning",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-10"
+      ],
+      "reads": [
+        "plugins/planning-local/src/store.ts",
+        "packages/contracts/src/planner.ts",
+        ".context/state/tasks.json",
+        ".context/state/progress.json",
+        ".wisdohm/planning.py"
+      ],
+      "writes": [
+        "plugins/planning-local/src/store.ts",
+        "plugins/planning-local/src/index.ts"
+      ],
+      "checks": [
+        "node --test scripts/planning.test.ts"
+      ],
+      "acceptance": [
+        "AC-07: Reads/writes use one selected authority, with revision conflict/replay semantics preserved.",
+        "AC-07: Legacy JSON remains untouched before explicit migration and all 122 identities, hierarchy and dependencies survive fixture conversion.",
+        "AC-07: Reported workflow provenance remains reported; unsupported fields are preserved in a reviewed compatibility representation, never fabricated evidence.",
+        "AC-08: Request path has no repeated synchronous Python/YAML parsing."
+      ],
+      "behavior": "Use existing WISDOHM SQL writer through a bounded trusted async integration. Prove conversion in a disposable copy first; retain legacy input as provenance and freeze the old writer only at approved cutover. Fail closed if required semantics cannot be represented.",
+      "failure_cases": "CAS conflict, malformed legacy records, interrupted import, duplicate IDs, lock contention, cycles and command replay mismatch must preserve prior committed state.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-11.md",
+      "canonical_task_id": "AR-11",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "KAN-SERVICE"
+      ],
+      "canonical_dependencies": [
+        "AR-10"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-11/SPEC.md"
+    },
+    {
+      "id": "AR-12",
+      "title": "Route offline planning CLI through the selected SQL adapter",
+      "owner": "planning-tools",
+      "profile": "planning",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-11"
+      ],
+      "reads": [
+        "scripts/planner.ts",
+        "plugins/planning-local/src/index.ts",
+        "packages/contracts/src/planner.ts"
+      ],
+      "writes": [
+        "scripts/planner.ts"
+      ],
+      "checks": [
+        "node --test scripts/planning.test.ts",
+        "node scripts/planner.ts --root . snapshot"
+      ],
+      "acceptance": [
+        "AC-07: CLI uses same revisioned writer as HTTP/UI and exposes authority/provenance clearly.",
+        "AC-07: Snapshot is read-only and malformed/oversized/stale commands are rejected."
+      ],
+      "behavior": "Retain existing CLI entry and bounded JSON input; delegate to planning service rather than duplicate SQL mutation logic. Snapshot live project only read-only; edits in fixtures.",
+      "failure_cases": "Wrong project, stdin overflow, missing apply file, concurrent revision and unwritable authority must produce nonzero outcomes without partial changes.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-12.md",
+      "canonical_task_id": "AR-12",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "KAN-CLI"
+      ],
+      "canonical_dependencies": [
+        "AR-11"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-12/SPEC.md"
+    },
+    {
+      "id": "AR-13",
+      "title": "Review product-plan migration without retiring current authority",
+      "owner": "planning-protocol",
+      "profile": "governance",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-12"
+      ],
+      "reads": [
+        ".context/protocols/plan.md",
+        ".context/state/tasks.json",
+        ".context/state/progress.json",
+        "scripts/planner.ts"
+      ],
+      "writes": [
+        ".context/protocols/plan.md"
+      ],
+      "checks": [
+        "node --test scripts/planning.test.ts",
+        "python3 -B scripts/wisdohm27-integration.test.py"
+      ],
+      "acceptance": [
+        "AC-07: One validated writer owns committed task definitions after migration; old JSON is immutable import provenance or clearly derived output.",
+        "AC-07: Stable task IDs and distinct workflow provenance are verified against preflight digests.",
+        "AC-03: Backup and restore were exercised before live conversion.",
+        "AC-03: JSON remains authoritative until a separately reviewed consumer cutover; no direct overwrite or automatic SQL adoption."
+      ],
+      "behavior": "Reconcile through scripts/planner.ts and retain tasks.json/progress.json as product intent/report authority. Prepare a reviewed one-writer cutover only after all consumers, stable IDs, reported provenance, recovery and rollback are proven. The runtime reinstall alone does not authorize switching app product planning to SQL.",
+      "failure_cases": "Abort before live cutover if fixture conversion/restore or report mapping is incomplete. Preserve existing reports rather than forcing green execution states.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-13.md",
+      "canonical_task_id": "AR-13",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "KAN-PROTOCOL",
+        "TH-01"
+      ],
+      "canonical_dependencies": [
+        "AR-12"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-13/SPEC.md"
+    },
+    {
+      "id": "AR-14",
+      "title": "Use SQL ownership in terminal confinement catalogue",
+      "owner": "terminal-service",
+      "profile": "backend",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-10",
+        "AR-04"
+      ],
+      "reads": [
+        "plugins/terminal-pty/src/index.ts",
+        "plugins/terminal-pty/src/confinement.ts",
+        "packages/contracts/src/ownership.ts"
+      ],
+      "writes": [
+        "plugins/terminal-pty/src/index.ts"
+      ],
+      "checks": [
+        "node --test scripts/terminal-confinement.test.ts scripts/terminal-lease.test.ts"
+      ],
+      "acceptance": [
+        "AC-01: Ownership comes from validated SQL projection, with no permissive fallback catalogue.",
+        "AC-08: Catalogue loads are bounded/asynchronous and invalidation uses authority revision."
+      ],
+      "behavior": "Replace legacy registry parsing at the terminal owner catalogue seam. Preserve immutable granted ownership and strict confinement; do not grant expanded writes because a profile changed.",
+      "failure_cases": "Missing capability, revised scope, escaped path or snapshot failure must deny unsafe launch while preserving existing terminal sessions.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-14.md",
+      "canonical_task_id": "AR-14",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "TERM-CONFINEMENT",
+        "TERM-SERVICE"
+      ],
+      "canonical_dependencies": [
+        "AR-10",
+        "TERM-SERVICE"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-14/SPEC.md"
+    },
+    {
+      "id": "AR-15",
+      "title": "Use SQL capability ownership for development copies",
+      "owner": "project-service",
+      "profile": "backend",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-10"
+      ],
+      "reads": [
+        "plugins/project-local/src/fork.ts",
+        "packages/contracts/src/ownership.ts"
+      ],
+      "writes": [
+        "plugins/project-local/src/fork.ts"
+      ],
+      "checks": [
+        "node --test scripts/project-development.test.ts scripts/project-thread-delete.test.ts"
+      ],
+      "acceptance": [
+        "AC-01: Plugin source owner/path comes from the reviewed projection and declared public seams.",
+        "AC-03: Fork provenance, path confinement and original source protections remain intact."
+      ],
+      "behavior": "Replace legacy YAML subprocess discovery using the established async ownership seam. Preserve project-specific roots and explicit development-copy ownership.",
+      "failure_cases": "Ambiguous plugin path, missing package, symlink escape, failed copy or unavailable projection cannot silently fall back to unrelated source.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-15.md",
+      "canonical_task_id": "AR-15",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "AT-234a93e3-64e5-46fb-b5e0-41c7c783aee5"
+      ],
+      "canonical_dependencies": [
+        "AR-10"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-15/SPEC.md"
+    },
+    {
+      "id": "AR-16",
+      "title": "Resolve harness steps and profiles from renewed authority",
+      "owner": "codex-harness",
+      "profile": "backend",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-11",
+        "AR-10"
+      ],
+      "reads": [
+        "plugins/codex-harness/src/service.ts",
+        "packages/contracts/src/harness.ts",
+        ".wisdohm/config/owner-profiles.yaml"
+      ],
+      "writes": [
+        "plugins/codex-harness/src/service.ts",
+        "plugins/codex-harness/src/service.test.ts"
+      ],
+      "checks": [
+        "node --test plugins/codex-harness/src/service.test.ts scripts/harness-http.test.ts"
+      ],
+      "acceptance": [
+        "AC-01: Step scope and profile instructions bind current capability and owner mapping.",
+        "AC-08: Repeated scheduler reads do not synchronously parse YAML or spawn lock subprocess storms.",
+        "AC-07: Batch prerequisites use current assessed semantics, never infer verified completion from imported workflow reports."
+      ],
+      "behavior": "Adapt only SQL ownership/profile discovery and task identity binding in the existing harness. TH-17 retains queue scheduling/cancellation; do not create or redesign a second scheduler. Preserve TH-13 recovery and TH-15 evidence boundaries.",
+      "failure_cases": "Stale step scope, missing profile skills, cancelled batch, unavailable planner or restored historical run must not launch a command.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-16.md",
+      "canonical_task_id": "AR-16",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "TH-17",
+        "TH-13",
+        "TH-15"
+      ],
+      "canonical_dependencies": [
+        "AR-11",
+        "AR-10"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-16/SPEC.md"
+    },
+    {
+      "id": "AR-17",
+      "title": "Read 2.7 SQL evidence safely in Rules Board",
+      "owner": "rules-service",
+      "profile": "backend",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-09",
+        "AR-05",
+        "AR-13"
+      ],
+      "reads": [
+        "plugins/rules-local/src/read-memory.py",
+        "plugins/rules-local/src/snapshot.ts",
+        "packages/contracts/src/rules.ts",
+        ".wisdohm/store.py"
+      ],
+      "writes": [
+        "plugins/rules-local/src/read-memory.py",
+        "plugins/rules-local/src/snapshot.ts",
+        "plugins/rules-local/README.md"
+      ],
+      "checks": [
+        "node --test scripts/rules.test.ts"
+      ],
+      "acceptance": [
+        "AC-06: Trusted bundled reader opens target SQL read-only and supports current schema/capability/step evidence.",
+        "AC-06: No imports or commands from target .wisdohm, including orchestration.py.",
+        "AC-07: Historical, reported, assessed, stale and verified states display distinctly."
+      ],
+      "behavior": "Decode bounded SQL/data projections in the trusted reader. Share data contracts where useful, not executable target modules. Preserve independent validation of project roots and source hashes.",
+      "failure_cases": "Unknown schema, oversized/corrupt JSON, locked/missing DB, symlink escape and foreign root must report observation failure, not run repair or mutate state.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-17.md",
+      "canonical_task_id": "AR-17",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "WIS-UI-READER",
+        "RULES-BACKEND"
+      ],
+      "canonical_dependencies": [
+        "AR-09",
+        "AR-05",
+        "AR-13"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-17/SPEC.md"
+    },
+    {
+      "id": "AR-18",
+      "title": "Generate architecture from SQL capabilities and actual packages",
+      "owner": "source-maps",
+      "profile": "delivery",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-10",
+        "AR-19"
+      ],
+      "reads": [
+        "scripts/architecture.ts",
+        "package.json",
+        "vendor/full-ui/catalog.json"
+      ],
+      "writes": [
+        "scripts/architecture.ts"
+      ],
+      "checks": [
+        "node scripts/architecture.ts",
+        "node --test scripts/maintenance.test.ts scripts/ui-elements.test.ts"
+      ],
+      "acceptance": [
+        "AC-01: Architecture ownership/public edges derive from SQL capabilities.",
+        "AC-01: Local codex-harness appears in source analysis and package inventory."
+      ],
+      "behavior": "Adapt the existing build-time generator; keep manifest/source AST authority for implementation facts, SQL for ownership, and provenance for imported origins. Distinct catalog purposes do not require one universal registry.",
+      "failure_cases": "Missing source, package/catalog mismatch and invalid ownership must fail with actionable paths; no invented graph nodes to conceal gaps.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-18.md",
+      "canonical_task_id": "TH-32",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-10",
+        "TH-04"
+      ],
+      "canonical_slice": "TH-S08",
+      "canonical_milestone": "TH-LATER"
+    },
+    {
+      "id": "AR-19",
+      "title": "Repair package inventory and reproducible build inputs",
+      "owner": "delivery-config",
+      "profile": "delivery",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-09",
+        "AR-02"
+      ],
+      "reads": [
+        "package.json",
+        "vendor/full-ui/catalog.json",
+        "scripts/verify-packages.mjs",
+        "scripts/architecture.ts"
+      ],
+      "writes": [
+        "vendor/full-ui/catalog.json",
+        "package.json",
+        "package-lock.json"
+      ],
+      "checks": [
+        "node scripts/verify-packages.mjs",
+        "npx tsc --noEmit"
+      ],
+      "acceptance": [
+        "AC-01: Active local packages including codex-harness are represented or generated from a single declared package source.",
+        "AC-04: Dependency lock and package metadata remain consistent."
+      ],
+      "behavior": "Make the smallest catalog correction; remove redundant hand-maintained lists only when existing consumers are migrated. Do not delete historical provenance catalogs.",
+      "failure_cases": "Reject unverified archive replacement, stale checksums or unexpected dependency install scripts.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-19.md",
+      "canonical_task_id": "TH-04",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-09",
+        "AR-02"
+      ],
+      "canonical_slice": "TH-S01",
+      "canonical_milestone": "TH-LATER"
+    },
+    {
+      "id": "AR-20",
+      "title": "Ship a portable reviewed WISDOHM 2.7 setup bundle",
+      "owner": "wisdom-service",
+      "profile": "backend",
+      "milestone": "M2-authority",
+      "slice": "S2-consumers",
+      "needs": [
+        "AR-10",
+        "AR-06",
+        "AR-13"
+      ],
+      "reads": [
+        "plugins/wisdom-tool/src/bundle.json",
+        "plugins/wisdom-tool/src/population.ts",
+        "plugins/wisdom-tool/src/index.ts",
+        ".wisdohm/install-manifest.json"
+      ],
+      "writes": [
+        "plugins/wisdom-tool/src/bundle.json",
+        "plugins/wisdom-tool/src/population.ts",
+        "plugins/wisdom-tool/src/index.ts",
+        "plugins/wisdom-tool/SETUP.md"
+      ],
+      "checks": [
+        "node --test scripts/wisdom.test.ts scripts/wisdom-healing.test.ts"
+      ],
+      "acceptance": [
+        "AC-03: Bundle contains reviewed runtime templates and no populated source database or local absolute paths.",
+        "AC-07: New-project install, existing custom-target conflict and 2.7 population preserve authority distinctions.",
+        "AC-05: Interrupted apply is recoverable and reports partial state honestly."
+      ],
+      "behavior": "Regenerate embedded runtime from reviewed release templates; adapt population to 2.7 without copying devLAB sessions. Preserve expected hashes, target authority gates and explicit user setup flow.",
+      "failure_cases": "Custom files, stale plan, interruption after write, unsupported target schema and foreign project state must retain recovery provenance rather than overwrite silently.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S2-consumers/AR-20.md",
+      "canonical_task_id": "AR-20",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "RULES-MIGRATION"
+      ],
+      "canonical_dependencies": [
+        "AR-10",
+        "AR-06",
+        "AR-13"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S2",
+      "current_spec": ".agents/plans/agent-home/steps/AR-20/SPEC.md"
+    },
+    {
+      "id": "AR-21",
+      "title": "Verify authority consumers and preservation together",
+      "owner": "verification",
+      "profile": "verification",
+      "milestone": "M2-authority",
+      "slice": "S3-integration",
+      "needs": [
+        "AR-12",
+        "AR-13",
+        "AR-14",
+        "AR-15",
+        "AR-16",
+        "AR-17",
+        "AR-18",
+        "AR-20",
+        "AR-08"
+      ],
+      "reads": [
+        "packages/contracts/src/ownership.ts",
+        "scripts/planner.ts",
+        "plugins/rules-local/src/read-memory.py"
+      ],
+      "writes": [
+        "scripts/wisdohm27-integration.test.py",
+        "scripts/maintenance.test.ts",
+        "scripts/ui-elements.test.ts",
+        "scripts/planning.test.ts",
+        "scripts/rules.test.ts",
+        "scripts/wisdom.test.ts"
+      ],
+      "checks": [
+        "python3 -B scripts/wisdohm27-integration.test.py",
+        "node --test scripts/planning.test.ts scripts/rules.test.ts scripts/wisdom.test.ts scripts/maintenance.test.ts scripts/ui-elements.test.ts",
+        "npm run build"
+      ],
+      "acceptance": [
+        "AC-01: All selected consumers agree on ownership revision and no duplicate editable registry remains.",
+        "AC-03: Migration preserves historical facts and rollback restores source/config/data consistently.",
+        "AC-06: Malicious target Python cannot execute through Rules Board.",
+        "AC-07: Plan reports cannot become verified evidence by conversion."
+      ],
+      "behavior": "Update version-specific assertions while retaining substantive protections. One verification writer owns these shared scripts, after AR-08 releases them. Validate SQL fixture scenarios, real CLI dispatch, conflict and restore, then combined build.",
+      "failure_cases": "Missing dependencies, unsupported schema or timeout is a reported failed/incomplete check, never a skipped passing result.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M2-authority/slices/S3-integration/AR-21.md",
+      "canonical_task_id": "AR-21",
+      "disposition": "migrated-specification",
+      "related_existing_tasks": [
+        "KAN-ACCEPT",
+        "TH-28",
+        "TH-29"
+      ],
+      "canonical_dependencies": [
+        "AR-12",
+        "AR-13",
+        "AR-14",
+        "AR-15",
+        "AR-16",
+        "AR-17",
+        "TH-32",
+        "AR-20",
+        "AR-08"
+      ],
+      "canonical_milestone": "WIS27-M1",
+      "canonical_slice": "ARSC-M2-S3",
+      "current_spec": ".agents/plans/agent-home/steps/AR-21/SPEC.md"
+    },
+    {
+      "id": "AR-22",
+      "title": "Bound Codex process-group cleanup and shutdown races",
+      "owner": "codex-harness",
+      "profile": "backend",
+      "milestone": "M3-lifecycle",
+      "slice": "S1-backend",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/codex-harness/src/connection.ts",
+        "plugins/codex-harness/src/service.ts"
+      ],
+      "writes": [
+        "plugins/codex-harness/src/connection.ts",
+        "plugins/codex-harness/src/connection.test.ts",
+        "plugins/codex-harness/src/service.ts",
+        "plugins/codex-harness/src/service.test.ts"
+      ],
+      "checks": [
+        "node --test plugins/codex-harness/src/connection.test.ts plugins/codex-harness/src/service.test.ts scripts/harness-http.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Owned process trees exit on parse failure, timeout, cancellation and dispose with bounded escalation.",
+        "AC-05: Account/login requests cannot respawn the process after shutdown begins."
+      ],
+      "behavior": "Use platform-supported process ownership and wait for actual exit after escalation. Preserve rejection of pending RPCs and errors. Test descendants using disposable child executables.",
+      "failure_cases": "SIGTERM-ignoring children, missing pid, already-exited process, invalid JSON and concurrent request/dispose must not kill unrelated processes.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M3-lifecycle/slices/S1-backend/AR-22.md",
+      "canonical_task_id": "TH-05",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_slice": "TH-S02",
+      "canonical_milestone": "TH-LATER"
+    },
+    {
+      "id": "AR-23",
+      "title": "Collect terminal descendants across process threads",
+      "owner": "terminal-service",
+      "profile": "backend",
+      "milestone": "M3-lifecycle",
+      "slice": "S1-backend",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/terminal-pty/src/index.ts",
+        "scripts/terminal-process-fixture.ts"
+      ],
+      "writes": [
+        "plugins/terminal-pty/src/index.ts"
+      ],
+      "checks": [
+        "node --test scripts/terminal.test.ts scripts/terminal-lease.test.ts scripts/terminal-confinement.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Stop cleans up descendants forked from any thread of an owned process.",
+        "AC-05: PID identity and ownership checks protect unrelated/reused processes."
+      ],
+      "behavior": "Enumerate relevant /proc task child relationships with bounded race-aware traversal using existing lifecycle code; do not blindly kill a negative PID without proving process-group ownership.",
+      "failure_cases": "Thread exits during traversal, permissions, PID reuse and already-stopped terminals must be safe. AR-34 supplies explicit multithread fixture coverage.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M3-lifecycle/slices/S1-backend/AR-23.md",
+      "canonical_task_id": "TERM-SERVICE",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_slice": "TERM-S1",
+      "canonical_milestone": "TERM-M1"
+    },
+    {
+      "id": "AR-24",
+      "title": "Unify terminal SSE backpressure and cleanup semantics",
+      "owner": "http-transport",
+      "profile": "backend",
+      "milestone": "M3-lifecycle",
+      "slice": "S1-backend",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/transport-http/src/index.ts"
+      ],
+      "writes": [
+        "plugins/transport-http/src/index.ts"
+      ],
+      "checks": [
+        "node --test scripts/terminal.test.ts scripts/host.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Both SSE endpoints remove drain listeners, clear/unref timers and end responses safely.",
+        "AC-05: Backpressure accepts buffered writes and bounds stall time without dropping a connection solely for heartbeat backpressure."
+      ],
+      "behavior": "Align single-terminal and multiplexed routes through small existing lifecycle helpers only when their semantics match. Keep replay cursors and terminal ownership checks unchanged.",
+      "failure_cases": "Slow reader, client close during drain, failed write, heartbeat stall and terminal exit must release subscriptions exactly once.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M3-lifecycle/slices/S1-backend/AR-24.md",
+      "canonical_task_id": "TERM-TRANSPORT",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_slice": "TERM-S1",
+      "canonical_milestone": "TERM-M1"
+    },
+    {
+      "id": "AR-25",
+      "title": "Serialize project auto-start with deletion and explicit start",
+      "owner": "http-transport",
+      "profile": "backend",
+      "milestone": "M3-lifecycle",
+      "slice": "S1-backend",
+      "needs": [
+        "AR-24"
+      ],
+      "reads": [
+        "plugins/transport-http/src/projects.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "writes": [
+        "plugins/transport-http/src/projects.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "checks": [
+        "node --test scripts/project-thread-delete.test.ts scripts/project-development.test.ts scripts/host.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Auto-start participates in existing per-project action ownership.",
+        "AC-05: Immediate delete/start cannot race an untracked startup, and failures are visible."
+      ],
+      "behavior": "Route background creation startup through the existing project action coordinator. Preserve user-visible project creation semantics and avoid new general scheduler infrastructure.",
+      "failure_cases": "Create/start/delete overlap, failed preparation, cancelled startup and disposal must not leave orphan servers or erase recovery state.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S1-backend/AR-25.md",
+      "canonical_task_id": "AR-25",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-TRANSPORT",
+        "AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0"
+      ],
+      "canonical_dependencies": [
+        "TERM-TRANSPORT"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S1"
+    },
+    {
+      "id": "AR-26",
+      "title": "Return meaningful client failures for stalled or non-JSON responses",
+      "owner": "browser-client",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "packages/client/client.ts",
+        "packages/client/harness.ts",
+        "packages/client/planning.ts"
+      ],
+      "writes": [
+        "packages/client/client.ts"
+      ],
+      "checks": [
+        "node --test scripts/client-lifecycle.test.ts",
+        "npx tsc --noEmit"
+      ],
+      "acceptance": [
+        "AC-09: Non-JSON or empty HTTP errors preserve useful status information through ApplicationError.",
+        "AC-09: Timeout/cancellation policy is explicit for actual callers and long-running operations."
+      ],
+      "behavior": "Define bounded request behavior at the existing HTTP wrapper; inspect long-running consumers before choosing defaults. Do not introduce a generic request framework.",
+      "failure_cases": "HTML/text errors, successful empty bodies, abort, offline, timeout and malformed success JSON must leave observable errors and allow retry.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-26.md",
+      "canonical_task_id": "AR-26",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-CLIENT",
+        "KAN-CLIENT"
+      ],
+      "canonical_dependencies": [
+        "AR-21",
+        "TERM-CLIENT"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S2"
+    },
+    {
+      "id": "AR-27",
+      "title": "Reconnect terminal streams from current observer cursors",
+      "owner": "browser-client",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-26"
+      ],
+      "reads": [
+        "packages/client/terminals.ts",
+        "plugins/transport-http/src/index.ts"
+      ],
+      "writes": [
+        "packages/client/terminals.ts"
+      ],
+      "checks": [
+        "node --test scripts/client-lifecycle.test.ts"
+      ],
+      "acceptance": [
+        "AC-05: Reconnect uses current observer cursors and preserves one shared connection.",
+        "AC-05: Duplicate replay chunks remain filtered and reset semantics remain correct.",
+        "AC-05: Final unsubscribe cancels retries and closes the source."
+      ],
+      "behavior": "Improve stale URL reconnect behavior with bounded lifecycle handling. Removal of one terminal can legitimately rebuild a fixed-URL multiplex stream; do not claim eliminate-all-reconnects as acceptance.",
+      "failure_cases": "Disconnected transport, stale callbacks, terminal error/exit, late unsubscribe and re-subscription at older cursor must not corrupt other presentations.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Review addendum only. Existing task definition and report remain unchanged; proposed scope here grants no writes. TH-01 must reconcile any refinement and active owner handoff before dispatch.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-27.md",
+      "canonical_task_id": "TERM-CLIENT",
+      "disposition": "existing-task-addendum",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-26"
+      ],
+      "canonical_slice": "TERM-S1",
+      "canonical_milestone": "TERM-M1"
+    },
+    {
+      "id": "AR-28",
+      "title": "Dispose canvas owners only after confirmed thread deletion",
+      "owner": "browser-bootstrap",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "src/runtime.ts",
+        "plugins/ui-projects/src/workspace.ts",
+        "plugins/ui-canvas/src/workspace.ts"
+      ],
+      "writes": [
+        "src/runtime.ts"
+      ],
+      "checks": [
+        "node --test scripts/runtime-lifecycle.test.ts scripts/project-workspace.test.ts"
+      ],
+      "acceptance": [
+        "AC-09: Successful deletion releases the removed runtime owner and beforeunload resources once.",
+        "AC-09: Failed deletion, transient load absence and normal switching retain owners and unsaved drafts."
+      ],
+      "behavior": "Use existing subscribed project state only if confirmed removal can be distinguished reliably. If insufficient, stop and add separate ui-contracts/project-view child tickets before introducing a deletion callback; this scope cannot edit those owners.",
+      "failure_cases": "Initial empty project list, refresh failure, duplicate deletion notification and runtime dispose must preserve unrelated owners. No blanket map clear on refresh.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-28.md",
+      "canonical_task_id": "AR-28",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "AUD-CLEAN-RUNTIME",
+        "AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0"
+      ],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S2"
+    },
+    {
+      "id": "AR-29",
+      "title": "Stop ready inspector retry and preserve reload recovery",
+      "owner": "preview-view",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/ui-preview/src/inspector.tsx",
+        "plugins/ui-preview/src/pane.tsx"
+      ],
+      "writes": [
+        "plugins/ui-preview/src/inspector.tsx"
+      ],
+      "checks": [
+        "node --test scripts/ui-elements.test.ts",
+        "UI_ELEMENTS_EVIDENCE_DIR=/tmp/devlab-audit-ui-elements python3 scripts/ui-elements-browser.py"
+      ],
+      "acceptance": [
+        "AC-09: Valid ready stops periodic init retries; reset/navigation/new generation restarts the bounded handshake.",
+        "AC-09: Wrong origin/nonce and hidden inspector state retain existing protections."
+      ],
+      "behavior": "Treat this as repeated background work, not an unmount leak. Preserve bridge HMR/reset semantics and retained iframe identity.",
+      "failure_cases": "Ready/reset races, frame replacement, failed bridge load, unmount and hidden view must clean timers/listeners appropriately.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-29.md",
+      "canonical_task_id": "AR-29",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "UIE-SOURCE"
+      ],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S2"
+    },
+    {
+      "id": "AR-30",
+      "title": "Share Kanban harness polling while preserving visible activity",
+      "owner": "planning-ui",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/ui-kanban/src/view.tsx",
+        "plugins/ui-kanban/src/batch.tsx",
+        "plugins/ui-kanban/src/harness.tsx"
+      ],
+      "writes": [
+        "plugins/ui-kanban/src/view.tsx",
+        "plugins/ui-kanban/src/batch.tsx",
+        "plugins/ui-kanban/src/harness.tsx"
+      ],
+      "checks": [
+        "KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-kanban python3 scripts/kanban-disclosure-browser.py",
+        "npx tsc --noEmit"
+      ],
+      "acceptance": [
+        "AC-08: One owner coordinates identical account/run/activity reads for a visible project.",
+        "AC-09: Hidden queue drawer does not independently duplicate polling, while planner activity remains current.",
+        "AC-09: Drafts, paused foreign queues and task selection survive refresh and project switching."
+      ],
+      "behavior": "Consolidate actual shared activity reads inside planning-ui; keep plan workspace refresh semantically separate. Capture request counts for a fixed idle/running workload before and after rather than claim unmeasured speed.",
+      "failure_cases": "Network failure, slow request, stale project response, hidden app, queue action and HMR must not create overlapping timers or discard input.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-30.md",
+      "canonical_task_id": "AR-30",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TH-MVP-3",
+        "TH-Q-2",
+        "PROC-UI",
+        "WIS-UI-KANBAN"
+      ],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S2"
+    },
+    {
+      "id": "AR-31",
+      "title": "Reduce shell refresh churn and correct shortcut behavior",
+      "owner": "workspace-shell",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S2-browser",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/ui-shell/src/view.tsx",
+        "plugins/ui-shell/src/workspace-focus.ts"
+      ],
+      "writes": [
+        "plugins/ui-shell/src/view.tsx"
+      ],
+      "checks": [
+        "node --test scripts/host.test.ts",
+        "KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-shell python3 scripts/kanban-disclosure-browser.py"
+      ],
+      "acceptance": [
+        "AC-09: Unchanged run snapshots do not force avoidable updates and current-state keyboard handlers remain correct.",
+        "AC-09: Documented Ctrl/Cmd-L behavior matches implemented action.",
+        "AC-09: Terminal/editor keyboard ownership, Escape focus return and dirty-state protections remain intact."
+      ],
+      "behavior": "The existing keyboard effect cleans up; optimize measured churn without inserting an empty dependency array over mutable closures. Choose layout or align wording based on existing intended product behavior.",
+      "failure_cases": "Open dialog, text input, terminal focus, no selection, active runs and render changes must preserve one effective handler and meaningful shortcuts.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S2-browser/AR-31.md",
+      "canonical_task_id": "AR-31",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-SHELL",
+        "KAN-SHELL",
+        "AUD-SHELL"
+      ],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S2"
+    },
+    {
+      "id": "AR-32",
+      "title": "Consolidate project adoption presentation at its owner",
+      "owner": "project-view",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S3-setup-ui",
+      "needs": [
+        "AR-21"
+      ],
+      "reads": [
+        "plugins/ui-projects/src/adoption.tsx",
+        "plugins/ui-projects/src/view.tsx",
+        "plugins/ui-rules/src/controls.tsx",
+        "src/shell.tsx"
+      ],
+      "writes": [
+        "plugins/ui-projects/src/adoption.tsx",
+        "plugins/ui-projects/src/view.tsx"
+      ],
+      "checks": [
+        "python3 scripts/wisdom-setup-browser.py --width 1440",
+        "python3 scripts/wisdom-setup-browser.py --width 820"
+      ],
+      "acceptance": [
+        "AC-09: Non-default project has one setup plan/apply flow while retaining adoption preview/start behavior.",
+        "AC-09: Review, conflict and failure states preserve target identity and drafts."
+      ],
+      "behavior": "Use the existing injected controls seam and settle which owner presents setup actions before editing. Do not move command execution into read-only Rules Board. AR-33 follows with controls/status adjustments.",
+      "failure_cases": "Absent capability, default project, stale proposal, failed apply and project switch must keep controls deliberate and actionable.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S3-setup-ui/AR-32.md",
+      "canonical_task_id": "AR-32",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [],
+      "canonical_dependencies": [
+        "AR-21"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S3"
+    },
+    {
+      "id": "AR-33",
+      "title": "Display renewed authority states in compact WISDOHM controls",
+      "owner": "rules-ui",
+      "profile": "browser",
+      "milestone": "M3-lifecycle",
+      "slice": "S3-setup-ui",
+      "needs": [
+        "AR-32",
+        "AR-17"
+      ],
+      "reads": [
+        "plugins/ui-rules/src/controls.tsx",
+        "plugins/ui-rules/src/harness.tsx",
+        "plugins/ui-rules/src/view.tsx",
+        "packages/contracts/src/rules.ts"
+      ],
+      "writes": [
+        "plugins/ui-rules/src/controls.tsx",
+        "plugins/ui-rules/src/harness.tsx",
+        "plugins/ui-rules/src/view.tsx"
+      ],
+      "checks": [
+        "python3 scripts/wisdom-setup-browser.py --width 1440",
+        "node --test scripts/wisdom-healing.test.ts"
+      ],
+      "acceptance": [
+        "AC-06: Board remains read-only and distinguishes observed/report/assessed/verified/historical states.",
+        "AC-09: Setup action appears once per project under settled AR-32 composition; healing remains explicit and scoped."
+      ],
+      "behavior": "Adapt existing UI surfaces to AR-17 projection; retain compact menu/control patterns and accessible errors. Public browser contracts from AR-09 carry meanings; no direct SQL access.",
+      "failure_cases": "Unavailable schema, stale observation, unsupported setup, project switch and healing failure must not present false ready/complete or auto-run commands.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S3-setup-ui/AR-33.md",
+      "canonical_task_id": "AR-33",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "WIS-UI-CONTROLS",
+        "RULES-UI"
+      ],
+      "canonical_dependencies": [
+        "AR-32",
+        "AR-17"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S3"
+    },
+    {
+      "id": "AR-34",
+      "title": "Verify backend and browser lifecycle scenarios together",
+      "owner": "verification",
+      "profile": "verification",
+      "milestone": "M3-lifecycle",
+      "slice": "S4-integration",
+      "needs": [
+        "AR-22",
+        "AR-23",
+        "AR-25",
+        "AR-27",
+        "AR-28",
+        "AR-29",
+        "AR-30",
+        "AR-31",
+        "AR-33"
+      ],
+      "reads": [
+        "scripts/project-workspace.test.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/kanban-disclosure-browser.py"
+      ],
+      "writes": [
+        "scripts/client-lifecycle.test.ts",
+        "scripts/runtime-lifecycle.test.ts",
+        "scripts/terminal-process-fixture.ts",
+        "scripts/terminal.test.ts",
+        "scripts/project-workspace.test.ts",
+        "scripts/ui-elements-browser.py",
+        "scripts/kanban-disclosure-browser.py",
+        "scripts/wisdom-setup-browser.py"
+      ],
+      "checks": [
+        "node --test scripts/client-lifecycle.test.ts scripts/runtime-lifecycle.test.ts scripts/project-workspace.test.ts scripts/terminal.test.ts",
+        "UI_ELEMENTS_EVIDENCE_DIR=/tmp/devlab-audit-ui-elements python3 scripts/ui-elements-browser.py",
+        "KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-kanban python3 scripts/kanban-disclosure-browser.py",
+        "python3 scripts/wisdom-setup-browser.py --width 1440",
+        "python3 scripts/wisdom-setup-browser.py --width 820"
+      ],
+      "acceptance": [
+        "AC-05: Disposable process/reconnect/backpressure/deletion probes pass without affecting live resources.",
+        "AC-09: Real keyboard/failure/retention interactions pass at supported widths, with draft/owner identity assertions.",
+        "AC-08: Fixed-workload polling counts are recorded; no speed claim without measured evidence."
+      ],
+      "behavior": "One verification writer extends the AR-03 baseline client/runtime probes and combines all test changes after AR-21. Implementations may run these probes but cannot edit verification-owned files without a new scoped ticket. Record real interactions and close disposable fixtures.",
+      "failure_cases": "No missing browser dependency or stalled fixture counts as pass. Always clean disposable processes, capture errors and retain failed evidence.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M3-lifecycle/slices/S4-integration/AR-34.md",
+      "canonical_task_id": "AR-34",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TERM-ACCEPT",
+        "TH-28",
+        "TH-29",
+        "TH-30",
+        "AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0"
+      ],
+      "canonical_dependencies": [
+        "TH-05",
+        "TERM-SERVICE",
+        "AR-25",
+        "TERM-CLIENT",
+        "AR-28",
+        "AR-29",
+        "AR-30",
+        "AR-31",
+        "AR-33",
+        "AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M3-S4"
+    },
+    {
+      "id": "AR-35",
+      "title": "Reconcile source-backed memory and combined handover",
+      "owner": "planning-protocol",
+      "profile": "governance",
+      "milestone": "M4-closeout",
+      "slice": "S1-combined",
+      "needs": [
+        "AR-34"
+      ],
+      "reads": [
+        "docs/rules/WISDOHM-MIGRATION.md",
+        "docs/rules/WISDOHM-ADAPTATIONS.json",
+        "docs/plans/audit-remediation-20261103/tickets.json"
+      ],
+      "writes": [
+        "docs/rules/WISDOHM-MIGRATION.md",
+        "docs/rules/WISDOHM-ADAPTATIONS.json"
+      ],
+      "checks": [
+        "npm run check:wisdom",
+        "npm run check",
+        "npm run build",
+        "python3 docs/plans/audit-remediation-20261103/validate.py --root ."
+      ],
+      "acceptance": [
+        "AC-10: Combined checks bind current source and integration acceptance, with failures and limitations preserved.",
+        "AC-03: Recovery locations and tested restore procedure are documented, without rewriting historical provenance.",
+        "AC-10: Four-group review, changelog/progress and affected SQL facts are recorded before guarded finish."
+      ],
+      "behavior": "Parent alone reconciles shared SQL memory, plan outcomes and reviewed migration documentation. Re-read current source; validate instruction links and direct cross-owner boundaries. Existing check:wisdom script is version-specific: adapt the version checks under the verification owner before claiming success, retaining substantive regressions.",
+      "failure_cases": "Do not claim deployment or live interaction beyond actual evidence. If combined checks fail, preserve failure and checkpoint one concrete next action; no automatic cleanup of legacy imports or archives.",
+      "rollback": "Restore only this ticket\u2019s changed source from its verified preflight archive; retain failed evidence. Restore data only through its owner\u2019s reviewed recovery operation, never by copying a live database.",
+      "status_authority": ".context/state/tasks.json owns canonical task intent; .context/state/progress.json owns reported workflow. SQL execution sessions retain evidence; this document has no status.",
+      "check_evidence": "Proposed checks only; this ticket records no executed check or passing result.",
+      "document": "milestones/M4-closeout/slices/S1-combined/AR-35.md",
+      "canonical_task_id": "AR-35",
+      "disposition": "new-regression-or-migration-task",
+      "related_existing_tasks": [
+        "TH-01"
+      ],
+      "canonical_dependencies": [
+        "AR-34"
+      ],
+      "canonical_milestone": "AUD-M1",
+      "canonical_slice": "ARSC-M4-S1"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+schema_version: 1
+id: ui-contracts
+purpose: Own @devlab/ui-contracts public capability implementation and its internal
+  lifecycle.
+group: contracts
+paths:
+- packages/ui-contracts/package.json
+- packages/ui-contracts/src/index.ts
+public:
+- packages/ui-contracts/src/index.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-contracts/SKILL.md

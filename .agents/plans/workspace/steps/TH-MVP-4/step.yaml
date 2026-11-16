@@ -1,0 +1,24 @@
+schema_version: 1
+id: TH-MVP-4
+title: Verify wiring, failure behavior and removable delivery
+outcome: Verify wiring, failure behavior and removable delivery
+kind: feature
+effect: change_source
+owner: verification
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- scripts/harness-http.test.ts
+needs:
+- TH-MVP-3
+acceptance:
+- Types, focused protocol/service/HTTP tests, architecture, planner tests and browser
+  keyboard/retention checks pass; document actual account/deployment limitations.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

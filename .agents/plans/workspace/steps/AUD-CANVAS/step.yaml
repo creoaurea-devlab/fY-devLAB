@@ -1,0 +1,23 @@
+schema_version: 1
+id: AUD-CANVAS
+title: Hidden Canvas relinquishes terminal launch input and resize
+outcome: Hidden Canvas relinquishes terminal launch input and resize
+kind: bugfix
+effect: change_source
+owner: canvas-ui
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- plugins/ui-canvas/src/view.tsx
+needs:
+- AUD-CONTRACT
+acceptance:
+- Hidden Canvas relinquishes terminal launch input and resize
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/terminal-lifecycle-browser.py
+spec: docs/plans/audit-remediation/SPEC.md

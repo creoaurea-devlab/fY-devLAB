@@ -1,0 +1,24 @@
+schema_version: 1
+id: AUD-HISTORY
+title: Stable terminal generation order survives backend restart
+outcome: Stable terminal generation order survives backend restart
+kind: bugfix
+effect: change_source
+owner: terminal-service
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- plugins/terminal-pty/src/persistence.ts
+needs:
+- AUD-LEASE
+acceptance:
+- Newest failed generation stays latest after restore despite UUID/filemtime order
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal-lease.test.ts
+  - node --test scripts/terminal.test.ts
+spec: docs/plans/audit-remediation/SPEC.md

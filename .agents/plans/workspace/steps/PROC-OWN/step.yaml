@@ -1,0 +1,22 @@
+schema_version: 1
+id: PROC-OWN
+title: Register Process owners and direct verification dependency
+outcome: Register Process owners and direct verification dependency
+kind: feature
+effect: change_source
+owner: planning-protocol
+slice: PROC-S1
+mode: orchestrator
+read:
+- .wisdohm/config/agents.yaml
+write:
+- .context/modules/registry.yaml
+needs: []
+acceptance:
+- Map the process contract, UI, tests and independent JSON definition to canonical
+  owners; declare verification direct browser-client import; preserve acyclic dependencies.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/maintenance.test.ts

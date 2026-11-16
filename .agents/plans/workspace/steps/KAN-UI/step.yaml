@@ -1,0 +1,36 @@
+schema_version: 1
+id: KAN-UI
+title: Ui — JSON planner
+outcome: Ui — JSON planner
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- plugins/ui-kanban/package.json
+- plugins/ui-kanban/src/forms.tsx
+- plugins/ui-kanban/src/index.ts
+- plugins/ui-kanban/src/model.ts
+- plugins/ui-kanban/src/planning.css
+- plugins/ui-kanban/src/view.tsx
+needs:
+- KAN-CONTRACT
+- KAN-CLIENT
+acceptance:
+- One Planning section/header provides M/S/AT CRUD, Structure/Kanban/recent Journal,
+  owner filters and task move/order in normal/full-screen modes.
+- Dirty dialogs preserve edits and editor-open CAS; imports validate, accessible controls
+  work and reported completion remains visibly distinct.
+- Normal and full-screen Planning intercept underlying canvas controls within their
+  visible bounds.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

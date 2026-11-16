@@ -1,0 +1,15 @@
+schema_version: 1
+kind: audit
+agent: reviewer
+procedure:
+- Declare the review question and inspect the relevant source, callers and existing evidence.
+- Classify findings as reproduced, source-supported or unresolved; include triggers, exact owner scope
+  and consequences.
+- Return actionable findings and coverage limits; finish when conclusions are supported without inventing
+  implementation or execution evidence.
+guidance:
+- .agents/guides/VERIFICATION.md
+verification:
+  default: review
+  reason: An audit is assessed evidence; inspection or a bounded reproduction may suffice without source
+    changes or a test suite.

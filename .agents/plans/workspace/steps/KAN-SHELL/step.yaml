@@ -1,0 +1,28 @@
+schema_version: 1
+id: KAN-SHELL
+title: Planning-only normal drawer geometry
+outcome: Planning-only normal drawer geometry
+kind: feature
+effect: change_source
+owner: workspace-shell
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- plugins/ui-shell/src/view.tsx
+needs:
+- KAN-UI
+acceptance:
+- Normal Planning drawer exposes a complete first task and usable scroll body; full-screen/restore
+  retains the same unit.
+- Only the Planning height branch is changed by this task; concurrent terminal/preview
+  shell changes and their sizing branches are preserved.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

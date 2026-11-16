@@ -1,0 +1,24 @@
+schema_version: 1
+id: PROC-CLIENT
+title: Validate activity responses in the browser client
+outcome: Validate activity responses in the browser client
+kind: feature
+effect: change_source
+owner: browser-client
+slice: PROC-S2
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- packages/client/harness.ts
+needs:
+- PROC-HTTP
+acceptance:
+- Browser client exposes schema-validated global activity without importing server
+  implementations; unavailable or malformed responses fail clearly.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts
+  - npx tsc --noEmit

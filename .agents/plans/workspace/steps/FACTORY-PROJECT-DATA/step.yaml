@@ -1,0 +1,21 @@
+schema_version: 1
+id: FACTORY-PROJECT-DATA
+title: Keep project fork discovery on the installed metadata adapter
+outcome: Keep project fork discovery on the installed metadata adapter
+kind: maintenance
+effect: change_source
+owner: project-service
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- plugins/project-local/src/fork.ts
+needs: []
+acceptance:
+- Fork discovery executes only installed code while selected projects remain data.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit

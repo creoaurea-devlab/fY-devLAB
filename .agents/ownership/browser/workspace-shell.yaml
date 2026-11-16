@@ -1,0 +1,23 @@
+schema_version: 1
+id: workspace-shell
+purpose: Own workspace surfaces and terminal selection, retained panes, dividers and
+  layout.
+group: browser
+paths:
+- plugins/ui-shell/src/herdr.tsx
+- plugins/ui-shell/package.json
+- plugins/ui-shell/src/devlab.css
+- plugins/ui-shell/src/creo-aurea-devlab.png
+- plugins/ui-shell/src/index.ts
+- plugins/ui-shell/src/servers.tsx
+- plugins/ui-shell/src/terminals.tsx
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/workspace-focus.ts
+- plugins/ui-shell/src/controls.tsx
+public:
+- plugins/ui-shell/src/index.ts
+uses:
+- service-contracts
+- ui-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

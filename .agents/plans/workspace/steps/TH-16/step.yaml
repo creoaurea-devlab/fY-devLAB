@@ -1,0 +1,36 @@
+schema_version: 1
+id: TH-16
+title: Build a slice queue from the task dependency graph
+outcome: Build a slice queue from the task dependency graph
+kind: feature
+effect: plan
+owner: planning-protocol
+slice: TH-S05
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write: []
+needs:
+- TH-15
+acceptance:
+- 'DEFERRED: proposed task-execution owner is outside MVP; register and reconcile
+  scope before implementing.'
+- 'PLANNED PATHS — before execution, TH-01 must reconcile exact ownership and this
+  task write scope through the shared planner: plugins/task-execution/src/scheduler.ts,
+  plugins/task-execution/src/scheduler.test.ts. Empty/partial write scope is not permission
+  to start.'
+- Slice dispatch snapshots selected task IDs/digests and topological dependencies.
+  Show prerequisites outside the slice; dispatch only selected tasks whose prerequisites
+  have acceptable current evidence.
+- Default to one task at a time. Stop or visibly block dependents after failure/cancel;
+  completed/current tasks are skipped and explicit reruns create new attempts.
+- Test empty slice, external prerequisite, diamond graph, dependency cycle, changed
+  definition while queued and duplicate slice submission.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/task-execution/src/scheduler.test.ts

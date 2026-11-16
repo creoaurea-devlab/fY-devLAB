@@ -1,0 +1,30 @@
+schema_version: 1
+id: KAN-SERVICE
+title: Service — JSON planner
+outcome: Service — JSON planner
+kind: feature
+effect: change_source
+owner: planning-service
+slice: KAN-S1
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- plugins/planning-local/package.json
+- plugins/planning-local/src/index.ts
+- plugins/planning-local/src/store.ts
+needs:
+- KAN-CONTRACT
+acceptance:
+- One project writer persists definitions/reported progress with CAS, idempotency,
+  cross-process exclusion and recoverable two-file commits.
+- Ownership/path/reference/dependency validation protects imports/edits; definition
+  changes invalidate stale reports; stored checks never execute.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

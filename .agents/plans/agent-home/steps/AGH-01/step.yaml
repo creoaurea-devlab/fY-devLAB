@@ -1,0 +1,33 @@
+schema_version: 1
+id: AGH-01
+title: Create contract and migration fixtures for the shared definitions
+outcome: Create contract and migration fixtures for the shared definitions
+kind: feature
+effect: change_source
+owner: verification
+slice: AGH-S1
+mode: worker
+read:
+- packages/contracts/src/agent-definitions.ts
+- .agents/plans/agent-home/SPEC.md
+- scripts/wisdohm27.test.py
+- scripts/planning.test.ts
+write:
+- scripts/agent-definitions.test.ts
+- scripts/agent-home-fixture.py
+needs:
+- AR-09
+acceptance:
+- 'AH-01: Fixtures validate the approved DTO and contain a representative existing
+  plan, reports, source hashes and pending/running/review cases.'
+- 'AH-05: Malformed, duplicate, escaping, symlinked, stale-revision and colliding
+  ownership examples are independently specified.'
+- 'AH-03: Review-only prose, read-only audit and behavior-changing bugfix examples
+  have different meaningful evidence requirements.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/agent-definitions.test.ts
+  - python3 -B scripts/agent-home-fixture.py --self-check
+spec: .agents/plans/agent-home/steps/AGH-01/SPEC.md

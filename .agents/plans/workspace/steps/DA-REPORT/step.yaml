@@ -1,0 +1,28 @@
+schema_version: 1
+id: DA-REPORT
+title: Save combined deep audit with actual check evidence and prioritized remedies
+outcome: Save combined deep audit with actual check evidence and prioritized remedies
+kind: docs
+effect: change_source
+owner: planning-protocol
+slice: DA-S1
+mode: worker
+read:
+- .agents/guides/CODE.md
+- .agents/guides/VERIFICATION.md
+write:
+- docs/plans/audit-remediation-20261103/DEEP-AUDIT-20261105.md
+needs:
+- DA-BACKEND
+- DA-BROWSER
+- DA-GOV
+acceptance:
+- Save a source-backed audit with severity, exact source references, evidence, rules
+  assessment, bloat pass and honest coverage limits.
+- Validate findings against current combined source and executed checks; preserve
+  active claims and immutable source history.
+verification:
+  level: review
+  reason: Review final report against observed source and actual execution evidence;
+    no synthetic passing test.
+  checks: []

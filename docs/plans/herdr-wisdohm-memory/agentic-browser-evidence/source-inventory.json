@@ -1,0 +1,162 @@
+{
+  "purpose": "Post-verification implementation source inventory, not a progress database or pre-edit comparison",
+  "date": "2026-11-16",
+  "files": [
+    {
+      "path": ".agents/MEMORY.md",
+      "sha256": "3c4ea0b2d4960810b8cd3f74917b3da48ab4e46a3c3d09bb9382faf13cebf679"
+    },
+    {
+      "path": ".agents/ownership/backend/agentic-plugin.yaml",
+      "sha256": "f89d95f70954ec07afad3b641c5efc56832f7458230b12b97a0e59aec2a2e7bd"
+    },
+    {
+      "path": ".agents/ownership/backend/browser-plugin.yaml",
+      "sha256": "fc505d23d1302f8b38a57f4f156317190048541ae67f99594461d721b3d0065d"
+    },
+    {
+      "path": ".agents/ownership/contracts/automation-contracts.yaml",
+      "sha256": "dd96089a1b6a44ff06ccbbef932622f30ee888103cc34d3a7e12b337886d972f"
+    },
+    {
+      "path": ".agents/ownership/delivery/automation-desktop.yaml",
+      "sha256": "803dd26d79e56272f6bece05a1b3def929fb3c5d17339a51c7be1109d2981113"
+    },
+    {
+      "path": ".agents/ownership/verification/verification.yaml",
+      "sha256": "bde69402da9f105a6dcc95b731b82b55d282c1f8948b9f119b622fc6ff13a29a"
+    },
+    {
+      "path": ".context/modules/registry.yaml",
+      "sha256": "ad591d01aed14fe38ac45fa1737fb24a892feca52fb8efedecaf27960199d9b5"
+    },
+    {
+      "path": "apps/automation-desktop/README.md",
+      "sha256": "9ad97f6df82db2876442e68753bde7afa302b37d457e55a27e1c99e318e91280"
+    },
+    {
+      "path": "apps/automation-desktop/channel.mjs",
+      "sha256": "d5ccca5bb773c881e57706f1f7f2a1594835cfbe3c2e650d1f9aa2d7daa04f31"
+    },
+    {
+      "path": "apps/automation-desktop/index.html",
+      "sha256": "ebb3f8b6397021ef14f1111ccaf96d6dd86e67b8aa243c6d3fcf5bb22a807ea8"
+    },
+    {
+      "path": "apps/automation-desktop/launch.mjs",
+      "sha256": "f5e0fc20dbb468ee38f0ad0fc45842b5f573e1d8dd371391c16b14f297d9ff20"
+    },
+    {
+      "path": "apps/automation-desktop/main.mjs",
+      "sha256": "264f6049aa9600d8a9018aecc02b71c659e0ac74372ceaf79eba3de0cae7aa71"
+    },
+    {
+      "path": "apps/automation-desktop/preload.cjs",
+      "sha256": "37e20b3ba3437fcf72ea41c7e299b6886308d87e7098c309e489c77401738c88"
+    },
+    {
+      "path": "apps/automation-desktop/renderer.mjs",
+      "sha256": "b3447334af4f8fba1747462d978002f702067cb7f9df54ed0bed1baa0000b73f"
+    },
+    {
+      "path": "apps/automation-desktop/runtime.mjs",
+      "sha256": "40dba3be07fc7b59d8284ac02c397668f45750512dd29892b27aa3d89b7a6696"
+    },
+    {
+      "path": "apps/automation-desktop/smoke.mjs",
+      "sha256": "133f04ec9060eb650566c9635f192c9207922b1923718c7cef85433ad6d5cb2e"
+    },
+    {
+      "path": "apps/automation-desktop/style.css",
+      "sha256": "1b8c6197e10ca4396d2a2c46561da16b45034a0d7da3bf2ad6ac7bfe44ddc7c3"
+    },
+    {
+      "path": "docs/plans/herdr-wisdohm-memory/agentic-browser.md",
+      "sha256": "6569f509b346c3975612ddfb76d488de82693b5a0973c574e81c5a2ef4f8ab7e"
+    },
+    {
+      "path": "docs/plans/herdr-wisdohm-memory.md",
+      "sha256": "2b413be0ab66999caa9e47002308581cc0876631578149095f6daac7bead2b4b"
+    },
+    {
+      "path": "packages/automation-contracts/src/browser.ts",
+      "sha256": "b2479eec3eddf955151f5b6a7a881f98441fa16597a8a399d0ce4a425f333715"
+    },
+    {
+      "path": "plugins/agentic/src/index.mjs",
+      "sha256": "2952a27b8c3acbe0ddbd29600cab597fe0079abf19ad0fc6679bbf61978a5454"
+    },
+    {
+      "path": "plugins/agentic/src/memory/index.mjs",
+      "sha256": "90c5398e22cf2323502f7108a09b1a33652845a5a73eb3f21f40dbc5f556764d"
+    },
+    {
+      "path": "plugins/agentic/src/memory/worker.py",
+      "sha256": "49455233b455d3139b484a9c0c0183ab2ac230db1bee124f0ab7d585325e1015"
+    },
+    {
+      "path": "plugins/browser/LICENSE.Apache-2.0",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "plugins/browser/NOTICE.md",
+      "sha256": "d4c77f079661e98d99818e1dec01f777f19f428beccf780700d5c378b14ec923"
+    },
+    {
+      "path": "plugins/browser/PROVENANCE.json",
+      "sha256": "b9e2e219a0daf70d0211e96945597547c487d07aa4ad9176161b62816ecbd880"
+    },
+    {
+      "path": "plugins/browser/src/index.mjs",
+      "sha256": "43d8065127c9bc7f35f81837f65063d1ad885ebe4c1752873eb56dde1b4d90de"
+    },
+    {
+      "path": "plugins/browser/src/native/debugger-transport.mjs",
+      "sha256": "a22a8addc4c1ccf9e5f4aece6a95894fbba44e41746acb0e78f3425006b54412"
+    },
+    {
+      "path": "plugins/browser/src/native/geometry.mjs",
+      "sha256": "729c7ddca285f0340f13ce32c2d02632f00f46e8f0c204ad2246ba6ee3542df5"
+    },
+    {
+      "path": "plugins/browser/src/native/workspace.mjs",
+      "sha256": "db7f46034a6c91a6b2c605d1d6a9f7f0e2812222a5b7c5277e4dad255eb8e3e1"
+    },
+    {
+      "path": "plugins/browser/src/native.mjs",
+      "sha256": "fec4b6beb2e09d627d61ef8305f8ef953b36b22231e7c57a0fa330d643136239"
+    },
+    {
+      "path": "scripts/agentic-boundaries.test.mjs",
+      "sha256": "42329b32e98d70fc27a41efee682e1d427d67020e1f5af3f44ecfc6a6f169ab8"
+    },
+    {
+      "path": "scripts/agentic-browser-native.test.mjs",
+      "sha256": "a0e8433c4f685527bf3431a898c3ced95e0774e3489bfdc9c264bdea8330c32a"
+    },
+    {
+      "path": "scripts/agentic-channel.test.mjs",
+      "sha256": "d1cafe2272560ffe01a887bf40e73b1c63a1422bcfd25cb922fe42640752b7ce"
+    },
+    {
+      "path": "scripts/agentic-memory-binding.test.mjs",
+      "sha256": "a4a794cf640c85dda9568a86aafa0067d0dabe3dc83a6276000b49dd13dfb2a1"
+    },
+    {
+      "path": "scripts/agentic-sessions.test.mjs",
+      "sha256": "82fdc0e55db57dc11ca684b6b00852828b8c070cb835ca4713288221985059cf"
+    },
+    {
+      "path": "scripts/agentic-standalone.test.mjs",
+      "sha256": "3ee7e9193157c30899ff10886a6a0da37fea5254e92998f3bab93909bf0c1f9e"
+    },
+    {
+      "path": "scripts/fixtures/agentic-browser/native.mjs",
+      "sha256": "4655167259e7a8ec3eefe0011e6b116c4ed19ab8cd2ec2ae65ba509cbdcd71aa"
+    }
+  ],
+  "generated_output": [
+    "dist/architecture.json",
+    "existing root build outputs regenerated by pnpm run build"
+  ]
+}

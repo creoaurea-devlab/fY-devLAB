@@ -1,0 +1,27 @@
+schema_version: 1
+id: RUN-HARNESS
+title: Expose sandbox failure before task execution and preserve useful runtime errors
+outcome: Expose sandbox failure before task execution and preserve useful runtime
+  errors
+kind: bugfix
+effect: change_source
+owner: codex-harness
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+write:
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs: []
+acceptance:
+- Expose sandbox failure before task execution and preserve useful runtime errors
+- Preserve existing resources, historical evidence, sandbox restrictions and unrelated
+  source; run declared checks and record actual limitations.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/connection.test.ts plugins/codex-harness/src/service.test.ts

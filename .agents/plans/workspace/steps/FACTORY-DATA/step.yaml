@@ -1,0 +1,32 @@
+schema_version: 1
+id: FACTORY-DATA
+title: Retire the old session runner and retain metadata/history adapters
+outcome: Retire the old session runner and retain metadata/history adapters
+kind: maintenance
+effect: change_source
+owner: governance-runtime
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- .agents/data/definitions.py
+- .agents/data/common.py
+- .agents/data/store.py
+- .agents/runtime/definitions.py
+- .agents/BOOT.md
+- .agents/protocols/work.md
+- .agents/protocols/updates.md
+- .agents/project.yaml
+- .agents/ownership/backend/codex-harness.yaml
+- .agents/ownership/coordination/governance-runtime.yaml
+needs: []
+acceptance:
+- Old session execution is archived and removed; metadata forwarder supports the retained
+  host.
+- Canonical tasks, SQLite history and recovery backups remain readable.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - /usr/bin/python3 -I -B .agents/data/definitions.py validate --root .

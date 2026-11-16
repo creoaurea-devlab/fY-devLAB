@@ -1,0 +1,28 @@
+schema_version: 1
+id: AR-05
+title: Make isolated Rules snapshot execution dependable
+outcome: Make isolated Rules snapshot execution dependable
+kind: bugfix
+effect: change_source
+owner: rules-service
+slice: ARSC-M1-S2
+mode: worker
+read:
+- plugins/rules-local/src/snapshot.ts
+- plugins/rules-local/src/read-memory.py
+- scripts/rules.test.ts
+write:
+- plugins/rules-local/src/snapshot.ts
+- plugins/rules-local/README.md
+needs: []
+acceptance:
+- 'AC-04: The configured trusted reader runs with isolated imports and bounded timeout/output.'
+- 'AC-06: Reader does not import or execute project-owned Python modules.'
+- 'AC-04: Interpreter/package failures are actionable and distinguishable from invalid
+  project data.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/rules.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-05.md

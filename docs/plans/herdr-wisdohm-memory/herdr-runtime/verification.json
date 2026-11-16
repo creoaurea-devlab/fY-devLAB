@@ -1,0 +1,41 @@
+[
+  {
+    "width": 1440,
+    "initialState": "stopped",
+    "retainedDOM": true,
+    "retainedPID": true,
+    "duplicateAttachments": 0,
+    "paneCommand": true,
+    "drawerReachable": true,
+    "escapeFocus": true,
+    "overflow": false,
+    "pageErrors": 0,
+    "protocol": "real-contained"
+  },
+  {
+    "width": 820,
+    "initialState": "stopped",
+    "retainedDOM": true,
+    "retainedPID": true,
+    "duplicateAttachments": 0,
+    "paneCommand": true,
+    "drawerReachable": true,
+    "escapeFocus": true,
+    "overflow": false,
+    "pageErrors": 0,
+    "protocol": "real-contained"
+  },
+  {
+    "width": 390,
+    "initialState": "stopped",
+    "retainedDOM": true,
+    "retainedPID": true,
+    "duplicateAttachments": 0,
+    "paneCommand": true,
+    "drawerReachable": true,
+    "escapeFocus": true,
+    "overflow": false,
+    "pageErrors": 0,
+    "protocol": "real-contained"
+  }
+]

@@ -1,0 +1,26 @@
+schema_version: 1
+id: TERM-TRANSPORT
+title: Terminal TRANSPORT
+outcome: Terminal TRANSPORT
+kind: feature
+effect: change_source
+owner: http-transport
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/transport-http/src/index.ts
+needs:
+- TERM-CONTRACT
+acceptance:
+- A01
+- A07
+- A11
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

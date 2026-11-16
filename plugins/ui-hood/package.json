@@ -1,0 +1,22 @@
+{
+  "name": "@devlab/ui-hood",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "exports": {
+    ".": "./src/index.ts",
+    "./view": "./src/view.tsx"
+  },
+  "dependencies": {
+    "@devlab/contracts": "0.1.0",
+    "@devlab/ui-contracts": "0.1.0",
+    "@creoaurea/pop-the-hood": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "@xyflow/react": "12.12.0",
+    "@dagrejs/dagre": "3.1.1",
+    "lucide-react": "0.468.0"
+  }
+}

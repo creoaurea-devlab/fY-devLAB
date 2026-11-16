@@ -1,0 +1,18 @@
+schema_version: 1
+id: project-service
+purpose: Own confined local project files and isolated development copies with durable
+  source provenance.
+group: backend
+paths:
+- plugins/project-local/package.json
+- plugins/project-local/PROVENANCE.json
+- plugins/project-local/src/index.ts
+- plugins/project-local/src/template.ts
+- plugins/project-local/src/fork.ts
+- plugins/project-local/src/preimp.ts
+public:
+- plugins/project-local/src/index.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

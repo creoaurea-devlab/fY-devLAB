@@ -1,0 +1,38 @@
+schema_version: 1
+id: AGH-06
+title: Support agent-home instructions and proportional verification in SPEC proposals
+outcome: Route specification prompts through current project instructions
+kind: feature
+effect: change_source
+owner: spec-ui
+slice: AGH-S4
+mode: worker
+read:
+- plugins/ui-spec/src/model.ts
+- plugins/ui-spec/src/view.tsx
+- scripts/spec-agent.test.ts
+- .agents/README.md
+- .agents/plans/README.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-spec/src/model.ts
+- plugins/ui-spec/src/view.tsx
+needs: []
+acceptance:
+- SPEC reads the selected agent entry and returns optional declared kind and structured
+  verification, preserving valid existing command-only draft format.
+- Explicit attributed-review proposals may use zero commands; executable policies
+  still require meaningful checks. Conflicting or malformed policies and scope escapes
+  fail before import.
+- Use the neutral ownership matcher for declared bounded patterns; imported canonical
+  tasks retain kind and verification. The review view shows the review reason, preserving
+  existing keyboard controls, sandbox, terminal cleanup, drafts and current-CAS import.
+verification:
+  level: targeted
+  reason: SPEC parsing/import behavior now carries explicit review policies and declared
+    kinds. Test legacy command proposals, review-only prose, invalid/mismatched policy,
+    bounded ownership patterns and safe existing terminal/import behavior.
+  checks:
+  - node --test scripts/spec-agent.test.ts
+  - ./node_modules/.bin/tsc --noEmit
+spec: .agents/plans/agent-home/SPEC.md

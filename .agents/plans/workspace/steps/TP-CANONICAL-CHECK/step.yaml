@@ -1,0 +1,25 @@
+schema_version: 1
+id: TP-CANONICAL-CHECK
+title: Verify import ownership against selected canonical definitions
+outcome: Verify import ownership against selected canonical definitions
+kind: bugfix
+effect: change_source
+owner: verification
+slice: TP-S1
+mode: worker
+read:
+- scripts/maintenance.test.ts
+- .agents/runtime/definitions.py
+write:
+- scripts/maintenance.test.ts
+needs: []
+acceptance:
+- Read ownership from the trusted selected definitions reader, preserving direct public
+  seam and missing-source checks.
+- Run the host and ownership checks against the current private build.
+verification:
+  level: targeted
+  reason: Correct a stale verification authority without weakening dependency checks.
+  checks:
+  - DEVLAB_BUILD_DIR=/tmp/devlab-terminal-preview-repair/build node --test scripts/maintenance.test.ts
+    scripts/host.test.ts

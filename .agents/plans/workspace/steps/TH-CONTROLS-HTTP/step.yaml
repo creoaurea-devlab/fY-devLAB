@@ -1,0 +1,31 @@
+schema_version: 1
+id: TH-CONTROLS-HTTP
+title: Expose bounded runtime controls over Harness HTTP
+outcome: Expose bounded runtime controls over Harness HTTP
+kind: feature
+effect: change_source
+owner: http-transport
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/transport-http/src/index.ts
+write:
+- plugins/transport-http/src/index.ts
+needs:
+- TH-11
+- TH-09
+- TH-19
+acceptance:
+- Extend existing optional routes using settled capability and approval schemas; bind
+  replies/settings to the right project and active request.
+- Malformed, stale and unavailable controls fail without permission changes; verify
+  supported/unsupported capability responses.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/harness-http.test.ts

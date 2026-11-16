@@ -1,0 +1,25 @@
+schema_version: 1
+id: RUN-UI
+title: Run dispatches selected task or queue once without a second Start action
+outcome: Run dispatches selected task or queue once without a second Start action
+kind: bugfix
+effect: change_source
+owner: planning-ui
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+needs: []
+acceptance:
+- Run dispatches selected task or queue once without a second Start action
+- Preserve existing resources, historical evidence, sandbox restrictions and unrelated
+  source; run declared checks and record actual limitations.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node --test scripts/process.test.ts

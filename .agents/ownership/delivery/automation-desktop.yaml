@@ -1,0 +1,13 @@
+schema_version: 1
+id: automation-desktop
+purpose: Compose the two automation features in an owned standalone desktop host; preserve DevLab live owners.
+group: delivery
+paths:
+- apps/automation-desktop/**
+public: []
+uses:
+- browser-plugin
+- agentic-plugin
+- automation-contracts
+- service-contracts
+guidance: []

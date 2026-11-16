@@ -1,0 +1,14 @@
+schema_version: 1
+id: ui-development
+purpose: Own explicitly attached Vite UI development process/listener and cleanup;
+  never own or restart the backend.
+group: delivery
+paths:
+- scripts/dev-ui.mjs
+- scripts/prototype.mjs
+public:
+- scripts/dev-ui.mjs
+- scripts/prototype.mjs
+uses: []
+guidance:
+- .agents/skills/domain-delivery/SKILL.md

@@ -1,0 +1,30 @@
+schema_version: 1
+id: WIS-UI-SPEC-QA
+title: Verify real PTY proposal lifecycle, cancellation and reviewed import
+outcome: Verify real PTY proposal lifecycle, cancellation and reviewed import
+kind: feature
+effect: change_source
+owner: verification
+slice: WIS-UI-S1
+mode: worker
+read:
+- docs/plans/spec-agent/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- scripts/spec-agent-browser.py
+- scripts/spec-agent.test.ts
+needs: []
+acceptance:
+- PROTOTYPING retains its mounted editor/preview owners.
+- SPEC Agent requires explicit generation and review; only reviewed canonical tasks
+  are added to Kanban.
+- Cancellation, failures, keyboard and retained resource behavior pass both viewport
+  fixtures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check
+  - python3 scripts/spec-agent-browser.py
+spec: docs/plans/spec-agent/SPEC.md

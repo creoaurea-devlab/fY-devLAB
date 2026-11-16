@@ -1,0 +1,26 @@
+schema_version: 1
+id: AT-817ffeec-5280-4337-9db6-05a2f742bcb9
+title: 'Disconnect planning and execution: http-transport'
+outcome: 'Disconnect planning and execution: http-transport'
+kind: feature
+effect: change_source
+owner: http-transport
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- plugins/transport-http/src/index.ts
+- plugins/transport-http/src/projects.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

@@ -1,0 +1,6 @@
+schema_version: 1
+id: implementer
+purpose: Deliver the smallest complete change within the assigned capability and task scope.
+instructions: .agents/agents/implementer/agent.md
+skills:
+- .agents/skills/wisdohm-owner/SKILL.md

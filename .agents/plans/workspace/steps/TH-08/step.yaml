@@ -1,0 +1,32 @@
+schema_version: 1
+id: TH-08
+title: Validate and persist requested and effective execution settings
+outcome: Validate and persist requested and effective execution settings
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- TH-07
+acceptance:
+- Replace hard-coded thread/start settings only through supported fields and explicit
+  policy limits; preserve current restrictive defaults.
+- Validate model/effort and supported runtime controls, expose requested/effective
+  values, persist non-secret project settings with revision conflicts and freeze attempt
+  settings. No silent unsafe fallback or global config rewriting.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

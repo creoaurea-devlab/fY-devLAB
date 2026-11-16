@@ -1,0 +1,246 @@
+{
+  "live": [
+    {
+      "width": 1440,
+      "title": "DevLab",
+      "url": "http://127.0.0.1:4310/",
+      "sections": 0,
+      "headers": 0,
+      "styles": [
+        "http://127.0.0.1:4310/assets/index-C9EQJGus.css",
+        "http://127.0.0.1:4310/assets/style-BnuhLJ6X.css",
+        "http://127.0.0.1:4310/assets/view-DOrYoP_4.css"
+      ],
+      "scripts": [
+        "http://127.0.0.1:4310/assets/index-E_EOD7oG.js"
+      ],
+      "geometry": {
+        ".devlab": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "ClaudeFlowv2 · Agent EditordevLABaWorkflowBuild canvas9n · 0e · 3ag◈Projects•devLABBASEaPROJECTPreview groups 1Current project1Manage groupsNew group nameProjects · choose up to fourdevLABaCreate preview groupd",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 900
+          },
+          "clientHeight": 900,
+          "scrollHeight": 900,
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "background": "rgb(21, 24, 30)",
+          "padding": "0px",
+          "display": "flex"
+        },
+        ".execution-panel": {
+          "tag": "DIV",
+          "role": "region",
+          "ariaLabel": "Workspace output",
+          "text": "Planning is unavailable in this workspace.",
+          "rect": {
+            "x": 0,
+            "y": 612,
+            "width": 1440,
+            "height": 252
+          },
+          "clientHeight": 251,
+          "scrollHeight": 251,
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "background": "rgb(28, 31, 39)",
+          "padding": "0px",
+          "display": "flex"
+        },
+        "#workspace-planning-drawer": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "Planning is unavailable in this workspace.",
+          "rect": {
+            "x": 0,
+            "y": 613,
+            "width": 1440,
+            "height": 251
+          },
+          "clientHeight": 251,
+          "scrollHeight": 251,
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "display": "block"
+        },
+        "#workspace-planning-drawer > section": null,
+        "#workspace-planning-drawer > section > .kf-transport-status": null,
+        "#workspace-planning-drawer > section > section": null,
+        "#workspace-planning-drawer > section > section > header": null,
+        ".kf-segment-bar": null,
+        ".kf-board-layout": null,
+        ".workspace-rail": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "Previews Agents TerminalServersPlanningConsole 0Saved",
+          "rect": {
+            "x": 0,
+            "y": 864,
+            "width": 1440,
+            "height": 36
+          },
+          "clientHeight": 35,
+          "scrollHeight": 35,
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "background": "rgb(28, 31, 39)",
+          "padding": "0px 10px",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 820,
+      "title": "DevLab",
+      "url": "http://127.0.0.1:4310/",
+      "sections": 0,
+      "headers": 0,
+      "styles": [
+        "http://127.0.0.1:4310/assets/index-C9EQJGus.css",
+        "http://127.0.0.1:4310/assets/style-BnuhLJ6X.css",
+        "http://127.0.0.1:4310/assets/view-DOrYoP_4.css"
+      ],
+      "scripts": [
+        "http://127.0.0.1:4310/assets/index-E_EOD7oG.js"
+      ],
+      "geometry": {
+        ".devlab": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "ClaudeFlowv2 · Agent EditordevLABaWorkflowBuild canvas9n · 0e · 3ag◈Projects•devLABBASEaPROJECTPreview groups 1Current project1Manage groupsNew group nameProjects · choose up to fourdevLABaCreate preview groupd",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 820,
+            "height": 900
+          },
+          "clientHeight": 900,
+          "scrollHeight": 900,
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "background": "rgb(21, 24, 30)",
+          "padding": "0px",
+          "display": "flex"
+        },
+        ".execution-panel": {
+          "tag": "DIV",
+          "role": "region",
+          "ariaLabel": "Workspace output",
+          "text": "Planning is unavailable in this workspace.",
+          "rect": {
+            "x": 0,
+            "y": 612,
+            "width": 820,
+            "height": 252
+          },
+          "clientHeight": 251,
+          "scrollHeight": 251,
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "background": "rgb(28, 31, 39)",
+          "padding": "0px",
+          "display": "flex"
+        },
+        "#workspace-planning-drawer": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "Planning is unavailable in this workspace.",
+          "rect": {
+            "x": 0,
+            "y": 613,
+            "width": 820,
+            "height": 251
+          },
+          "clientHeight": 251,
+          "scrollHeight": 251,
+          "overflowX": "auto",
+          "overflowY": "auto",
+          "background": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "display": "block"
+        },
+        "#workspace-planning-drawer > section": null,
+        "#workspace-planning-drawer > section > .kf-transport-status": null,
+        "#workspace-planning-drawer > section > section": null,
+        "#workspace-planning-drawer > section > section > header": null,
+        ".kf-segment-bar": null,
+        ".kf-board-layout": null,
+        ".workspace-rail": {
+          "tag": "DIV",
+          "role": null,
+          "ariaLabel": null,
+          "text": "Previews Agents TerminalServersPlanningConsole 0Saved",
+          "rect": {
+            "x": 0,
+            "y": 864,
+            "width": 820,
+            "height": 36
+          },
+          "clientHeight": 35,
+          "scrollHeight": 35,
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "background": "rgb(28, 31, 39)",
+          "padding": "0px 10px",
+          "display": "flex"
+        }
+      }
+    }
+  ],
+  "prototype": [
+    {
+      "width": 1440,
+      "initialTitle": "Feature pipeline.",
+      "initialCards": 8,
+      "graphTitle": "Living architecture.",
+      "graphNodes": 7,
+      "zoomBefore": "79%",
+      "zoomAfter": "89%",
+      "branchDialog": "Build on UI registry",
+      "source": "Pinned origin: UI registry v1.0.0",
+      "closedModal": true,
+      "focusAfterBranchEscape": "<button data-action=\"node-plus\" data-id=\"e-registry@1.0.0\" aria-label=\"Build on v1.0.0\" title=\"Create linked work\">+</button>",
+      "workspaceTitle": "Contrast-safe token variants",
+      "blueprintShown": true,
+      "workspaceClosed": true,
+      "focusAfterWorkspaceEscape": "CA-202"
+    },
+    {
+      "width": 390,
+      "initialTitle": "Feature pipeline.",
+      "initialCards": 8,
+      "graphTitle": "Living architecture.",
+      "graphNodes": 7,
+      "zoomBefore": "23%",
+      "zoomAfter": "33%",
+      "branchDialog": "Build on UI registry",
+      "source": "Pinned origin: UI registry v1.0.0",
+      "closedModal": true,
+      "focusAfterBranchEscape": "<button data-action=\"node-plus\" data-id=\"e-registry@1.0.0\" aria-label=\"Build on v1.0.0\" title=\"Create linked work\">+</button>",
+      "workspaceTitle": "Contrast-safe token variants",
+      "blueprintShown": true,
+      "workspaceClosed": true,
+      "focusAfterWorkspaceEscape": "CA-202"
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "liveHTMLMatchesDisk": true,
+  "liveAsset": {
+    "path": "/assets/index-E_EOD7oG.js",
+    "matchesDisk": true,
+    "sha256": "cb184ded0dce3d64f5712c146ffc2817e60cb396105fa2b4a77598e925457c20"
+  }
+}

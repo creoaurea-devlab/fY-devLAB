@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "kind": "design-dependency-graph",
+  "executionAuthority": ".context/state/tasks.json",
+  "note": "Design acceptance/dependency view;14concrete executable task scopes are registered in .context/state/tasks.json. Actual outcomes live in delivery evidence and existing checkpoints, not duplicate status flags.",
+  "goal": "Owned parallel terminal workspace",
+  "acceptanceIds": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11"
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "milestone": "M1-terminal",
+      "slice": "S1-native",
+      "owner": "backend-host",
+      "dependsOn": [],
+      "acceptance": [
+        "A01",
+        "A07",
+        "A11"
+      ],
+      "document": "milestones/M1-terminal/slices/S1-native/T01.md"
+    },
+    {
+      "id": "T02",
+      "milestone": "M1-terminal",
+      "slice": "S2-contracts",
+      "owner": "workspace-ui",
+      "dependsOn": [
+        "T01"
+      ],
+      "acceptance": [
+        "A05",
+        "A07",
+        "A08",
+        "A11"
+      ],
+      "document": "milestones/M1-terminal/slices/S2-contracts/T02.md"
+    },
+    {
+      "id": "T03",
+      "milestone": "M1-terminal",
+      "slice": "S3-policy",
+      "owner": "backend-host",
+      "dependsOn": [
+        "T02"
+      ],
+      "acceptance": [
+        "A01",
+        "A07",
+        "A11"
+      ],
+      "document": "milestones/M1-terminal/slices/S3-policy/T03.md"
+    },
+    {
+      "id": "T04",
+      "milestone": "M2-workspace",
+      "slice": "S4-dock",
+      "owner": "workspace-ui",
+      "dependsOn": [
+        "T02",
+        "T03"
+      ],
+      "acceptance": [
+        "A02",
+        "A03",
+        "A05",
+        "A11"
+      ],
+      "document": "milestones/M2-workspace/slices/S4-dock/T04.md"
+    },
+    {
+      "id": "T05",
+      "milestone": "M2-workspace",
+      "slice": "S5-workspace",
+      "owner": "workspace-ui",
+      "dependsOn": [
+        "T04"
+      ],
+      "acceptance": [
+        "A03",
+        "A04",
+        "A05",
+        "A11"
+      ],
+      "document": "milestones/M2-workspace/slices/S5-workspace/T05.md"
+    },
+    {
+      "id": "T06",
+      "milestone": "M2-workspace",
+      "slice": "S6-controls",
+      "owner": "workspace-ui",
+      "dependsOn": [
+        "T03",
+        "T05"
+      ],
+      "acceptance": [
+        "A06",
+        "A07",
+        "A08",
+        "A11"
+      ],
+      "document": "milestones/M2-workspace/slices/S6-controls/T06.md"
+    },
+    {
+      "id": "T07",
+      "milestone": "M3-durability",
+      "slice": "S7-persistence",
+      "owner": "backend-host",
+      "dependsOn": [
+        "T03"
+      ],
+      "acceptance": [
+        "A01",
+        "A05",
+        "A09",
+        "A11"
+      ],
+      "document": "milestones/M3-durability/slices/S7-persistence/T07.md"
+    },
+    {
+      "id": "T08",
+      "milestone": "M3-durability",
+      "slice": "S8-acceptance",
+      "owner": "verification",
+      "dependsOn": [
+        "T04",
+        "T05",
+        "T06",
+        "T07"
+      ],
+      "acceptance": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11"
+      ],
+      "document": "milestones/M3-durability/slices/S8-acceptance/T08.md"
+    }
+  ]
+}

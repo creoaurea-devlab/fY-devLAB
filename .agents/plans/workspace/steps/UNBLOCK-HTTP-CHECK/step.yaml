@@ -1,0 +1,23 @@
+schema_version: 1
+id: UNBLOCK-HTTP-CHECK
+title: Verify shared Run review-policy schemas in HTTP transport
+outcome: Verify shared Run review-policy schemas in HTTP transport
+kind: audit
+effect: inspect
+owner: http-transport
+slice: RT-S1
+mode: worker
+read:
+- plugins/transport-http/src/index.ts
+write: []
+needs:
+- UNBLOCK-SERVICE
+acceptance:
+- Expose validated Harness settings through existing HTTP routes
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts

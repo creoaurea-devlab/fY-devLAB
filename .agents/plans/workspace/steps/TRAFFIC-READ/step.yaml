@@ -1,0 +1,29 @@
+schema_version: 1
+id: TRAFFIC-READ
+title: Read bounded TRAFFIC sessions and claims
+outcome: Read bounded TRAFFIC sessions and claims
+kind: feature
+effect: change_source
+owner: rules-service
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+- packages/contracts/src/rules.ts
+write:
+- plugins/rules-local/src/index.ts
+- plugins/rules-local/src/snapshot.ts
+- plugins/rules-local/src/read-memory.py
+needs:
+- TRAFFIC-CONTRACT
+acceptance:
+- Query selected-project SQLite read-only; return bounded claims and nonterminal sessions.
+- Missing, corrupt, unsupported and truncated sources remain visible; no full session
+  bodies or project code execution.
+verification:
+  level: targeted
+  reason: Check the changed seam and affected behavior with disposable fixtures.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/rules.test.ts
+spec: .agents/plans/workspace/agent-activity/SPEC.md

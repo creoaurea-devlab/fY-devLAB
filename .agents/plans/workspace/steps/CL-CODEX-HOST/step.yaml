@@ -1,0 +1,32 @@
+schema_version: 1
+id: CL-CODEX-HOST
+title: Repair host Codex CLI selection for the harness and terminal shells
+outcome: Repair host Codex CLI selection for the harness and terminal shells
+kind: audit
+effect: plan
+owner: delivery-config
+slice: TP-S1
+mode: worker
+read:
+- src/profile.ts
+- src/server.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/service.ts
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+write: []
+needs: []
+acceptance:
+- Reproduce the failing Snap launcher under the actual service environment and verify
+  the existing standalone CLI.
+- Persist a recoverable user-service PATH correction without source wrappers, credential
+  changes, sandbox weakening, or a package upgrade.
+- Verify the live harness account/model connection and a new ordinary PTY choose the
+  standalone CLI; retain all pre-existing live terminal identities and restore saved
+  previews.
+verification:
+  level: integration
+  reason: Actual service environment, installed CLI handshake and new PTY subprocess
+    selection establish the causal correction.
+  checks:
+  - /usr/bin/python3 /tmp/devlab-codex-launch-20261106/verify.py

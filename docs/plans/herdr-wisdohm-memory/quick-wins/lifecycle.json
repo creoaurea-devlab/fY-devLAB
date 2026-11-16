@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "width": 1440,
+      "compactDockOneRow28px": true,
+      "controlsCollapseRetainsOwnerAndPid": true,
+      "multiPaneLayoutAndActionsRetained": true,
+      "buildAndMainHiddenLaunchBlocked": true,
+      "hiddenInputResizeBlocked": true,
+      "previewFocusHiddenLaunchBlocked": true,
+      "collapsedNodeDoesNotLaunchAndRetainsRunningPid": true,
+      "mainPreviewFocusPausesReopenUntilRestore": true,
+      "nonzeroExitWaitsAcrossOwnersAndReload": true,
+      "explicitRetryCreatesOneSession": true,
+      "otherOwnerAdoptsRetriedSession": true,
+      "cleanExitReopens": true,
+      "xtermPreviewAndPidRetained": true,
+      "unknownExitRecoversOnce": true,
+      "repeatedOwnerLossRequiresRetry": true,
+      "stalledInputRecoversWithoutReplay": true
+    },
+    {
+      "width": 820,
+      "compactDockOneRow28px": true,
+      "controlsCollapseRetainsOwnerAndPid": true,
+      "multiPaneLayoutAndActionsRetained": true,
+      "buildAndMainHiddenLaunchBlocked": true,
+      "hiddenInputResizeBlocked": true,
+      "previewFocusHiddenLaunchBlocked": true,
+      "collapsedNodeDoesNotLaunchAndRetainsRunningPid": true,
+      "mainPreviewFocusPausesReopenUntilRestore": true,
+      "nonzeroExitWaitsAcrossOwnersAndReload": true,
+      "explicitRetryCreatesOneSession": true,
+      "otherOwnerAdoptsRetriedSession": true,
+      "cleanExitReopens": true,
+      "xtermPreviewAndPidRetained": true,
+      "unknownExitRecoversOnce": true,
+      "repeatedOwnerLossRequiresRetry": true,
+      "stalledInputRecoversWithoutReplay": true
+    }
+  ],
+  "javascriptErrors": [],
+  "liveUserApiUsed": false,
+  "cleanup": [
+    {
+      "closed": true,
+      "terminalPids": [
+        2541091,
+        2541162,
+        2541763,
+        2543549
+      ],
+      "processesGone": true
+    },
+    {
+      "closed": true,
+      "terminalPids": [
+        2547628,
+        2547674,
+        2548279,
+        2550071
+      ],
+      "processesGone": true
+    }
+  ]
+}

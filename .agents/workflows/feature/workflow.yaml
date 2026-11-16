@@ -1,0 +1,15 @@
+schema_version: 1
+kind: feature
+agent: implementer
+procedure:
+- Trace callers and define the smallest complete observable slice with its owner and public contract.
+- Implement the assigned scope with deliberate validation, failure and resource behavior.
+- Exercise the acceptance and affected consumers using proportionate verification; finish when the intended
+  behavior and material failure paths have evidence.
+guidance:
+- .agents/guides/CODE.md
+- .agents/guides/VERIFICATION.md
+verification:
+  default: targeted
+  reason: New observable behavior usually needs a focused acceptance check; use existing checks before
+    adding new tests.

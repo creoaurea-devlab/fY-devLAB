@@ -1,0 +1,29 @@
+schema_version: 1
+id: AR-07
+title: Make backend startup failure release acquired resources
+outcome: Make backend startup failure release acquired resources
+kind: bugfix
+effect: change_source
+owner: backend-host
+slice: ARSC-M1-S2
+mode: worker
+read:
+- src/server.ts
+- src/profile.ts
+- scripts/runtime-startup.test.ts
+write:
+- src/server.ts
+needs:
+- TERM-SERVICE
+- AR-05
+- AR-06
+acceptance:
+- 'AC-05: Rules snapshot or plugin activation failure reports cause and releases acquired
+  kernel/listener resources.'
+- 'AC-05: Failed startup leaves no accidental duplicate backend or orphan child.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/runtime-startup.test.ts scripts/host.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-07.md

@@ -1,0 +1,29 @@
+schema_version: 1
+id: TH-MVP-2
+title: Run one Kanban task and persist its result
+outcome: Run one Kanban task and persist its result
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- plugins/codex-harness/package.json
+- plugins/codex-harness/src/index.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-MVP-1
+acceptance:
+- Validate canonical snapshot and task scope; one active run, stable idempotency,
+  restart reconciliation; successful turn moves task to Review through shared writer,
+  never Complete.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/*.test.ts

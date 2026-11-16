@@ -1,0 +1,33 @@
+schema_version: 1
+id: AR-33
+title: Display renewed authority states in compact WISDOHM controls
+outcome: Display renewed authority states in compact WISDOHM controls
+kind: bugfix
+effect: change_source
+owner: rules-ui
+slice: ARSC-M3-S3
+mode: worker
+read:
+- plugins/ui-rules/src/controls.tsx
+- plugins/ui-rules/src/harness.tsx
+- plugins/ui-rules/src/view.tsx
+- packages/contracts/src/rules.ts
+write:
+- plugins/ui-rules/src/controls.tsx
+- plugins/ui-rules/src/harness.tsx
+- plugins/ui-rules/src/view.tsx
+needs:
+- AR-32
+- AR-17
+acceptance:
+- 'AC-06: Board remains read-only and distinguishes observed/report/assessed/verified/historical
+  states.'
+- 'AC-09: Setup action appears once per project under settled AR-32 composition; healing
+  remains explicit and scoped.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/wisdom-setup-browser.py --width 1440
+  - node --test scripts/wisdom-healing.test.ts
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S3-setup-ui/AR-33.md

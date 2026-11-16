@@ -1,0 +1,31 @@
+schema_version: 1
+id: WB-STATE
+title: Retain project Whiteboards with guarded save, undo and cleanup
+outcome: Retain project Whiteboards with guarded save, undo and cleanup
+kind: feature
+effect: change_source
+owner: whiteboard-ui
+slice: WB-S2
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- packages/contracts/src/projects.ts
+write:
+- plugins/ui-whiteboard/src/workspace.ts
+- plugins/ui-whiteboard/src/workspace.test.ts
+needs:
+- WB-DOC
+acceptance:
+- 'A3/A4: whiteboard.json uses selected project read/write and expectedHash; missing
+  file differs from permission/network failures.'
+- Late responses and concurrent save acknowledgements preserve newer local edits;
+  conflict retains draft.
+- Owner supports undo/redo, dirty/saving/error and idempotent cleanup.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - node --test plugins/ui-whiteboard/src/workspace.test.ts
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

@@ -1,0 +1,75 @@
+{
+  "auditedAt": "2026-11-16T00:06:23.324Z",
+  "source": {
+    "src/profile.ts": "947597ebffa7b9c5c4f5ce08d041cc6359e8b1af8fea4bf976d3dfb9bc4b2968",
+    "src/main.ts": "451b3083d50b6ec4ded77f924e040947897d32b46b7d3c27053f164fd885335a",
+    "src/workspace.ts": "593aed4f535d07e4889e90bc7c01c8638091a6d3d83f45163535c974e8e97028",
+    "src/shell.tsx": "1c8373e1077b1ecc08f4ae0be2c75218c124f4a03d7104f31b316456fc876f47",
+    "plugins/ui-projects/src/workspace.ts": "af0386868dc0d14171164556d183af537e372dcc3e7d471db53223060098235f",
+    "plugins/ui-projects/src/build.tsx": "5768429f28a32b1ed660e8be141329474d882b141b8f154df99bf13ab720c020",
+    "plugins/ui-projects/src/editor.tsx": "a6b2ce706140a0d4564cd8a1a6c33c273b30a31425bc7d1faef636a8b08f338b",
+    "plugins/ui-shell/src/view.tsx": "f48cf14a724015d244e0217b96950cfb98af4f69f72b7ba1a7c8b6b8d1e5e69b",
+    "plugins/ui-shell/src/terminals.tsx": "b9d7e44cbb3c1608be568cab460fa81a4ebadc7b5070942e1abfdebd58e66cf1",
+    "plugins/ui-shell/src/devlab.css": "10161b64ea8126ae7a6d792bde54abd0bed7e82c75babea30b991f400152d723",
+    "plugins/ui-canvas/src/view.tsx": "f179bc3500b2851f0ed0fa902c7edce2cbc448aa8cff50ee50016e5c92e5ff3b",
+    "plugins/ui-canvas/src/workspace.ts": "cd69446c2a36e8e0b4811e07ec6504ccee2c87d3724929ccdc69ea02c3e58a80",
+    "plugins/ui-terminal/src/view.tsx": "79d9f19b19fd9a970dfea43ba2f75be579cc579f9689dfb6170fac71d8265a1e",
+    "plugins/terminal-pty/src/index.ts": "214ade472b150621ad8ca685477c924410ec44d5c5abe268df618ec4f0628cf1",
+    "packages/ui-contracts/src/index.ts": "8d6d7f64dcf3346f20517390f6bb2da47879a7020f5542acd16675ed1f8613e9",
+    "package.json": "3562ac04afd06a51e6728d225984aff3339b9bb7a0105057d7efdb8b87496b43",
+    "package-lock.json": "49db0d94652eee98b98196436a269d715712889dc0b00fa0ff47391a3fe86fac"
+  },
+  "scope": "Disposable owner and browser probes; no live user API, terminal or browser touched",
+  "findings": {
+    "navigation": {
+      "expectedLatestIntent": "default",
+      "observed": "default",
+      "busyWhileEarlierPending": true,
+      "reproduced": false,
+      "fidelity": "Real public owners with a delayed save; does not establish the cause of the live report."
+    },
+    "build": {
+      "removedOnWorkflow": false,
+      "beforeBuild": "translate(21.36px, 190.38px) scale(1.44)",
+      "afterBuild": "translate(21.36px, 190.38px) scale(1.44)",
+      "retainedDom": true,
+      "viewportReset": false
+    },
+    "terminalControls": {
+      "resizeHandles": 0,
+      "fontZoomButtons": 0
+    },
+    "align": {
+      "rectangles": [
+        {
+          "id": "audit-terminal-0",
+          "x": 477,
+          "y": 78,
+          "width": 275,
+          "height": 154
+        },
+        {
+          "id": "audit-terminal-1",
+          "x": 765.2000122070312,
+          "y": 78,
+          "width": 274.99993896484375,
+          "height": 154
+        }
+      ],
+      "overlaps": false
+    },
+    "surface": {
+      "expected": "Terminals",
+      "terminalViewRestored": true,
+      "actualCanvasMode": "flow",
+      "sameSessions": true
+    }
+  },
+  "pageErrors": [],
+  "privateFixtureTerminalCount": 2,
+  "cleanup": {
+    "fixtureRemoved": true,
+    "terminalProcessesGone": true
+  },
+  "sourceUnchanged": true
+}

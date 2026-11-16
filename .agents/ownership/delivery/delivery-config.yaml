@@ -1,0 +1,28 @@
+schema_version: 1
+id: delivery-config
+purpose: Own dependency composition, portable runtime manifests and build configuration;
+  keep implementation in capability modules.
+group: delivery
+paths:
+- .gitignore
+- _LAB/README.md
+- package.json
+- package-lock.json
+- vite.config.ts
+- README.md
+- docs/history/README-before-simplification-20261115.md
+- handover.md
+- vendor/full-ui/catalog.json
+- vendor/runtime/catalog.json
+- .npmrc
+- devlab.preview.json
+- tsconfig.json
+- index.html
+- docs/refactor-provenance.json
+public:
+- package.json
+- vite.config.ts
+- devlab.preview.json
+uses: []
+guidance:
+- .agents/skills/domain-delivery/SKILL.md

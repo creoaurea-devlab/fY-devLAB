@@ -1,0 +1,12 @@
+{
+  "source": "Preserved installed ui-hood source from vendor/full-ui or vendor/previous-ui archive",
+  "reason": "Add public WISDOHM UI composition seams while retaining existing workspace owners",
+  "baseline": {
+    "package.json": "eca9b7235f1e514063e8663249170f2f75dfb502b689c52b411aa519c8a619db",
+    "src/graph.ts": "412d2bbd663d80feb533084ca2d18acfaf72ee7ee36559c6d17ef1745fe76f92",
+    "src/view.tsx": "e2496cab3ec5d561873435d0640230621bb5b41404cf9801dcc441e6b838f729",
+    "src/layout.ts": "939b95c6da98cceff3e8c1db5ed854c4bf82de87e5486d88c8ee037c21515a05",
+    "src/index.ts": "43b416d074b28f30fb92304fed0919cb01d095b076ea369c35e6c6dac3a22e87",
+    "src/hood.css": "151531db18196ade0948c2649705156600d9c21d8992c99784b15fb9be9dbc7c"
+  }
+}

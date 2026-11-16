@@ -1,0 +1,134 @@
+{
+  "observed": "2026-11-15",
+  "localDocumentationLinks": {
+    "files": 11,
+    "missing": []
+  },
+  "drawer": {
+    "name": "devLAB",
+    "group": "linked-drawers",
+    "attached": true,
+    "locked": true,
+    "workspaceMode": "always-visible-on-all-workspaces",
+    "geometryMode": "drawer",
+    "window": "0xae00004",
+    "pid": 19222,
+    "minimized": false,
+    "sticky": true,
+    "above": false,
+    "alwaysOnTopEnabled": false,
+    "rect": {
+      "x": 1920,
+      "y": 0,
+      "width": 1680,
+      "height": 1050
+    },
+    "panelBottom": 32,
+    "windows": 1,
+    "candidateWindows": [
+      "0xae00004"
+    ],
+    "protectedWindowIds": [
+      "0x6e00004"
+    ],
+    "adoptionNote": "Explicit target selected.",
+    "launching": false,
+    "awaitingSelection": false,
+    "awaitingProfileChoice": false
+  },
+  "health": {
+    "4312": {
+      "phase": "ready",
+      "activePlugins": [
+        "canvas-store",
+        "project-local",
+        "terminal-pty",
+        "rules-local",
+        "project-server",
+        "preview-inspector",
+        "registry-map",
+        "transport-http"
+      ]
+    },
+    "4322": {
+      "phase": "ready",
+      "activePlugins": [
+        "canvas-store",
+        "project-local",
+        "terminal-pty",
+        "rules-local",
+        "project-server",
+        "preview-inspector",
+        "registry-map",
+        "transport-http"
+      ]
+    },
+    "4323": {
+      "phase": "ready",
+      "activePlugins": [
+        "canvas-store",
+        "project-local",
+        "terminal-pty",
+        "rules-local",
+        "project-server",
+        "preview-inspector",
+        "registry-map",
+        "transport-http"
+      ]
+    }
+  },
+  "oldBackendPid": 2766,
+  "refactoredBackendPid": 1560097,
+  "refactoredBackendRoot": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored",
+  "originalWindowPreserved": true,
+  "newRendererURL": "http://127.0.0.1:4323/",
+  "kernelPreservation": [
+    {
+      "path": "node_modules/@devlab/kernel/dist/index.js",
+      "sha256": "3c1588c771f1a2b36e83238f0821ebb59947ccbdd21ff297f522690c109644e8",
+      "matchesOriginal": true
+    },
+    {
+      "path": "vendor/previous-ui/devlab-kernel-0.1.0.tgz",
+      "sha256": "01b2aef69f03f5006cfc8ce4affe5ea63f556aa6246920f539856cd9a5de9d13",
+      "matchesOriginal": true
+    },
+    {
+      "path": "vendor/previous-ui/cordis-4.0.0-rc.11-creo.bc9a344.tgz",
+      "sha256": "8c88fb8351fecc61070699b36ecc2f0ab0a32f13b9599e490a6baa32737f510f",
+      "matchesOriginal": true
+    }
+  ],
+  "herdr": {
+    "version": "herdr 0.9.3",
+    "schemaSha256": "47664aff32824a3d27919660351f636a3d0a7827ac141570a8387e0175513364",
+    "topLevelKeys": [
+      "$schema",
+      "protocol",
+      "schema_version",
+      "schemas",
+      "title"
+    ]
+  },
+  "checks": {
+    "ownershipProjection": "npm run ownership:sync: passed",
+    "host": "npm run check: 9/9 passed, types + architecture generated",
+    "memoryPython": "python3 -B -m unittest discover -s tests -v: 25/25 passed",
+    "memoryJS": "node --test tests/test_web.mjs: 6/6 passed",
+    "localLinks": "11 touched guidance/plan documents reviewed; no missing local targets"
+  },
+  "limitations": [
+    "new integrations and compact toolbar implementation remain planned",
+    "new renderer launched with temporary loopback debug port 6333; normal launcher does not request debugging",
+    "live backend cached architecture not restarted or declared equal to newly generated artifact",
+    "memory JavaScript suite uses DOM stub; new host UI not implemented"
+  ],
+  "desktopRelaunch": {
+    "command": "gtk-launch creoaurea-devlab-native",
+    "windowsAfter": 2,
+    "newWindowReused": true,
+    "oldWindowPreserved": true
+  },
+  "unitValidation": "systemd-analyze --user verify: both refactored units passed",
+  "backendUnit": "enabled; not started over existing backend; ExecCondition skips occupied port"
+}

@@ -1,0 +1,38 @@
+schema_version: 1
+id: AR-09
+title: Define one file-based agent/step contract and proportional evidence model
+outcome: Define one file-based agent/step contract and proportional evidence model
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: AGH-S1
+mode: worker
+read:
+- packages/contracts/src/planner.ts
+- packages/contracts/src/rules.ts
+- .wisdohm/planning.py
+- .agents/guides/VERIFICATION.md
+write:
+- packages/contracts/src/agent-definitions.ts
+- packages/contracts/src/ownership.ts
+- packages/contracts/src/planner.ts
+- packages/contracts/src/rules.ts
+- packages/contracts/src/index.ts
+needs: []
+acceptance:
+- 'AH-01: Define versioned role, kind/workflow, ownership segment and canonical step
+  DTOs; distinguish task kind from permitted effect.'
+- 'AH-02: Canonical step fields are id, kind, effect, owner, read/write scope, prerequisites,
+  acceptance and structured verification; ID/hierarchy remain stable.'
+- 'AH-03: Verification supports reasoned review, smoke, targeted and integration evidence.
+  Low-risk prose accepts attributed assessment; no fabricated command or automatic
+  suite requirement.'
+- 'AH-04: Exported/browser contracts contain data only; reported status, assessed
+  outcome and verified execution remain distinct.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/process.test.ts
+spec: .agents/plans/agent-home/steps/AR-09/SPEC.md

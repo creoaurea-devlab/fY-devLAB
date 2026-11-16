@@ -1,0 +1,36 @@
+schema_version: 1
+id: TH-07
+title: Discover available models and runtime capabilities
+outcome: Discover available models and runtime capabilities
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-CONTROLS-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+- plugins/codex-harness/src/connection.ts
+- plugins/codex-harness/src/connection.test.ts
+needs:
+- TH-02
+acceptance:
+- Query supported runtime model/capability listings with pagination and explicit unknown/unavailable
+  state; refresh on account/runtime change.
+- Test empty catalog, unavailable model, account change and limits. Verify official
+  runtime documentation during execution; do not infer price or allowance from subscription
+  labels.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test plugins/codex-harness/src/service.test.ts plugins/codex-harness/src/connection.test.ts

@@ -1,0 +1,26 @@
+schema_version: 1
+id: RULES-INTEGRATION
+title: RULES-INTEGRATION
+outcome: RULES-INTEGRATION
+kind: feature
+effect: change_source
+owner: backend-host
+slice: RULES-S1
+mode: worker
+read:
+- docs/plans/rules-board/SPEC.md
+write:
+- src/server.ts
+- src/profile.ts
+needs:
+- RULES-BACKEND
+- RULES-UI
+acceptance:
+- Explicit source and evidence boundaries; real combined verification; preserved originals
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build
+spec: docs/plans/rules-board/SPEC.md

@@ -1,0 +1,27 @@
+schema_version: 1
+id: AR-29
+title: Stop ready inspector retry and preserve reload recovery
+outcome: Stop ready inspector retry and preserve reload recovery
+kind: bugfix
+effect: change_source
+owner: preview-view
+slice: ARSC-M3-S2
+mode: worker
+read:
+- plugins/ui-preview/src/inspector.tsx
+- plugins/ui-preview/src/pane.tsx
+write:
+- plugins/ui-preview/src/inspector.tsx
+needs:
+- AR-21
+acceptance:
+- 'AC-09: Valid ready stops periodic init retries; reset/navigation/new generation
+  restarts the bounded handshake.'
+- 'AC-09: Wrong origin/nonce and hidden inspector state retain existing protections.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/ui-elements.test.ts
+  - UI_ELEMENTS_EVIDENCE_DIR=/tmp/devlab-audit-ui-elements python3 scripts/ui-elements-browser.py
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S2-browser/AR-29.md

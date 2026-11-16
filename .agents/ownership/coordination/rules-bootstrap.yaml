@@ -1,0 +1,15 @@
+schema_version: 1
+id: rules-bootstrap
+purpose: Explicit administrative import of historical facts and current reviewed provenance
+  without guarded completion claims.
+group: coordination
+paths:
+- scripts/wisdohm26-sync.py
+- scripts/wisdohm26-bootstrap.py
+- scripts/wisdohm27-reinstall.py
+public:
+- scripts/wisdohm26-bootstrap.py
+uses:
+- governance-runtime
+guidance:
+- .agents/skills/domain-source-of-truth/SKILL.md

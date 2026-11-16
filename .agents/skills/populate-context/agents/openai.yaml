@@ -1,0 +1,4 @@
+interface:
+  display_name: "Populate Context"
+  short_description: "Adapt Wisdom Context to a target repository"
+  default_prompt: "Use $populate-context to populate this repository from its codebase map."

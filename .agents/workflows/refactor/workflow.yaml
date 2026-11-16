@@ -1,0 +1,15 @@
+schema_version: 1
+kind: refactor
+agent: implementer
+procedure:
+- Name the responsibility being changed and the observable behavior that must remain stable.
+- Capture relevant caller, failure and state-transition behavior before a risky restructuring; preserve
+  the public contract unless change is explicit.
+- Change one responsibility and recheck the affected behavior; finish when the simpler structure preserves
+  the required contract.
+guidance:
+- .agents/guides/CODE.md
+- .agents/guides/VERIFICATION.md
+verification:
+  default: targeted
+  reason: Use current behavior checks or characterization where restructuring could change semantics.

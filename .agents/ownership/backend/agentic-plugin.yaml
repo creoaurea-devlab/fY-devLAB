@@ -1,0 +1,12 @@
+schema_version: 1
+id: agentic-plugin
+purpose: Own independent bounded agent sessions and immutable host-bound Memory Node workers.
+group: backend
+paths:
+- plugins/agentic/**
+public:
+- plugins/agentic/src/index.mjs
+- plugins/agentic/src/memory/index.mjs
+uses:
+- automation-contracts
+guidance: []

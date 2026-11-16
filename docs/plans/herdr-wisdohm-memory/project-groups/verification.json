@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "catalog": {
+    "preserved": 4,
+    "restored": 14,
+    "total": 18,
+    "method": "existing POST /api/projects/open; shared existing roots; no canvas or terminal migration"
+  },
+  "checks": {
+    "npm run ownership:sync": "passed",
+    "npm run check": "types and 12 tests passed",
+    "npm run build": "passed",
+    "node scripts/project-groups-browser.mjs": {
+      "customGroup": true,
+      "dragMove": true,
+      "dragReorder": true,
+      "keyboardMove": true,
+      "navigationUnchanged": true,
+      "reloadPersistence": true,
+      "collapsedPersistence": true,
+      "duplicateRefused": true,
+      "malformedStorageFallback": true,
+      "unavailableStorageUsable": true,
+      "jsErrors": []
+    }
+  },
+  "productLineDelta": 95,
+  "dependenciesAdded": 0,
+  "productFilesAdded": 0,
+  "limits": [
+    "Browser-local group preferences; no device/window synchronization",
+    "Catalog links share original project files",
+    "No original canvas/terminal records imported",
+    "Screenshots at 1440 and 820; no full responsive certification"
+  ],
+  "sourceSha256": {
+    "plugins/ui-projects/src/view.tsx": "a013f63282e964d4fe05bc13489f254db2494a1dcb1117c9e50a05b5eb1c04db",
+    "plugins/ui-projects/src/projects.css": "1a54ab7d1f9ba1c46c1ec78efe9735851057b544ba9e454404dd20a07bb8292a",
+    "scripts/project-groups-browser.mjs": "64a38be58e796e5ca7d18689852e15617c2fcc3487de1d34bb3ccd7dc45bdedf",
+    ".agents/ownership/verification/verification.yaml": "b156f820653cc2afc490aba25115059a7a323916a7cd8b8c8b415abc8b0db8d8",
+    ".context/modules/registry.yaml": "97954753d7b9cfc93d9cae229d922bad2c27c6b11e254e1b21e499a69beab138"
+  }
+}

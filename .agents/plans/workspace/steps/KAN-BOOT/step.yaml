@@ -1,0 +1,29 @@
+schema_version: 1
+id: KAN-BOOT
+title: Boot — JSON planner
+outcome: Boot — JSON planner
+kind: feature
+effect: change_source
+owner: browser-bootstrap
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- src/main.ts
+needs:
+- KAN-PROFILE
+- KAN-UI
+- KAN-SHELL
+acceptance:
+- Browser bootstrap enables the selected Planning service without masking it.
+- Actual drawer uses the selected local UI; full-screen restores the same retained
+  section and prior height.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

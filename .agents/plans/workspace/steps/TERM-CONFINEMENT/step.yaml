@@ -1,0 +1,26 @@
+schema_version: 1
+id: TERM-CONFINEMENT
+title: Terminal CONFINEMENT
+outcome: Terminal CONFINEMENT
+kind: feature
+effect: change_source
+owner: terminal-service
+slice: TERM-S1
+mode: worker
+read:
+- docs/plans/terminal-workspace/SPEC.md
+write:
+- plugins/terminal-pty/src/confinement.ts
+- plugins/terminal-pty/native/ownership-sandbox.c
+needs:
+- TERM-CONTRACT
+acceptance:
+- A07
+- A11
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/terminal-confinement.test.ts
+feature: terminal-workspace
+spec: docs/plans/terminal-workspace/SPEC.md

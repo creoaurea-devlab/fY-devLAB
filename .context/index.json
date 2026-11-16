@@ -1,0 +1,155 @@
+{
+  "$schema": "./schemas/context-index.schema.json",
+  "version": "2.4.0",
+  "entry": "BOOT.md",
+  "base": [
+    "config/project.yaml",
+    "protocols/rules.md"
+  ],
+  "routes": {
+    "read_only": {
+      "load": [],
+      "workflow": null,
+      "writes": "none"
+    },
+    "bugfix": {
+      "load": [
+        "protocols/execution.md",
+        "state/lessons.md",
+        "modules/registry.yaml"
+      ],
+      "workflow": "fix",
+      "writes": "declared"
+    },
+    "feature": {
+      "load": [
+        "protocols/execution.md",
+        "modules/registry.yaml",
+        "specs/_template.md"
+      ],
+      "workflow": "feature",
+      "writes": "declared"
+    },
+    "refactor": {
+      "load": [
+        "protocols/execution.md",
+        "modules/registry.yaml",
+        "state/decisions.md"
+      ],
+      "workflow": "refactor",
+      "writes": "declared"
+    },
+    "planning": {
+      "load": [
+        "state/progress.md",
+        "state/roadmap.md"
+      ],
+      "workflow": "plan",
+      "writes": "declared"
+    },
+    "architecture": {
+      "load": [
+        "state/decisions.md",
+        "modules/registry.yaml"
+      ],
+      "workflow": "architecture",
+      "writes": "declared"
+    },
+    "docs": {
+      "load": [
+        "protocols/execution.md"
+      ],
+      "workflow": "docs",
+      "writes": "declared"
+    },
+    "map_codebase": {
+      "load": [],
+      "workflow": "map-codebase",
+      "writes": [
+        ".planning/codebase/",
+        ".context/state/events.jsonl"
+      ]
+    },
+    "populate_context": {
+      "load": [],
+      "workflow": "populate-context",
+      "writes": [
+        ".context/config/",
+        ".context/modules/",
+        ".context/state/"
+      ]
+    },
+    "populate_agents": {
+      "load": [],
+      "workflow": "populate-agents",
+      "writes": [
+        ".context/config/project.yaml",
+        ".wisdom/agents/flow/",
+        ".wisdom/agents/agents.json",
+        ".context/state/events.jsonl"
+      ],
+      "requires": [
+        "agents"
+      ]
+    },
+    "testing": {
+      "load": [
+        "modules/registry.yaml"
+      ],
+      "workflow": "testing",
+      "writes": "declared"
+    },
+    "ui": {
+      "load": [
+        "modules/registry.yaml"
+      ],
+      "workflow": "ui",
+      "writes": "declared"
+    },
+    "wiring": {
+      "load": [
+        "modules/registry.yaml"
+      ],
+      "workflow": "wiring",
+      "writes": "declared"
+    },
+    "triage": {
+      "load": [
+        "modules/registry.yaml"
+      ],
+      "workflow": "triage",
+      "writes": "none"
+    },
+    "audit": {
+      "load": [
+        "modules/registry.yaml"
+      ],
+      "workflow": "audit",
+      "writes": "none"
+    }
+  },
+  "workflows": {
+    "fix": "workflows/fix.md",
+    "feature": "workflows/feature.md",
+    "refactor": "workflows/refactor.md",
+    "plan": "workflows/plan.md",
+    "architecture": "workflows/architecture.md",
+    "docs": "workflows/docs.md",
+    "map-codebase": "workflows/map-codebase.md",
+    "populate-context": "workflows/populate-context.md",
+    "populate-agents": "workflows/populate-agents.md",
+    "testing": "workflows/testing.md",
+    "ui": "workflows/ui.md",
+    "wiring": "workflows/wiring.md",
+    "triage": "workflows/triage.md",
+    "audit": "workflows/audit.md"
+  },
+  "optional_manifests": {
+    "agents": ".wisdom/agents/manifest.yaml",
+    "mapper": ".wisdom/tools/map-codebase/SKILL.md"
+  },
+  "update_policy": "protocols/updates.md",
+  "settings": "settings.json",
+  "router": "router.py",
+  "orchestration": "state/index.json"
+}

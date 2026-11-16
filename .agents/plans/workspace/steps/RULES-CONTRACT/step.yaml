@@ -1,0 +1,34 @@
+schema_version: 1
+id: RULES-CONTRACT
+title: RULES-CONTRACT
+outcome: RULES-CONTRACT
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: RULES-S1
+mode: worker
+read:
+- docs/plans/rules-board/SPEC.md
+write:
+- packages/contracts/package.json
+- packages/contracts/src/architecture.ts
+- packages/contracts/src/browser.ts
+- packages/contracts/src/index.ts
+- packages/contracts/src/planning.ts
+- packages/contracts/src/preview.ts
+- packages/contracts/src/projects.ts
+- packages/contracts/src/servers.ts
+- packages/contracts/src/terminal.ts
+- packages/contracts/src/wisdom.ts
+- packages/contracts/src/workspace.ts
+- packages/contracts/src/planner.ts
+- packages/contracts/src/rules.ts
+needs: []
+acceptance:
+- Explicit source and evidence boundaries; real combined verification; preserved originals
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+spec: docs/plans/rules-board/SPEC.md

@@ -1,0 +1,26 @@
+schema_version: 1
+id: TP-PREVIEW-SCOPE
+title: Keep preview-only setup independent of governance inspection
+outcome: Keep preview-only setup independent of governance inspection
+kind: bugfix
+effect: change_source
+owner: wisdom-service
+slice: TP-S1
+mode: worker
+read: []
+write:
+- plugins/wisdom-tool/src/index.ts
+- plugins/wisdom-tool/src/population.ts
+needs: []
+acceptance:
+- Preview-only discovery reads only browser manifests and the descriptor, without
+  parsing project memory or runtime.
+- Preview-only apply is restricted to adding the reviewed descriptor with existing
+  root/file guards; governance and history remain byte exact.
+- Full WISDOHM inspection and setup retain all schema, ownership and activity checks.
+verification:
+  level: targeted
+  reason: Actual browser reproduction exposed an inappropriate governance dependency;
+    preserve all full-setup guards and verify both scopes.
+  checks:
+  - node --test scripts/wisdom.test.ts

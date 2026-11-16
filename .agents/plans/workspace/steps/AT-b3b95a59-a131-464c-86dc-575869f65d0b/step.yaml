@@ -1,0 +1,25 @@
+schema_version: 1
+id: AT-b3b95a59-a131-464c-86dc-575869f65d0b
+title: 'Disconnect planning and execution: source-maps'
+outcome: 'Disconnect planning and execution: source-maps'
+kind: feature
+effect: change_source
+owner: source-maps
+slice: FACTORY-S1
+mode: worker
+read:
+- src/profile.ts
+- src/contributions.ts
+- package.json
+write:
+- scripts/architecture.ts
+needs: []
+acceptance:
+- No planning, harness or run controller registered in DevLab; removed endpoints return
+  404; terminal/editor/preview retained; extracted source hashes verified.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build

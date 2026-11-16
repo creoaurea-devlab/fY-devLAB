@@ -1,0 +1,32 @@
+schema_version: 1
+id: WB-COMPOSE
+title: Register Whiteboard and inject its selected project owner through root shell
+outcome: Register Whiteboard and inject its selected project owner through root shell
+kind: feature
+effect: change_source
+owner: workspace-ui
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+write:
+- src/contributions.ts
+- src/shell.tsx
+needs:
+- WB-PACKAGE
+- WB-SHELL
+- WB-STATE
+acceptance:
+- Stable ui-whiteboard contribution is selected by ID using existing panel slot.
+- Root Shell optional getWhiteboard provider injects current-project owner through
+  whiteboardWorkspace/renderWhiteboard, without creating domain owners during render.
+- Preserve current registry reconciliation, panel boundaries and disabled contribution
+  behavior.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

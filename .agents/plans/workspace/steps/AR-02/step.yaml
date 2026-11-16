@@ -1,0 +1,33 @@
+schema_version: 1
+id: AR-02
+title: Provision a trusted isolated Python runtime
+outcome: Provision a trusted isolated Python runtime
+kind: bugfix
+effect: change_source
+owner: delivery-config
+slice: ARSC-M1-S1
+mode: orchestrator
+read:
+- package.json
+- package-lock.json
+- plugins/rules-local/src/snapshot.ts
+- plugins/wisdom-tool/src/population.ts
+write:
+- package.json
+- package-lock.json
+- README.md
+needs:
+- TH-01
+acceptance:
+- 'AC-04: Chosen trusted interpreter imports PyYAML under isolated mode; clean provisioning
+  and invocation are documented.'
+- 'AC-04: Existing Node dependency and Codex composition tasks retain their scopes
+  and IDs.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm ci --ignore-scripts
+  - python3 -I -B -c "import yaml; print(yaml.__version__)"
+  - node --version
+spec: docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S1-preflight/AR-02.md

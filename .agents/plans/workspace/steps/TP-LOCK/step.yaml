@@ -1,0 +1,22 @@
+schema_version: 1
+id: TP-LOCK
+title: Synchronize the declared local preview dependency lock
+outcome: Synchronize the declared local preview dependency lock
+kind: bugfix
+effect: change_source
+owner: delivery-config
+slice: TP-S1
+mode: worker
+read: []
+write:
+- package-lock.json
+needs:
+- TP-PREVIEW
+acceptance:
+- Lock metadata matches the reused local UI package dependency without version upgrades.
+verification:
+  level: targeted
+  reason: Reproduce the reported failure, preserve ownership and live resources, then
+    verify the affected behavior.
+  checks:
+  - node scripts/verify-packages.mjs

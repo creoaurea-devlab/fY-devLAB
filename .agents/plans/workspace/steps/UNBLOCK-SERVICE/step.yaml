@@ -1,0 +1,24 @@
+schema_version: 1
+id: UNBLOCK-SERVICE
+title: Persist review policy and auto-advance only with fresh bound runtime evidence
+outcome: Persist review policy and auto-advance only with fresh bound runtime evidence
+kind: bugfix
+effect: change_source
+owner: codex-harness
+slice: RT-S1
+mode: worker
+read: []
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs:
+- UNBLOCK-CONTRACTS
+acceptance:
+- Persist review policy and auto-advance only with fresh bound runtime evidence
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/service.test.ts

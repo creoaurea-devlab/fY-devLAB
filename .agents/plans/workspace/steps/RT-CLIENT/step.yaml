@@ -1,0 +1,27 @@
+schema_version: 1
+id: RT-CLIENT
+title: Validate runtime observations in the browser client
+outcome: Validate runtime observations in the browser client
+kind: feature
+effect: change_source
+owner: browser-client
+slice: RT-S1
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- packages/contracts/src/harness.ts
+write:
+- packages/client/harness.ts
+needs:
+- RT-HTTP
+acceptance:
+- 'A2/A3: Browser validates shared runtime DTOs, legacy/missing observations and rejected
+  responses without importing server code. Existing account/run/queue/stop methods
+  remain usable.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node --test scripts/harness-http.test.ts
+spec: .agents/plans/runtime-focus/SPEC.md

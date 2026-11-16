@@ -1,0 +1,39 @@
+schema_version: 1
+id: WB-VERIFY
+title: Prove Whiteboard interaction, persistence and compatible refresh retention
+outcome: Prove Whiteboard interaction, persistence and compatible refresh retention
+kind: feature
+effect: change_source
+owner: verification
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- scripts/ui-elements-fixture.ts
+- scripts/dev-ui.test.ts
+- scripts/wisdohm-ui-hmr.py
+- docs/protocols/ui-design.md
+write:
+- scripts/whiteboard.test.ts
+- scripts/whiteboard-browser.py
+needs:
+- AT-87dbd23e-e145-4461-b586-5e79fb32c757
+acceptance:
+- 'A1-A7: use disposable physical source/data/ports; probe keyboard edits, connected/grouped/hidden
+  nodes, save/reopen, missing/malformed/conflicting files and project switches.'
+- Actual compatible TSX/CSS stimulus retains document/owner/draft plus external editor/iframe/PTY
+  identity; live sources untouched and owned processes/listeners cleaned up.
+- Combined types/build/architecture and owner dependency checks pass or report precise
+  limitations; no inherited historical runtime evidence.
+verification:
+  level: integration
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - node scripts/verify-packages.mjs
+  - node --test scripts/whiteboard.test.ts plugins/ui-whiteboard/src/document.test.ts
+    plugins/ui-whiteboard/src/workspace.test.ts
+  - DEVLAB_BUILD_DIR=/dev/shm/devlab-whiteboard-build npm run build
+  - DEVLAB_BUILD_DIR=/dev/shm/devlab-whiteboard-build /usr/bin/python3 scripts/whiteboard-browser.py
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

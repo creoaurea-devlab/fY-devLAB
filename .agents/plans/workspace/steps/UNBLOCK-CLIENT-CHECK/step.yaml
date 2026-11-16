@@ -1,0 +1,23 @@
+schema_version: 1
+id: UNBLOCK-CLIENT-CHECK
+title: Verify shared Run review-policy schemas in browser client
+outcome: Verify shared Run review-policy schemas in browser client
+kind: audit
+effect: inspect
+owner: browser-client
+slice: RT-S1
+mode: worker
+read:
+- packages/client/harness.ts
+write: []
+needs:
+- UNBLOCK-HTTP-CHECK
+acceptance:
+- Validate review settings through the browser Harness client
+- Preserve current sandbox restrictions, historical records, active claims, drafts
+  and genuine verification failures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-http.test.ts

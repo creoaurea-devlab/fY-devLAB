@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-16T01:59:59.324095+00:00",
+  "operation": "Graceful SIGTERM to identified manual backend; start existing devlab-refactored.service",
+  "service": {
+    "MainPID": "3780728",
+    "ActiveState": "active",
+    "SubState": "running"
+  },
+  "health": {
+    "phase": "ready",
+    "plugins": [
+      {
+        "id": "canvas-store",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "project-local",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "terminal-pty",
+        "version": "1.1.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "rules-local",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "project-server",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "preview-inspector",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "registry-map",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      },
+      {
+        "id": "transport-http",
+        "version": "1.0.0",
+        "state": "active",
+        "generation": 1,
+        "leases": 0
+      }
+    ]
+  },
+  "runningTerminalsPreserved": 11,
+  "samePidsStartIdentitiesAndOwnership": true,
+  "duplicateTerminals": 0,
+  "projectCount": 18,
+  "originalBackendAndFrontendIdentitiesPreserved": true,
+  "previewsRestoredAtSameUrls": 2,
+  "previewHttpChecks": "200",
+  "currentBuiltIndexAndArchitectureCatalogServed": true,
+  "defaultProjectScanEntries": 1363,
+  "browserReloaded": false,
+  "terminalInputSent": false,
+  "privateBackup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/server-restart-20261116-035857",
+  "sha256": {
+    "runtime/server.ts": "53dfe03e201f96573c9376fecd3f2647fa6338aaacc44b4a15a7de78047600e8",
+    "runtime/index.ts": "edfd8d5b554f60f7d5ea6181a1b9ffa2f79df6535440e3be8681d77d505ddd07",
+    "dist/index.html": "05aee519daebffd584745df8a2f6a40e42970d58edc007614d563ea6a045b770",
+    "dist/architecture.json": "7b94f72ab89418a5ea854952f93c390a67a4cbb0f7461861cfd0b93a084dbc81"
+  }
+}

@@ -1,0 +1,23 @@
+schema_version: 1
+id: browser-bootstrap
+purpose: Own React startup, existing ProjectWorkspace, per-project Canvas owners,
+  PreviewWorkspace synchronization and exact cleanup.
+group: browser
+paths:
+- src/main.ts
+- src/workspace.ts
+public:
+- src/main.ts
+- src/workspace.ts
+uses:
+- workspace-ui
+- preview-client
+- browser-client
+- service-contracts
+- preview-view
+- canvas-ui
+- ui-contracts
+- project-view
+- hood-view
+guidance:
+- .agents/skills/domain-browser/SKILL.md

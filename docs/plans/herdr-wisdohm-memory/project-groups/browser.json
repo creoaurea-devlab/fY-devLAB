@@ -1,0 +1,13 @@
+{
+  "customGroup": true,
+  "dragMove": true,
+  "dragReorder": true,
+  "keyboardMove": true,
+  "navigationUnchanged": true,
+  "reloadPersistence": true,
+  "collapsedPersistence": true,
+  "duplicateRefused": true,
+  "malformedStorageFallback": true,
+  "unavailableStorageUsable": true,
+  "jsErrors": []
+}

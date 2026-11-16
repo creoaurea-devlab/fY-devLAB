@@ -1,0 +1,17 @@
+schema_version: 1
+id: source-maps
+purpose: Generate source-backed architecture from actual host code and exact installed
+  UI/package sources and manifests.
+group: delivery
+paths:
+- scripts/architecture.ts
+public:
+- scripts/architecture.ts
+uses:
+- project-service
+- backend-host
+- browser-bootstrap
+- workspace-ui
+- preview-client
+guidance:
+- .agents/skills/domain-delivery/SKILL.md

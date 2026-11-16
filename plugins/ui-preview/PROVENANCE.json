@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "archive": "vendor/previous-ui/devlab-ui-preview-0.1.0.tgz",
+  "archiveSha256": "e805c5f0a4adbdfe9bfa43eb56ccbfeef88fb36e804d99aeabd4021b72960886",
+  "source": "Installed archive source copied without changes before scoped ratio enhancement",
+  "sourceSha256": {
+    "src/devtools.tsx": "b942a2da3858950e80a22b849799f9ec1fbd9a5bd49a19e98934061c022f7e02",
+    "src/fullscreen.ts": "dbeb322b251fd2d2ce8ba3c44b363435d90a9bebd33a091eaab5064355821463",
+    "src/index.ts": "7cc611fb59ed0bf6fc5de5577b90e440b40405e9539bd812e13da6bc6dd30f74",
+    "src/inspector.tsx": "06c3a8a6c28a70235d9efb7fb681f6eb109a8d4c65d39d116b932334d4c98d19",
+    "src/layout.tsx": "859d8d69fc60808bb94934b2b76429cc1395c40286fb072ab341f3edaf386fae",
+    "src/pane.tsx": "af6bf1adeb2572324f684ab319c5bcf4b9eb54b10a1d3e33ca6a167e427a456a",
+    "src/preferences.ts": "b35441159b19bbe278b6f211a92070b3db3ec21d3dbfa1c80e5252bfc8e50ee9",
+    "src/preview.css": "bea740c58bb12484d5fc111b4c8e82a107bd84cbe7359ae18e2c7af7b3ec24d0",
+    "src/server-state.ts": "3e1d6d4917a205453583a0b56dafbb9a6b3d8aee4a733a7a9021689faf630257",
+    "src/view.tsx": "d5c03bf139affa366cfaed21cabc5085087b98492b4a8676ef803fb7995c999a",
+    "src/workspace.ts": "d744d45d4e7a125d7db37a199a7329b8d8cf54c1926eb376b7a963716dbba1f6"
+  }
+}

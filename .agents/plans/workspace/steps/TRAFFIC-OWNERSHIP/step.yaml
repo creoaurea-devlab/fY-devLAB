@@ -1,0 +1,26 @@
+schema_version: 1
+id: TRAFFIC-OWNERSHIP
+title: Register TRAFFIC UI and browser probe ownership
+outcome: Register TRAFFIC UI and browser probe ownership
+kind: feature
+effect: change_source
+owner: governance-runtime
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+write:
+- .agents/ownership/browser/workspace-shell.yaml
+- .agents/ownership/verification/verification.yaml
+needs:
+- AGENTS-VIEW-SPEC
+acceptance:
+- New traffic.tsx and traffic-browser.py paths have one exact owner each.
+- Preserve existing ownership and acyclic dependency edges; route both paths after
+  update.
+verification:
+  level: targeted
+  reason: Bind exact ownership and check the changed public seam.
+  checks:
+  - node --test scripts/agent-definitions.test.ts
+spec: .agents/plans/workspace/agent-activity/SPEC.md

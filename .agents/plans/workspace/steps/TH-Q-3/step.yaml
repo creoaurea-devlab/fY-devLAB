@@ -1,0 +1,26 @@
+schema_version: 1
+id: TH-Q-3
+title: Verify and activate queue transport/wiring
+outcome: Verify and activate queue transport/wiring
+kind: feature
+effect: change_source
+owner: verification
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- scripts/harness-http.test.ts
+needs:
+- TH-Q-2
+acceptance:
+- Neutral schema/client/routes validate batch targets and identities; existing task
+  dispatch still works.
+- Combined checks pass; activation preserves terminal shell identities and restores
+  running previews. No unrelated live task launched.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check

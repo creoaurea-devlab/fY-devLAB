@@ -1,0 +1,114 @@
+/* Canvas-only additions to the original shell/node styles. */
+.canvas-wrapper{flex:1;height:100%;min-width:0;position:relative;overflow:hidden}
+.canvas-wrapper .react-flow{height:100%;width:100%}
+.devlab .palette-item{padding:7px 8px;border:1px solid transparent;text-align:left;display:flex;gap:8px;justify-content:flex-start;border-radius:6px}
+.devlab .palette-item:hover{border-color:hsl(var(--border));background:hsl(var(--accent))}
+.palette-header{padding:12px 8px 8px;border-bottom:1px solid hsl(var(--border))}
+.palette-header>div{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding-left:4px}
+.palette-header strong{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--muted-foreground))}
+.palette-header p{font-size:.68rem;line-height:1.5;color:hsl(var(--muted-foreground));padding:0 4px 2px;margin:0}
+.palette-nodes{padding:10px;display:flex;flex-direction:column;gap:8px}
+.palette-item>div:last-child{flex:1;min-width:0}
+.palette-item strong{font-size:.76rem;font-weight:500;line-height:1.2;display:block;color:hsl(var(--foreground))}
+.palette-item small{display:block;font-size:.63rem;color:hsl(var(--muted-foreground));line-height:1.3;margin-top:1px}
+.flow-node{position:relative;overflow:visible}
+.node-heading{flex:1;color:hsl(var(--foreground));font-size:.72rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.devlab .node-collapse{font-size:.55rem;padding:1px 4px;margin-left:4px;border:1px solid hsl(var(--border));border-radius:3px;background:hsl(var(--background));color:hsl(var(--foreground))}
+.terminal-node-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:150px;color:hsl(var(--muted-foreground));font-family:monospace;font-size:.7rem}
+.terminal-node-placeholder small{font-size:.6rem;text-align:center}
+.config-header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid hsl(var(--border));flex-shrink:0}
+.config-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.config-heading{flex:1;min-width:0;overflow:hidden}
+.config-heading strong{font-size:.78rem;font-weight:600;line-height:1.2;display:block}
+.config-heading small{display:block;font-size:.63rem;color:hsl(var(--muted-foreground));overflow:hidden;text-overflow:ellipsis}
+.config-header button{width:24px;height:24px;color:hsl(var(--muted-foreground))}
+.config-fields{padding:12px 14px;flex:1;overflow:auto}
+.config-field{display:block;margin-bottom:10px;font-size:.72rem;color:hsl(var(--muted-foreground))}
+.config-field input,.config-field select{width:100%;height:30px;font-size:.78rem;padding:4px 8px;margin-top:4px}
+.config-field textarea{width:100%;font-size:.75rem;padding:5px 8px;margin-top:4px;line-height:1.5;resize:vertical}
+.config-section{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:hsl(var(--muted-foreground));padding:8px 0 4px;margin:4px 0 8px;border-bottom:1px solid hsl(var(--border))}
+.config-note{font-size:.68rem;color:hsl(var(--muted-foreground));line-height:1.5}
+.config-data{font-size:.65rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.canvas-empty{position:absolute;top:30%;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:4px;color:hsl(var(--muted-foreground));pointer-events:none;font-size:.75rem}
+.canvas-empty>div{font-size:2rem;margin-bottom:4px}
+.canvas-warning{position:absolute;top:8px;left:12px;right:12px;background:hsl(var(--card));border:1px solid hsl(var(--primary));border-radius:5px;padding:4px 8px;font-size:.65rem;color:hsl(var(--foreground));pointer-events:none}
+.devlab .chat-input textarea{min-height:40px;max-height:120px}
+.react-flow__node-terminal>.flow-node{height:100%;display:flex;flex-direction:column}
+.react-flow__node-terminal .flow-node-body{flex:1;min-height:0}
+.react-flow__node-terminal .terminal-node-placeholder{height:100%;min-height:0}
+
+.devlab .canvas-studio{position:absolute;top:24px;right:24px;z-index:5;width:252px;padding:20px;border:1px solid hsl(var(--border));border-radius:16px;background:hsl(var(--card)/.96);box-shadow:0 12px 40px #00000018;backdrop-filter:blur(12px);color:hsl(var(--foreground));font-family:Inter,system-ui,sans-serif}
+.devlab .canvas-studio-eyebrow{display:flex;align-items:center;gap:7px;font-size:9px;font-weight:600;letter-spacing:.16em;color:hsl(var(--muted-foreground))}
+.devlab .canvas-studio-eyebrow>span{width:6px;height:6px;border-radius:50%;background:#14b8a6;box-shadow:0 0 0 3px #14b8a61a}
+.devlab .canvas-studio h2{font-size:21px;line-height:1.2;letter-spacing:-.04em;margin:15px 0 6px;font-weight:600}
+.devlab .canvas-studio p{font-size:11px;line-height:1.5;color:hsl(var(--muted-foreground));margin:0 0 18px}
+.devlab .canvas-studio-patterns{display:flex;gap:6px;margin-bottom:14px}
+.devlab .canvas-studio-patterns button{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:9px 4px;border:1px solid hsl(var(--border));border-radius:8px;background:transparent;color:hsl(var(--muted-foreground));font-size:10px;cursor:pointer}
+.devlab .canvas-studio-patterns button[aria-pressed="true"]{border-color:#14b8a6;background:#14b8a610;color:hsl(var(--foreground))}
+.pattern-preview{display:block;width:36px;height:24px;color:currentColor;opacity:.7}
+.pattern-preview-lines{background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);background-size:8px 8px}
+.pattern-preview-dots{background-image:radial-gradient(currentColor 1px,transparent 1px);background-size:8px 8px}
+.pattern-preview-cross{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath d='M6 3v6M3 6h6' stroke='%238994a5'/%3E%3C/svg%3E")}
+.devlab .canvas-studio-add{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;border:0;border-radius:8px;background:#0f766e;color:#fff;font-size:11px;font-weight:600;cursor:pointer}
+.devlab .canvas-studio-add:hover{background:#115e59}
+.devlab .canvas-studio-add>span{font-size:17px;line-height:1}
+.devlab .canvas-studio small{display:block;margin-top:12px;text-align:center;font-size:9px;color:hsl(var(--muted-foreground))}
+.devlab .canvas-studio button:focus-visible{outline:2px solid #14b8a6;outline-offset:3px}
+@media(max-width:700px){.devlab .canvas-studio{top:12px;right:12px;width:208px;padding:14px}}
+
+.react-flow__node-browser > .flow-node {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+}
+.react-flow__node-browser > .flow-node > .flow-node-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.browser-node-surface {
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.react-flow__node-browser .react-flow__resize-control {
+  border-color: #0d9488;
+}
+.react-flow__node-browser .react-flow__resize-control.handle {
+  background: #0d9488;
+  width: 8px;
+  height: 8px;
+}
+
+.react-flow__node-browser .react-flow__resize-control{z-index:10}
+
+/* Keep node chrome small without changing the mounted content surface. */
+.devlab .canvas-wrapper .flow-node-header{height:20px;min-height:20px;box-sizing:border-box;flex:none;gap:4px;padding:1px 5px;font-size:10px;line-height:16px;text-transform:none;letter-spacing:0}
+.devlab .canvas-wrapper .flow-node-header-icon{width:14px;height:14px;border-radius:3px}
+.devlab .canvas-wrapper .node-heading{font-size:10px;line-height:16px}
+.devlab .canvas-wrapper .node-collapse{height:16px;min-height:0;line-height:12px;padding:0 3px;margin-left:2px}
+.devlab .canvas-minimap-toggle{position:absolute;right:12px;bottom:12px;z-index:5;padding:3px 7px;font-size:10px;line-height:16px;background:hsl(var(--card));color:hsl(var(--foreground));border:1px solid hsl(var(--border));border-radius:4px}
+.devlab .canvas-minimap-toggle:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:2px}
+
+/* Options float above the canvas; selection never takes a layout column. */
+.devlab .canvas-wrapper .node-options-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:16px;height:16px;min-height:0;padding:0;border:0;border-radius:50%;background:transparent;color:hsl(var(--muted-foreground));font-size:15px;line-height:1;cursor:pointer}
+.devlab .canvas-wrapper .node-options-toggle:is(:hover,[aria-expanded="true"]){background:hsl(var(--accent));color:hsl(var(--foreground))}
+.devlab .canvas-wrapper .node-options-toggle:focus-visible{outline:2px solid hsl(var(--primary));outline-offset:1px}
+.devlab .canvas-wrapper>.config-drawer{position:absolute;inset:8px 8px auto auto;z-index:10;width:240px;max-width:calc(100% - 16px);max-height:calc(100% - 16px);border:1px solid hsl(var(--border));border-radius:6px;box-shadow:0 6px 20px hsl(var(--foreground)/.12)}
+.canvas-wrapper>.config-drawer .config-header{gap:5px;padding:6px 8px}
+.canvas-wrapper>.config-drawer .config-icon{width:18px;height:18px;font-size:10px;border-radius:4px}
+.canvas-wrapper>.config-drawer .config-heading strong{font-size:11px}
+.canvas-wrapper>.config-drawer .config-heading small{font-size:9px}
+.canvas-wrapper>.config-drawer .config-header button{width:22px;height:22px;min-height:0;padding:3px;flex:none}
+.canvas-wrapper>.config-drawer .config-fields{min-height:0;padding:8px 10px;overscroll-behavior:contain}
+.canvas-wrapper>.config-drawer .config-field{margin-bottom:7px;font-size:10px}
+.canvas-wrapper>.config-drawer .config-field :is(input,select){height:25px;min-height:0;margin-top:3px;padding:3px 6px;font-size:11px}
+.canvas-wrapper>.config-drawer .config-section{padding:5px 0 3px;margin:3px 0 6px;font-size:9px}
+
+.node-palette[hidden],.node-palette-collapsed[hidden]{display:none!important}

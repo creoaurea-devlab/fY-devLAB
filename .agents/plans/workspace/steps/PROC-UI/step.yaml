@@ -1,0 +1,41 @@
+schema_version: 1
+id: PROC-UI
+title: Show global queue history and compact editable Process planning
+outcome: Show global queue history and compact editable Process planning
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: PROC-S3
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+- packages/contracts/src/process.ts
+- packages/ui-contracts/src/index.ts
+- packages/contracts/src/projects.ts
+write:
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/process.tsx
+- plugins/ui-kanban/src/process.css
+needs:
+- PROC-CLIENT
+- PROC-UI-CONTRACT
+- PROC-DEFINITION
+acceptance:
+- Global active queues and archive/history remain visible independently of selected
+  milestone; foreign project entries remain inspectable and require appropriate project
+  context for actions.
+- Compact cards, smaller dialogs and minimizable panels preserve editing drafts, keyboard
+  focus and mounted editor/preview/terminal owners.
+- Process graph supports project-backed node and edge edits through existing expected-hash
+  file I/O; stale or invalid saves remain visible with recoverable draft. Prototype
+  stays read-only; triage uses selected-task confirmation and actual Harness status.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - node scripts/architecture.ts
+  - python3 scripts/planning-process-browser.py

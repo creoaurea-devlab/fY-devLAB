@@ -1,0 +1,23 @@
+schema_version: 1
+id: AUD-RENDERER
+title: Failure Retry survives presentation and discovery handoffs
+outcome: Failure Retry survives presentation and discovery handoffs
+kind: bugfix
+effect: change_source
+owner: terminal-view
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- plugins/ui-terminal/src/view.tsx
+needs:
+- AUD-CONTRACT
+acceptance:
+- Failure Retry survives presentation and discovery handoffs
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/terminal-lifecycle-browser.py
+spec: docs/plans/audit-remediation/SPEC.md

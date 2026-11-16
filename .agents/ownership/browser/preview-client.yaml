@@ -1,0 +1,13 @@
+schema_version: 1
+id: preview-client
+purpose: Adapt public ProjectServers unconfigured-state guidance to this manual-setup
+  host; preserve all other service state and errors.
+group: browser
+paths:
+- src/preview-client.ts
+public:
+- src/preview-client.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-browser/SKILL.md

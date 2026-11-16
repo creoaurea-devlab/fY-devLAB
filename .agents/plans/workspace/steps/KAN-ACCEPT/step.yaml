@@ -1,0 +1,36 @@
+schema_version: 1
+id: KAN-ACCEPT
+title: Accept — JSON planner
+outcome: Accept — JSON planner
+kind: feature
+effect: change_source
+owner: verification
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- scripts/planning.test.ts
+- scripts/planning-browser.py
+- scripts/planning-fixture.ts
+- scripts/host.test.ts
+- scripts/ui-copy-browser.py
+needs:
+- KAN-BOOT
+- KAN-PROTOCOL
+acceptance:
+- Combined runtime/native31 tests and both1440/820 real15-group Planning browser acceptance
+  pass with zero JavaScript errors and private cleanup.
+- Core backup hashes verify; controlled live activation preserves both project/canvas
+  records and all3running shell IDs/PIDs/policies; limitations are recorded.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - python3 scripts/planning-browser.py
+  - python3 ../../WISDOHM2/tests/validate.py --target .
+  - python3 .context/router.py orchestrate validate
+  - python3 -B -m unittest discover -s .context/tests -v
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

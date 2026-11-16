@@ -1,0 +1,38 @@
+schema_version: 1
+id: TH-37
+title: Expose retained-editor dirty paths without discarding drafts
+outcome: Expose retained-editor dirty paths without discarding drafts
+kind: feature
+effect: change_source
+owner: project-view
+slice: TH-SAFE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- packages/ui-contracts/src/index.ts
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-projects/src/editor.tsx
+- plugins/ui-projects/src/index.ts
+write:
+- plugins/ui-projects/src/workspace.ts
+- plugins/ui-projects/src/editor.tsx
+- plugins/ui-projects/src/index.ts
+needs:
+- TH-20
+acceptance:
+- Implement the agreed query using the current editor, cached projects and drafts;
+  include unsaved paths beyond the visible editor.
+- Project changes and external file changes preserve both disk changes and dirty buffers;
+  no automatic saving or clearing.
+- Load and register docs/protocols/ui-design.md for execution; verify keyboard/focus,
+  failure/retry, project switching and retention of editor drafts, preview and terminal
+  owners in the actual affected flow. Existing smoke checks alone do not prove the
+  new behavior.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - python3 scripts/planning-browser.py

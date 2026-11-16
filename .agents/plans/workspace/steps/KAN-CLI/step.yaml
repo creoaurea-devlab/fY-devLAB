@@ -1,0 +1,28 @@
+schema_version: 1
+id: KAN-CLI
+title: Cli — JSON planner
+outcome: Cli — JSON planner
+kind: feature
+effect: change_source
+owner: planning-tools
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- scripts/planner.ts
+needs:
+- KAN-SERVICE
+acceptance:
+- Any local agent/provider can snapshot/apply the shared schemas and writer without
+  an SDK or provider dependency.
+- Invalid/bounded JSON commands fail clearly; actor labels grant no permissions and
+  check strings are not executed.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

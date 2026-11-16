@@ -1,0 +1,67 @@
+schema_version: 1
+id: governance-runtime
+purpose: Own planning/history data adapters and reviewed local guidance. The automatic
+  Codex executor is owned separately by codex-harness in src/runtime.
+group: coordination
+# Retired .wisdohm paths preserve original task definitions and report digests.
+# The installed loader blocks fresh execution against those historical controls.
+paths:
+- .wisdohm/orchestration.py
+- .wisdohm/config/agents.yaml
+- .agents/skills/wisdohm-orchestrate/SKILL.md
+- .agents/skills/wisdohm-owner/SKILL.md
+- .wisdohm/BOOT.md
+- .wisdohm/common.py
+- .wisdohm/config/project.yaml
+- .wisdohm/journey.yaml
+- .wisdohm/policy.yaml
+- .wisdohm/protocols/maintenance.md
+- .wisdohm/protocols/rules.md
+- .wisdohm/protocols/updates.md
+- .wisdohm/router.py
+- .wisdohm/session.py
+- .wisdohm/store.py
+- .agents/skills/spec-agent/SKILL.md
+- .wisdohm/planning.py
+- .wisdohm/routing.py
+- .wisdohm/workspaces.py
+- .wisdohm/config/owner-profiles.yaml
+- .agents/agents/**
+- .agents/workflows/**
+- .agents/ownership/**
+- .agents/runtime/definitions.py
+- .agents/skills/domain-source-of-truth/SKILL.md
+- .agents/skills/domain-backend/SKILL.md
+- .agents/skills/domain-browser/SKILL.md
+- .agents/skills/domain-contracts/SKILL.md
+- .agents/skills/domain-verification/SKILL.md
+- .agents/skills/domain-delivery/SKILL.md
+- .agents/runtime/router.py
+- .agents/runtime/session.py
+- .agents/runtime/common.py
+- .agents/runtime/planning.py
+- .agents/runtime/store.py
+- .agents/runtime/routing.py
+- .agents/runtime/workspaces.py
+- .agents/runtime/orchestration.py
+- .agents/data/**
+- .agents/BOOT.md
+- .agents/policy.yaml
+- .agents/protocols/rules.md
+- .agents/protocols/work.md
+- .agents/protocols/updates.md
+- docs/history/updates-before-simplification-20261115.md
+- .agents/protocols/maintenance.md
+- .agents/project.yaml
+- .wisdohm/protocols/work.md
+- .agents/skills/populate-context/SKILL.md
+public:
+- .agents/data/definitions.py
+- .wisdohm/router.py
+- .agents/runtime/router.py
+- .agents/runtime/store.py
+- .agents/runtime/common.py
+- .agents/runtime/definitions.py
+uses: []
+guidance:
+- .agents/skills/domain-source-of-truth/SKILL.md

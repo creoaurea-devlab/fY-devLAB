@@ -1,0 +1,12 @@
+schema_version: 1
+id: process-definition
+purpose: Own the declarative project process graph; stage, step and agent metadata
+  never execute commands.
+group: coordination
+paths:
+- devlab.process.json
+public:
+- devlab.process.json
+uses: []
+guidance:
+- .agents/skills/domain-source-of-truth/SKILL.md

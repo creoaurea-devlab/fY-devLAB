@@ -1,0 +1,30 @@
+schema_version: 1
+id: KAN-PROTOCOL
+title: Protocol — JSON planner
+outcome: Protocol — JSON planner
+kind: feature
+effect: change_source
+owner: planning-protocol
+slice: KAN-S2
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- .context/protocols/plan.md
+- AGENTS.md
+- .context/state/index.json
+needs:
+- KAN-CLI
+acceptance:
+- plan.md declares JSON definition/progress authorities, stable-ID/dependency/CAS
+  update rules and truthful evidence boundaries.
+- AGENTS routes to the protocol; context memory, ownership and feature/UI registries
+  describe actual connected implementation.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

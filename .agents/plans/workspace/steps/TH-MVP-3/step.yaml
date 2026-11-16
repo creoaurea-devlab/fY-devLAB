@@ -1,0 +1,26 @@
+schema_version: 1
+id: TH-MVP-3
+title: Show live output and Stop in the task inspector
+outcome: Show live output and Stop in the task inspector
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+needs:
+- TH-MVP-2
+acceptance:
+- One Run with Codex action, account/login, polled live output, Stop and durable result;
+  read-only previews cannot execute; preserve drafts/project/selection.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts

@@ -1,0 +1,37 @@
+schema_version: 1
+id: AUD-VERIFY
+title: Verify new regressions and deployment consistency
+outcome: Verify new regressions and deployment consistency
+kind: bugfix
+effect: change_source
+owner: verification
+slice: AUD-S1
+mode: worker
+read:
+- docs/plans/audit-remediation/SPEC.md
+write:
+- scripts/terminal-lease.test.ts
+- scripts/terminal-lease-fixture.ts
+- scripts/terminal-lifecycle-browser.py
+- scripts/maintenance.test.ts
+- scripts/verify-deployment.ts
+needs:
+- AUD-LEASE
+- AUD-RENDERER
+- AUD-CANVAS
+- AUD-SHELL
+- AUD-CLEAN-CONTRACT
+- AUD-CLEAN-RUNTIME
+- AUD-PROTOCOL
+- AUD-DELIVERY
+- AUD-HISTORY
+acceptance:
+- Verify new regressions and deployment consistency
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/*.test.ts
+  - python3 scripts/terminal-lifecycle-browser.py
+  - npm run verify:deployment
+spec: docs/plans/audit-remediation/SPEC.md

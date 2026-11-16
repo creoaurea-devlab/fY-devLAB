@@ -1,0 +1,33 @@
+schema_version: 1
+id: AGH-05
+title: Route preview source briefs through the selected agent entry
+outcome: Route preview source briefs through the selected agent entry
+kind: docs
+effect: change_source
+owner: preview-view
+slice: AGH-S4
+mode: worker
+read:
+- plugins/ui-preview/src/element-brief.ts
+- .agents/README.md
+- .agents/plans/README.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-preview/src/element-brief.ts
+needs: []
+acceptance:
+- Copied instructions resolve AGENTS.md and the selected agent entry; file-authority
+  projects use .agents guidance, while legacy targets follow their declared entry.
+- Refer to the shared planner/selected ownership and implementation template instead
+  of requiring obsolete JSON/control paths; preserve source hashes, safe quoted user
+  data, read-only modes and existing policy boundaries.
+- No UI control, lifecycle, provider invocation, command execution, draft or terminal
+  behavior changes. Record an attributed source review; copied text remains guidance,
+  not execution evidence.
+verification:
+  level: review
+  reason: Only copied agent instructions change. Review emitted guidance and entry/ownership
+    references; preserve existing controls, sandbox boundaries and UI state. Existing
+    relevant helper suites supply combined regression evidence.
+  checks: []
+spec: .agents/plans/agent-home/SPEC.md

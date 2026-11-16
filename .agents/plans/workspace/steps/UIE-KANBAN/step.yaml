@@ -1,0 +1,38 @@
+schema_version: 1
+id: UIE-KANBAN
+title: UIE-KANBAN
+outcome: UIE-KANBAN
+kind: feature
+effect: change_source
+owner: planning-ui
+slice: UIE-S1
+mode: worker
+read:
+- docs/plans/ui-elements/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-kanban/package.json
+- plugins/ui-kanban/src/forms.tsx
+- plugins/ui-kanban/src/index.ts
+- plugins/ui-kanban/src/model.ts
+- plugins/ui-kanban/src/planning.css
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/prototype-variants.tsx
+- plugins/ui-kanban/src/prototype.css
+needs:
+- UIE-UI-CONTRACT
+acceptance:
+- A1
+- A2
+- A3
+- A4
+- A5
+- A6
+- A7
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npx tsc --noEmit
+  - python3 scripts/ui-elements-browser.py
+spec: docs/plans/ui-elements/SPEC.md

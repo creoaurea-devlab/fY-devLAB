@@ -1,0 +1,40 @@
+schema_version: 1
+id: TH-28
+title: Verify neutral contracts and Codex protocol failure behavior
+outcome: Verify neutral contracts and Codex protocol failure behavior
+kind: feature
+effect: plan
+owner: verification
+slice: TH-S08
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/index.ts
+write: []
+needs:
+- TH-02
+- TH-03
+- TH-05
+- TH-06
+- TH-07
+- TH-08
+- TH-09
+- TH-10
+- TH-11
+- TH-36
+acceptance:
+- 'PLANNED PATHS — before execution, TH-01 must reconcile exact ownership and this
+  task write scope through the shared planner: scripts/harness-contracts.test.ts,
+  scripts/execution-contracts.test.ts, scripts/harness-protocol-fixture.ts. Empty/partial
+  write scope is not permission to start.'
+- Build deterministic fixtures for account lifecycle, pagination, unsupported models/controls,
+  approvals, out-of-order/duplicate events, malformed JSON and crashed subprocess.
+- Run adapter through neutral ports; prove no SDK types escape public contracts and
+  fake protocol tests cannot be mistaken for a successful real login.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/harness-contracts.test.ts scripts/execution-contracts.test.ts
+  - node --test plugins/codex-harness/src/*.test.ts

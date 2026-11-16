@@ -1,0 +1,25 @@
+schema_version: 1
+id: TH-Q-1
+title: Persist and sequence slice/milestone queues
+outcome: Persist and sequence slice/milestone queues
+kind: feature
+effect: change_source
+owner: codex-harness
+slice: TH-MVP-S1
+mode: worker
+read:
+- packages/contracts/src/harness.ts
+write:
+- plugins/codex-harness/src/service.ts
+- plugins/codex-harness/src/service.test.ts
+needs: []
+acceptance:
+- One task at a time; frozen task definitions; idempotent start; durable restart reconciliation;
+  stop blocks pending starts.
+- Only canonical complete satisfies dependencies. Tasks that end in Review do not
+  silently become complete; queued dependents wait.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test plugins/codex-harness/src/*.test.ts

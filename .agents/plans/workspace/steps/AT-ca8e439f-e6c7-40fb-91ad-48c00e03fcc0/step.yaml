@@ -1,0 +1,24 @@
+schema_version: 1
+id: AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0
+title: Verify thread repair
+outcome: Verify thread repair
+kind: feature
+effect: change_source
+owner: verification
+slice: S-e78af2e8-ff7d-4470-b7cf-68cf1f4e08be
+mode: worker
+read: []
+write:
+- scripts/project-development.test.ts
+- scripts/project-thread-delete.test.ts
+- scripts/project-workspace.test.ts
+needs: []
+acceptance:
+- Nested preview loads; deletion protects drafts, jobs and recovery.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run check
+  - npm run build
+  - node scripts/verify-deployment.ts

@@ -1,0 +1,32 @@
+schema_version: 1
+id: WIS-UI-SPEC
+title: Generate and review source-backed specifications before Kanban import
+outcome: Generate and review source-backed specifications before Kanban import
+kind: feature
+effect: change_source
+owner: spec-ui
+slice: WIS-UI-S1
+mode: worker
+read:
+- docs/plans/spec-agent/SPEC.md
+- docs/protocols/ui-design.md
+write:
+- plugins/ui-spec/src/index.ts
+- plugins/ui-spec/src/view.tsx
+- plugins/ui-spec/src/model.ts
+- plugins/ui-spec/src/spec.css
+needs: []
+acceptance:
+- PROTOTYPING retains its mounted editor/preview owners.
+- SPEC Agent requires explicit generation and review; only reviewed canonical tasks
+  are added to Kanban.
+- Cancellation, failures, keyboard and retained resource behavior pass both viewport
+  fixtures.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check
+  - python3 scripts/spec-agent-browser.py
+spec: docs/plans/spec-agent/SPEC.md

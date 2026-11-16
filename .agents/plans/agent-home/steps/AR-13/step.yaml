@@ -1,0 +1,210 @@
+schema_version: 1
+id: AR-13
+title: Activate file definitions after a reviewed migration and restore rehearsal
+outcome: Activate file definitions after a reviewed migration and restore rehearsal
+kind: feature
+effect: change_source
+owner: planning-protocol
+slice: AGH-S3
+mode: orchestrator
+read:
+- .context/protocols/plan.md
+- .context/state/tasks.json
+- .context/state/progress.json
+- .agents/plans/agent-home/SPEC.md
+- scripts/planner.ts
+write:
+- .agents/plans/authority.yaml
+- .context/protocols/plan.md
+- AGENTS.md
+- .agents/README.md
+- .agents/plans/README.md
+- .agents/plans/workspace/README.md
+- .agents/plans/agent-home/SPEC.md
+- .agents/plans/agent-home/ROADMAP.md
+- .agents/plans/agent-home/validate.py
+- .agents/templates/implementation.md
+- .agents/plans/catalog.yaml
+- .context/state/tasks.json
+- .context/state/progress.json
+- .agents/plans/agent-home/steps/AGH-01/step.yaml
+- .agents/plans/agent-home/steps/AGH-02/step.yaml
+- .agents/plans/agent-home/steps/AGH-03/step.yaml
+- .agents/plans/agent-home/steps/AR-09/step.yaml
+- .agents/plans/agent-home/steps/AR-10/step.yaml
+- .agents/plans/agent-home/steps/AR-11/step.yaml
+- .agents/plans/agent-home/steps/AR-12/step.yaml
+- .agents/plans/agent-home/steps/AR-13/step.yaml
+- .agents/plans/agent-home/steps/AR-14/step.yaml
+- .agents/plans/agent-home/steps/AR-15/step.yaml
+- .agents/plans/agent-home/steps/AR-16/step.yaml
+- .agents/plans/agent-home/steps/AR-17/step.yaml
+- .agents/plans/agent-home/steps/AR-20/step.yaml
+- .agents/plans/agent-home/steps/AR-21/step.yaml
+- .agents/plans/workspace/steps/AR-02/step.yaml
+- .agents/plans/workspace/steps/AR-03/step.yaml
+- .agents/plans/workspace/steps/AR-05/step.yaml
+- .agents/plans/workspace/steps/AR-06/step.yaml
+- .agents/plans/workspace/steps/AR-07/step.yaml
+- .agents/plans/workspace/steps/AR-08/step.yaml
+- .agents/plans/workspace/steps/AR-25/step.yaml
+- .agents/plans/workspace/steps/AR-26/step.yaml
+- .agents/plans/workspace/steps/AR-28/step.yaml
+- .agents/plans/workspace/steps/AR-29/step.yaml
+- .agents/plans/workspace/steps/AR-30/step.yaml
+- .agents/plans/workspace/steps/AR-31/step.yaml
+- .agents/plans/workspace/steps/AR-32/step.yaml
+- .agents/plans/workspace/steps/AR-33/step.yaml
+- .agents/plans/workspace/steps/AR-34/step.yaml
+- .agents/plans/workspace/steps/AR-35/step.yaml
+- .agents/plans/workspace/steps/AT-234a93e3-64e5-46fb-b5e0-41c7c783aee5/step.yaml
+- .agents/plans/workspace/steps/AT-2464d861-046e-41cf-a9ae-68ef8f6f892f/step.yaml
+- .agents/plans/workspace/steps/AT-54c140ee-6270-47f7-8efc-ff728afd472b/step.yaml
+- .agents/plans/workspace/steps/AT-834d5097-2bfd-4ed1-b116-6323b939120b/step.yaml
+- .agents/plans/workspace/steps/AT-86b3a6ad-d0b4-46d5-9a5e-f5b70b3ab72b/step.yaml
+- .agents/plans/workspace/steps/AT-ca8e439f-e6c7-40fb-91ad-48c00e03fcc0/step.yaml
+- .agents/plans/workspace/steps/AUD-CANVAS/step.yaml
+- .agents/plans/workspace/steps/AUD-CLEAN-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/AUD-CLEAN-RUNTIME/step.yaml
+- .agents/plans/workspace/steps/AUD-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/AUD-DELIVERY/step.yaml
+- .agents/plans/workspace/steps/AUD-HISTORY/step.yaml
+- .agents/plans/workspace/steps/AUD-LEASE/step.yaml
+- .agents/plans/workspace/steps/AUD-PROTOCOL/step.yaml
+- .agents/plans/workspace/steps/AUD-RENDERER/step.yaml
+- .agents/plans/workspace/steps/AUD-SHELL/step.yaml
+- .agents/plans/workspace/steps/AUD-VERIFY/step.yaml
+- .agents/plans/workspace/steps/KAN-ACCEPT/step.yaml
+- .agents/plans/workspace/steps/KAN-BOOT/step.yaml
+- .agents/plans/workspace/steps/KAN-CLI/step.yaml
+- .agents/plans/workspace/steps/KAN-CLIENT/step.yaml
+- .agents/plans/workspace/steps/KAN-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/KAN-HTTP/step.yaml
+- .agents/plans/workspace/steps/KAN-PROFILE/step.yaml
+- .agents/plans/workspace/steps/KAN-PROTOCOL/step.yaml
+- .agents/plans/workspace/steps/KAN-SERVICE/step.yaml
+- .agents/plans/workspace/steps/KAN-SHELL/step.yaml
+- .agents/plans/workspace/steps/KAN-UI/step.yaml
+- .agents/plans/workspace/steps/PROC-CLIENT/step.yaml
+- .agents/plans/workspace/steps/PROC-CONTRACTS/step.yaml
+- .agents/plans/workspace/steps/PROC-DEFINITION/step.yaml
+- .agents/plans/workspace/steps/PROC-HTTP/step.yaml
+- .agents/plans/workspace/steps/PROC-HTTP-TEST/step.yaml
+- .agents/plans/workspace/steps/PROC-OWN/step.yaml
+- .agents/plans/workspace/steps/PROC-PROFILES/step.yaml
+- .agents/plans/workspace/steps/PROC-SERVICE/step.yaml
+- .agents/plans/workspace/steps/PROC-UI/step.yaml
+- .agents/plans/workspace/steps/PROC-UI-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/PROC-VERIFY/step.yaml
+- .agents/plans/workspace/steps/RULES-BACKEND/step.yaml
+- .agents/plans/workspace/steps/RULES-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/RULES-INTEGRATION/step.yaml
+- .agents/plans/workspace/steps/RULES-MIGRATION/step.yaml
+- .agents/plans/workspace/steps/RULES-UI/step.yaml
+- .agents/plans/workspace/steps/TERM-ACCEPT/step.yaml
+- .agents/plans/workspace/steps/TERM-BOOTSTRAP/step.yaml
+- .agents/plans/workspace/steps/TERM-CANVAS/step.yaml
+- .agents/plans/workspace/steps/TERM-CLIENT/step.yaml
+- .agents/plans/workspace/steps/TERM-CONFINEMENT/step.yaml
+- .agents/plans/workspace/steps/TERM-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/TERM-DISTRIBUTION/step.yaml
+- .agents/plans/workspace/steps/TERM-HOOD/step.yaml
+- .agents/plans/workspace/steps/TERM-PREVIEW/step.yaml
+- .agents/plans/workspace/steps/TERM-PROFILE/step.yaml
+- .agents/plans/workspace/steps/TERM-RENDERER/step.yaml
+- .agents/plans/workspace/steps/TERM-SERVICE/step.yaml
+- .agents/plans/workspace/steps/TERM-SHELL/step.yaml
+- .agents/plans/workspace/steps/TERM-TRANSPORT/step.yaml
+- .agents/plans/workspace/steps/TERM-UI-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/TH-01/step.yaml
+- .agents/plans/workspace/steps/TH-02/step.yaml
+- .agents/plans/workspace/steps/TH-03/step.yaml
+- .agents/plans/workspace/steps/TH-04/step.yaml
+- .agents/plans/workspace/steps/TH-05/step.yaml
+- .agents/plans/workspace/steps/TH-06/step.yaml
+- .agents/plans/workspace/steps/TH-07/step.yaml
+- .agents/plans/workspace/steps/TH-08/step.yaml
+- .agents/plans/workspace/steps/TH-09/step.yaml
+- .agents/plans/workspace/steps/TH-10/step.yaml
+- .agents/plans/workspace/steps/TH-11/step.yaml
+- .agents/plans/workspace/steps/TH-12/step.yaml
+- .agents/plans/workspace/steps/TH-13/step.yaml
+- .agents/plans/workspace/steps/TH-14/step.yaml
+- .agents/plans/workspace/steps/TH-15/step.yaml
+- .agents/plans/workspace/steps/TH-16/step.yaml
+- .agents/plans/workspace/steps/TH-17/step.yaml
+- .agents/plans/workspace/steps/TH-18/step.yaml
+- .agents/plans/workspace/steps/TH-19/step.yaml
+- .agents/plans/workspace/steps/TH-20/step.yaml
+- .agents/plans/workspace/steps/TH-21/step.yaml
+- .agents/plans/workspace/steps/TH-22/step.yaml
+- .agents/plans/workspace/steps/TH-23/step.yaml
+- .agents/plans/workspace/steps/TH-24/step.yaml
+- .agents/plans/workspace/steps/TH-25/step.yaml
+- .agents/plans/workspace/steps/TH-26/step.yaml
+- .agents/plans/workspace/steps/TH-27/step.yaml
+- .agents/plans/workspace/steps/TH-28/step.yaml
+- .agents/plans/workspace/steps/TH-29/step.yaml
+- .agents/plans/workspace/steps/TH-30/step.yaml
+- .agents/plans/workspace/steps/TH-31/step.yaml
+- .agents/plans/workspace/steps/TH-32/step.yaml
+- .agents/plans/workspace/steps/TH-33/step.yaml
+- .agents/plans/workspace/steps/TH-34/step.yaml
+- .agents/plans/workspace/steps/TH-35/step.yaml
+- .agents/plans/workspace/steps/TH-36/step.yaml
+- .agents/plans/workspace/steps/TH-37/step.yaml
+- .agents/plans/workspace/steps/TH-CONTROLS-CLIENT/step.yaml
+- .agents/plans/workspace/steps/TH-CONTROLS-HTTP/step.yaml
+- .agents/plans/workspace/steps/TH-MVP-1/step.yaml
+- .agents/plans/workspace/steps/TH-MVP-2/step.yaml
+- .agents/plans/workspace/steps/TH-MVP-3/step.yaml
+- .agents/plans/workspace/steps/TH-MVP-4/step.yaml
+- .agents/plans/workspace/steps/TH-Q-1/step.yaml
+- .agents/plans/workspace/steps/TH-Q-2/step.yaml
+- .agents/plans/workspace/steps/TH-Q-3/step.yaml
+- .agents/plans/workspace/steps/UIE-BOOT/step.yaml
+- .agents/plans/workspace/steps/UIE-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/UIE-DEVELOPMENT/step.yaml
+- .agents/plans/workspace/steps/UIE-INTEGRATION/step.yaml
+- .agents/plans/workspace/steps/UIE-KANBAN/step.yaml
+- .agents/plans/workspace/steps/UIE-SOURCE/step.yaml
+- .agents/plans/workspace/steps/UIE-UI-CONTRACT/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-CONTROLS/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-INTEGRATE/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-KANBAN/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-KANBAN-QA/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-MEMORY/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-PROTOTYPING/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-READER/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-SPEC/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-SPEC-COMPOSE/step.yaml
+- .agents/plans/workspace/steps/WIS-UI-SPEC-QA/step.yaml
+- .agents/plans/agent-home/steps/AR-14/SPEC.md
+- .agents/plans/agent-home/steps/AR-20/SPEC.md
+- docs/plans/audit-remediation-20261103/milestones/M1-foundation/slices/S2-startup/AR-05.md
+needs:
+- AR-12
+- AR-14
+- AR-15
+- AR-16
+- AR-17
+acceptance:
+- 'AH-07: Authority selection changes only after a full source/data snapshot and a
+  disposable conversion/restore rehearsal.'
+- 'AH-09: All current definitions/reports and protected Running/Review handoffs are
+  compared against fresh preflight digests; bindings become full step definitions
+  exactly once.'
+- 'AH-07: Old JSON/ownership representations become read-only derived views or preserved
+  import provenance, with no competing editable source.'
+- 'AH-10: Root instructions name one supported entry path and distinguish staged guidance
+  from activated runtime behavior.'
+- 'AH-07: Activation waits for terminal/project/harness and trusted-observer parity
+  with the staged source generation; unsupported consumers retain a generated read-only
+  view and cannot edit old definitions.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node scripts/planner.ts --root . snapshot
+  - python3 .agents/plans/agent-home/validate.py --root .
+spec: .agents/plans/agent-home/steps/AR-13/SPEC.md

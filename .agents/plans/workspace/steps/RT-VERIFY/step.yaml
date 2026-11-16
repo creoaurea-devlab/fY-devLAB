@@ -1,0 +1,39 @@
+schema_version: 1
+id: RT-VERIFY
+title: Verify direct Run, runtime feedback and agent Kanban recipe together
+outcome: Verify direct Run, runtime feedback and agent Kanban recipe together
+kind: feature
+effect: change_source
+owner: verification
+slice: RT-S3
+mode: worker
+read:
+- .agents/plans/runtime-focus/SPEC.md
+- scripts/planning-process-browser.py
+- scripts/planning.test.ts
+- scripts/harness-http.test.ts
+write:
+- scripts/planning.test.ts
+- scripts/harness-http.test.ts
+- scripts/planning-process-browser.py
+needs:
+- RT-UI
+- RT-GUIDE
+acceptance:
+- 'A1-A6: Add meaningful disposable-fixture coverage for schema/help, hierarchy creation,
+  returned IDs, dependency/status/move/state changes, stale rejection and replay.'
+- Run real browser probes for task/slice/milestone direct Run, duplicate clicks, quiet
+  run, failed/disconnected status, review wait, stop, reopen/reload, keyboard focus
+  and retained drafts/terminal/preview owners. Extend existing harnesses; do not launch
+  live task work.
+- Record exact check outcomes and remaining operator limitations; review acyclic ownership
+  and browser/server boundaries; do not convert planned checks or fixtures into live
+  runtime proof.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/planning.test.ts scripts/harness-http.test.ts scripts/process.test.ts
+  - python3 scripts/planning-process-browser.py
+  - npx tsc --noEmit
+spec: .agents/plans/runtime-focus/SPEC.md

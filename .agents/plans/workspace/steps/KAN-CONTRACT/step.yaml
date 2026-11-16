@@ -1,0 +1,28 @@
+schema_version: 1
+id: KAN-CONTRACT
+title: Contract — JSON planner
+outcome: Contract — JSON planner
+kind: feature
+effect: change_source
+owner: service-contracts
+slice: KAN-S1
+mode: worker
+read:
+- .context/protocols/plan.md
+write:
+- packages/contracts/src/planner.ts
+- packages/contracts/src/planning.ts
+- packages/contracts/src/index.ts
+needs: []
+acceptance:
+- Public M/S/AT and command/progress DTOs typecheck for client/server/CLI; reported
+  provenance is explicit.
+- Legacy Planning interface remains compatible; runtime schemas reject invalid envelopes.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+  - node --test scripts/planning.test.ts
+feature: kanban-planner
+spec: docs/plans/kanban-continuity/IMPLEMENTATION.md

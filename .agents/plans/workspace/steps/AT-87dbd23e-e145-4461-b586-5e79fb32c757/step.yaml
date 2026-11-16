@@ -1,0 +1,27 @@
+schema_version: 1
+id: AT-87dbd23e-e145-4461-b586-5e79fb32c757
+title: Review combined Whiteboard delivery and discovery metadata
+outcome: Review combined Whiteboard delivery and discovery metadata
+kind: feature
+effect: change_source
+owner: delivery-config
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+- src/main.ts
+- src/contributions.ts
+- src/shell.tsx
+write:
+- vendor/full-ui/catalog.json
+needs:
+- WB-RUNTIME
+acceptance:
+- Register the local Whiteboard package in the existing discovery catalog.
+- Review the combined root composition and update only its presentation digests, preserving
+  original archives and prior provenance.
+verification:
+  level: targeted
+  reason: The final delivery manifest must match the combined reviewed source.
+  checks:
+  - node scripts/verify-packages.mjs

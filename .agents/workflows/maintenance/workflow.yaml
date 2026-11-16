@@ -1,0 +1,16 @@
+schema_version: 1
+kind: maintenance
+agent: implementer
+procedure:
+- Identify the bounded maintenance outcome, current consumers and recovery needs.
+- Apply the smallest reversible change within its owner while preserving existing interfaces and retained
+  state.
+- Check the affected path at the level warranted by its risk; finish when the maintenance outcome and
+  material compatibility assumptions are supported.
+guidance:
+- .agents/guides/CODE.md
+- .agents/guides/VERIFICATION.md
+verification:
+  default: smoke
+  reason: 'Select evidence from the actual change: review for prose, a smoke check for configuration,
+    and targeted checks for behavior or data risk.'

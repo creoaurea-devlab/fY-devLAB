@@ -1,0 +1,17 @@
+schema_version: 1
+id: terminal-service
+purpose: Own real terminal processes, immutable ownership policy, confinement, replay,
+  persistence and cleanup.
+group: backend
+paths:
+- plugins/terminal-pty/native/ownership-sandbox.c
+- plugins/terminal-pty/package.json
+- plugins/terminal-pty/src/confinement.ts
+- plugins/terminal-pty/src/index.ts
+- plugins/terminal-pty/src/persistence.ts
+public:
+- plugins/terminal-pty/src/index.ts
+uses:
+- service-contracts
+guidance:
+- .agents/skills/domain-backend/SKILL.md

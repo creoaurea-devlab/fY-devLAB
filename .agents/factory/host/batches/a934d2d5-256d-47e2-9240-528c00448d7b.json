@@ -1,0 +1,37 @@
+{
+  "command": {
+    "projectId": "a",
+    "commandId": "8af9fb55-38cf-4c01-a225-5eaaf1cb02a0",
+    "expectedDigest": "e35a972f0039f3b4b2a4be88252597eb9499b7e2566fda73caeba1b7c687657b",
+    "kind": "milestone",
+    "targetId": "M-2aa85f2d-ff8a-4754-999e-6cc7549b1652"
+  },
+  "definitions": {
+    "AT-8706c9f1-6237-40b6-b425-514a686a2c96": "61cee951a26ddfef415a145e90e773245bb12780afe0a2526ad44f7c693692ec",
+    "AT-0ebb1b30-d9bf-4922-87e7-34ca8586f5c1": "7fd6811088ada4f338ce8ac597161c8b4a01b96e940da75d212aaeaab8ce441f",
+    "AT-7170f934-6cd5-4abb-9d6c-ecb450fd0b4e": "0f51fd2ff10eaa72ecdf99e3efca3548a96d03f12245cf6e9fca7f3c53eaa3a0"
+  },
+  "view": {
+    "id": "a934d2d5-256d-47e2-9240-528c00448d7b",
+    "projectId": "a",
+    "kind": "milestone",
+    "targetId": "M-2aa85f2d-ff8a-4754-999e-6cc7549b1652",
+    "taskIds": [
+      "AT-8706c9f1-6237-40b6-b425-514a686a2c96",
+      "AT-0ebb1b30-d9bf-4922-87e7-34ca8586f5c1",
+      "AT-7170f934-6cd5-4abb-9d6c-ecb450fd0b4e"
+    ],
+    "pendingTaskIds": [
+      "AT-0ebb1b30-d9bf-4922-87e7-34ca8586f5c1",
+      "AT-7170f934-6cd5-4abb-9d6c-ecb450fd0b4e"
+    ],
+    "completedTaskIds": [],
+    "skippedTaskIds": [],
+    "failedTaskIds": [
+      "AT-8706c9f1-6237-40b6-b425-514a686a2c96"
+    ],
+    "status": "blocked",
+    "error": "Waiting for incomplete prerequisites; independent work has finished.",
+    "updatedAt": "2026-11-10T09:22:22.009Z"
+  }
+}

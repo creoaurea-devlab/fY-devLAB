@@ -1,0 +1,29 @@
+schema_version: 1
+id: AR-31
+title: Reduce shell refresh churn and correct shortcut behavior
+outcome: Reduce shell refresh churn and correct shortcut behavior
+kind: bugfix
+effect: change_source
+owner: workspace-shell
+slice: ARSC-M3-S2
+mode: worker
+read:
+- plugins/ui-shell/src/view.tsx
+- plugins/ui-shell/src/workspace-focus.ts
+write:
+- plugins/ui-shell/src/view.tsx
+needs:
+- AR-21
+acceptance:
+- 'AC-09: Unchanged run snapshots do not force avoidable updates and current-state
+  keyboard handlers remain correct.'
+- 'AC-09: Documented Ctrl/Cmd-L behavior matches implemented action.'
+- 'AC-09: Terminal/editor keyboard ownership, Escape focus return and dirty-state
+  protections remain intact.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/host.test.ts
+  - KANBAN_EVIDENCE_DIR=/tmp/devlab-audit-shell python3 scripts/kanban-disclosure-browser.py
+spec: docs/plans/audit-remediation-20261103/milestones/M3-lifecycle/slices/S2-browser/AR-31.md

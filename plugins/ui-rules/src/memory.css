@@ -1,0 +1,13 @@
+.wisdohm-memory{display:flex;flex-direction:column;gap:6px;min-width:0;color:hsl(var(--foreground));font:inherit}
+.wisdohm-memory .wisdohm-memory-counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0}
+.wisdohm-memory-counts>div{padding:6px 8px;border:1px solid hsl(var(--border));border-radius:4px;min-width:0}
+.wisdohm-memory-counts dt{color:hsl(var(--muted-foreground));overflow-wrap:anywhere}
+.wisdohm-memory-counts dd{margin:2px 0 0;font-variant-numeric:tabular-nums}
+.wisdohm-memory-caption,.wisdohm-memory-notice{margin:0;font-size:10px;overflow-wrap:anywhere}
+.wisdohm-memory-caption{color:hsl(var(--muted-foreground))}
+.wisdohm-memory-notice{padding:5px 8px;border-left:2px solid hsl(var(--primary));background:hsl(var(--muted))}
+.wisdohm-memory-canvas{position:relative;height:min(62vh,640px);min-height:400px;border:1px solid hsl(var(--border));border-radius:4px;overflow:hidden}
+.wisdohm-memory-canvas .hood-back,.wisdohm-memory-canvas .hood-live,.wisdohm-memory-canvas [data-devlab-id="hood.refresh"],.wisdohm-memory-canvas [role=tablist][aria-label="Architecture views"]{display:none}
+.wisdohm-memory-canvas .hood-embedded .hood-compact-toolbar .hood-brand{display:flex;min-width:0}
+.wisdohm-memory-canvas .hood-brand svg{display:none}
+@media(max-width:760px){.wisdohm-memory .wisdohm-memory-counts{grid-template-columns:repeat(2,minmax(0,1fr))}.wisdohm-memory-canvas{min-height:360px;height:58vh}}

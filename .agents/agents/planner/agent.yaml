@@ -1,0 +1,7 @@
+schema_version: 1
+id: planner
+purpose: Turn a request and current source evidence into bounded owner-scoped tasks.
+instructions: .agents/agents/planner/agent.md
+skills:
+- .agents/skills/spec-agent/SKILL.md
+- .agents/skills/populate-context/SKILL.md

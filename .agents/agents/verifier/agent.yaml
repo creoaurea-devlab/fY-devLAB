@@ -1,0 +1,6 @@
+schema_version: 1
+id: verifier
+purpose: Reproduce relevant acceptance and failure behavior, then report actual evidence.
+instructions: .agents/agents/verifier/agent.md
+skills:
+- .agents/skills/domain-verification/SKILL.md

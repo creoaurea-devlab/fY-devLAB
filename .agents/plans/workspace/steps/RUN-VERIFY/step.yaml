@@ -1,0 +1,24 @@
+schema_version: 1
+id: RUN-VERIFY
+title: Verify direct Run and relocated history with disposable fixtures
+outcome: Verify direct Run and relocated history with disposable fixtures
+kind: bugfix
+effect: change_source
+owner: verification
+slice: RT-S3
+mode: worker
+read: []
+write:
+- scripts/agent-home-runtime.test.py
+- scripts/planning-process-browser.py
+needs: []
+acceptance:
+- Historical root admission is read-only and explicit; direct Run dispatches once
+  and error feedback remains visible; disposable browser fixtures cover the real UI.
+verification:
+  level: targeted
+  reason: Exercise relocation guard and direct Run at both UI widths with disposable
+    projects; no provider executes.
+  checks:
+  - /usr/bin/python3 -B scripts/agent-home-runtime.test.py AgentHomeRuntimeTests.test_declared_history_root_is_readable_without_allowing_foreign_writes
+  - PROCESS_RUN_ONLY=1 DEVLAB_BUILD_DIR=/tmp/devlab-run-build /usr/bin/python3 scripts/planning-process-browser.py

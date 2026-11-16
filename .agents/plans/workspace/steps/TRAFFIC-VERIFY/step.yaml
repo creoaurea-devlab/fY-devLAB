@@ -1,0 +1,33 @@
+schema_version: 1
+id: TRAFFIC-VERIFY
+title: Verify TRAFFIC claims and browser retention
+outcome: Verify TRAFFIC claims and browser retention
+kind: feature
+effect: change_source
+owner: verification
+slice: WB-AGENTS
+mode: worker
+read:
+- .agents/plans/workspace/agent-activity/SPEC.md
+write:
+- scripts/rules.test.ts
+- scripts/host.test.ts
+- scripts/traffic-browser.py
+needs:
+- TRAFFIC-READ
+- TRAFFIC-HTTP
+- TRAFFIC-UI
+acceptance:
+- Disposable fixtures prove claim reservation, missing/corrupt/truncated authority
+  and GET-only denial.
+- Browser checks keyboard, responsive layout, project/error fencing and retained sibling
+  UI/HMR.
+- Combined build/architecture passes or a precise limitation is recorded.
+verification:
+  level: integration
+  reason: Check the changed seam and affected behavior with disposable fixtures.
+  checks:
+  - node --test scripts/rules.test.ts scripts/host.test.ts
+  - DEVLAB_BUILD_DIR=/dev/shm/devlab-traffic-build npm run build
+  - python3 scripts/traffic-browser.py
+spec: .agents/plans/workspace/agent-activity/SPEC.md

@@ -1,0 +1,38 @@
+schema_version: 1
+id: AR-11
+title: Write one task per folder through the existing planner interface
+outcome: Write one task per folder through the existing planner interface
+kind: feature
+effect: change_source
+owner: planning-service
+slice: AGH-S2
+mode: worker
+read:
+- plugins/planning-local/src/store.ts
+- plugins/planning-local/src/index.ts
+- packages/contracts/src/planner.ts
+- packages/contracts/src/agent-definitions.ts
+- .context/state/tasks.json
+- .context/state/progress.json
+write:
+- plugins/planning-local/src/store.ts
+- plugins/planning-local/src/index.ts
+needs:
+- AR-10
+- AGH-02
+acceptance:
+- 'AH-02: Existing PlannerWorkspaceService interface serves definitions from the selected
+  authority and exposes revisions/digests consistently.'
+- 'AH-07: Each canonical task has exactly one authoritative full step.yaml after activation;
+  hierarchy/catalog stores references rather than repeated task bodies.'
+- 'AH-08: Existing lock/journal/CAS/replay protections cover multi-file create/edit/move/import
+  and operational report updates, including interrupted writes.'
+- 'AH-09: Explicit conversion preserves every current ID, hierarchy, dependency, report
+  provenance and reference; no silent bulk completion.'
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/planning.test.ts
+  - node --test scripts/agent-definitions.test.ts
+spec: .agents/plans/agent-home/steps/AR-11/SPEC.md

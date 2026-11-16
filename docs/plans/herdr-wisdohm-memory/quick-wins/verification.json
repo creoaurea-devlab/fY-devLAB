@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-16",
+  "status": "first stability fixes verified; milestone remains in progress",
+  "backup": "/home/creoaurea/Documents/DEV_FOCUS/DEV_NOVEMBER/_devLAB-refactored-backups/surface-quick-wins-20261116",
+  "productFilesChanged": 10,
+  "newApplicationFiles": 0,
+  "newDependencies": 0,
+  "productLineDelta": 48,
+  "changedFiles": [
+    {
+      "path": "scripts/project-workspace.test.ts",
+      "owner": [
+        "verification"
+      ],
+      "beforeLines": 144,
+      "afterLines": 238,
+      "beforeSha256": "9d17d0112d6dede81693c921bfec03d13fc484af7fb0fc78ee55c8a165b0d335",
+      "afterSha256": "56e0004d98eca010be0677c3f8a2d34fb44fa7daf9aa14653a241f5458f23b77"
+    },
+    {
+      "path": "src/shell.tsx",
+      "owner": [
+        "workspace-ui"
+      ],
+      "beforeLines": 379,
+      "afterLines": 389,
+      "beforeSha256": "8a90533c5efb8529ccd72c18c276c5eba7faa9ddc1c22c73a5c179c6d2288960",
+      "afterSha256": "1c8373e1077b1ecc08f4ae0be2c75218c124f4a03d7104f31b316456fc876f47"
+    },
+    {
+      "path": "src/workspace.ts",
+      "owner": [
+        "browser-bootstrap"
+      ],
+      "beforeLines": 80,
+      "afterLines": 77,
+      "beforeSha256": "237a88b4b1b26674e85d13d6978b7d5acd258bfae61bfeff2feebfc5577f0f98",
+      "afterSha256": "593aed4f535d07e4889e90bc7c01c8638091a6d3d83f45163535c974e8e97028"
+    },
+    {
+      "path": ".agents/MEMORY.md",
+      "owner": [
+        "planning-protocol"
+      ],
+      "beforeLines": 200,
+      "afterLines": 202,
+      "beforeSha256": "6d3700235894e3d8845b744ccb341a15870362ae3681100e4ecd77fd600e1164",
+      "afterSha256": "ad15d9e8fa5f695feba1b58cad6788db5e9f3c03b5790f3581a0f18c017679f8"
+    },
+    {
+      "path": "plugins/ui-preview/src/server-state.ts",
+      "owner": [
+        "preview-view"
+      ],
+      "beforeLines": 254,
+      "afterLines": 255,
+      "beforeSha256": "3e1d6d4917a205453583a0b56dafbb9a6b3d8aee4a733a7a9021689faf630257",
+      "afterSha256": "2841e35b2be9662194eabea5998505cd0c1ae81b3d59811413940255605fe0df"
+    },
+    {
+      "path": "plugins/ui-projects/src/view.tsx",
+      "owner": [
+        "project-view"
+      ],
+      "beforeLines": 420,
+      "afterLines": 420,
+      "beforeSha256": "d6f24b1a362875fd78a78617487bed8b5ced10fed6f2491f266e47eee99c5788",
+      "afterSha256": "280bc79e5defccce653a1ae256460128d66606622b50dc09f8c3b0fcc970f3fa"
+    },
+    {
+      "path": "plugins/ui-projects/src/build.tsx",
+      "owner": [
+        "project-view"
+      ],
+      "beforeLines": 133,
+      "afterLines": 145,
+      "beforeSha256": "f6e344d581d71cc070ff89e1b344e67fb4e224d293caf95b1b18b926e2549323",
+      "afterSha256": "5768429f28a32b1ed660e8be141329474d882b141b8f154df99bf13ab720c020"
+    },
+    {
+      "path": "plugins/ui-projects/src/editor.tsx",
+      "owner": [
+        "project-view"
+      ],
+      "beforeLines": 82,
+      "afterLines": 83,
+      "beforeSha256": "e0fbe07bc311d41856605803145da86763c9b4ec0255301beab86adc9c2fa4d7",
+      "afterSha256": "a6b2ce706140a0d4564cd8a1a6c33c273b30a31425bc7d1faef636a8b08f338b"
+    },
+    {
+      "path": "plugins/ui-projects/src/workspace.ts",
+      "owner": [
+        "project-view"
+      ],
+      "beforeLines": 541,
+      "afterLines": 545,
+      "beforeSha256": "76bafc0dc21fb81b668b8b5d2a733e0e5232eab01d452581d038a0e6dfdbfeb6",
+      "afterSha256": "af0386868dc0d14171164556d183af537e372dcc3e7d471db53223060098235f"
+    },
+    {
+      "path": "plugins/ui-canvas/src/workspace.ts",
+      "owner": [
+        "canvas-ui"
+      ],
+      "beforeLines": 427,
+      "afterLines": 457,
+      "beforeSha256": "aaaf635b6eafb40c7ad94d68412513e0be5426061ae3cb4e6c9fd551a46e24f9",
+      "afterSha256": "cd69446c2a36e8e0b4811e07ec6504ccee2c87d3724929ccdc69ea02c3e58a80"
+    },
+    {
+      "path": "plugins/ui-shell/src/view.tsx",
+      "owner": [
+        "workspace-shell"
+      ],
+      "beforeLines": 778,
+      "afterLines": 765,
+      "beforeSha256": "c3c48ab6fec3d8da73f5d4a6bf7f2e065a004873016839a4e1e9c85655c8117c",
+      "afterSha256": "f48cf14a724015d244e0217b96950cfb98af4f69f72b7ba1a7c8b6b8d1e5e69b"
+    },
+    {
+      "path": "docs/plans/herdr-wisdohm-memory.md",
+      "owner": [
+        "planning-protocol"
+      ],
+      "beforeLines": 425,
+      "afterLines": 425,
+      "beforeSha256": "6224521b2e13db0db76a485a39490d95e0d79a090cd0e088c2eccac11b17e6ed",
+      "afterSha256": "5cff9d44f533119c9b0378e5bd3692e7280487bfec37aceace97a4703eb5d550"
+    },
+    {
+      "path": "docs/plans/herdr-wisdohm-memory/surface-stability.md",
+      "owner": [
+        "planning-protocol"
+      ],
+      "beforeLines": 284,
+      "afterLines": 349,
+      "beforeSha256": "6632fa1ec46998671a77fcc8ec46174a5cdc610c7a5efd93352ad47344e2ea8a",
+      "afterSha256": "c92cb5626ba966b143827112ae3f6a42954f68168077959d4bb0b639bca1490c"
+    },
+    {
+      "path": "packages/ui-contracts/src/index.ts",
+      "owner": [
+        "ui-contracts"
+      ],
+      "beforeLines": 315,
+      "afterLines": 321,
+      "beforeSha256": "16aa1a5144681d010ef823a4515ce221ab2d88e1e68ac817eb388259d9f40661",
+      "afterSha256": "8d6d7f64dcf3346f20517390f6bb2da47879a7020f5542acd16675ed1f8613e9"
+    }
+  ],
+  "checks": {
+    "projectOwnerTests": 12,
+    "sourceChecks": 9,
+    "build": "passed",
+    "adversarialSourceBrowser": "passed: F1-F4; cross-project Build viewport, editor selection and surface-button focus",
+    "terminalLifecycleWidths": [
+      1440,
+      820
+    ],
+    "hoodBuildWidths": [
+      1440,
+      820,
+      390
+    ]
+  },
+  "preservation": {
+    "backendPid": 1560097,
+    "frontendPid": 15945,
+    "desktopPid": 19222,
+    "restarted": false,
+    "fixtureCleanup": "passed; no live user API used"
+  },
+  "limits": [
+    "No forced reload; save drafts and reload once to adopt new workspace owners",
+    "Exact live Codex warning/blink cause unclassified",
+    "Connected-component grouping, terminal resizing/text zoom, compact dividers and Herdr not implemented",
+    "Full development-fork UI race, HMR and reload-bookmark matrices remain open"
+  ]
+}

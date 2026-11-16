@@ -1,0 +1,2 @@
+# Legacy update protocol pointer
+The active operational update rule is [.wisdohm/protocols/updates.md](../../.wisdohm/protocols/updates.md). Record actual changelog/progress and affected facts there through the copied2.6 runtime. The original2.4 protocol is preserved in the frozen `.recovery/wisdohm26-import` bundle and full pre-merge backup. Product planning JSON remains canonical and uses `plan.md`.

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wisdom Context v2.2 Project Index",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "entry",
+    "base",
+    "routes",
+    "workflows",
+    "optional_manifests",
+    "update_policy",
+    "settings",
+    "router"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/context-index.schema.json"
+    },
+    "version": {
+      "const": "2.4.0"
+    },
+    "entry": {
+      "const": "BOOT.md"
+    },
+    "base": {
+      "$ref": "#/$defs/paths"
+    },
+    "routes": {
+      "type": "object",
+      "required": [
+        "read_only"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "workflows": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/path"
+      }
+    },
+    "optional_manifests": {
+      "type": "object",
+      "required": [
+        "agents",
+        "mapper"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/path"
+      },
+      "properties": {
+        "agents": {
+          "const": ".wisdom/agents/manifest.yaml"
+        },
+        "mapper": {
+          "const": ".wisdom/tools/map-codebase/SKILL.md"
+        }
+      }
+    },
+    "update_policy": {
+      "$ref": "#/$defs/path"
+    },
+    "settings": {
+      "const": "settings.json"
+    },
+    "router": {
+      "const": "router.py"
+    },
+    "orchestration": {
+      "const": "state/index.json"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[^\\u0000]+$"
+    },
+    "paths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/path"
+      }
+    },
+    "route": {
+      "type": "object",
+      "required": [
+        "load",
+        "workflow",
+        "writes"
+      ],
+      "properties": {
+        "load": {
+          "$ref": "#/$defs/paths"
+        },
+        "workflow": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "writes": {
+          "oneOf": [
+            {
+              "enum": [
+                "none",
+                "declared"
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/paths"
+                },
+                {
+                  "minItems": 1
+                }
+              ]
+            }
+          ]
+        },
+        "requires": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,24 @@
+schema_version: 1
+id: FACTORY-DOC
+title: Document the minimal loop and regenerate compatibility ownership
+outcome: Document the minimal loop and regenerate compatibility ownership
+kind: maintenance
+effect: change_source
+owner: planning-protocol
+slice: FACTORY-S1
+mode: worker
+read:
+- .agents/plans/factory/SPEC.md
+write:
+- .agents/README.md
+- .agents/templates/implementation.md
+- .agents/plans/factory/SPEC.md
+- .context/modules/registry.yaml
+needs: []
+acceptance:
+- No old session, human review, telemetry or memory ceremony is an execution prerequisite.
+verification:
+  level: targeted
+  reason: Only affected compilation, behavior or data-consumer checks are required.
+  checks:
+  - node scripts/planner.ts --root . snapshot > /dev/null

@@ -1,0 +1,37 @@
+schema_version: 1
+id: PROC-VERIFY
+title: Verify Process persistence and retained planning interactions
+outcome: Verify Process persistence and retained planning interactions
+kind: feature
+effect: change_source
+owner: verification
+slice: PROC-S4
+mode: worker
+read:
+- devlab.process.json
+- packages/contracts/src/process.ts
+- scripts/planning-fixture.ts
+- plugins/ui-kanban/src/process.tsx
+- plugins/ui-kanban/src/view.tsx
+write:
+- scripts/process.test.ts
+- scripts/planning-process-browser.py
+needs:
+- PROC-UI
+- PROC-HTTP-TEST
+acceptance:
+- Verify graph validation, existing file CAS, outside edits and safe failure with
+  disposable project fixtures.
+- Run actual browser keyboard, minimize/restore, queue/archive visibility, graph edits,
+  triage, stale/error and retained draft checks against built source; record actual
+  results and limitations.
+- Report guarded receipts separately from planning status. No live process restart,
+  real autonomous agent completion or account execution inferred from mocks.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - node --test scripts/process.test.ts
+  - python3 scripts/planning-process-browser.py
+  - npm run check
+  - npm run build

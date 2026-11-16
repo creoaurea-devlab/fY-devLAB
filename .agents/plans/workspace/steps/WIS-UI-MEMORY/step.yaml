@@ -1,0 +1,27 @@
+schema_version: 1
+id: WIS-UI-MEMORY
+title: Separate Dagre memory layer with actual references
+outcome: Separate Dagre memory layer with actual references
+kind: feature
+effect: change_source
+owner: rules-ui
+slice: WIS-UI-S1
+mode: worker
+read:
+- docs/protocols/ui-design.md
+- .context/modules/registry.yaml
+write:
+- plugins/ui-rules/src/memory.tsx
+- plugins/ui-rules/src/memory.css
+needs: []
+acceptance:
+- Read-only observations are accurate and bounded.
+- Accessible interactions, failures and existing draft/preview/terminal identities
+  are preserved.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - npm run build
+  - npm run check
+  - python3 scripts/wisdohm-ui-browser.py

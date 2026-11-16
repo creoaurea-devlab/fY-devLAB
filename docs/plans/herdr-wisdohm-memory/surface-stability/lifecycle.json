@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "width": 1440,
+      "compactDockOneRow28px": true,
+      "controlsCollapseRetainsOwnerAndPid": true,
+      "multiPaneLayoutAndActionsRetained": true,
+      "buildAndMainHiddenLaunchBlocked": true,
+      "hiddenInputResizeBlocked": true,
+      "previewFocusHiddenLaunchBlocked": true,
+      "collapsedNodeDoesNotLaunchAndRetainsRunningPid": true,
+      "mainPreviewFocusPausesReopenUntilRestore": true,
+      "nonzeroExitWaitsAcrossOwnersAndReload": true,
+      "explicitRetryCreatesOneSession": true,
+      "otherOwnerAdoptsRetriedSession": true,
+      "cleanExitReopens": true,
+      "xtermPreviewAndPidRetained": true,
+      "unknownExitRecoversOnce": true,
+      "repeatedOwnerLossRequiresRetry": true,
+      "stalledInputRecoversWithoutReplay": true
+    }
+  ],
+  "javascriptErrors": [],
+  "liveUserApiUsed": false,
+  "cleanup": [
+    {
+      "closed": true,
+      "terminalPids": [
+        2004356,
+        2004428,
+        2004953,
+        2006904
+      ],
+      "processesGone": true
+    }
+  ]
+}

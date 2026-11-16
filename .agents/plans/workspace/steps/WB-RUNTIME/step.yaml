@@ -1,0 +1,31 @@
+schema_version: 1
+id: WB-RUNTIME
+title: Own Whiteboard lifetime and unsaved guards across project/view/HMR changes
+outcome: Own Whiteboard lifetime and unsaved guards across project/view/HMR changes
+kind: feature
+effect: change_source
+owner: browser-bootstrap
+slice: WB-S3
+mode: worker
+read:
+- .agents/plans/workspace/whiteboard/SPEC.md
+write:
+- src/runtime.ts
+- src/main.ts
+needs:
+- WB-COMPOSE
+acceptance:
+- Lazy getWhiteboard(projectId) retains one owner per project outside view mounts;
+  root composition receives stable provider.
+- 'A3/A6: all dirty/saving Whiteboard owners participate in unload protection; exact
+  disposal releases every created owner once.'
+- Compatible UI refresh retains existing hot.data session; activating changed owner
+  code follows explicit safe reload boundary.
+verification:
+  level: targeted
+  reason: Exercise declared state/contract behavior; combined browser proof remains
+    separate until integration.
+  checks:
+  - ./node_modules/.bin/tsc --noEmit
+feature: whiteboard
+spec: .agents/plans/workspace/whiteboard/SPEC.md

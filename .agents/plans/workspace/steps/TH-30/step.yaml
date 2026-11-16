@@ -1,0 +1,39 @@
+schema_version: 1
+id: TH-30
+title: Verify actual login, draft-safe dispatch and retained workspace
+outcome: Verify actual login, draft-safe dispatch and retained workspace
+kind: feature
+effect: change_source
+owner: verification
+slice: TH-EVIDENCE-S1
+mode: worker
+read:
+- .context/modules/registry.yaml
+- .context/protocols/plan.md
+- packages/contracts/src/harness.ts
+- plugins/ui-kanban/src/harness.tsx
+- plugins/ui-kanban/src/batch.tsx
+- plugins/ui-kanban/src/view.tsx
+- plugins/ui-kanban/src/planning.css
+- scripts/planning-browser.py
+- scripts/planning-fixture.ts
+write:
+- scripts/planning-browser.py
+- scripts/planning-fixture.ts
+needs:
+- TH-26
+- TH-29
+acceptance:
+- Extend current browser acceptance for dirty/nonvisible draft rejection, queue recovery,
+  keyboard focus, failure/retry and retained editor/preview/terminal state.
+- Record a real Codex account login and safe user-approved task lifecycle separately
+  from mocked tests. If account access is unavailable, retain Review and state the
+  limitation.
+- TH-MVP-4 remains Review until its actual account/browser/deployment criteria are
+  assessed; do not mark it complete solely from these plan edits.
+verification:
+  level: targeted
+  reason: Preserved canonical task checks.
+  checks:
+  - python3 scripts/planning-browser.py
+  - node scripts/verify-deployment.ts
